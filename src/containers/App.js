@@ -1,0 +1,39 @@
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { fetchLibraryIfNeeded, invalidateLibrary } from '../actions'
+import Library from '../components/Library'
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(fetchLibraryIfNeeded())
+  }
+
+  render() {
+    const { library } = this.props
+    return (
+      <div>
+        <Library isFetching={library.isFetching} items={library.items} />
+      </div>
+    )
+  }
+}
+
+App.propTypes = {
+  library: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
+}
+
+function mapStateToProps(state) {
+  const { library } = state
+
+  return {
+    library
+  }
+}
+
+export default connect(mapStateToProps)(App)
