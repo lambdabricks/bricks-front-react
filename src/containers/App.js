@@ -17,7 +17,7 @@ class App extends Component {
     const { library } = this.props
     return (
       <div>
-        <Library isFetching={library.isFetching} items={library.items} />
+        <Library { ...library } />
       </div>
     )
   }
