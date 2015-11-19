@@ -1,12 +1,19 @@
 import React, { PropTypes, Component } from 'react'
 import Module from './Module'
 
+const styles = {
+  float: 'left',
+  height: '100%',
+  width: '250px',
+  overflow: 'auto'
+}
+
 export default class Library extends Component {
   render() {
     const { isFetching, items } = this.props
 
     return (
-      <div>
+      <div style={ styles }>
         <h2>Library</h2>
         { isFetching &&
           <h3>Loading...</h3>

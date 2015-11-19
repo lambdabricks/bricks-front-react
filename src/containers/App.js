@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { fetchLibraryIfNeeded, invalidateLibrary } from '../actions'
 import Library from '../components/Library'
 
+const styles = {
+  height: '100%'
+}
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -16,7 +20,7 @@ class App extends Component {
   render() {
     const { library } = this.props
     return (
-      <div>
+      <div style={ styles }>
         <Library { ...library } />
       </div>
     )
