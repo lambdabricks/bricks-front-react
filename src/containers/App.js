@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { fetchLibraryIfNeeded, invalidateLibrary } from '../actions'
 import Library from '../components/Library'
+import Workspace from '../components/Workspace'
 
 const styles = {
   height: '100%'
@@ -22,6 +23,7 @@ class App extends Component {
     return (
       <div style={ styles }>
         <Library { ...library } />
+        <Workspace />
       </div>
     )
   }
