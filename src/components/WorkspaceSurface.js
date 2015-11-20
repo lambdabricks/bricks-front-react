@@ -1,9 +1,11 @@
 import React, { PropTypes, Component } from 'react'
+import ReactArt from 'react-art'
+import Rectangle from 'react-art/lib/Rectangle.art'
+
+const Surface = ReactArt.Surface
 
 const styles = {
   float: 'left',
-  height: '100%',
-  width: '455px',
   marginLeft: '10px',
   backgroundColor: 'lightgray'
 }
@@ -11,7 +13,14 @@ const styles = {
 export default class WorkspaceSurface extends Component {
   render() {
     return (
-      <div style={ styles } />
+      <Surface style={ styles } width={ 455 } height={ 500 }>
+        <Rectangle
+          width={ 50 }
+          height={ 50 }
+          stroke={ "green" }
+          fill={ "blue" }
+        />
+      </Surface>
     )
   }
 }
