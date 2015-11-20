@@ -67,17 +67,16 @@ export default class Brick extends Component {
   }
 }
 
+const SlotPropTypes =
+  PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired
+    }).isRequired
+  ).isRequired
+
 Brick.propTypes = {
-  inputSlots: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired
-    }).isRequired
-  ).isRequired,
-  outputSlots: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired
-    }).isRequired
-  ).isRequired,
+  inputSlots: SlotPropTypes,
+  outputSlots: SlotPropTypes,
   position: PropTypes.shape({
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired
