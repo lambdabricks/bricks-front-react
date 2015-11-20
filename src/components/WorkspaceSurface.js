@@ -1,24 +1,22 @@
 import React, { PropTypes, Component } from 'react'
-import ReactArt from 'react-art'
-import Rectangle from 'react-art/lib/Rectangle.art'
-
-const Surface = ReactArt.Surface
+import { Surface } from 'react-art'
+import Brick from './Brick'
 
 const styles = {
   float: 'left',
   marginLeft: '10px',
-  backgroundColor: 'lightgray'
+  backgroundColor: '#bfbfbf'
 }
 
 export default class WorkspaceSurface extends Component {
   render() {
     return (
-      <Surface style={ styles } width={ 455 } height={ 500 }>
-        <Rectangle
-          width={ 50 }
-          height={ 50 }
-          stroke={ "green" }
-          fill={ "blue" }
+      <Surface height={ 500 } style={ styles } width={ 455 }>
+        <Brick
+          inputSlots={ [{ id: 1 }, { id: 2 }] }
+          outputSlots={ [{ id: 3 }] }
+          position={{ x: 50, y: 50 }}
+          size={{ height: 150, width: 150 }}
         />
       </Surface>
     )
