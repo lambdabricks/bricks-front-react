@@ -14,7 +14,7 @@ export default class Workspace extends Component {
       <div style={ styles }>
         <h2>Workspace</h2>
         <WorkspaceActions actions={ [] } />
-        <WorkspaceSurface />
+        <WorkspaceSurface { ...this.props } />
       </div>
     )
   }

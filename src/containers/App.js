@@ -19,26 +19,29 @@ class App extends Component {
   }
 
   render() {
-    const { library } = this.props
+    const { library, workspace } = this.props
+
     return (
       <div style={ styles }>
         <Library { ...library } />
-        <Workspace />
+        <Workspace { ...workspace } />
       </div>
     )
   }
 }
 
 App.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   library: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
+  workspace: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
-  const { library } = state
+  const { library, workspace } = state
 
   return {
-    library
+    library,
+    workspace
   }
 }
 
