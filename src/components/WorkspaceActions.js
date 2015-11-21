@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 
 const styles = {
   float: 'left',
-  height: '100%',
+  height: '550px',
   width: '25px',
   marginLeft: '10px'
 }

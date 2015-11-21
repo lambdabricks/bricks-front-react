@@ -8,7 +8,7 @@ const RootBrick = {
   fillColor: '#789',
   hoverFillColor: '#385661',
   initialOffset: 30,
-  slotOffset: 30,
+  slotOffset: 100,
   strokeColor: 'black'
 }
 RootBrick.slotAndOffset = Slot.width + RootBrick.slotOffset
