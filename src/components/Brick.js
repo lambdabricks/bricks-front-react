@@ -18,7 +18,7 @@ export default class Brick extends Component {
 
     return (
       <Group x={ position.x } y={ position.y }>
-        { this.slotGroup(inputSlots, size.width, 0) }
+        { this.slotGroup(inputSlots, 0) }
         <Rectangle
           height={ size.height }
           width={ size.width }
@@ -26,44 +26,39 @@ export default class Brick extends Component {
           stroke={ RootBrick.strokeColor }
           fill={ RootBrick.fillColor }
         />
-        { this.slotGroup(outputSlots, size.width, size.height + Slot.height) }
+        { this.slotGroup(outputSlots, size.height + Slot.height) }
       </Group>
     )
   }
 
-  slotGroup(slots, width, y) {
+  slotGroup(slots, y) {
+    const { size } = this.props
     const { RootBrick } = this._constants
     const slotsWidth = RootBrick.slotOffset + (slots.length * RootBrick.slotAndOffset)
-    const xOffset = (width - slotsWidth) / 2
+    const xOffset = (size.width - slotsWidth) / 2
 
     return (
-      <Group>
-        { slots.map(this.renderSlot(xOffset, y)) }
+      <Group x={ xOffset } y={ y }>
+        { slots.map(this.renderSlot) }
       </Group>
     )
   }
 
-  renderSlot(xOffset, y) {
-    return (slot, index) => {
-      const { RootBrick, Slot } = this._constants
-      const x =
-        xOffset +
-        RootBrick.slotOffset +
-        (index * RootBrick.slotAndOffset)
+  renderSlot(slot, index) {
+    const { RootBrick, Slot } = this._constants
+    const x = RootBrick.slotOffset + (index * RootBrick.slotAndOffset)
 
-      return (
-        <Rectangle
-          key={ slot.id }
-          height={ Slot.height }
-          width={ Slot.width }
-          x={ x }
-          y={ y }
-          cursor={ RootBrick.cursor }
-          fill={ RootBrick.fillColor }
-          stroke={ RootBrick.strokeColor }
-        />
-      )
-    }
+    return (
+      <Rectangle
+        key={ slot.id }
+        height={ Slot.height }
+        width={ Slot.width }
+        x={ x }
+        cursor={ RootBrick.cursor }
+        fill={ RootBrick.fillColor }
+        stroke={ RootBrick.strokeColor }
+      />
+    )
   }
 }
 
