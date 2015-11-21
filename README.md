@@ -22,7 +22,7 @@ In most of the other projects the connections are just lines.
 
 ## Development
 
-You need npm installed on your machine.
+You need npm & browserify installed on your machine.
 
 ```
 $ git clone https://github.com/lambdablocks/blocks-front-react.git
