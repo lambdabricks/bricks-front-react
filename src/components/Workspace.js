@@ -10,11 +10,13 @@ const styles = {
 
 export default class Workspace extends Component {
   render() {
+    const { actions, surface } = this.props
+
     return (
       <div style={ styles }>
         <h2>Workspace</h2>
-        <WorkspaceActions actions={ [] } />
-        <WorkspaceSurface { ...this.props } />
+        <WorkspaceActions actions={ actions } />
+        <WorkspaceSurface { ...surface } />
       </div>
     )
   }

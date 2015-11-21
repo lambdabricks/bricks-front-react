@@ -9,7 +9,7 @@ const styles = {
 
 export default class WorkspaceActions extends Component {
   render() {
-    const actions = this.props.actions
+    const { actions } = this.props
 
     return (
       <div style={ styles } />
