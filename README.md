@@ -17,7 +17,10 @@ this project differentiates by 3 main ideas:
 - Teaches Functional Programming.
 - The connections between blocks are as important as the blocks.
 In most of the other projects the connections are just lines.
-- The execution flow is from top to bottom, not from left to right like in most projects.
+- The execution flow is from top to bottom,
+not from left to right like in most projects.
+I think flow from top to bottom is more natural,
+an example in the real world is gravity.
 
 
 ## Development
