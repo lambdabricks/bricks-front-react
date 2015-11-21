@@ -6,6 +6,10 @@
     "name": "Daniel Garcia Carmona",
     "email": "daniel.garcia.carmona@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "github.com/lambdablocks/blocks-front-react"
+  },
   "browserify": {
     "transform": [
       "babelify"
