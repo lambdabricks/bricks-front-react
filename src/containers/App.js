@@ -8,7 +8,7 @@ const styles = {
   height: '100%'
 }
 
-class App extends Component {
+class LambdaBlocksApp extends Component {
   constructor(props) {
     super(props)
   }
@@ -30,7 +30,7 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
+LambdaBlocksApp.propTypes = {
   dispatch: PropTypes.func.isRequired,
   library: PropTypes.object.isRequired,
   workspace: PropTypes.object.isRequired
@@ -45,4 +45,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(LambdaBlocksApp)
