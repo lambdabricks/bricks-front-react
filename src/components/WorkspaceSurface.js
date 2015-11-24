@@ -4,7 +4,6 @@ import Brick from './Brick'
 
 const styles = {
   float: 'left',
-  marginLeft: '10px',
   backgroundColor: '#bfbfbf'
 }
 
@@ -13,7 +12,7 @@ export default class WorkspaceSurface extends Component {
     const { rootBrick } = this.props
 
     return (
-      <Surface height={ 550 } style={ styles } width={ 455 }>
+      <Surface height={ 550 } style={ styles } width={ 500 }>
         <Brick { ...rootBrick } />
       </Surface>
     )

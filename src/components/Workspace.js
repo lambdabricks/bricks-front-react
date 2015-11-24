@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import WorkspaceActions from './WorkspaceActions'
+// import WorkspaceActions from './WorkspaceActions'
 import WorkspaceSurface from '../containers/WorkspaceSurface'
 
 const styles = {
@@ -15,7 +15,6 @@ export default class Workspace extends Component {
     return (
       <div style={ styles }>
         <h2>Workspace</h2>
-        <WorkspaceActions actions={ actions } />
         <WorkspaceSurface />
       </div>
     )
