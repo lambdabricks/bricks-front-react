@@ -3,7 +3,14 @@ import { fetchLibraryIfNeeded } from '../actions'
 import Library from '../components/Library'
 
 function mapStateToProps(state) {
-    return { ...state.library }
+  return { ...state.library }
 }
 
-export default connect(mapStateToProps)(Library)
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    fetchLibrary: fetchLibraryIfNeeded
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Library)

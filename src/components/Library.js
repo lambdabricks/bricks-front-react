@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchLibraryIfNeeded } from '../actions'
 import Module from './Module'
 
 const styles = {
@@ -12,8 +11,8 @@ const styles = {
 
 export default class Library extends Component {
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(fetchLibraryIfNeeded())
+    const { dispatch, fetchLibrary } = this.props
+    dispatch(fetchLibrary())
   }
 
   render() {
@@ -52,6 +51,7 @@ export default class Library extends Component {
 
 Library.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  fetchLibrary: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   items: PropTypes.shape({
     modules: PropTypes.arrayOf(
