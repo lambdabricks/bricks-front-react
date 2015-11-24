@@ -15,7 +15,7 @@ export default class Brick extends Component {
   }
 
   render() {
-    const { inputSlots, outputSlots, position, size } = this.props
+    const { inner, inputSlots, outputSlots, position, size } = this.props
     const { RootBrick, Slot } = this._constants
 
     return (
@@ -29,7 +29,16 @@ export default class Brick extends Component {
           fill={ RootBrick.fillColor }
         />
         { this.slotGroup(outputSlots, size.height + Slot.height) }
-        <Primitive position={{ x: 50, y: 50 }} value={ "abc" } />
+        { inner.map((primitive) => {
+            return (
+              <Primitive
+                key={ primitive.id }
+                position={ primitive.position }
+                value={ primitive.value }
+              />
+            )
+          })
+        }
       </Group>
     )
   }
@@ -65,6 +74,12 @@ export default class Brick extends Component {
   }
 }
 
+const PositionPropTypes =
+  PropTypes.shape({
+      x: PropTypes.number.isRequired,
+      y: PropTypes.number.isRequired
+    })
+
 const SlotPropTypes =
   PropTypes.arrayOf(
     PropTypes.shape({
@@ -73,12 +88,16 @@ const SlotPropTypes =
   ).isRequired
 
 Brick.propTypes = {
+  inner: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      position: PositionPropTypes.isRequired,
+      value: PropTypes.string.isRequired
+    })
+  ).isRequired,
   inputSlots: SlotPropTypes,
   outputSlots: SlotPropTypes,
-  position: PropTypes.shape({
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired
-  }).isRequired,
+  position: PositionPropTypes.isRequired,
   size: PropTypes.shape({
     height: PropTypes.number.isRequired,
     width: PropTypes.number.isRequired

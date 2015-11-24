@@ -2,6 +2,13 @@ const initialState = {
   actions: [],
   surface: {
     rootBrick: {
+      inner: [
+        {
+          id: 101,
+          position: { x: 50, y: 50 },
+          value: "abc"
+        }
+      ],
       inputSlots: [
         { id: 1 },
         { id: 2 }
