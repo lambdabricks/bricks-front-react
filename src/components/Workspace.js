@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import WorkspaceActions from './WorkspaceActions'
-import WorkspaceSurface from './WorkspaceSurface'
+import WorkspaceSurface from '../containers/WorkspaceSurface'
 
 const styles = {
   float: 'left',
@@ -10,13 +10,13 @@ const styles = {
 
 export default class Workspace extends Component {
   render() {
-    const { actions, surface } = this.props
+    const { actions } = this.props
 
     return (
       <div style={ styles }>
         <h2>Workspace</h2>
         <WorkspaceActions actions={ actions } />
-        <WorkspaceSurface { ...surface } />
+        <WorkspaceSurface />
       </div>
     )
   }
