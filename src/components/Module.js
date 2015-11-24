@@ -7,7 +7,7 @@ export default class Module extends Component {
         <li>{this.props.name}</li>
         <ul>
           { this.props.functions.map((namedFunction, i) =>
-            <li key={namedFunction.id}>{namedFunction.name}</li>
+            <li key={namedFunction.id}>{namedFunction.label}</li>
           )}
         </ul>
       </div>
@@ -17,5 +17,11 @@ export default class Module extends Component {
 
 Module.propTypes = {
   name: PropTypes.string.isRequired,
-  functions: PropTypes.array.isRequired
+  functions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
 }

@@ -23,8 +23,8 @@ export default class Library extends Component {
             <div>
               <h3>Primitives</h3>
               <ul>
-                { items.primitives.map((primitive, i) =>
-                  <li key={i}>{primitive.name}</li>
+                { items.primitives.map((primitive) =>
+                  <li key={primitive.id}>{primitive.label}</li>
                 )}
               </ul>
             </div>
@@ -55,6 +55,7 @@ Library.propTypes = {
     primitives: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
+        label: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired
       })
     )
