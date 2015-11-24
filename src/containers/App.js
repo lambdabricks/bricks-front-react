@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchLibraryIfNeeded, invalidateLibrary } from '../actions'
 import Library from '../components/Library'
 import Workspace from '../components/Workspace'
 
@@ -9,21 +8,12 @@ const styles = {
 }
 
 class LambdaBlocksApp extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(fetchLibraryIfNeeded())
-  }
-
   render() {
-    const { library, workspace } = this.props
+    const { workspace } = this.props
 
     return (
       <div style={ styles }>
-        <Library { ...library } />
+        <Library />
         <Workspace { ...workspace } />
       </div>
     )
@@ -31,16 +21,13 @@ class LambdaBlocksApp extends Component {
 }
 
 LambdaBlocksApp.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  library: PropTypes.object.isRequired,
   workspace: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
-  const { library, workspace } = state
+  const { workspace } = state
 
   return {
-    library,
     workspace
   }
 }

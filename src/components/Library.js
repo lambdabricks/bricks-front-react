@@ -1,4 +1,6 @@
 import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchLibraryIfNeeded } from '../actions'
 import Module from './Module'
 
 const styles = {
@@ -8,7 +10,12 @@ const styles = {
   overflow: 'auto'
 }
 
-export default class Library extends Component {
+class Library extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(fetchLibraryIfNeeded())
+  }
+
   render() {
     const { isFetching, items } = this.props
 
@@ -44,6 +51,7 @@ export default class Library extends Component {
 }
 
 Library.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   items: PropTypes.shape({
     modules: PropTypes.arrayOf(
@@ -61,3 +69,9 @@ Library.propTypes = {
     )
   }).isRequired
 }
+
+function mapStateToProps(state) {
+    return { ...state.library }
+}
+
+export default connect(mapStateToProps)(Library)
