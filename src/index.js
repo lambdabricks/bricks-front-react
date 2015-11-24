@@ -2,7 +2,7 @@ import 'babel-core/polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import LambdaBlocksApp from './containers/App'
+import LambdaBlocksApp from './components/LambdaBlocksApp'
 import configureStore from './store/configureStore'
 
 const store = configureStore()
