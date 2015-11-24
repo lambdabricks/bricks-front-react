@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Library from './Library'
+import Library from '../containers/Library'
 import Workspace from './Workspace'
 
 const styles = {

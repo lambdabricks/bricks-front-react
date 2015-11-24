@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchLibraryIfNeeded } from '../actions'
-import Module from './Module'
+import Module from '../components/Module'
 
 const styles = {
   float: 'left',
