@@ -1,7 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
+
 import Constants from './constants'
+import Primitive from './Primitive'
 
 export default class Brick extends Component {
   constructor(props) {
@@ -27,6 +29,7 @@ export default class Brick extends Component {
           fill={ RootBrick.fillColor }
         />
         { this.slotGroup(outputSlots, size.height + Slot.height) }
+        <Primitive position={{ x: 50, y: 50 }} value={ "abc" } />
       </Group>
     )
   }
@@ -54,7 +57,7 @@ export default class Brick extends Component {
         height={ Slot.height }
         width={ Slot.width }
         x={ x }
-        cursor={ RootBrick.cursor }
+        cursor={ Slot.cursor }
         fill={ RootBrick.fillColor }
         stroke={ RootBrick.strokeColor }
       />
