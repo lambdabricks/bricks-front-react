@@ -9,11 +9,9 @@ const styles = {
 
 export default class WorkspaceSurface extends Component {
   render() {
-    const { rootBrick } = this.props
-
     return (
       <Surface height={ 550 } style={ styles } width={ 500 }>
-        <Brick { ...rootBrick } />
+        <Brick { ...this.props } />
       </Surface>
     )
   }

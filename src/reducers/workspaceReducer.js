@@ -1,35 +1,35 @@
-const initialState = {
+import {
+  ADD_PRIMITIVE,
+} from '../actions'
+
+const initialWorkspace = {
   actions: [],
-  surface: {
-    rootBrick: {
-      inner: [
-        {
-          id: 101,
-          position: { x: 50, y: 50 },
-          value: "abc"
-        }
-      ],
-      inputSlots: [
-        { id: 1 },
-        { id: 2 }
-      ],
-      outputSlots: [
-        { id: 3 }
-      ],
-      position: {
-        x: 50,
-        y: 50
-      },
-      size: {
-        height: 400,
-        width: 350
-      }
+  rootBrick: {
+    inner: [
+    ],
+    inputSlots: [
+      { id: 1 },
+      { id: 2 }
+    ],
+    outputSlots: [
+      { id: 3 }
+    ],
+    position: {
+      x: 50,
+      y: 50
+    },
+    size: {
+      height: 400,
+      width: 350
     }
   }
 }
 
-export function workspace(state = initialState, action) {
+export function workspace(state = initialWorkspace, action) {
   switch (action.type) {
+    case ADD_PRIMITIVE:
+      console.log("add", action.payload)
+      return state
     default:
       return state
   }

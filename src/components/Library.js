@@ -16,7 +16,7 @@ export default class Library extends Component {
   }
 
   render() {
-    const { isFetching, items } = this.props
+    const { isFetching, items, onPrimitiveClick } = this.props
 
     return (
       <div style={ styles }>
@@ -30,7 +30,12 @@ export default class Library extends Component {
               <h3>Primitives</h3>
               <ul>
                 { items.primitives.map((primitive) =>
-                  <li key={primitive.id}>{primitive.label}</li>
+                  <li
+                    key={ primitive.id }
+                    onClick={ () => onPrimitiveClick(primitive.name) }
+                  >
+                    {primitive.label}
+                  </li>
                 )}
               </ul>
             </div>
@@ -67,5 +72,6 @@ Library.propTypes = {
         name: PropTypes.string.isRequired
       })
     )
-  }).isRequired
+  }).isRequired,
+  onPrimitiveClick: PropTypes.func.isRequired
 }

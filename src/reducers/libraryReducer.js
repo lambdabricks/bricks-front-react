@@ -1,5 +1,4 @@
 import {
-  INVALIDATE_LIBRARY,
   REQUEST_LIBRARY,
   RECEIVE_LIBRARY
 } from '../actions'

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchLibraryIfNeeded } from '../actions'
+import { addPrimitive, fetchLibraryIfNeeded } from '../actions'
 import Library from '../components/Library'
 
 function mapStateToProps(state) {
@@ -9,7 +9,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    fetchLibrary: fetchLibraryIfNeeded
+    fetchLibrary: fetchLibraryIfNeeded,
+    onPrimitiveClick: (primitive) => {
+      dispatch(addPrimitive(primitive))
+    }
   }
 }
 
