@@ -33,8 +33,7 @@ export default class Brick extends Component {
             return (
               <Primitive
                 key={ primitive.id }
-                position={ primitive.position }
-                value={ primitive.value }
+                { ...primitive }
               />
             )
           })
@@ -91,8 +90,9 @@ Brick.propTypes = {
   inner: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
       position: PositionPropTypes.isRequired,
-      value: PropTypes.string.isRequired
+      value: PropTypes.any
     })
   ).isRequired,
   inputSlots: SlotPropTypes,

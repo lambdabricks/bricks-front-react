@@ -25,6 +25,9 @@ const initialWorkspace = {
   }
 }
 
+// TODO: Generate id's with an UID function ??
+let id = 1
+
 export function workspace(state = initialWorkspace, action) {
   switch (action.type) {
     case ADD_PRIMITIVE:
@@ -35,9 +38,11 @@ export function workspace(state = initialWorkspace, action) {
           inner: [
             ...state.rootBrick.inner,
             {
-              id: 101,
+              id: id++,
+              name: action.payload,
               position: { x: 50, y: 50 },
-              value: undefined
+              // react or redux ignore pair with value `undefined`
+              value: null
             }
           ]
         }

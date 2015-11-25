@@ -14,11 +14,16 @@ const RootBrick = {
 RootBrick.slotAndOffset = Slot.width + RootBrick.slotOffset
 
 const Primitive = {
-  fillColor: '#A359E9',
+  fillColor: {
+    boolean: "#A359E9",
+    list: "#E9E759",
+    number: "#59E974",
+    string: "#E9A559"
+    // "#E96859"
+  },
   font: '15px monospace',
   fontAlignment: 'middle',
   radius: 30,
-  strokeColor: '#A359E9',
   textColor: 'black'
 }
 

@@ -12,15 +12,16 @@ export default class Primitive extends Component {
   }
 
   render() {
-    const { position, value } = this.props
+    const { name, position, value } = this.props
     const { Primitive, Slot } = this._constants
+    const fillColor = Primitive.fillColor[name]
 
     return (
       <Group x={ position.x } y={ position.y } >
         <Circle
-          fill={ Primitive.fillColor }
+          fill={ fillColor }
           radius={ Primitive.radius }
-          stroke={ Primitive.strokeColor }
+          stroke={ fillColor }
           strokeWidth={ Primitive.strokeWidth }
           x={ Primitive.radius / 2 }
           y={ Primitive.radius / 2 }
@@ -29,11 +30,11 @@ export default class Primitive extends Component {
           fill={ Primitive.textColor }
           font={ Primitive.font }
         >
-          { value === undefined ? "<NONE>" : value }
+          { value === null ? "<NONE>" : value }
         </Text>
         <Rectangle
           cursor={ Slot.cursor }
-          fill={ Primitive.fillColor }
+          fill={ fillColor }
           height={ Slot.height }
           width={ Slot.width }
           x={ (Primitive.radius / 2)- (Slot.width / 2) }
@@ -42,12 +43,4 @@ export default class Primitive extends Component {
       </Group>
     )
   }
-}
-
-Primitive.propTypes = {
-  position: PropTypes.shape({
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired
-  }).isRequired,
-  value: PropTypes.string.isRequired
 }
