@@ -28,9 +28,8 @@ export default class Primitive extends Component {
         <Text
           fill={ Primitive.textColor }
           font={ Primitive.font }
-          alignment={ Primitive.fontAlignment }
         >
-          { value }
+          { value === undefined ? "<NONE>" : value }
         </Text>
         <Rectangle
           cursor={ Slot.cursor }

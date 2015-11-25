@@ -37,7 +37,7 @@ export function workspace(state = initialWorkspace, action) {
             {
               id: 101,
               position: { x: 50, y: 50 },
-              value: "abc"
+              value: undefined
             }
           ]
         }
