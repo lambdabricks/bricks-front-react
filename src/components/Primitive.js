@@ -22,6 +22,8 @@ export default class Primitive extends Component {
           radius={ Primitive.radius }
           stroke={ Primitive.strokeColor }
           strokeWidth={ Primitive.strokeWidth }
+          x={ Primitive.radius / 2 }
+          y={ Primitive.radius / 2 }
         />
         <Text
           fill={ Primitive.textColor }
@@ -35,8 +37,8 @@ export default class Primitive extends Component {
           fill={ Primitive.fillColor }
           height={ Slot.height }
           width={ Slot.width }
-          x={ -Slot.width / 2 }
-          y={ Primitive.radius }
+          x={ (Primitive.radius / 2)- (Slot.width / 2) }
+          y={ Primitive.radius + Slot.height }
         />
       </Group>
     )

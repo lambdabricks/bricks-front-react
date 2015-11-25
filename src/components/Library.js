@@ -9,6 +9,15 @@ const styles = {
   overflow: 'auto'
 }
 
+const ulStyles = {
+  display: 'inline-block',
+  margin: 0
+}
+
+const primitiveStyles = {
+  cursor: 'pointer'
+}
+
 export default class Library extends Component {
   componentDidMount() {
     const { dispatch, fetchLibrary } = this.props
@@ -28,11 +37,12 @@ export default class Library extends Component {
           <div>
             <div>
               <h3>Primitives</h3>
-              <ul>
+              <ul style={ ulStyles }>
                 { items.primitives.map((primitive) =>
                   <li
                     key={ primitive.id }
                     onClick={ () => onPrimitiveClick(primitive.name) }
+                    style={ primitiveStyles }
                   >
                     {primitive.label}
                   </li>
