@@ -6,10 +6,6 @@ import Constants from './constants'
 import Primitive from './Primitive'
 
 class RootBrick extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { inner } = this.props
 
