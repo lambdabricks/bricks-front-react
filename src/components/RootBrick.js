@@ -1,16 +1,18 @@
 import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 
+import Brick from './Brick'
 import composeBrick from './composeBrick'
 import Constants from './constants'
 import Primitive from './Primitive'
 
 class RootBrick extends Component {
   render() {
-    const { inner } = this.props
+    const { brick, inner } = this.props
 
     return (
       <Group>
+        <Brick { ...brick } />
         { inner.map((primitive) => {
             return (
               <Primitive

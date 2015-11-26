@@ -5,6 +5,24 @@ import {
 const initialWorkspace = {
   actions: [],
   rootBrick: {
+    brick: {
+      inputSlots: [
+        { id: 5 },
+        { id: 6 }
+      ],
+      name: "split",
+      outputSlots: [
+        { id: 7 }
+      ],
+      position: {
+        x: 50,
+        y: 50
+      },
+      size: {
+        height: 40,
+        width: 100
+      }
+    },
     inner: [
     ],
     inputSlots: [

@@ -1,17 +1,14 @@
-const Slot = {
-  cursor: 'pointer',
-  height: 15,
-  width: 15
-}
+const font = '15px monospace'
+const slotWidth = 15
 
-const RootBrick = {
-  fillColor: '#789',
-  hoverFillColor: '#385661',
-  initialOffset: 30,
-  slotOffset: 100,
-  strokeColor: 'black'
+const Brick = {
+  fillColor: '#ADD8E6',
+  font: font,
+  slotOffset: 20,
+  strokeColor: '#ADD8E6',
+  textColor: 'black'
 }
-RootBrick.slotAndOffset = Slot.width + RootBrick.slotOffset
+Brick.slotAndOffset = slotWidth + Brick.slotOffset
 
 const Primitive = {
   fillColor: {
@@ -21,13 +18,28 @@ const Primitive = {
     string: "#E9A559"
     // "#E96859"
   },
-  font: '15px monospace',
+  font: font,
   fontAlignment: 'middle',
   radius: 30,
   textColor: 'black'
 }
 
+const RootBrick = {
+  fillColor: '#789',
+  hoverFillColor: '#385661',
+  slotOffset: 100,
+  strokeColor: 'black'
+}
+RootBrick.slotAndOffset = slotWidth + RootBrick.slotOffset
+
+const Slot = {
+  cursor: 'pointer',
+  height: 15,
+  width: slotWidth
+}
+
 export default {
+  Brick,
   Primitive,
   RootBrick,
   Slot
