@@ -2,12 +2,23 @@ import React, { PropTypes, Component } from 'react'
 
 export default class Module extends Component {
   render() {
+    const { functions, name, onFunctionClick } = this.props
     return (
       <div>
-        <li>{this.props.name}</li>
+        <li>
+          { name }
+        </li>
         <ul>
-          { this.props.functions.map((namedFunction, i) =>
-            <li key={namedFunction.id}>{namedFunction.label}</li>
+          { functions.map((libraryFunction) => {
+              return (
+                <li
+                  key={ libraryFunction.id }
+                  onClick={ () => onFunctionClick(libraryFunction.name) }
+                >
+                  { libraryFunction.label }
+                </li>
+              )
+            }
           )}
         </ul>
       </div>
@@ -23,5 +34,6 @@ Module.propTypes = {
       label: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  onFunctionClick: PropTypes.func.isRequired
 }

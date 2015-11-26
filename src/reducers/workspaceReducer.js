@@ -1,4 +1,5 @@
 import {
+  ADD_BRICK,
   ADD_PRIMITIVE,
 } from '../actions'
 import Brick from '../components/Brick'
@@ -50,6 +51,9 @@ export function workspace(state = initialWorkspace, action) {
           ]
         }
       })
+    case ADD_BRICK:
+      console.log("add", action.payload)
+      return state
     default:
       return state
   }
