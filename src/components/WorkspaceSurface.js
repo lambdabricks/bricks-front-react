@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { Surface } from 'react-art'
-import Brick from './Brick'
+import RootBrick from './RootBrick'
 
 const styles = {
   float: 'left',
@@ -11,7 +11,7 @@ export default class WorkspaceSurface extends Component {
   render() {
     return (
       <Surface height={ 550 } style={ styles } width={ 500 }>
-        <Brick { ...this.props } />
+        <RootBrick { ...this.props } />
       </Surface>
     )
   }
