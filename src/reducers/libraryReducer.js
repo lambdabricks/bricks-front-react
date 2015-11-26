@@ -3,7 +3,12 @@ import {
   RECEIVE_LIBRARY
 } from '../actions'
 
-export function library(state = { isFetching: false, items: {} }, action) {
+const initialLibrary = {
+  isFetching: false,
+  items: {}
+}
+
+export function library(state = initialLibrary, action) {
   switch (action.type) {
     case RECEIVE_LIBRARY:
       return Object.assign({}, state, {
