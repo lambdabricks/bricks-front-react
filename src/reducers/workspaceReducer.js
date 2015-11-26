@@ -5,17 +5,21 @@ import {
 import Brick from '../components/Brick'
 import Primitive from '../components/Primitive'
 
+let id = 1
+// TODO: Generate id's with an UID function ??
+const nextId = () => id++
+
 const initialWorkspace = {
   actions: [],
   rootBrick: {
     inner: [
     ],
     inputSlots: [
-      { id: 1 },
-      { id: 2 }
+      { id: nextId() },
+      { id: nextId() }
     ],
     outputSlots: [
-      { id: 3 }
+      { id: nextId() }
     ],
     position: {
       x: 50,
@@ -28,9 +32,6 @@ const initialWorkspace = {
   }
 }
 
-// TODO: Generate id's with an UID function ??
-let id = 1
-
 export function workspace(state = initialWorkspace, action) {
   switch (action.type) {
     case ADD_PRIMITIVE:
@@ -41,7 +42,7 @@ export function workspace(state = initialWorkspace, action) {
           inner: [
             ...state.rootBrick.inner,
             {
-              id: id++,
+              id: nextId(),
               name: action.payload,
               position: { x: 50, y: 50 },
               type: Primitive,
@@ -52,8 +53,35 @@ export function workspace(state = initialWorkspace, action) {
         }
       })
     case ADD_BRICK:
-      console.log("add", action.payload)
-      return state
+      return Object.assign({}, state, {
+        ...state,
+        rootBrick: {
+          ...state.rootBrick,
+          inner: [
+            ...state.rootBrick.inner,
+            {
+              id: nextId(),
+              inputSlots: [
+                { id: nextId() },
+                { id: nextId() }
+              ],
+              name: action.payload,
+              outputSlots: [
+                { id: nextId() }
+              ],
+              position: {
+                x: 50,
+                y: 50
+              },
+              size: {
+                height: 40,
+                width: 100
+              },
+              type: Brick
+            }
+          ]
+        }
+      })
     default:
       return state
   }

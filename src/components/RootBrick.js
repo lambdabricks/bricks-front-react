@@ -38,6 +38,7 @@ RootBrick.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       position: PositionPropTypes.isRequired,
+      type: PropTypes.func.isRequired,
       value: PropTypes.any
     })
   ).isRequired,

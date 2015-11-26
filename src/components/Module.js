@@ -1,5 +1,14 @@
 import React, { PropTypes, Component } from 'react'
 
+const ulStyles = {
+  display: 'inline-block',
+  margin: 0
+}
+
+const libraryFunctionStyles = {
+  cursor: 'pointer'
+}
+
 export default class Module extends Component {
   render() {
     const { functions, name, onFunctionClick } = this.props
@@ -8,12 +17,13 @@ export default class Module extends Component {
         <li>
           { name }
         </li>
-        <ul>
+        <ul style={ ulStyles }>
           { functions.map((libraryFunction) => {
               return (
                 <li
                   key={ libraryFunction.id }
                   onClick={ () => onFunctionClick(libraryFunction.name) }
+                  style={ libraryFunctionStyles }
                 >
                   { libraryFunction.label }
                 </li>
