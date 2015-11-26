@@ -1,28 +1,12 @@
 import {
   ADD_PRIMITIVE,
 } from '../actions'
+import Brick from '../components/Brick'
+import Primitive from '../components/Primitive'
 
 const initialWorkspace = {
   actions: [],
   rootBrick: {
-    brick: {
-      inputSlots: [
-        { id: 5 },
-        { id: 6 }
-      ],
-      name: "split",
-      outputSlots: [
-        { id: 7 }
-      ],
-      position: {
-        x: 50,
-        y: 50
-      },
-      size: {
-        height: 40,
-        width: 100
-      }
-    },
     inner: [
     ],
     inputSlots: [
@@ -59,6 +43,7 @@ export function workspace(state = initialWorkspace, action) {
               id: id++,
               name: action.payload,
               position: { x: 50, y: 50 },
+              type: Primitive,
               // react or redux ignore pair with value `undefined`
               value: null
             }

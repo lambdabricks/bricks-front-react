@@ -8,16 +8,15 @@ import Primitive from './Primitive'
 
 class RootBrick extends Component {
   render() {
-    const { brick, inner } = this.props
+    const { inner } = this.props
 
     return (
       <Group>
-        <Brick { ...brick } />
-        { inner.map((primitive) => {
+        { inner.map((element) => {
             return (
-              <Primitive
-                key={ primitive.id }
-                { ...primitive }
+              <element.type
+                key={ element.id }
+                { ...element }
               />
             )
           })
