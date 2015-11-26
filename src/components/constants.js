@@ -2,6 +2,14 @@ const font = '15px monospace'
 const slotWidth = 15
 
 const Brick = {
+  defaultPosition: {
+    x: 50,
+    y: 50
+  },
+  defaultSize: {
+    height: 40,
+    width: 100
+  },
   fillColor: '#ADD8E6',
   font: font,
   slotOffset: 20,
@@ -11,6 +19,10 @@ const Brick = {
 Brick.slotAndOffset = slotWidth + Brick.slotOffset
 
 const Primitive = {
+  defaultPosition: {
+    x: 50,
+    y: 50
+  },
   fillColor: {
     boolean: "#A359E9",
     list: "#E9E759",
@@ -25,6 +37,14 @@ const Primitive = {
 }
 
 const RootBrick = {
+  defaultPosition: {
+    x: 50,
+    y: 50
+  },
+  defaultSize: {
+    height: 400,
+    width: 350
+  },
   fillColor: '#789',
   hoverFillColor: '#385661',
   slotOffset: 100,

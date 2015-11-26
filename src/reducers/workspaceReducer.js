@@ -4,6 +4,11 @@ import {
 } from '../actions'
 import Brick from '../components/Brick'
 import Primitive from '../components/Primitive'
+import {
+  Brick as BrickDefaults,
+  RootBrick as RootBrickDefaults,
+  Primitive as PrimitiveDefaults
+} from '../components/constants'
 
 let id = 1
 // TODO: Generate id's with an UID function ??
@@ -21,14 +26,8 @@ const initialWorkspace = {
     outputSlots: [
       { id: nextId() }
     ],
-    position: {
-      x: 50,
-      y: 50
-    },
-    size: {
-      height: 400,
-      width: 350
-    }
+    position: RootBrickDefaults.defaultPosition,
+    size: RootBrickDefaults.defaultSize
   }
 }
 
@@ -44,7 +43,7 @@ export function workspace(state = initialWorkspace, action) {
             {
               id: nextId(),
               name: action.payload,
-              position: { x: 50, y: 50 },
+              position: PrimitiveDefaults.defaultPosition,
               type: Primitive,
               // react or redux ignore pair with value `undefined`
               value: null
@@ -69,14 +68,8 @@ export function workspace(state = initialWorkspace, action) {
               outputSlots: [
                 { id: nextId() }
               ],
-              position: {
-                x: 50,
-                y: 50
-              },
-              size: {
-                height: 40,
-                width: 100
-              },
+              position: BrickDefaults.defaultPosition,
+              size: BrickDefaults.defaultSize,
               type: Brick
             }
           ]
