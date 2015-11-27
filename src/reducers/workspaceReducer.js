@@ -34,34 +34,9 @@ const initialWorkspace = {
 export const workspace = (state = initialWorkspace, action) => {
   switch (action.type) {
     case ADD_PRIMITIVE:
-      return appendToInner(
-        state,
-        {
-          id: nextId(),
-          name: action.payload,
-          position: PrimitiveDefaults.defaultPosition,
-          type: Primitive,
-          // react or redux ignore pair with value `undefined`
-          value: null
-        }
-      )
+      return appendToInner(state, newPrimitive(action))
     case ADD_BRICK:
-      return appendToInner(
-        state,
-        {
-          id: nextId(),
-          inputSlots: [
-            { id: nextId() },
-            { id: nextId() }
-          ],
-          name: action.payload,
-          outputSlots: [
-            { id: nextId() }
-          ],
-          position: BrickDefaults.defaultPosition,
-          size: BrickDefaults.defaultSize,
-          type: Brick
-        })
+      return appendToInner(state, newBrick(action))
     default:
       return state
   }
@@ -78,4 +53,32 @@ const appendToInner = (state, element) => {
       ]
     }
   })
+}
+
+const newBrick = (action) => {
+  return {
+    id: nextId(),
+    inputSlots: [
+      { id: nextId() },
+      { id: nextId() }
+    ],
+    name: action.payload,
+    outputSlots: [
+      { id: nextId() }
+    ],
+    position: BrickDefaults.defaultPosition,
+    size: BrickDefaults.defaultSize,
+    type: Brick
+  }
+}
+
+const newPrimitive = (action) => {
+  return {
+    id: nextId(),
+    name: action.payload,
+    position: PrimitiveDefaults.defaultPosition,
+    type: Primitive,
+    // react or redux ignore pair with value `undefined`
+    value: null
+  }
 }
