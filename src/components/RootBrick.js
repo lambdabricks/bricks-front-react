@@ -4,6 +4,7 @@ import { Group } from 'react-art'
 import Brick from './Brick'
 import composeBrick from './composeBrick'
 import Constants from './constants'
+import { PositionPropTypes } from '../propTypes'
 import Primitive from './Primitive'
 
 class RootBrick extends Component {
@@ -26,11 +27,6 @@ class RootBrick extends Component {
   }
 }
 
-const PositionPropTypes =
-  PropTypes.shape({
-      x: PropTypes.number.isRequired,
-      y: PropTypes.number.isRequired
-    })
 
 RootBrick.propTypes = {
   inner: PropTypes.arrayOf(
