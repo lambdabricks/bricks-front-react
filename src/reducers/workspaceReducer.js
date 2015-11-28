@@ -1,9 +1,10 @@
 import {
   ADD_BRICK,
   ADD_PRIMITIVE,
+  START_DRAG,
 } from '../actions'
 import Brick from '../components/Brick'
-import Primitive from '../components/Primitive'
+import Primitive from '../containers/Primitive'
 import {
   Brick as BrickDefaults,
   RootBrick as RootBrickDefaults,
@@ -17,6 +18,7 @@ const nextId = () => id++
 const initialWorkspace = {
   actions: [],
   rootBrick: {
+    dragState: { },
     inner: [
     ],
     inputSlots: [
@@ -33,10 +35,12 @@ const initialWorkspace = {
 
 export const workspace = (state = initialWorkspace, action) => {
   switch (action.type) {
-    case ADD_PRIMITIVE:
-      return appendToInner(state, newPrimitive(action))
     case ADD_BRICK:
       return appendToInner(state, newBrick(action))
+    case ADD_PRIMITIVE:
+      return appendToInner(state, newPrimitive(action))
+    case START_DRAG:
+      return addDragStateToWorkspace(state, action)
     default:
       return state
   }
@@ -81,4 +85,16 @@ const newPrimitive = (action) => {
     // react or redux ignore pair with value `undefined`
     value: null
   }
+}
+
+const addDragStateToWorkspace = (state, action) => {
+  console.log("start drag", action)
+  return Object.assign({}, state, {
+    ...state,
+    dragState: {
+      dragStarted: true,
+      elementId: action.payload.elementId,
+      startPosition: action.payload.position
+    }
+  })
 }

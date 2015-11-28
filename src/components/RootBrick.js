@@ -5,7 +5,7 @@ import Brick from './Brick'
 import composeBrick from './composeBrick'
 import Constants from './constants'
 import { PositionPropTypes } from '../propTypes'
-import Primitive from './Primitive'
+import Primitive from '../containers/Primitive'
 
 class RootBrick extends Component {
   render() {

@@ -3,6 +3,7 @@ import { Group, Text } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 import Circle from 'react-art/lib/Circle.art'
 import Constants from './constants'
+import { PositionPropTypes } from '../propTypes'
 
 export default class Primitive extends Component {
   constructor(props) {
@@ -12,26 +13,33 @@ export default class Primitive extends Component {
   }
 
   render() {
-    const { name, position, value } = this.props
+    const { id, name, onMouseDown, position, value } = this.props
     const { Primitive, Slot } = this._constants
     const fillColor = Primitive.fillColor[name]
 
     return (
       <Group x={ position.x } y={ position.y } >
-        <Circle
-          fill={ fillColor }
-          radius={ Primitive.radius }
-          stroke={ fillColor }
-          strokeWidth={ Primitive.strokeWidth }
-          x={ Primitive.radius / 2 }
-          y={ Primitive.radius / 2 }
-        />
-        <Text
-          fill={ Primitive.textColor }
-          font={ Primitive.font }
+        <Group
+          onMouseDown={ (e) => {
+              onMouseDown(id, { x: e.clientX, y: e.clientY })
+            }
+          }
         >
-          { value === null ? "<NONE>" : value }
-        </Text>
+          <Circle
+            fill={ fillColor }
+            radius={ Primitive.radius }
+            stroke={ fillColor }
+            strokeWidth={ Primitive.strokeWidth }
+            x={ Primitive.radius / 2 }
+            y={ Primitive.radius / 2 }
+          />
+          <Text
+            fill={ Primitive.textColor }
+            font={ Primitive.font }
+          >
+            { value === null ? "<NONE>" : value }
+          </Text>
+        </Group>
         <Rectangle
           cursor={ Slot.cursor }
           fill={ fillColor }
@@ -43,4 +51,12 @@ export default class Primitive extends Component {
       </Group>
     )
   }
+}
+
+Primitive.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  onMouseDown: PropTypes.func.isRequired,
+  position: PositionPropTypes.isRequired,
+  value: PropTypes.any
 }
