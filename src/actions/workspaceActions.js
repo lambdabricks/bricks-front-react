@@ -10,3 +10,9 @@ export const startDrag = (elementId, position) => {
     }
   }
 }
+
+export const stopDrag = () => {
+  return {
+    type: STOP_DRAG
+  }
+}

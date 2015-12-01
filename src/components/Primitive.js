@@ -13,7 +13,14 @@ export default class Primitive extends Component {
   }
 
   render() {
-    const { id, name, onMouseDown, position, value } = this.props
+    const {
+      id,
+      name,
+      handleMouseDown,
+      handleMouseUp,
+      position,
+      value
+    } = this.props
     const { Primitive, Slot } = this._constants
     const fillColor = Primitive.fillColor[name]
 
@@ -21,9 +28,10 @@ export default class Primitive extends Component {
       <Group x={ position.x } y={ position.y } >
         <Group
           onMouseDown={ (e) => {
-              onMouseDown(id, { x: e.clientX, y: e.clientY })
+              handleMouseDown(id, { x: e.clientX, y: e.clientY })
             }
           }
+          onMouseUp={ (e) => { handleMouseUp() } }
         >
           <Circle
             fill={ fillColor }
@@ -56,7 +64,8 @@ export default class Primitive extends Component {
 Primitive.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  onMouseDown: PropTypes.func.isRequired,
+  handleMouseDown: PropTypes.func.isRequired,
+  handleMouseUp: PropTypes.func.isRequired,
   position: PositionPropTypes.isRequired,
   value: PropTypes.any
 }

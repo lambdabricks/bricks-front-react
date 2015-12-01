@@ -2,6 +2,7 @@ import {
   ADD_BRICK,
   ADD_PRIMITIVE,
   START_DRAG,
+  STOP_DRAG,
 } from '../actions'
 import Brick from '../components/Brick'
 import Primitive from '../containers/Primitive'
@@ -41,6 +42,8 @@ export const workspace = (state = initialWorkspace, action) => {
       return appendToInner(state, newPrimitive(action))
     case START_DRAG:
       return addDragStartedToWorkspace(state, action)
+    case STOP_DRAG:
+      return addDragStoppedToWorkspace(state, action)
     default:
       return state
   }
@@ -95,6 +98,16 @@ const addDragStartedToWorkspace = (state, action) => {
       dragStarted: true,
       elementId: action.payload.elementId,
       startPosition: action.payload.position
+    }
+  )
+}
+
+const addDragStoppedToWorkspace = (state, action) => {
+  console.log("stop drag", action)
+  return setDragStateToWorkspace(
+    state,
+    {
+      dragStarted: false
     }
   )
 }
