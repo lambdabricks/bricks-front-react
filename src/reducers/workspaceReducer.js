@@ -40,7 +40,7 @@ export const workspace = (state = initialWorkspace, action) => {
     case ADD_PRIMITIVE:
       return appendToInner(state, newPrimitive(action))
     case START_DRAG:
-      return addDragStateToWorkspace(state, action)
+      return addDragStartedToWorkspace(state, action)
     default:
       return state
   }
@@ -87,14 +87,21 @@ const newPrimitive = (action) => {
   }
 }
 
-const addDragStateToWorkspace = (state, action) => {
+const addDragStartedToWorkspace = (state, action) => {
   console.log("start drag", action)
-  return Object.assign({}, state, {
-    ...state,
-    dragState: {
+  return setDragStateToWorkspace(
+    state,
+    {
       dragStarted: true,
       elementId: action.payload.elementId,
       startPosition: action.payload.position
     }
+  )
+}
+
+const setDragStateToWorkspace = (state, dragState) => {
+  return Object.assign({}, state, {
+    ...state,
+    dragState
   })
 }
