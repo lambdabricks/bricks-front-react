@@ -1,6 +1,7 @@
 import {
   ADD_BRICK,
   ADD_PRIMITIVE,
+  MOVE_ELEMENT,
   START_DRAG,
   STOP_DRAG,
 } from '../actions'
@@ -18,8 +19,10 @@ const nextId = () => id++
 
 const initialWorkspace = {
   actions: [],
+  dragState: {
+    dragStarted: false
+  },
   rootBrick: {
-    dragState: { },
     inner: [
     ],
     inputSlots: [
@@ -40,6 +43,11 @@ export const workspace = (state = initialWorkspace, action) => {
       return appendToInner(state, newBrick(action))
     case ADD_PRIMITIVE:
       return appendToInner(state, newPrimitive(action))
+    case MOVE_ELEMENT:
+      if(state.dragState.dragStarted)
+        return updateElementInWorkspace(state, action)
+
+      return state
     case START_DRAG:
       return addDragStartedToWorkspace(state, action)
     case STOP_DRAG:
@@ -90,20 +98,46 @@ const newPrimitive = (action) => {
   }
 }
 
+const updateElementInWorkspace = (state, action) => {
+  return Object.assign({}, state, {
+    ...state,
+    rootBrick: {
+      ...state.rootBrick,
+      inner: state.rootBrick.inner.map((element) => {
+        const { dragState } = state
+        if(element.id === dragState.elementId) {
+          const { startElementPosition, startMousePosition } = dragState
+          const { currentMousePosition } = action.payload
+
+          return {
+            ...element,
+            position: {
+              x: startElementPosition.x + currentMousePosition.x - startMousePosition.x,
+              y: startElementPosition.y + currentMousePosition.y - startMousePosition.y,
+            }
+          }
+        }
+        return element
+      })
+    }
+  })
+}
+
 const addDragStartedToWorkspace = (state, action) => {
-  console.log("start drag", action)
+  let { elementId, elementPosition, mousePosition } = action.payload
+
   return setDragStateToWorkspace(
     state,
     {
       dragStarted: true,
-      elementId: action.payload.elementId,
-      startPosition: action.payload.position
+      elementId: elementId,
+      startElementPosition: elementPosition,
+      startMousePosition: mousePosition
     }
   )
 }
 
 const addDragStoppedToWorkspace = (state, action) => {
-  console.log("stop drag", action)
   return setDragStateToWorkspace(
     state,
     {

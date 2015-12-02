@@ -10,6 +10,17 @@ export default class Primitive extends Component {
     super(props)
 
     this._constants = Constants
+    this.handleMouseDown = this.handleMouseDown.bind(this)
+  }
+
+  handleMouseDown(mouseEvent) {
+    const { handleMouseDown, id, position } = this.props
+
+    handleMouseDown(
+      id,
+      { x: mouseEvent.clientX, y: mouseEvent.clientY },
+      position
+    )
   }
 
   render() {
@@ -17,7 +28,6 @@ export default class Primitive extends Component {
       id,
       name,
       handleMouseDown,
-      handleMouseUp,
       position,
       value
     } = this.props
@@ -27,11 +37,7 @@ export default class Primitive extends Component {
     return (
       <Group x={ position.x } y={ position.y } >
         <Group
-          onMouseDown={ (e) => {
-              handleMouseDown(id, { x: e.clientX, y: e.clientY })
-            }
-          }
-          onMouseUp={ (e) => { handleMouseUp() } }
+          onMouseDown={ this.handleMouseDown }
         >
           <Circle
             fill={ fillColor }
@@ -65,7 +71,6 @@ Primitive.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   handleMouseDown: PropTypes.func.isRequired,
-  handleMouseUp: PropTypes.func.isRequired,
   position: PositionPropTypes.isRequired,
   value: PropTypes.any
 }

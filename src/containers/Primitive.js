@@ -1,14 +1,11 @@
 import { connect } from 'react-redux'
-import { startDrag, stopDrag } from '../actions'
+import { startDrag } from '../actions'
 import Primitive from '../components/Primitive'
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleMouseDown: (elementId, position) => {
-      dispatch(startDrag(elementId, position))
-    },
-    handleMouseUp: () => {
-      dispatch(stopDrag())
+    handleMouseDown: (elementId, mousePosition, elementPosition) => {
+      dispatch(startDrag(elementId, mousePosition, elementPosition))
     }
   }
 }
