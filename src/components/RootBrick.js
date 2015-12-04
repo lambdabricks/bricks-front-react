@@ -1,7 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
+import Rectangle from 'react-art/lib/Rectangle.art'
 
-import Brick from './Brick'
+import Brick from '../containers/Brick'
 import composeBrick from './composeBrick'
 import Constants from './constants'
 import { PositionPropTypes } from '../propTypes'
@@ -9,10 +10,18 @@ import Primitive from '../containers/Primitive'
 
 class RootBrick extends Component {
   render() {
-    const { inner } = this.props
+    const { inner, size } = this.props
+    const { Brick, Slot } = this.props._constants
 
     return (
       <Group>
+        <Rectangle
+          height={ size.height }
+          width={ size.width }
+          y={ Slot.height }
+          stroke={ Brick.strokeColor }
+          fill={ Brick.fillColor }
+        />
         { inner.map((element) => {
             return (
               <element.type
@@ -29,6 +38,7 @@ class RootBrick extends Component {
 
 
 RootBrick.propTypes = {
+  _constants: PropTypes.object.isRequired,
   inner: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

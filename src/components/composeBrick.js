@@ -13,20 +13,13 @@ export default function composeBrick(InnerComponent, _constants) {
 
     render() {
       const { inputSlots, outputSlots, position, size } = this.props
-      const { Brick, Slot } = _constants
+      const { Slot } = _constants
 
       return (
         <Group x={ position.x } y={ position.y }>
           { this.slotGroup(inputSlots, 0) }
-          <Rectangle
-            height={ size.height }
-            width={ size.width }
-            y={ Slot.height }
-            stroke={ Brick.strokeColor }
-            fill={ Brick.fillColor }
-          />
           { this.slotGroup(outputSlots, size.height + Slot.height) }
-          <InnerComponent { ...this.props } />
+          <InnerComponent _constants={ _constants } { ...this.props } />
         </Group>
       )
     }

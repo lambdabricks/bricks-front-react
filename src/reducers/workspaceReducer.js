@@ -5,7 +5,7 @@ import {
   START_DRAG,
   STOP_DRAG,
 } from '../actions'
-import Brick from '../components/Brick'
+import Brick from '../containers/Brick'
 import Primitive from '../containers/Primitive'
 import {
   Brick as BrickDefaults,
