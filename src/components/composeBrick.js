@@ -2,6 +2,8 @@ import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
+import { PositionPropTypes, SizePropTypes } from '../propTypes'
+
 export default function composeBrick(InnerComponent, _constants) {
   class AbstractBrick extends Component {
     constructor(props) {
@@ -54,18 +56,6 @@ export default function composeBrick(InnerComponent, _constants) {
       )
     }
   }
-
-  const PositionPropTypes =
-    PropTypes.shape({
-        x: PropTypes.number.isRequired,
-        y: PropTypes.number.isRequired
-      })
-
-  const SizePropTypes =
-    PropTypes.shape({
-        height: PropTypes.number.isRequired,
-        width: PropTypes.number.isRequired
-      })
 
   const SlotPropTypes =
     PropTypes.arrayOf(

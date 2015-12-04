@@ -4,7 +4,7 @@ import Rectangle from 'react-art/lib/Rectangle.art'
 
 import composeBrick from './composeBrick'
 import Constants from './constants'
-import { PositionPropTypes } from '../propTypes'
+import { PositionPropTypes, SizePropTypes } from '../propTypes'
 
 class Brick extends Component {
   constructor(props) {
@@ -54,6 +54,7 @@ Brick.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   position: PositionPropTypes.isRequired,
+  size: SizePropTypes.isRequired
 }
 
 export default composeBrick(

@@ -5,7 +5,7 @@ import Rectangle from 'react-art/lib/Rectangle.art'
 import Brick from '../containers/Brick'
 import composeBrick from './composeBrick'
 import Constants from './constants'
-import { PositionPropTypes } from '../propTypes'
+import { PositionPropTypes, SizePropTypes } from '../propTypes'
 import Primitive from '../containers/Primitive'
 
 class RootBrick extends Component {
@@ -48,6 +48,7 @@ RootBrick.propTypes = {
       value: PropTypes.any
     })
   ).isRequired,
+  size: SizePropTypes.isRequired
 }
 
 export default composeBrick(
