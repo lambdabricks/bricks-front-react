@@ -10,10 +10,10 @@ export default class Primitive extends Component {
     super(props)
 
     this._constants = Constants
-    this.handleMouseDown = this.handleMouseDown.bind(this)
+    this.startDrag = this.startDrag.bind(this)
   }
 
-  handleMouseDown(mouseEvent) {
+  startDrag(mouseEvent) {
     const { handleMouseDown, id, position } = this.props
 
     handleMouseDown(
@@ -37,7 +37,7 @@ export default class Primitive extends Component {
     return (
       <Group x={ position.x } y={ position.y } >
         <Group
-          onMouseDown={ this.handleMouseDown }
+          onMouseDown={ this.startDrag }
         >
           <Circle
             fill={ fillColor }
