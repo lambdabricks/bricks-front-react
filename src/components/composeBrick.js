@@ -4,7 +4,7 @@ import Rectangle from 'react-art/lib/Rectangle.art'
 
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
 
-export default function composeBrick(InnerComponent, _constants) {
+export default function composeBrick(InnerComponent) {
   class AbstractBrick extends Component {
     constructor(props) {
       super(props)
@@ -15,20 +15,20 @@ export default function composeBrick(InnerComponent, _constants) {
 
     render() {
       const { inputSlots, outputSlots, position, size } = this.props
-      const { Slot } = _constants
+      const { Slot } = InnerComponent._constants
 
       return (
         <Group x={ position.x } y={ position.y }>
           { this.slotGroup(inputSlots, 0) }
           { this.slotGroup(outputSlots, size.height + Slot.height) }
-          <InnerComponent _constants={ _constants } { ...this.props } />
+          <InnerComponent { ...this.props } />
         </Group>
       )
     }
 
     slotGroup(slots, y) {
       const { size } = this.props
-      const { Brick } = _constants
+      const { Brick } = InnerComponent._constants
       const slotsWidth = Brick.slotOffset + (slots.length * Brick.slotAndOffset)
       const xOffset = (size.width - slotsWidth) / 2
 
@@ -40,7 +40,7 @@ export default function composeBrick(InnerComponent, _constants) {
     }
 
     renderSlot(slot, index) {
-      const { Brick, Slot } = _constants
+      const { Brick, Slot } = InnerComponent._constants
       const x = Brick.slotOffset + (index * Brick.slotAndOffset)
 
       return (

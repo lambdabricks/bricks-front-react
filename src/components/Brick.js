@@ -25,7 +25,7 @@ class Brick extends Component {
 
   render() {
     const { name, size } = this.props
-    const { Brick: BrickConstants, Slot } = this.props._constants
+    const { Brick: BrickConstants, Slot } = Brick._constants
     const midHeight = (Slot.height + size.height) / 2
 
     return (
@@ -50,17 +50,15 @@ class Brick extends Component {
 }
 
 Brick.propTypes = {
-  _constants: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   position: PositionPropTypes.isRequired,
   size: SizePropTypes.isRequired
 }
 
-export default composeBrick(
-  Brick,
-  {
-    Slot: Constants.Slot,
-    Brick: Constants.Brick
-  }
-)
+Brick._constants = {
+  Slot: Constants.Slot,
+  Brick: Constants.Brick
+}
+
+export default composeBrick(Brick)

@@ -11,7 +11,7 @@ import Primitive from '../containers/Primitive'
 class RootBrick extends Component {
   render() {
     const { inner, size } = this.props
-    const { Brick, Slot } = this.props._constants
+    const { Brick, Slot } = RootBrick._constants
 
     return (
       <Group>
@@ -38,7 +38,6 @@ class RootBrick extends Component {
 
 
 RootBrick.propTypes = {
-  _constants: PropTypes.object.isRequired,
   inner: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -51,10 +50,9 @@ RootBrick.propTypes = {
   size: SizePropTypes.isRequired
 }
 
-export default composeBrick(
-  RootBrick,
-  {
-    Slot: Constants.Slot,
-    Brick: Constants.RootBrick
-  }
-)
+RootBrick._constants = {
+  Slot: Constants.Slot,
+  Brick: Constants.RootBrick
+}
+
+export default composeBrick(RootBrick)

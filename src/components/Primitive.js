@@ -5,11 +5,10 @@ import Circle from 'react-art/lib/Circle.art'
 import Constants from './constants'
 import { PositionPropTypes } from '../propTypes'
 
-export default class Primitive extends Component {
+class Primitive extends Component {
   constructor(props) {
     super(props)
 
-    this._constants = Constants
     this.startDrag = this.startDrag.bind(this)
   }
 
@@ -31,8 +30,8 @@ export default class Primitive extends Component {
       position,
       value
     } = this.props
-    const { Primitive, Slot } = this._constants
-    const fillColor = Primitive.fillColor[name]
+    const { Primitive: PrimitiveConstants, Slot } = Primitive._constants
+    const fillColor = PrimitiveConstants.fillColor[name]
 
     return (
       <Group x={ position.x } y={ position.y } >
@@ -41,15 +40,15 @@ export default class Primitive extends Component {
         >
           <Circle
             fill={ fillColor }
-            radius={ Primitive.radius }
+            radius={ PrimitiveConstants.radius }
             stroke={ fillColor }
-            strokeWidth={ Primitive.strokeWidth }
-            x={ Primitive.radius / 2 }
-            y={ Primitive.radius / 2 }
+            strokeWidth={ PrimitiveConstants.strokeWidth }
+            x={ PrimitiveConstants.radius / 2 }
+            y={ PrimitiveConstants.radius / 2 }
           />
           <Text
-            fill={ Primitive.textColor }
-            font={ Primitive.font }
+            fill={ PrimitiveConstants.textColor }
+            font={ PrimitiveConstants.font }
           >
             { value === null ? "<NONE>" : value }
           </Text>
@@ -59,8 +58,8 @@ export default class Primitive extends Component {
           fill={ fillColor }
           height={ Slot.height }
           width={ Slot.width }
-          x={ (Primitive.radius / 2)- (Slot.width / 2) }
-          y={ Primitive.radius + Slot.height }
+          x={ (PrimitiveConstants.radius / 2)- (Slot.width / 2) }
+          y={ PrimitiveConstants.radius + Slot.height }
         />
       </Group>
     )
@@ -74,3 +73,10 @@ Primitive.propTypes = {
   position: PositionPropTypes.isRequired,
   value: PropTypes.any
 }
+
+Primitive._constants = {
+  Primitive: Constants.Primitive,
+  Slot: Constants.Slot
+}
+
+export default Primitive
