@@ -21,14 +21,14 @@ export const appendToInner = (state, element) => {
   })
 }
 
-export const newBrick = (action) => {
+export const newBrick = (name) => {
   return {
     id: nextId(),
     inputSlots: [
       { id: nextId() },
       { id: nextId() }
     ],
-    name: action.payload,
+    name,
     outputSlots: [
       { id: nextId() }
     ],
@@ -38,10 +38,10 @@ export const newBrick = (action) => {
   }
 }
 
-export const newPrimitive = (action) => {
+export const newPrimitive = (name) => {
   return {
     id: nextId(),
-    name: action.payload,
+    name,
     position: PrimitiveDefaults.defaultPosition,
     type: Primitive,
     // react or redux ignore pair with value `undefined`

@@ -48,23 +48,25 @@ const initialWorkspace = {
 }
 
 export const workspace = (state = initialWorkspace, action) => {
-  switch (action.type) {
+  const { payload, type } = action
+  switch (type) {
     case ADD_BRICK:
-      return appendToInner(state, newBrick(action))
+      return appendToInner(state, newBrick(payload))
     case ADD_PRIMITIVE:
-      return appendToInner(state, newPrimitive(action))
+      return appendToInner(state, newPrimitive(payload))
     case MOVE_ELEMENT:
       if(state.dragState.dragStarted)
-        return updateElementInWorkspace(state, action)
+        return updateElementInWorkspace(state, payload)
 
       return state
     case SELECT_SLOT:
-      console.log('click', action.payload)
+      // updateSlotSelectionStateInWorkspace(state, payload)
+      console.log('click', payload)
       return state
     case START_DRAG:
-      return addDragStartedToWorkspace(state, action)
+      return addDragStartedToWorkspace(state, payload)
     case STOP_DRAG:
-      return addDragStoppedToWorkspace(state, action)
+      return addDragStoppedToWorkspace(state, payload)
     default:
       return state
   }

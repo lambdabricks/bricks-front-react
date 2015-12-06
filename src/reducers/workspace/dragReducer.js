@@ -1,4 +1,4 @@
-export const updateElementInWorkspace = (state, action) => {
+export const updateElementInWorkspace = (state, payload) => {
   return Object.assign({}, state, {
     ...state,
     rootBrick: {
@@ -7,7 +7,7 @@ export const updateElementInWorkspace = (state, action) => {
         const { dragState } = state
         if(element.id === dragState.elementId) {
           const { startElementPosition, startMousePosition } = dragState
-          const { currentMousePosition } = action.payload
+          const { currentMousePosition } = payload
 
           return {
             ...element,
@@ -23,8 +23,8 @@ export const updateElementInWorkspace = (state, action) => {
   })
 }
 
-export const addDragStartedToWorkspace = (state, action) => {
-  let { elementId, elementPosition, mousePosition } = action.payload
+export const addDragStartedToWorkspace = (state, payload) => {
+  let { elementId, elementPosition, mousePosition } = payload
 
   return setDragStateToWorkspace(
     state,
@@ -37,7 +37,7 @@ export const addDragStartedToWorkspace = (state, action) => {
   )
 }
 
-export const addDragStoppedToWorkspace = (state, action) => {
+export const addDragStoppedToWorkspace = (state, payload) => {
   return setDragStateToWorkspace(
     state,
     {
