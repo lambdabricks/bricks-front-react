@@ -27,12 +27,14 @@ export const moveElement = (currentMousePosition) => {
   }
 }
 
-export const selectSlot = (elementId, slotId) => {
+// type: 'INPUT' or 'OUTPUT' slot
+export const selectSlot = (type, elementId, slotId) => {
   return {
     type: SELECT_SLOT,
     payload: {
       elementId,
-      slotId
+      slotId,
+      type
     }
   }
 }

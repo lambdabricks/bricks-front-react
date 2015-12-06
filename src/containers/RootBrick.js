@@ -5,8 +5,11 @@ import { selectSlot } from '../actions'
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectSlot: (elementId, slotId) => {
-      dispatch(selectSlot(elementId, slotId))
+    selectBrickInputSlot: (elementId, slotId) => {
+      dispatch(selectSlot('INPUT', elementId, slotId))
+    },
+    selectBrickOutputSlot: (elementId, slotId) => {
+      dispatch(selectSlot('OUTPUT', elementId, slotId))
     }
   }
 }

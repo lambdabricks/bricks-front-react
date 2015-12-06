@@ -6,8 +6,13 @@ import { selectSlot } from '../actions'
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectSlot: (elementId, slotId) => {
-      dispatch(selectSlot(elementId, slotId))
+    selectBrickInputSlot: (elementId, slotId) => {
+      // A Brick's input slot is on the contrary an output for a pipe
+      dispatch(selectSlot('OUTPUT', elementId, slotId))
+    },
+    selectBrickOutputSlot: (elementId, slotId) => {
+      // A Brick's output slot is on the contrary an input for a pipe
+      dispatch(selectSlot('INPUT', elementId, slotId))
     }
   }
 }
