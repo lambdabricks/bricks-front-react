@@ -7,8 +7,9 @@ import {
   STOP_DRAG,
 } from '../actions'
 
+// TODO: Read constants from RootBrick component
 import {
-  RootBrick as RootBrickDefaults
+  RootBrick as RootBrickConstants
 } from '../components/constants'
 
 import {
@@ -41,8 +42,8 @@ const initialWorkspace = {
     outputSlots: [
       { id: nextId() }
     ],
-    position: RootBrickDefaults.defaultPosition,
-    size: RootBrickDefaults.defaultSize
+    position: RootBrickConstants.defaultPosition,
+    size: RootBrickConstants.defaultSize
   }
 }
 
