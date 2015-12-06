@@ -1,6 +1,7 @@
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
+export const SELECT_SLOT = 'SELECT_SLOT'
 
 export const startDrag = (elementId, mousePosition, elementPosition) => {
   return {
@@ -23,5 +24,15 @@ export const moveElement = (currentMousePosition) => {
   return {
     type: MOVE_ELEMENT,
     payload: { currentMousePosition }
+  }
+}
+
+export const selectSlot = (elementId, slotId) => {
+  return {
+    type: SELECT_SLOT,
+    payload: {
+      elementId,
+      slotId
+    }
   }
 }

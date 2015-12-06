@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 
-import Brick from '../components/Brick'
-import Draggable from './Draggable'
+import RootBrick from '../components/RootBrick'
 import { selectSlot } from '../actions'
 
 function mapDispatchToProps(dispatch) {
@@ -12,4 +11,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Draggable(Brick))
+export default connect(null, mapDispatchToProps)(RootBrick)

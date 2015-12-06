@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { Surface } from 'react-art'
-import RootBrick from './RootBrick'
+import RootBrick from '../containers/RootBrick'
 
 import { moveElement, stopDrag } from '../actions'
 

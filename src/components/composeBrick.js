@@ -40,6 +40,7 @@ export default function composeBrick(InnerComponent) {
     }
 
     renderSlot(slot, index) {
+      const { id, selectSlot } = this.props
       const { Brick, Slot } = InnerComponent._constants
       const x = Brick.slotOffset + (index * Brick.slotAndOffset)
 
@@ -49,6 +50,7 @@ export default function composeBrick(InnerComponent) {
           height={ Slot.height }
           width={ Slot.width }
           x={ x }
+          onClick={ () => selectSlot(id, slot.id) }
           cursor={ Slot.cursor }
           fill={ Brick.fillColor }
           stroke={ Brick.strokeColor }
@@ -68,6 +70,7 @@ export default function composeBrick(InnerComponent) {
     inputSlots: SlotPropTypes,
     outputSlots: SlotPropTypes,
     position: PositionPropTypes.isRequired,
+    selectSlot: PropTypes.func.isRequired,
     size: SizePropTypes.isRequired
   }
 

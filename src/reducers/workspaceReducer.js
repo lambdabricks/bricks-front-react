@@ -2,6 +2,7 @@ import {
   ADD_BRICK,
   ADD_PRIMITIVE,
   MOVE_ELEMENT,
+  SELECT_SLOT,
   START_DRAG,
   STOP_DRAG,
 } from '../actions'
@@ -48,6 +49,9 @@ export const workspace = (state = initialWorkspace, action) => {
       if(state.dragState.dragStarted)
         return updateElementInWorkspace(state, action)
 
+      return state
+    case SELECT_SLOT:
+      console.log('click', action.payload)
       return state
     case START_DRAG:
       return addDragStartedToWorkspace(state, action)
