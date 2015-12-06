@@ -38,6 +38,7 @@ class RootBrick extends Component {
 
 
 RootBrick.propTypes = {
+  id: PropTypes.number.isRequired,
   inner: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

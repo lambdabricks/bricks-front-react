@@ -23,6 +23,7 @@ const initialWorkspace = {
     dragStarted: false
   },
   rootBrick: {
+    id: nextId(),
     inner: [
     ],
     inputSlots: [
