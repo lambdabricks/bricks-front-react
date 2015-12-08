@@ -24,6 +24,10 @@ import {
   updateElementInWorkspace
 } from './workspace/dragReducer'
 
+import {
+  updateSlotSelectionStateInWorkspace
+} from './workspace/selectionReducer'
+
 import { nextId } from './workspace/workspaceReducerUtils'
 
 const initialWorkspace = {
@@ -44,6 +48,12 @@ const initialWorkspace = {
     ],
     position: RootBrickConstants.defaultPosition,
     size: RootBrickConstants.defaultSize
+  },
+  selectionState: {
+    pipe: {
+      INPUT: null,
+      OUTPUT: null
+    }
   }
 }
 
@@ -60,9 +70,7 @@ export const workspace = (state = initialWorkspace, action) => {
 
       return state
     case SELECT_SLOT:
-      // updateSlotSelectionStateInWorkspace(state, payload)
-      console.log('click', payload)
-      return state
+      return updateSlotSelectionStateInWorkspace(state, payload)
     case START_DRAG:
       return addDragStartedToWorkspace(state, payload)
     case STOP_DRAG:
