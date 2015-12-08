@@ -2,8 +2,15 @@ import { connect } from 'react-redux'
 
 import RootBrick from '../components/RootBrick'
 import { selectSlot } from '../actions'
+import { selectedSlots } from './containerUtils'
 
-function mapDispatchToProps(dispatch) {
+const mapStateToProps = (state) => {
+  return {
+    selectedSlots: selectedSlots(state)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
   return {
     selectBrickInputSlot: (elementId, slotId) => {
       dispatch(selectSlot('INPUT', elementId, slotId))
@@ -14,4 +21,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(RootBrick)
+export default connect(mapStateToProps, mapDispatchToProps)(RootBrick)

@@ -59,9 +59,13 @@ export default function composeBrick(InnerComponent) {
 
     renderSlot(selectSlot) {
       return (slot, index) => {
-        const { id } = this.props
+        const { id, selectedSlots } = this.props
         const { Brick, Slot } = InnerComponent._constants
+
         const x = Brick.slotOffset + (index * Brick.slotAndOffset)
+        const fillColor = selectedSlots.indexOf(slot.id) === -1 ?
+          Brick.fillColor :
+          Slot.selectedFillColor
 
         return (
           <Rectangle
@@ -71,7 +75,7 @@ export default function composeBrick(InnerComponent) {
             x={ x }
             onClick={ () => selectSlot(id, slot.id) }
             cursor={ Slot.cursor }
-            fill={ Brick.fillColor }
+            fill={ fillColor }
             stroke={ Brick.strokeColor }
           />
         )
@@ -92,6 +96,7 @@ export default function composeBrick(InnerComponent) {
     position: PositionPropTypes.isRequired,
     selectBrickInputSlot: PropTypes.func.isRequired,
     selectBrickOutputSlot: PropTypes.func.isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
     size: SizePropTypes.isRequired
   }
 

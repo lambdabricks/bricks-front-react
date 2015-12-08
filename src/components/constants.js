@@ -55,7 +55,8 @@ RootBrick.slotAndOffset = slotWidth + RootBrick.slotOffset
 const Slot = {
   cursor: 'pointer',
   height: 15,
-  width: slotWidth
+  width: slotWidth,
+  selectedFillColor: '#00FA9A'
 }
 
 export default {

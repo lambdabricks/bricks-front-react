@@ -3,8 +3,15 @@ import { connect } from 'react-redux'
 import Brick from '../components/Brick'
 import Draggable from './Draggable'
 import { selectSlot } from '../actions'
+import { selectedSlots } from './containerUtils'
 
-function mapDispatchToProps(dispatch) {
+const mapStateToProps = (state) => {
+  return {
+    selectedSlots: selectedSlots(state)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
   return {
     selectBrickInputSlot: (elementId, slotId) => {
       // A Brick's input slot is on the contrary an output for a pipe
@@ -17,4 +24,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Draggable(Brick))
+export default connect(mapStateToProps, mapDispatchToProps)(Draggable(Brick))
