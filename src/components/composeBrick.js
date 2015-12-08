@@ -3,6 +3,7 @@ import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
+import { isSlotSelected } from '../utils'
 
 export default function composeBrick(InnerComponent) {
   class AbstractBrick extends Component {
@@ -63,9 +64,9 @@ export default function composeBrick(InnerComponent) {
         const { Brick, Slot } = InnerComponent._constants
 
         const x = Brick.slotOffset + (index * Brick.slotAndOffset)
-        const fillColor = selectedSlots.indexOf(slot.id) === -1 ?
-          Brick.fillColor :
-          Slot.selectedFillColor
+        const fillColor = isSlotSelected(selectedSlots, slot.id) ?
+          Slot.selectedFillColor :
+          Brick.fillColor
 
         return (
           <Rectangle

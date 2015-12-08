@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import Brick from '../components/Brick'
 import Draggable from './Draggable'
 import { selectSlot } from '../actions'
-import { selectedSlots } from './containerUtils'
+import { selectedSlots } from '../utils'
 
 const mapStateToProps = (state) => {
   return {
-    selectedSlots: selectedSlots(state)
+    selectedSlots: selectedSlots(state.workspace)
   }
 }
 

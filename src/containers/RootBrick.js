@@ -2,11 +2,11 @@ import { connect } from 'react-redux'
 
 import RootBrick from '../components/RootBrick'
 import { selectSlot } from '../actions'
-import { selectedSlots } from './containerUtils'
+import { selectedSlots } from '../utils'
 
 const mapStateToProps = (state) => {
   return {
-    selectedSlots: selectedSlots(state)
+    selectedSlots: selectedSlots(state.workspace)
   }
 }
 
