@@ -1,6 +1,6 @@
 export const selectedSlots = (workspace) => {
-  const { INPUT, OUTPUT } = workspace.selectionState.pipe
-  let selectedSlots = [INPUT && INPUT.slotId, OUTPUT && OUTPUT.slotId]
+  const { input, output } = workspace.selectionState.pipe
+  let selectedSlots = [input && input.slotId, output && output.slotId]
 
   return selectedSlots.filter(element => element !== null)
 }

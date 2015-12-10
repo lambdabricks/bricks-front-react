@@ -13,10 +13,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectBrickInputSlot: (elementId, slotId) => {
-      dispatch(selectSlot('INPUT', elementId, slotId))
+      dispatch(selectSlot('input', elementId, slotId))
     },
     selectBrickOutputSlot: (elementId, slotId) => {
-      dispatch(selectSlot('OUTPUT', elementId, slotId))
+      dispatch(selectSlot('output', elementId, slotId))
     }
   }
 }

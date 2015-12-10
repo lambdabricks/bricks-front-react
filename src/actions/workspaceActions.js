@@ -27,7 +27,7 @@ export const moveElement = (currentMousePosition) => {
   }
 }
 
-// type: 'INPUT' or 'OUTPUT' slot
+// type: 'input' or 'output' slot
 export const selectSlot = (type, elementId, slotId) => {
   return {
     type: SELECT_SLOT,

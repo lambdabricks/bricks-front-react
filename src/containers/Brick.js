@@ -15,11 +15,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     selectBrickInputSlot: (elementId, slotId) => {
       // A Brick's input slot is on the contrary an output for a pipe
-      dispatch(selectSlot('OUTPUT', elementId, slotId))
+      dispatch(selectSlot('output', elementId, slotId))
     },
     selectBrickOutputSlot: (elementId, slotId) => {
       // A Brick's output slot is on the contrary an input for a pipe
-      dispatch(selectSlot('INPUT', elementId, slotId))
+      dispatch(selectSlot('input', elementId, slotId))
     }
   }
 }

@@ -51,8 +51,8 @@ const initialWorkspace = {
   },
   selectionState: {
     pipe: {
-      INPUT: null,
-      OUTPUT: null
+      input: null,
+      output: null
     }
   }
 }
