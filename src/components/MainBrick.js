@@ -14,11 +14,10 @@ class MainBrick extends Component {
     const { Brick, Slot } = MainBrick._constants
 
     return (
-      <Group>
+      <Group y={ Slot.height } >
         <Rectangle
           height={ size.height }
           width={ size.width }
-          y={ Slot.height }
           stroke={ Brick.strokeColor }
           fill={ Brick.fillColor }
         />

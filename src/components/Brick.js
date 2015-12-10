@@ -26,14 +26,16 @@ class Brick extends Component {
   render() {
     const { name, size } = this.props
     const { Brick: BrickConstants, Slot } = Brick._constants
-    const midHeight = (Slot.height + size.height) / 2
+    const midHeight = size.height / 2
 
     return (
-      <Group onMouseDown={ this.startDrag } >
+      <Group
+        onMouseDown={ this.startDrag }
+        y={ Slot.height }
+      >
         <Rectangle
           height={ size.height }
           width={ size.width }
-          y={ Slot.height }
           stroke={ BrickConstants.strokeColor }
           fill={ BrickConstants.fillColor }
         />
