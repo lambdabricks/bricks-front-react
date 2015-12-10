@@ -7,9 +7,9 @@ import {
   STOP_DRAG,
 } from '../actions'
 
-// TODO: Read constants from RootBrick component
+// TODO: Read constants from MainBrick component
 import {
-  RootBrick as RootBrickConstants
+  MainBrick as MainBrickConstants
 } from '../components/constants'
 
 import {
@@ -35,7 +35,7 @@ const initialWorkspace = {
   dragState: {
     dragStarted: false
   },
-  rootBrick: {
+  mainBrick: {
     id: nextId(),
     inner: [
     ],
@@ -46,8 +46,8 @@ const initialWorkspace = {
     outputSlots: [
       { id: nextId() }
     ],
-    position: RootBrickConstants.defaultPosition,
-    size: RootBrickConstants.defaultSize
+    position: MainBrickConstants.defaultPosition,
+    size: MainBrickConstants.defaultSize
   },
   selectionState: {
     pipe: {

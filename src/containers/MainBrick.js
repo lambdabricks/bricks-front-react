@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import RootBrick from '../components/RootBrick'
+import MainBrick from '../components/MainBrick'
 import { selectSlot } from '../actions'
 import { selectedSlots } from '../utils'
 
@@ -21,4 +21,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RootBrick)
+export default connect(mapStateToProps, mapDispatchToProps)(MainBrick)

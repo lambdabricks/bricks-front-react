@@ -1,9 +1,9 @@
 export const updateElementInWorkspace = (state, payload) => {
   return Object.assign({}, state, {
     ...state,
-    rootBrick: {
-      ...state.rootBrick,
-      inner: state.rootBrick.inner.map((element) => {
+    mainBrick: {
+      ...state.mainBrick,
+      inner: state.mainBrick.inner.map((element) => {
         const { dragState } = state
         if(element.id === dragState.elementId) {
           const { startElementPosition, startMousePosition } = dragState

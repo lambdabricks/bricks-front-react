@@ -8,10 +8,10 @@ import Constants from './constants'
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
 import Primitive from '../containers/Primitive'
 
-class RootBrick extends Component {
+class MainBrick extends Component {
   render() {
     const { inner, size } = this.props
-    const { Brick, Slot } = RootBrick._constants
+    const { Brick, Slot } = MainBrick._constants
 
     return (
       <Group>
@@ -37,7 +37,7 @@ class RootBrick extends Component {
 }
 
 
-RootBrick.propTypes = {
+MainBrick.propTypes = {
   id: PropTypes.number.isRequired,
   inner: PropTypes.arrayOf(
     PropTypes.shape({
@@ -51,9 +51,9 @@ RootBrick.propTypes = {
   size: SizePropTypes.isRequired
 }
 
-RootBrick._constants = {
+MainBrick._constants = {
   Slot: Constants.Slot,
-  Brick: Constants.RootBrick
+  Brick: Constants.MainBrick
 }
 
-export default composeBrick(RootBrick)
+export default composeBrick(MainBrick)

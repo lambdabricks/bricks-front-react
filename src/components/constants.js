@@ -36,7 +36,7 @@ const Primitive = {
   textColor: 'black'
 }
 
-const RootBrick = {
+const MainBrick = {
   defaultPosition: {
     x: 50,
     y: 50
@@ -50,7 +50,7 @@ const RootBrick = {
   slotOffset: 100,
   strokeColor: 'black'
 }
-RootBrick.slotAndOffset = slotWidth + RootBrick.slotOffset
+MainBrick.slotAndOffset = slotWidth + MainBrick.slotOffset
 
 const Slot = {
   cursor: 'pointer',
@@ -62,6 +62,6 @@ const Slot = {
 export default {
   Brick,
   Primitive,
-  RootBrick,
+  MainBrick,
   Slot
 }

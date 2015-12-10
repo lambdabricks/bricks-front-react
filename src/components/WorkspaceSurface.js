@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { Surface } from 'react-art'
-import RootBrick from '../containers/RootBrick'
+import MainBrick from '../containers/MainBrick'
 
 import { moveElement, stopDrag } from '../actions'
 
@@ -29,7 +29,7 @@ export default class WorkspaceSurface extends Component {
        onMouseUp={ handleMouseUp }
       >
         <Surface height={ 550 } style={ styles } width={ 500 } >
-          <RootBrick { ...this.props } />
+          <MainBrick { ...this.props } />
         </Surface>
       </div>
     )

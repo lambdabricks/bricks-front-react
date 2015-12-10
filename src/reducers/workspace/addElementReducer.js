@@ -11,10 +11,10 @@ import { nextId } from './workspaceReducerUtils'
 export const appendToInner = (state, element) => {
   return Object.assign({}, state, {
     ...state,
-    rootBrick: {
-      ...state.rootBrick,
+    mainBrick: {
+      ...state.mainBrick,
       inner: [
-        ...state.rootBrick.inner,
+        ...state.mainBrick.inner,
         element
       ]
     }
