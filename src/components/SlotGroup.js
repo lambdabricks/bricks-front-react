@@ -3,6 +3,7 @@ import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
 import Slot from './Slot'
+import { SlotPropTypes } from '../propTypes'
 
 class SlotGroup extends Component {
   render() {
@@ -50,12 +51,6 @@ class SlotGroup extends Component {
     return slotOffset + (total * slotAndOffset)
   }
 }
-
-const SlotPropTypes = PropTypes.arrayOf(
-  PropTypes.shape({
-    id: PropTypes.number.isRequired
-  }).isRequired
-)
 
 SlotGroup.propTypes = {
   fillColor: PropTypes.string.isRequired,

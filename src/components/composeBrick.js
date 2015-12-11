@@ -3,7 +3,7 @@ import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
 import { isSlotSelected } from '../utils'
-import { PositionPropTypes, SizePropTypes } from '../propTypes'
+import { PositionPropTypes, SizePropTypes, SlotPropTypes } from '../propTypes'
 import SlotGroup from './SlotGroup'
 
 export default function composeBrick(InnerComponent) {
@@ -53,16 +53,9 @@ export default function composeBrick(InnerComponent) {
     }
   }
 
-  const SlotPropTypes =
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired
-      }).isRequired
-    ).isRequired
-
   AbstractBrick.propTypes = {
-    inputSlots: SlotPropTypes,
-    outputSlots: SlotPropTypes,
+    inputSlots: SlotPropTypes.isRequired,
+    outputSlots: SlotPropTypes.isRequired,
     position: PositionPropTypes.isRequired,
     selectBrickInputSlot: PropTypes.func.isRequired,
     selectBrickOutputSlot: PropTypes.func.isRequired,
