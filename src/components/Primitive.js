@@ -1,9 +1,10 @@
 import React, { PropTypes, Component } from 'react'
 import { Group, Text } from 'react-art'
-import Rectangle from 'react-art/lib/Rectangle.art'
 import Circle from 'react-art/lib/Circle.art'
+
 import Constants from './constants'
 import { PositionPropTypes } from '../propTypes'
+import Slot from './Slot'
 
 class Primitive extends Component {
   constructor(props) {
@@ -28,9 +29,14 @@ class Primitive extends Component {
       name,
       handleMouseDown,
       position,
+      selectedSlots,
+      selectSlot,
       value
     } = this.props
-    const { Primitive: PrimitiveConstants, Slot } = Primitive._constants
+    const {
+      Primitive: PrimitiveConstants,
+      Slot: SlotConstants
+    } = Primitive._constants
     const fillColor = PrimitiveConstants.fillColor[name]
 
     return (
@@ -53,13 +59,16 @@ class Primitive extends Component {
             { value === null ? "<NONE>" : value }
           </Text>
         </Group>
-        <Rectangle
-          cursor={ Slot.cursor }
-          fill={ fillColor }
-          height={ Slot.height }
-          width={ Slot.width }
-          x={ (PrimitiveConstants.radius / 2)- (Slot.width / 2) }
-          y={ PrimitiveConstants.radius + Slot.height }
+        <Slot
+          key={ id }
+          fillColor={ fillColor }
+          id={ id }
+          parentId={ id }
+          selectedSlots={ selectedSlots }
+          selectSlot={ selectSlot }
+          strokeColor={ fillColor }
+          x={ (PrimitiveConstants.radius / 2) - (SlotConstants.width / 2) }
+          y={ PrimitiveConstants.radius + SlotConstants.height }
         />
       </Group>
     )
@@ -71,6 +80,8 @@ Primitive.propTypes = {
   name: PropTypes.string.isRequired,
   handleMouseDown: PropTypes.func.isRequired,
   position: PositionPropTypes.isRequired,
+  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+  selectSlot: PropTypes.func.isRequired,
   value: PropTypes.any
 }
 

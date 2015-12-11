@@ -33,12 +33,12 @@ class SlotGroup extends Component {
                 key={ slot.id }
                 fillColor={ fillColor }
                 id={ slot.id }
-                index={ index }
                 parentId={ parentId }
                 selectedSlots={ selectedSlots }
                 selectSlot={ selectSlot }
                 strokeColor={ strokeColor }
                 x={ x }
+                y={ 0 }
               />
             )
           })

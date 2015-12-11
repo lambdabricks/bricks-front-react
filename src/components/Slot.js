@@ -9,12 +9,12 @@ class Slot extends Component {
     const {
       fillColor: unSelectedFillColor,
       id,
-      index,
       parentId,
       selectedSlots,
       selectSlot,
       strokeColor,
-      x
+      x,
+      y
     } = this.props
     const { cursor, height, selectedFillColor, width } = Slot._constants
 
@@ -28,6 +28,7 @@ class Slot extends Component {
         height={ height }
         width={ width }
         x={ x }
+        y={ y }
         onClick={ () => selectSlot(parentId, id) }
         cursor={ cursor }
         fill={ fillColor }
@@ -40,12 +41,12 @@ class Slot extends Component {
 Slot.propTypes = {
   fillColor: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  index: PropTypes.number.isRequired,
   parentId: PropTypes.number.isRequired,
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   selectSlot: PropTypes.func.isRequired,
   strokeColor: PropTypes.string.isRequired,
-  x: PropTypes.number.isRequired
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired
 }
 
 Slot._constants = Constants.Slot

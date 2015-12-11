@@ -2,8 +2,8 @@ import { connect } from 'react-redux'
 
 import Brick from '../components/Brick'
 import Draggable from './Draggable'
-import { selectSlot } from '../actions'
 import { selectedSlots } from '../utils'
+import { selectSlot } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
