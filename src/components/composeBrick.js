@@ -4,74 +4,50 @@ import Rectangle from 'react-art/lib/Rectangle.art'
 
 import { isSlotSelected } from '../utils'
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
-import Slot from './Slot'
+import SlotGroup from './SlotGroup'
 
 export default function composeBrick(InnerComponent) {
   class AbstractBrick extends Component {
-    constructor(props) {
-      super(props)
-
-      this.renderInputSlots = this.renderInputSlots.bind(this)
-      this.renderOutputSlots = this.renderOutputSlots.bind(this)
-      this.slotGroup = this.slotGroup.bind(this)
-    }
-
     render() {
-      const { position } = this.props
+      const {
+        id,
+        inputSlots,
+        outputSlots,
+        position,
+        selectBrickInputSlot,
+        selectBrickOutputSlot,
+        selectedSlots,
+        size
+      } = this.props
+      const { Brick, Slot } = InnerComponent._constants
 
       return (
         <Group x={ position.x } y={ position.y }>
-          { this.renderInputSlots() }
-          { this.renderOutputSlots() }
+          <SlotGroup
+            fillColor={ Brick.fillColor }
+            parentId={ id }
+            parentWidth={ size.width }
+            selectedSlots={ selectedSlots }
+            selectSlot={ selectBrickInputSlot }
+            slotAndOffset={ Brick.slotAndOffset }
+            slotOffset={ Brick.slotOffset }
+            slots={ inputSlots }
+            strokeColor={ Brick.strokeColor }
+            y={ 0 }
+          />
+          <SlotGroup
+            fillColor={ Brick.fillColor }
+            parentId={ id }
+            parentWidth={ size.width }
+            selectedSlots={ selectedSlots }
+            selectSlot={ selectBrickOutputSlot }
+            slotAndOffset={ Brick.slotAndOffset }
+            slotOffset={ Brick.slotOffset }
+            slots={ outputSlots }
+            strokeColor={ Brick.strokeColor }
+            y={ size.height + Slot.height }
+          />
           <InnerComponent { ...this.props } />
-        </Group>
-      )
-    }
-
-    renderInputSlots() {
-      const { inputSlots, selectBrickInputSlot } = this.props
-
-      return this.slotGroup(inputSlots, 0, selectBrickInputSlot)
-    }
-
-    renderOutputSlots() {
-      const { outputSlots, selectBrickOutputSlot, size } = this.props
-      const { Slot } = InnerComponent._constants
-
-      return this.slotGroup(
-        outputSlots,
-        size.height + Slot.height,
-        selectBrickOutputSlot
-      )
-    }
-
-    slotGroup(slots, y, selectSlot) {
-      const { id, selectedSlots, size } = this.props
-      const { Brick } = InnerComponent._constants
-      const slotsWidth = Brick.slotOffset + (slots.length * Brick.slotAndOffset)
-      const xOffset = (size.width - slotsWidth) / 2
-
-      return (
-        <Group x={ xOffset } y={ y }>
-          {
-            slots.map((slot, index) => {
-              const x = Brick.slotOffset + (index * Brick.slotAndOffset)
-
-              return (
-                <Slot
-                  key={ slot.id }
-                  fillColor={ Brick.fillColor }
-                  id={ slot.id }
-                  index={ index }
-                  parentId={ id }
-                  selectedSlots={ selectedSlots }
-                  selectSlot={ selectSlot }
-                  strokeColor={ Brick.strokeColor }
-                  x={ x }
-                />
-              )
-            })
-          }
         </Group>
       )
     }
