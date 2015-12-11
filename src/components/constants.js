@@ -18,6 +18,22 @@ const Brick = {
 }
 Brick.slotAndOffset = slotWidth + Brick.slotOffset
 
+const MainBrick = {
+  defaultPosition: {
+    x: 50,
+    y: 50
+  },
+  defaultSize: {
+    height: 400,
+    width: 350
+  },
+  fillColor: '#789',
+  hoverFillColor: '#385661',
+  slotOffset: 100,
+  strokeColor: 'black'
+}
+MainBrick.slotAndOffset = slotWidth + MainBrick.slotOffset
+
 const Primitive = {
   defaultPosition: {
     x: 50,
@@ -35,22 +51,6 @@ const Primitive = {
   radius: 30,
   textColor: 'black'
 }
-
-const MainBrick = {
-  defaultPosition: {
-    x: 50,
-    y: 50
-  },
-  defaultSize: {
-    height: 400,
-    width: 350
-  },
-  fillColor: '#789',
-  hoverFillColor: '#385661',
-  slotOffset: 100,
-  strokeColor: 'black'
-}
-MainBrick.slotAndOffset = slotWidth + MainBrick.slotOffset
 
 const Slot = {
   cursor: 'pointer',

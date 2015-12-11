@@ -15,8 +15,12 @@ export default class WorkspaceSurface extends Component {
     let handleMouseMove, handleMouseUp
 
     if(dragState.dragStarted) {
-      handleMouseMove = (e) => { dispatch(moveElement({ x: e.clientX, y: e.clientY })) }
-      handleMouseUp = () => { dispatch(stopDrag()) }
+      handleMouseMove = (e) => {
+        dispatch(moveElement({ x: e.clientX, y: e.clientY }))
+      }
+      handleMouseUp = () => {
+        dispatch(stopDrag())
+      }
     }
     else {
       handleMouseMove = () => {}
