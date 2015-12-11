@@ -2,8 +2,9 @@ import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
-import { PositionPropTypes, SizePropTypes } from '../propTypes'
 import { isSlotSelected } from '../utils'
+import { PositionPropTypes, SizePropTypes } from '../propTypes'
+import Slot from './Slot'
 
 export default function composeBrick(InnerComponent) {
   class AbstractBrick extends Component {
@@ -12,7 +13,6 @@ export default function composeBrick(InnerComponent) {
 
       this.renderInputSlots = this.renderInputSlots.bind(this)
       this.renderOutputSlots = this.renderOutputSlots.bind(this)
-      this.renderSlot = this.renderSlot.bind(this)
       this.slotGroup = this.slotGroup.bind(this)
     }
 
@@ -46,41 +46,34 @@ export default function composeBrick(InnerComponent) {
     }
 
     slotGroup(slots, y, selectSlot) {
-      const { size } = this.props
+      const { id, selectedSlots, size } = this.props
       const { Brick } = InnerComponent._constants
       const slotsWidth = Brick.slotOffset + (slots.length * Brick.slotAndOffset)
       const xOffset = (size.width - slotsWidth) / 2
 
       return (
         <Group x={ xOffset } y={ y }>
-          { slots.map(this.renderSlot(selectSlot)) }
+          {
+            slots.map((slot, index) => {
+              const x = Brick.slotOffset + (index * Brick.slotAndOffset)
+
+              return (
+                <Slot
+                  key={ slot.id }
+                  fillColor={ Brick.fillColor }
+                  id={ slot.id }
+                  index={ index }
+                  parentId={ id }
+                  selectedSlots={ selectedSlots }
+                  selectSlot={ selectSlot }
+                  strokeColor={ Brick.strokeColor }
+                  x={ x }
+                />
+              )
+            })
+          }
         </Group>
       )
-    }
-
-    renderSlot(selectSlot) {
-      return (slot, index) => {
-        const { id, selectedSlots } = this.props
-        const { Brick, Slot } = InnerComponent._constants
-
-        const x = Brick.slotOffset + (index * Brick.slotAndOffset)
-        const fillColor = isSlotSelected(selectedSlots, slot.id) ?
-          Slot.selectedFillColor :
-          Brick.fillColor
-
-        return (
-          <Rectangle
-            key={ slot.id }
-            height={ Slot.height }
-            width={ Slot.width }
-            x={ x }
-            onClick={ () => selectSlot(id, slot.id) }
-            cursor={ Slot.cursor }
-            fill={ fillColor }
-            stroke={ Brick.strokeColor }
-          />
-        )
-      }
     }
   }
 

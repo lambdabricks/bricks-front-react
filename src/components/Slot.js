@@ -1,0 +1,53 @@
+import React, { PropTypes, Component } from 'react'
+import Rectangle from 'react-art/lib/Rectangle.art'
+
+import Constants from './constants'
+import { isSlotSelected } from '../utils'
+
+class Slot extends Component {
+  render() {
+    const {
+      fillColor: unSelectedFillColor,
+      id,
+      index,
+      parentId,
+      selectedSlots,
+      selectSlot,
+      strokeColor,
+      x
+    } = this.props
+    const { cursor, height, selectedFillColor, width } = Slot._constants
+
+    const fillColor = isSlotSelected(selectedSlots, id) ?
+      selectedFillColor :
+      unSelectedFillColor
+
+    return (
+      <Rectangle
+        key={ id }
+        height={ height }
+        width={ width }
+        x={ x }
+        onClick={ () => selectSlot(parentId, id) }
+        cursor={ cursor }
+        fill={ fillColor }
+        stroke={ strokeColor }
+      />
+    )
+  }
+}
+
+Slot.propTypes = {
+  fillColor: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
+  parentId: PropTypes.number.isRequired,
+  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+  selectSlot: PropTypes.func.isRequired,
+  strokeColor: PropTypes.string.isRequired,
+  x: PropTypes.number.isRequired
+}
+
+Slot._constants = Constants.Slot
+
+export default Slot
