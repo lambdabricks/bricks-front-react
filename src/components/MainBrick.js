@@ -10,7 +10,7 @@ import Primitive from '../containers/Primitive'
 
 class MainBrick extends Component {
   render() {
-    const { element, entities, inner, size } = this.props
+    const { inner, size } = this.props
     const { Brick, Slot } = MainBrick._constants
 
     return (
@@ -21,9 +21,7 @@ class MainBrick extends Component {
           stroke={ Brick.strokeColor }
           fill={ Brick.fillColor }
         />
-        { inner.map((elementId) => {
-            const element = entities[elementId]
-
+        { inner.map((element) => {
             return (
               <element.type
                 key={ element.id }
@@ -38,17 +36,16 @@ class MainBrick extends Component {
 }
 
 MainBrick.propTypes = {
-  entities: PropTypes.objectOf(
+  id: PropTypes.number.isRequired,
+  inner: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      name: PropTypes.string,
+      name: PropTypes.string.isRequired,
       position: PositionPropTypes.isRequired,
-      type: PropTypes.func,
+      type: PropTypes.func.isRequired,
       value: PropTypes.any
     })
   ).isRequired,
-  id: PropTypes.number.isRequired,
-  inner: PropTypes.arrayOf(PropTypes.number).isRequired,
   size: SizePropTypes.isRequired
 }
 

@@ -4,9 +4,11 @@ import MainBrick from '../components/MainBrick'
 import { selectSlot } from '../actions'
 import { selectedSlots } from '../utils'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    entities: state.workspace.entities,
+    inner: ownProps.inner.map((elementId) => {
+      return state.workspace.entities[elementId]
+    }),
     selectedSlots: selectedSlots(state.workspace)
   }
 }
