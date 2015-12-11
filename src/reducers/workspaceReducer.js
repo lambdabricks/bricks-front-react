@@ -69,10 +69,7 @@ export const workspace = (state = initialWorkspace, action) => {
     case ADD_PRIMITIVE:
       return appendToInner(state, newPrimitive(payload))
     case MOVE_ELEMENT:
-      if(state.dragState.dragStarted)
-        return updateElementInWorkspace(state, payload)
-
-      return state
+      return updateElementInWorkspace(state, payload)
     case SELECT_SLOT:
       return updateSlotSelectionStateInWorkspace(state, payload)
     case START_DRAG:

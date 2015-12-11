@@ -1,12 +1,12 @@
 export const updateElementInWorkspace = (workspace, payload) => {
   const { dragState } = workspace
-  const { currentMousePosition } = payload
-  const { elementId, startElementPosition, startMousePosition } = dragState
 
-  if(!elementId) {
+  if(!dragState.dragStarted) {
     return workspace
   }
 
+  const { currentMousePosition } = payload
+  const { elementId, startElementPosition, startMousePosition } = dragState
   const element = workspace.entities[elementId]
 
   return Object.assign({}, workspace, {
