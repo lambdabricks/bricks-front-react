@@ -1,7 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import { Surface } from 'react-art'
-import MainBrick from '../containers/MainBrick'
 
+import Constants from './constants'
+import MainBrick from '../containers/MainBrick'
 import { moveElement, stopDrag } from '../actions'
 
 const styles = {
@@ -9,9 +10,10 @@ const styles = {
   backgroundColor: '#bfbfbf'
 }
 
-export default class WorkspaceSurface extends Component {
+class WorkspaceSurface extends Component {
   render() {
     const { dispatch, dragState } = this.props
+    const { width } = WorkspaceSurface._constants
     let handleMouseMove, handleMouseUp
 
     if(dragState.dragStarted) {
@@ -32,10 +34,18 @@ export default class WorkspaceSurface extends Component {
        onMouseMove={ handleMouseMove }
        onMouseUp={ handleMouseUp }
       >
-        <Surface height={ 550 } style={ styles } width={ 500 } >
+        <Surface
+          height={ 550 }
+          style={ styles }
+          width={ width }
+        >
           <MainBrick { ...this.props } />
         </Surface>
       </div>
     )
   }
 }
+
+WorkspaceSurface._constants = Constants.Surface
+
+export default WorkspaceSurface

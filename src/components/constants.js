@@ -59,9 +59,14 @@ const Slot = {
   selectedFillColor: '#00FA9A'
 }
 
+const Surface = {
+  width: 500
+}
+
 export default {
   Brick,
   Primitive,
   MainBrick,
-  Slot
+  Slot,
+  Surface
 }
