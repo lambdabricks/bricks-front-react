@@ -3,13 +3,16 @@ import { addBrick, addPrimitive, fetchLibraryIfNeeded } from '../actions'
 import Library from '../components/Library'
 
 function mapStateToProps(state) {
-  return { ...state.library }
+  return {
+    ...state.library
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
-    fetchLibrary: fetchLibraryIfNeeded,
+    fetchLibrary: () => {
+      dispatch(fetchLibraryIfNeeded())
+    },
     onFunctionClick: (brick) => {
       dispatch(addBrick(brick))
     },

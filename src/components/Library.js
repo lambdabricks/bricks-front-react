@@ -20,8 +20,8 @@ const primitiveStyles = {
 
 export default class Library extends Component {
   componentDidMount() {
-    const { dispatch, fetchLibrary } = this.props
-    dispatch(fetchLibrary())
+    const { fetchLibrary } = this.props
+    fetchLibrary()
   }
 
   render() {
@@ -75,7 +75,6 @@ export default class Library extends Component {
 }
 
 Library.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   fetchLibrary: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   items: PropTypes.shape({
