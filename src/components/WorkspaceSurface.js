@@ -12,7 +12,7 @@ const styles = {
 
 class WorkspaceSurface extends Component {
   render() {
-    const { dispatch, dragState } = this.props
+    const { dispatch, dragState, mainBrick } = this.props
     const { width } = WorkspaceSurface._constants
     let handleMouseMove, handleMouseUp
 
@@ -39,7 +39,7 @@ class WorkspaceSurface extends Component {
           style={ styles }
           width={ width }
         >
-          <MainBrick { ...this.props } />
+          <MainBrick { ...mainBrick } />
         </Surface>
       </div>
     )
