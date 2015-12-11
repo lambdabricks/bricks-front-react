@@ -30,25 +30,29 @@ import {
 
 import { nextId } from './workspace/workspaceReducerUtils'
 
+const mainBrickId = nextId()
+
 const initialWorkspace = {
   actions: [],
   dragState: {
     dragStarted: false
   },
-  mainBrick: {
-    id: nextId(),
-    inner: [
-    ],
-    inputSlots: [
-      { id: nextId() },
-      { id: nextId() }
-    ],
-    outputSlots: [
-      { id: nextId() }
-    ],
-    position: MainBrickConstants.defaultPosition,
-    size: MainBrickConstants.defaultSize
+  entities: {
+    [mainBrickId]: {
+      id: mainBrickId,
+      inner: [],
+      inputSlots: [
+        { id: nextId() },
+        { id: nextId() }
+      ],
+      outputSlots: [
+        { id: nextId() }
+      ],
+      position: MainBrickConstants.defaultPosition,
+      size: MainBrickConstants.defaultSize
+    }
   },
+  mainBrickId: mainBrickId,
   selectionState: {
     pipe: {
       input: null,

@@ -6,6 +6,7 @@ import { selectedSlots } from '../utils'
 
 const mapStateToProps = (state) => {
   return {
+    entities: state.workspace.entities,
     selectedSlots: selectedSlots(state.workspace)
   }
 }

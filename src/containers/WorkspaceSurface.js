@@ -4,8 +4,10 @@ import { moveElement, stopDrag } from '../actions'
 import WorkspaceSurface from '../components/WorkspaceSurface'
 
 const mapStateToProps = (state) => {
+  const mainBrickId = state.workspace.mainBrickId
+
   return {
-    mainBrick: state.workspace.mainBrick,
+    mainBrick: state.workspace.entities[mainBrickId],
     dragState: state.workspace.dragState
   }
 }

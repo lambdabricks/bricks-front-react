@@ -8,15 +8,22 @@ import Primitive from '../../containers/Primitive'
 
 import { nextId } from './workspaceReducerUtils'
 
-export const appendToInner = (state, element) => {
-  return Object.assign({}, state, {
-    ...state,
-    mainBrick: {
-      ...state.mainBrick,
-      inner: [
-        ...state.mainBrick.inner,
-        element
-      ]
+export const appendToInner = (workspace, element) => {
+  const mainBrickId = workspace.mainBrickId
+  const mainBrick = workspace.entities[mainBrickId]
+
+  return Object.assign({}, workspace, {
+    ...workspace,
+    entities: {
+      ...workspace.entities,
+      [mainBrickId]: {
+        ...mainBrick,
+        inner: [
+          ...mainBrick.inner,
+          element.id
+        ]
+      },
+      [element.id]: element
     }
   })
 }

@@ -1,33 +1,34 @@
-export const updateElementInWorkspace = (state, payload) => {
-  return Object.assign({}, state, {
-    ...state,
-    mainBrick: {
-      ...state.mainBrick,
-      inner: state.mainBrick.inner.map((element) => {
-        const { dragState } = state
-        if(element.id === dragState.elementId) {
-          const { startElementPosition, startMousePosition } = dragState
-          const { currentMousePosition } = payload
+export const updateElementInWorkspace = (workspace, payload) => {
+  const { dragState } = workspace
+  const { currentMousePosition } = payload
+  const { elementId, startElementPosition, startMousePosition } = dragState
 
-          return {
-            ...element,
-            position: {
-              x: startElementPosition.x + currentMousePosition.x - startMousePosition.x,
-              y: startElementPosition.y + currentMousePosition.y - startMousePosition.y,
-            }
-          }
+  if(!elementId) {
+    return workspace
+  }
+
+  const element = workspace.entities[elementId]
+
+  return Object.assign({}, workspace, {
+    ...workspace,
+    entities: {
+      ...workspace.entities,
+      [elementId]: {
+        ...element,
+        position: {
+          x: startElementPosition.x + currentMousePosition.x - startMousePosition.x,
+          y: startElementPosition.y + currentMousePosition.y - startMousePosition.y,
         }
-        return element
-      })
+      }
     }
   })
 }
 
-export const addDragStartedToWorkspace = (state, payload) => {
+export const addDragStartedToWorkspace = (workspace, payload) => {
   let { elementId, elementPosition, mousePosition } = payload
 
   return setDragStateToWorkspace(
-    state,
+    workspace,
     {
       dragStarted: true,
       elementId: elementId,
@@ -37,18 +38,18 @@ export const addDragStartedToWorkspace = (state, payload) => {
   )
 }
 
-export const addDragStoppedToWorkspace = (state, payload) => {
+export const addDragStoppedToWorkspace = (workspace, payload) => {
   return setDragStateToWorkspace(
-    state,
+    workspace,
     {
       dragStarted: false
     }
   )
 }
 
-export const setDragStateToWorkspace = (state, dragState) => {
-  return Object.assign({}, state, {
-    ...state,
+export const setDragStateToWorkspace = (workspace, dragState) => {
+  return Object.assign({}, workspace, {
+    ...workspace,
     dragState
   })
 }
