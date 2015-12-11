@@ -3,7 +3,6 @@ import { Surface } from 'react-art'
 
 import Constants from './constants'
 import MainBrick from '../containers/MainBrick'
-import { moveElement, stopDrag } from '../actions'
 
 const styles = {
   float: 'left',
@@ -12,17 +11,20 @@ const styles = {
 
 class WorkspaceSurface extends Component {
   render() {
-    const { dispatch, dragState, mainBrick } = this.props
+    const {
+      dragState,
+      mainBrick,
+      moveElement,
+      stopDrag
+    } = this.props
     const { width } = WorkspaceSurface._constants
     let handleMouseMove, handleMouseUp
 
     if(dragState.dragStarted) {
       handleMouseMove = (e) => {
-        dispatch(moveElement({ x: e.clientX, y: e.clientY }))
+        moveElement({ x: e.clientX, y: e.clientY })
       }
-      handleMouseUp = () => {
-        dispatch(stopDrag())
-      }
+      handleMouseUp = stopDrag
     }
     else {
       handleMouseMove = () => {}
@@ -44,6 +46,15 @@ class WorkspaceSurface extends Component {
       </div>
     )
   }
+}
+
+WorkspaceSurface.propTypes = {
+  dragState: PropTypes.shape({
+    dragStarted: PropTypes.bool.isRequired
+  }).isRequired,
+  mainBrick: PropTypes.object.isRequired,
+  moveElement: PropTypes.func.isRequired,
+  stopDrag: PropTypes.func.isRequired
 }
 
 WorkspaceSurface._constants = Constants.Surface
