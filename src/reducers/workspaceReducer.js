@@ -1,5 +1,6 @@
 import {
   ADD_BRICK,
+  ADD_PIPE,
   ADD_PRIMITIVE,
   MOVE_ELEMENT,
   SELECT_SLOT,
@@ -15,6 +16,7 @@ import {
 import {
   appendToInner,
   newBrick,
+  newPipe,
   newPrimitive
 } from './workspace/addElementReducer'
 
@@ -66,6 +68,8 @@ export const workspace = (state = initialWorkspace, action) => {
   switch (type) {
     case ADD_BRICK:
       return appendToInner(state, newBrick(payload))
+    case ADD_PIPE:
+      return appendToInner(state, newPipe(state))
     case ADD_PRIMITIVE:
       return appendToInner(state, newPrimitive(payload))
     case MOVE_ELEMENT:

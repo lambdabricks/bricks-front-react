@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 
 import Brick from '../components/Brick'
+import { addPipeOrSelectSlot } from '../actions'
 import Draggable from './Draggable'
 import { selectedSlots } from '../utils'
-import { selectSlot } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -15,11 +15,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     selectBrickInputSlot: (elementId, slotId) => {
       // A Brick's input slot is on the contrary an output for a pipe
-      dispatch(selectSlot('output', elementId, slotId))
+      dispatch(addPipeOrSelectSlot('output', elementId, slotId))
     },
     selectBrickOutputSlot: (elementId, slotId) => {
       // A Brick's output slot is on the contrary an input for a pipe
-      dispatch(selectSlot('input', elementId, slotId))
+      dispatch(addPipeOrSelectSlot('input', elementId, slotId))
     }
   }
 }

@@ -4,6 +4,7 @@ import {
 } from '../../components/constants'
 
 import Brick from '../../containers/Brick'
+// import Pipe from '../../components/Pipe'
 import Primitive from '../../containers/Primitive'
 
 import { nextId } from './workspaceReducerUtils'
@@ -52,6 +53,18 @@ export const newPrimitive = (name) => {
     position: PrimitiveDefaults.defaultPosition,
     type: Primitive,
     // react or redux ignore pair with value `undefined`
+    value: null
+  }
+}
+
+export const newPipe = (workspace) => {
+  const { input, output } = workspace.selectionState.pipe
+
+  return {
+    id: nextId(),
+    input,
+    output,
+    // type: Pipe,
     value: null
   }
 }

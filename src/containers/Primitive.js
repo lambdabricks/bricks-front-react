@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import Draggable from './Draggable'
 import Primitive from '../components/Primitive'
 
+import { addPipeOrSelectSlot } from '../actions'
 import { selectedSlots } from '../utils'
-import { selectSlot } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectSlot: (elementId, slotId) => {
-      dispatch(selectSlot('input', elementId, slotId))
+      dispatch(addPipeOrSelectSlot('input', elementId, slotId))
     }
   }
 }

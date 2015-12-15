@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
+import { addPipeOrSelectSlot } from '../actions'
 import MainBrick from '../components/MainBrick'
-import { selectSlot } from '../actions'
 import { selectedSlots } from '../utils'
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,10 +16,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectBrickInputSlot: (elementId, slotId) => {
-      dispatch(selectSlot('input', elementId, slotId))
+      dispatch(addPipeOrSelectSlot('input', elementId, slotId))
     },
     selectBrickOutputSlot: (elementId, slotId) => {
-      dispatch(selectSlot('output', elementId, slotId))
+      dispatch(addPipeOrSelectSlot('output', elementId, slotId))
     }
   }
 }

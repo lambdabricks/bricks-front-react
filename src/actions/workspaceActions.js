@@ -1,3 +1,4 @@
+export const ADD_PIPE = 'ADD_PIPE'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
@@ -23,7 +24,16 @@ export const stopDrag = () => {
 export const moveElement = (currentMousePosition) => {
   return {
     type: MOVE_ELEMENT,
-    payload: { currentMousePosition }
+    payload: {
+      currentMousePosition
+    }
+  }
+}
+
+export const addPipeOrSelectSlot = (type, elementId, slotId) => {
+  return (dispatch, getState) => {
+    dispatch(selectSlot(type, elementId, slotId))
+    dispatch(addPipeIfBothSlotsSelected())
   }
 }
 
@@ -36,5 +46,20 @@ export const selectSlot = (type, elementId, slotId) => {
       slotId,
       type
     }
+  }
+}
+
+export const addPipeIfBothSlotsSelected = () => {
+  return (dispatch, getState) => {
+    const { input, output } = getState().workspace.selectionState.pipe
+
+    if(input !== null && output !== null)
+      dispatch(addPipe())
+  }
+}
+
+export const addPipe = () => {
+  return {
+    type: ADD_PIPE
   }
 }
