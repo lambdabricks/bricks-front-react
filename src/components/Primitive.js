@@ -11,6 +11,8 @@ class Primitive extends Component {
     super(props)
 
     this.startDrag = this.startDrag.bind(this)
+    this.inputSlotPosition = this.inputSlotPosition.bind(this)
+    this.innerInputSlotPosition = this.innerInputSlotPosition.bind(this)
   }
 
   startDrag(mouseEvent) {
@@ -23,6 +25,28 @@ class Primitive extends Component {
     )
   }
 
+  inputSlotPosition(slotId) {
+    const { position } = this.props
+    const slotPosition = this.innerInputSlotPosition(slotId)
+
+    return {
+      x: position.x + slotPosition.x,
+      y: position.y + slotPosition.y
+    }
+  }
+
+  innerInputSlotPosition(slotId) {
+    const {
+      Primitive: PrimitiveConstants,
+      Slot: SlotConstants
+    } = Primitive._constants
+
+    return {
+      x: PrimitiveConstants.radius - (SlotConstants.width / 2),
+      y: PrimitiveConstants.radius * 2
+    }
+  }
+
   render() {
     const {
       id,
@@ -33,11 +57,10 @@ class Primitive extends Component {
       selectSlot,
       value
     } = this.props
-    const {
-      Primitive: PrimitiveConstants,
-      Slot: SlotConstants
-    } = Primitive._constants
+    const { Primitive: PrimitiveConstants } = Primitive._constants
+
     const fillColor = PrimitiveConstants.fillColor[name]
+    const slotPosition = this.innerInputSlotPosition()
 
     return (
       <Group x={ position.x } y={ position.y } >
@@ -49,12 +72,13 @@ class Primitive extends Component {
             radius={ PrimitiveConstants.radius }
             stroke={ fillColor }
             strokeWidth={ PrimitiveConstants.strokeWidth }
-            x={ PrimitiveConstants.radius / 2 }
-            y={ PrimitiveConstants.radius / 2 }
+            x={ PrimitiveConstants.radius }
+            y={ PrimitiveConstants.radius }
           />
           <Text
             fill={ PrimitiveConstants.textColor }
             font={ PrimitiveConstants.font }
+            y={ PrimitiveConstants.radius }
           >
             { value === null ? "<NONE>" : value }
           </Text>
@@ -67,8 +91,8 @@ class Primitive extends Component {
           selectedSlots={ selectedSlots }
           selectSlot={ selectSlot }
           strokeColor={ fillColor }
-          x={ (PrimitiveConstants.radius / 2) - (SlotConstants.width / 2) }
-          y={ PrimitiveConstants.radius + SlotConstants.height }
+          x={ slotPosition.x }
+          y={ slotPosition.y }
         />
       </Group>
     )

@@ -4,7 +4,7 @@ import {
 } from '../../components/constants'
 
 import Brick from '../../containers/Brick'
-// import Pipe from '../../components/Pipe'
+import Pipe from '../../containers/Pipe'
 import Primitive from '../../containers/Primitive'
 
 import { nextId } from './workspaceReducerUtils'
@@ -63,8 +63,9 @@ export const newPipe = (workspace) => {
   return {
     id: nextId(),
     input,
+    name: null,
     output,
-    // type: Pipe,
+    type: Pipe,
     value: null
   }
 }

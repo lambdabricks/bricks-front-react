@@ -12,6 +12,7 @@ import {
 import {
   MainBrick as MainBrickConstants
 } from '../components/constants'
+import MainBrick from '../containers/MainBrick'
 
 import {
   appendToInner,
@@ -51,7 +52,8 @@ const initialWorkspace = {
         { id: nextId() }
       ],
       position: MainBrickConstants.defaultPosition,
-      size: MainBrickConstants.defaultSize
+      size: MainBrickConstants.defaultSize,
+      type: MainBrick
     }
   },
   mainBrickId: mainBrickId,
@@ -65,6 +67,7 @@ const initialWorkspace = {
 
 export const workspace = (state = initialWorkspace, action) => {
   const { payload, type } = action
+
   switch (type) {
     case ADD_BRICK:
       return appendToInner(state, newBrick(payload))

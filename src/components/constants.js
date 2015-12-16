@@ -1,3 +1,11 @@
+const colorsForTypes = {
+  boolean: "#A359E9",
+  list: "#E9E759",
+  null: "#D8D8D8",
+  number: "#59E974",
+  string: "#E9A559"
+  // "#E96859"
+}
 const font = '15px monospace'
 const slotWidth = 15
 
@@ -34,18 +42,19 @@ const MainBrick = {
 }
 MainBrick.slotAndOffset = slotWidth + MainBrick.slotOffset
 
+const Pipe = {
+  fillColor: colorsForTypes,
+  font: font,
+  strokeColor: 'black',
+  textColor: 'black'
+}
+
 const Primitive = {
   defaultPosition: {
     x: 50,
     y: 50
   },
-  fillColor: {
-    boolean: "#A359E9",
-    list: "#E9E759",
-    number: "#59E974",
-    string: "#E9A559"
-    // "#E96859"
-  },
+  fillColor: colorsForTypes,
   font: font,
   fontAlignment: 'middle',
   radius: 30,
@@ -65,8 +74,9 @@ const Surface = {
 
 export default {
   Brick,
-  Primitive,
   MainBrick,
+  Pipe,
+  Primitive,
   Slot,
   Surface
 }

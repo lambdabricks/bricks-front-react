@@ -40,8 +40,8 @@ MainBrick.propTypes = {
   inner: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      position: PositionPropTypes.isRequired,
+      name: PropTypes.string,
+      position: PositionPropTypes,
       type: PropTypes.func.isRequired,
       value: PropTypes.any
     })
