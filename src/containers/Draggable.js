@@ -3,8 +3,14 @@ import { startDrag } from '../actions'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleMouseDown: (elementId, mousePosition, elementPosition) => {
-      dispatch(startDrag(elementId, mousePosition, elementPosition))
+    handleMouseDown: (elementId, mouseEvent, elementPosition) => {
+      dispatch(
+        startDrag(
+          elementId,
+          { x: mouseEvent.clientX, y: mouseEvent.clientY },
+          elementPosition
+        )
+      )
     }
   }
 }

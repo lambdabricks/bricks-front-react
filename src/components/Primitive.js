@@ -18,11 +18,7 @@ class Primitive extends Component {
   startDrag(mouseEvent) {
     const { handleMouseDown, id, position } = this.props
 
-    handleMouseDown(
-      id,
-      { x: mouseEvent.clientX, y: mouseEvent.clientY },
-      position
-    )
+    handleMouseDown(id, mouseEvent, position)
   }
 
   inputSlotPosition(slotId) {
