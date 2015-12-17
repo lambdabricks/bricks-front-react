@@ -2,13 +2,13 @@ import { connect } from 'react-redux'
 import { addBrick, addPrimitive, fetchLibraryIfNeeded } from '../actions'
 import Library from '../components/Library'
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     ...state.library
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetchLibrary: () => {
       dispatch(fetchLibraryIfNeeded())
