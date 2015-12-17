@@ -23,7 +23,7 @@ class MainBrick extends Component {
         />
         { inner.map((element) => {
             return (
-              <element.type
+              <element.Component
                 key={ element.id }
                 { ...element }
               />
@@ -39,10 +39,10 @@ MainBrick.propTypes = {
   id: PropTypes.number.isRequired,
   inner: PropTypes.arrayOf(
     PropTypes.shape({
+      Component: PropTypes.func.isRequired,
       id: PropTypes.number.isRequired,
       name: PropTypes.string,
       position: PositionPropTypes,
-      type: PropTypes.func.isRequired,
       value: PropTypes.any
     })
   ).isRequired,

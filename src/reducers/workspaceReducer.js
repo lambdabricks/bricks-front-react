@@ -44,6 +44,7 @@ const initialWorkspace = {
   },
   entities: {
     [mainBrickId]: {
+      Component: MainBrick,
       id: mainBrickId,
       inner: [],
       inputSlots: [
@@ -54,8 +55,7 @@ const initialWorkspace = {
         { id: nextId() }
       ],
       position: MainBrickConstants.defaultPosition,
-      size: MainBrickConstants.defaultSize,
-      type: MainBrick
+      size: MainBrickConstants.defaultSize
     }
   },
   mainBrickId: mainBrickId,
