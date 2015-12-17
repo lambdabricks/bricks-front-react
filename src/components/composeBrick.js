@@ -63,5 +63,7 @@ export default function composeBrick(InnerComponent) {
     size: SizePropTypes.isRequired
   }
 
+  AbstractBrick.displayName = InnerComponent.name
+
   return AbstractBrick
 }

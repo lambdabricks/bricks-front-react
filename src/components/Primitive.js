@@ -110,4 +110,6 @@ Primitive._constants = {
   Slot: Constants.Slot
 }
 
+Primitive.displayName = Primitive.name
+
 export default Primitive
