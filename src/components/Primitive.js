@@ -3,6 +3,7 @@ import { Group, Text } from 'react-art'
 import Circle from 'react-art/lib/Circle.art'
 
 import Constants from './constants'
+import { innerInputSlotPosition } from '../utils'
 import { PositionPropTypes } from '../propTypes'
 import Slot from './Slot'
 
@@ -11,36 +12,12 @@ class Primitive extends Component {
     super(props)
 
     this.startDrag = this.startDrag.bind(this)
-    this.inputSlotPosition = this.inputSlotPosition.bind(this)
-    this.innerInputSlotPosition = this.innerInputSlotPosition.bind(this)
   }
 
   startDrag(mouseEvent) {
     const { handleMouseDown, id, position } = this.props
 
     handleMouseDown(id, mouseEvent, position)
-  }
-
-  inputSlotPosition(slotId) {
-    const { position } = this.props
-    const slotPosition = this.innerInputSlotPosition(slotId)
-
-    return {
-      x: position.x + slotPosition.x,
-      y: position.y + slotPosition.y
-    }
-  }
-
-  innerInputSlotPosition(slotId) {
-    const {
-      Primitive: PrimitiveConstants,
-      Slot: SlotConstants
-    } = Primitive._constants
-
-    return {
-      x: PrimitiveConstants.radius - (SlotConstants.width / 2),
-      y: PrimitiveConstants.radius * 2
-    }
   }
 
   render() {
@@ -56,7 +33,7 @@ class Primitive extends Component {
     const { Primitive: PrimitiveConstants } = Primitive._constants
 
     const fillColor = PrimitiveConstants.fillColor[name]
-    const slotPosition = this.innerInputSlotPosition()
+    const slotPosition = innerInputSlotPosition(id)
 
     return (
       <Group x={ position.x } y={ position.y } >
