@@ -1,5 +1,6 @@
 export const ADD_PIPE = 'ADD_PIPE'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
+export const REMOVE_SELECTION = 'REMOVE_SELECTION'
 export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
 export const SELECT_SLOT = 'SELECT_SLOT'
@@ -53,13 +54,21 @@ export const addPipeIfBothSlotsSelected = () => {
   return (dispatch, getState) => {
     const { input, output } = getState().workspace.selectionState.pipe
 
-    if(input !== null && output !== null)
+    if(input !== null && output !== null) {
       dispatch(addPipe())
+      dispatch(removeSelection())
+    }
   }
 }
 
 export const addPipe = () => {
   return {
     type: ADD_PIPE
+  }
+}
+
+export const removeSelection = () => {
+  return {
+    type: REMOVE_SELECTION
   }
 }

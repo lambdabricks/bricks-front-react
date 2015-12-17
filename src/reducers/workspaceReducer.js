@@ -3,6 +3,7 @@ import {
   ADD_PIPE,
   ADD_PRIMITIVE,
   MOVE_ELEMENT,
+  REMOVE_SELECTION,
   SELECT_SLOT,
   START_DRAG,
   STOP_DRAG,
@@ -28,6 +29,7 @@ import {
 } from './workspace/dragReducer'
 
 import {
+  removeSlotSelectionState,
   updateSlotSelectionStateInWorkspace
 } from './workspace/selectionReducer'
 
@@ -77,6 +79,8 @@ export const workspace = (state = initialWorkspace, action) => {
       return appendToInner(state, newPrimitive(payload))
     case MOVE_ELEMENT:
       return updateElementInWorkspace(state, payload)
+    case REMOVE_SELECTION:
+      return removeSlotSelectionState(state)
     case SELECT_SLOT:
       return updateSlotSelectionStateInWorkspace(state, payload)
     case START_DRAG:

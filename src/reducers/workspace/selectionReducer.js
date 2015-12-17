@@ -24,3 +24,16 @@ export const updateSlotSelectionStateInWorkspace = (state, payload) => {
     }
   })
 }
+
+export const removeSlotSelectionState = (state) => {
+  return Object.assign({}, state, {
+    ...state,
+    selectionState: {
+      ...state.selectionState,
+      pipe: {
+        input: null,
+        output: null
+      }
+    }
+  })
+}
