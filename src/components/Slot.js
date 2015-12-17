@@ -7,7 +7,7 @@ import { isSlotSelected } from '../utils'
 class Slot extends Component {
   render() {
     const {
-      fillColor: unSelectedFillColor,
+      fillColor: unselectedFillColor,
       id,
       parentId,
       selectedSlots,
@@ -20,7 +20,7 @@ class Slot extends Component {
 
     const fillColor = isSlotSelected(selectedSlots, id) ?
       selectedFillColor :
-      unSelectedFillColor
+      unselectedFillColor
 
     return (
       <Rectangle
