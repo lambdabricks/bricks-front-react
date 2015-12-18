@@ -2,9 +2,9 @@ const colorsForTypes = {
   boolean: "#A359E9",
   list: "#E9E759",
   null: "#D8D8D8",
-  number: "#59E974",
+  number: "#E96859",
   string: "#E9A559"
-  // "#E96859"
+  // "#59E974"
 }
 const font = '15px monospace'
 const slotWidth = 15
