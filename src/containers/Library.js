@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(fetchLibraryIfNeeded())
     },
     onFunctionClick: (brick) => {
-      dispatch(addBrick(brick))
+      dispatch(addBrick({ arity: brick.arity, name: brick.name }))
     },
     onPrimitiveClick: (primitive) => {
       dispatch(addPrimitive(primitive))

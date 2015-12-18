@@ -29,14 +29,17 @@ export const appendToInner = (workspace, element) => {
   })
 }
 
-export const newBrick = (name) => {
+export const newBrick = (brick) => {
+  const { arity, name } = brick
+  let inputSlots = []
+
+  for(var i=0; i < arity; i++)
+    inputSlots.push({ id: nextId() })
+
   return {
     Component: Brick,
     id: nextId(),
-    inputSlots: [
-      { id: nextId() },
-      { id: nextId() }
-    ],
+    inputSlots,
     name,
     outputSlots: [
       { id: nextId() }

@@ -22,7 +22,7 @@ export default class Module extends Component {
               return (
                 <li
                   key={ libraryFunction.id }
-                  onClick={ () => onFunctionClick(libraryFunction.name) }
+                  onClick={ () => onFunctionClick(libraryFunction) }
                   style={ libraryFunctionStyles }
                 >
                   { libraryFunction.label }
@@ -40,6 +40,7 @@ Module.propTypes = {
   name: PropTypes.string.isRequired,
   functions: PropTypes.arrayOf(
     PropTypes.shape({
+      arity: PropTypes.number.isRequired,
       id: PropTypes.number.isRequired,
       label: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
