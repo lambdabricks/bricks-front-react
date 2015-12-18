@@ -1,4 +1,4 @@
-import { Brick, MainBrick, Primitive, Slot } from '../components/constants'
+import { Brick, MainBrick, Slot } from '../components/constants'
 
 export const selectedSlots = (workspace) => {
   const { input, output } = workspace.selectionState.pipe
@@ -30,7 +30,7 @@ export const inputSlotPosition = (element, slotId) => {
         y: -Slot.height
       }
     case 'Primitive':
-      const slotPosition = innerInputSlotPosition(slotId)
+      const slotPosition = innerInputSlotPosition(size)
 
       return {
         x: position.x + slotPosition.x,
@@ -85,9 +85,9 @@ const slotGroupWidth = (slots, constants) => {
   return constants.slotOffset + (slots.length * constants.slotAndOffset)
 }
 
-export const innerInputSlotPosition = (slotId) => {
+export const innerInputSlotPosition = (size) => {
   return {
-    x: Primitive.xRadius - (Slot.width / 2),
-    y: Primitive.yRadius * 2
+    x: (size.width - Slot.width) / 2,
+    y: size.height
   }
 }

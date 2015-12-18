@@ -54,12 +54,14 @@ const Primitive = {
     x: 50,
     y: 50
   },
+  defaultSize: {
+    height: 30,
+    width: 60
+  },
   fillColor: colorsForTypes,
   font: font,
   fontAlignment: 'middle',
-  textColor: 'black',
-  xRadius: 30,
-  yRadius: 15
+  textColor: 'black'
 }
 
 const Slot = {

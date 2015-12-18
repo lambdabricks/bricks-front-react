@@ -27,18 +27,20 @@ class Primitive extends Component {
       position,
       selectedSlots,
       selectSlot,
+      size,
       value
     } = this.props
     const { Primitive: PrimitiveConstants } = Primitive._constants
 
     const fillColor = PrimitiveConstants.fillColor[name]
-    const slotPosition = innerInputSlotPosition(id)
-    const width = PrimitiveConstants.xRadius * 2
+    const slotPosition = innerInputSlotPosition(size)
+    const xRadius = size.width / 2
+    const yRadius = size.height / 2
 
     const path = new Path()
-    path.move(0, PrimitiveConstants.yRadius)
-    path.arc(width, 0, PrimitiveConstants.xRadius, PrimitiveConstants.yRadius)
-    path.arc(-width, 0, PrimitiveConstants.xRadius, PrimitiveConstants.yRadius)
+    path.move(0, yRadius)
+    path.arc(size.width, 0, xRadius, yRadius)
+    path.arc(-size.width, 0, xRadius, yRadius)
     path.close()
 
     return (
@@ -54,7 +56,7 @@ class Primitive extends Component {
           <Text
             fill={ PrimitiveConstants.textColor }
             font={ PrimitiveConstants.font }
-            y={ PrimitiveConstants.yRadius }
+            y={ yRadius }
           >
             { value === null ? "<NONE>" : value }
           </Text>
