@@ -87,7 +87,7 @@ const slotGroupWidth = (slots, constants) => {
 
 export const innerInputSlotPosition = (slotId) => {
   return {
-    x: Primitive.radius - (Slot.width / 2),
-    y: Primitive.radius * 2
+    x: Primitive.xRadius - (Slot.width / 2),
+    y: Primitive.yRadius * 2
   }
 }

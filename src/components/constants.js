@@ -57,8 +57,9 @@ const Primitive = {
   fillColor: colorsForTypes,
   font: font,
   fontAlignment: 'middle',
-  radius: 30,
-  textColor: 'black'
+  textColor: 'black',
+  xRadius: 30,
+  yRadius: 15
 }
 
 const Slot = {

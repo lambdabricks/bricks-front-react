@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { Group, Text } from 'react-art'
-import Circle from 'react-art/lib/Circle.art'
+import { Group, Path, Shape, Text } from 'react-art'
 
 import Constants from './constants'
 import { innerInputSlotPosition } from '../utils'
@@ -34,24 +33,28 @@ class Primitive extends Component {
 
     const fillColor = PrimitiveConstants.fillColor[name]
     const slotPosition = innerInputSlotPosition(id)
+    const width = PrimitiveConstants.xRadius * 2
+
+    const path = new Path()
+    path.move(0, PrimitiveConstants.yRadius)
+    path.arc(width, 0, PrimitiveConstants.xRadius, PrimitiveConstants.yRadius)
+    path.arc(-width, 0, PrimitiveConstants.xRadius, PrimitiveConstants.yRadius)
+    path.close()
 
     return (
       <Group x={ position.x } y={ position.y } >
         <Group
           onMouseDown={ this.startDrag }
         >
-          <Circle
+          <Shape
             fill={ fillColor }
-            radius={ PrimitiveConstants.radius }
+            d={ path }
             stroke={ fillColor }
-            strokeWidth={ PrimitiveConstants.strokeWidth }
-            x={ PrimitiveConstants.radius }
-            y={ PrimitiveConstants.radius }
           />
           <Text
             fill={ PrimitiveConstants.textColor }
             font={ PrimitiveConstants.font }
-            y={ PrimitiveConstants.radius }
+            y={ PrimitiveConstants.yRadius }
           >
             { value === null ? "<NONE>" : value }
           </Text>
