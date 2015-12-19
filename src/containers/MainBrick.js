@@ -9,7 +9,10 @@ const mapStateToProps = (state, ownProps) => {
     inner: ownProps.inner.map((elementId) => {
       return state.workspace.entities[elementId]
     }),
-    selectedSlots: selectedSlots(state.workspace)
+    selectedSlots: selectedSlots(state.workspace),
+    testCases: state.workspace.testCases[0].map((elementId) => {
+      return state.workspace.entities[elementId]
+    })
   }
 }
 

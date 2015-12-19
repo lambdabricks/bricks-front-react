@@ -11,7 +11,8 @@ import {
 
 // TODO: Read constants from MainBrick component
 import {
-  MainBrick as MainBrickConstants
+  MainBrick as MainBrickConstants,
+  TestInput as TestInputConstants
 } from '../components/constants'
 import MainBrick from '../containers/MainBrick'
 
@@ -36,6 +37,8 @@ import {
 import { nextId } from './workspace/workspaceReducerUtils'
 
 const mainBrickId = nextId()
+const firstInputId = nextId()
+const secondInputId = nextId()
 
 const initialWorkspace = {
   actions: [],
@@ -56,7 +59,21 @@ const initialWorkspace = {
       ],
       position: MainBrickConstants.defaultPosition,
       size: MainBrickConstants.defaultSize
-    }
+    },
+    [firstInputId]: {
+      id: firstInputId,
+      name: null,
+      position: { x: 10, y: -65 },
+      size: TestInputConstants.defaultSize,
+      value: null
+    },
+    [secondInputId]: {
+      id: secondInputId,
+      name: null,
+      position: { x: 100, y: -65 },
+      size: TestInputConstants.defaultSize,
+      value: null
+    },
   },
   mainBrickId: mainBrickId,
   selectionState: {
@@ -64,7 +81,10 @@ const initialWorkspace = {
       input: null,
       output: null
     }
-  }
+  },
+  testCases: [
+    [firstInputId, secondInputId]
+  ]
 }
 
 export const workspace = (state = initialWorkspace, action) => {

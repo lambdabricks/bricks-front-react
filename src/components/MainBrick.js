@@ -7,14 +7,24 @@ import composeBrick from './composeBrick'
 import Constants from './constants'
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
 import Primitive from '../containers/Primitive'
+import TestInput from './TestInput'
 
 class MainBrick extends Component {
   render() {
-    const { inner, size } = this.props
+    const { inner, size, testCases } = this.props
     const { Brick, Slot } = MainBrick._constants
 
     return (
       <Group y={ Slot.height } >
+        { testCases.map((element) => {
+            return (
+              <TestInput
+                key={ element.id }
+                { ...element }
+              />
+            )
+          })
+        }
         <Rectangle
           height={ size.height }
           width={ size.width }
@@ -46,7 +56,8 @@ MainBrick.propTypes = {
       value: PropTypes.any
     })
   ).isRequired,
-  size: SizePropTypes.isRequired
+  size: SizePropTypes.isRequired,
+  testCases: PropTypes.array.isRequired
 }
 
 MainBrick._constants = {

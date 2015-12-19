@@ -6,7 +6,7 @@ import MainBrick from '../containers/MainBrick'
 
 const styles = {
   float: 'left',
-  backgroundColor: '#bfbfbf'
+  backgroundColor: '#D8D8D8'
 }
 
 class WorkspaceSurface extends Component {
@@ -37,7 +37,7 @@ class WorkspaceSurface extends Component {
        onMouseUp={ handleMouseUp }
       >
         <Surface
-          height={ 550 }
+          height={ 600 }
           style={ styles }
           width={ width }
         >

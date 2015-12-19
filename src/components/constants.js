@@ -1,7 +1,7 @@
 const colorsForTypes = {
   boolean: "#A359E9",
   list: "#E9E759",
-  null: "#D8D8D8",
+  null: "#BFBFBF",
   number: "#E96859",
   string: "#E9A559"
   // "#59E974"
@@ -29,7 +29,7 @@ Brick.slotAndOffset = slotWidth + Brick.slotOffset
 const MainBrick = {
   defaultPosition: {
     x: 50,
-    y: 50
+    y: 100
   },
   defaultSize: {
     height: 400,
@@ -75,11 +75,22 @@ const Surface = {
   width: 500
 }
 
+const TestInput = {
+  defaultSize: {
+    height: 30,
+    width: 60
+  },
+  fillColor: colorsForTypes,
+  font,
+  textColor: 'black'
+}
+
 export default {
   Brick,
   MainBrick,
   Pipe,
   Primitive,
   Slot,
-  Surface
+  Surface,
+  TestInput
 }
