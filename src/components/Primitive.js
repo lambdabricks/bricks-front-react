@@ -1,7 +1,8 @@
 import React, { PropTypes, Component } from 'react'
-import { Group, Path, Shape, Text } from 'react-art'
+import { Group, Text } from 'react-art'
 
 import Constants from './constants'
+import Ellipse from './Ellipse'
 import { innerInputSlotPosition } from '../utils'
 import { PositionPropTypes } from '../propTypes'
 import Slot from './Slot'
@@ -34,29 +35,20 @@ class Primitive extends Component {
 
     const fillColor = PrimitiveConstants.fillColor[name]
     const slotPosition = innerInputSlotPosition(size)
-    const xRadius = size.width / 2
-    const yRadius = size.height / 2
-
-    const path = new Path()
-    path.move(0, yRadius)
-    path.arc(size.width, 0, xRadius, yRadius)
-    path.arc(-size.width, 0, xRadius, yRadius)
-    path.close()
 
     return (
       <Group x={ position.x } y={ position.y } >
         <Group
           onMouseDown={ this.startDrag }
         >
-          <Shape
-            fill={ fillColor }
-            d={ path }
-            stroke={ fillColor }
+          <Ellipse
+            fillColor={ fillColor }
+            size={ size }
           />
           <Text
             fill={ PrimitiveConstants.textColor }
             font={ PrimitiveConstants.font }
-            y={ yRadius }
+            y={ size.height / 2 }
           >
             { value === null ? "<NONE>" : value }
           </Text>
