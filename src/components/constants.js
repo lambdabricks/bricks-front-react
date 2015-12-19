@@ -82,7 +82,8 @@ const TestInput = {
   },
   fillColor: colorsForTypes,
   font,
-  textColor: 'black'
+  textColor: 'black',
+  yOffset: 60
 }
 
 export default {

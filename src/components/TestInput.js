@@ -10,13 +10,20 @@ class TestInput extends Component {
     const {
       id,
       name,
-      position,
+      slotPosition,
       size,
       value
     } = this.props
 
-    const { TestInput: TestInputConstants } = TestInput._constants
+    const {
+      Slot: SlotConstants,
+      TestInput: TestInputConstants
+    } = TestInput._constants
     const fillColor = TestInputConstants.fillColor[name]
+    const position = {
+      x: slotPosition.x - ((size.width - SlotConstants.width) / 2),
+      y: slotPosition.y - TestInputConstants.yOffset
+    }
 
     return (
       <Group x={ position.x } y={ position.y } >
@@ -39,7 +46,7 @@ class TestInput extends Component {
 TestInput.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string,
-  position: PositionPropTypes.isRequired,
+  slotPosition: PositionPropTypes.isRequired,
   value: PropTypes.any
 }
 

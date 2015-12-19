@@ -16,6 +16,8 @@ import {
 } from '../components/constants'
 import MainBrick from '../containers/MainBrick'
 
+import { inputSlotPosition } from '../utils'
+
 import {
   appendToInner,
   newBrick,
@@ -40,37 +42,43 @@ const mainBrickId = nextId()
 const firstInputId = nextId()
 const secondInputId = nextId()
 
+const mainBrick = {
+  Component: MainBrick,
+  id: mainBrickId,
+  inner: [],
+  inputSlots:[
+    { id: nextId() },
+    { id: nextId() }
+  ],
+  outputSlots: [
+    { id: nextId() }
+  ],
+  position: MainBrickConstants.defaultPosition,
+  size: MainBrickConstants.defaultSize
+}
+
+const testInputPositions = mainBrick.inputSlots.map((inputSlot) => {
+  return inputSlotPosition(mainBrick, inputSlot.id)
+})
+
 const initialWorkspace = {
   actions: [],
   dragState: {
     dragStarted: false
   },
   entities: {
-    [mainBrickId]: {
-      Component: MainBrick,
-      id: mainBrickId,
-      inner: [],
-      inputSlots: [
-        { id: nextId() },
-        { id: nextId() }
-      ],
-      outputSlots: [
-        { id: nextId() }
-      ],
-      position: MainBrickConstants.defaultPosition,
-      size: MainBrickConstants.defaultSize
-    },
+    [mainBrickId]: mainBrick,
     [firstInputId]: {
       id: firstInputId,
       name: null,
-      position: { x: 10, y: -65 },
+      slotPosition: testInputPositions[0],
       size: TestInputConstants.defaultSize,
       value: null
     },
     [secondInputId]: {
       id: secondInputId,
       name: null,
-      position: { x: 100, y: -65 },
+      slotPosition: testInputPositions[1],
       size: TestInputConstants.defaultSize,
       value: null
     },
