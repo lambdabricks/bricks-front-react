@@ -5,7 +5,12 @@ import Constants from './constants'
 
 class Pipe extends Component {
   render() {
-    const { inputPosition, name, outputPosition } = this.props
+    const {
+      inputPosition,
+      name,
+      outputPosition,
+    } = this.props
+    let { strokeColor } = this.props
     const {
       Pipe: PipeConstants,
       Slot: SlotConstants
@@ -16,6 +21,8 @@ class Pipe extends Component {
       y: outputPosition.y - (inputPosition.y + SlotConstants.height)
     }
     const fillColor = PipeConstants.fillColor[name]
+    strokeColor = strokeColor || PipeConstants.strokeColor
+
     const path = Path()
 
     path.move(inputPosition.x, inputPosition.y + SlotConstants.height)
@@ -29,7 +36,7 @@ class Pipe extends Component {
         <Shape
           d={ path }
           fill={ fillColor }
-          stroke={ PipeConstants.strokeColor }
+          stroke={ strokeColor }
         />
       //   <Text
       //     fill={ PipeConstants.textColor }
@@ -43,8 +50,8 @@ class Pipe extends Component {
 }
 
 Pipe.propTypes = {
-  id: PropTypes.number.isRequired,
   name: PropTypes.string,
+  strokeColor: PropTypes.string,
   value: PropTypes.any
 }
 

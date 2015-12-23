@@ -3,6 +3,7 @@ import { Group, Text } from 'react-art'
 
 import Constants from './constants'
 import Ellipse from './Ellipse'
+import Pipe from './Pipe'
 import { PositionPropTypes } from '../propTypes'
 
 class TestInput extends Component {
@@ -24,6 +25,14 @@ class TestInput extends Component {
       x: slotPosition.x - ((size.width - SlotConstants.width) / 2),
       y: slotPosition.y - TestInputConstants.yOffset
     }
+    const inputPipePosition = {
+      x: (size.width - SlotConstants.width) / 2,
+      y: size.height - SlotConstants.height
+    }
+    const outputPipePosition = {
+      x: (size.width - SlotConstants.width) / 2,
+      y: TestInputConstants.yOffset
+    }
 
     return (
       <Group x={ position.x } y={ position.y } >
@@ -38,6 +47,12 @@ class TestInput extends Component {
         >
           { value === null ? "<NONE>" : value }
         </Text>
+        <Pipe
+          inputPosition={ inputPipePosition }
+          name={ name }
+          outputPosition={ outputPipePosition }
+          strokeColor={ fillColor }
+        />
       </Group>
     )
   }
