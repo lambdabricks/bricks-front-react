@@ -4,8 +4,12 @@ import { Surface } from 'react-art'
 import Constants from './constants'
 import MainBrick from '../containers/MainBrick'
 
-const styles = {
+const workspaceSurfaceStyles = {
   float: 'left',
+  marginRight: '10px'
+}
+
+const surfaceStyles = {
   backgroundColor: '#D8D8D8'
 }
 
@@ -15,7 +19,8 @@ class WorkspaceSurface extends Component {
       dragState,
       mainBrick,
       moveElement,
-      stopDrag
+      stopDrag,
+      testCases
     } = this.props
     const { width } = WorkspaceSurface._constants
     let handleMouseMove, handleMouseUp
@@ -32,17 +37,23 @@ class WorkspaceSurface extends Component {
     }
 
     return (
-      <div
-       onMouseMove={ handleMouseMove }
-       onMouseUp={ handleMouseUp }
-      >
-        <Surface
-          height={ 600 }
-          style={ styles }
-          width={ width }
-        >
-          <MainBrick { ...mainBrick } />
-        </Surface>
+      <div>
+        { testCases.map((testCase) =>
+          <div
+           key={ testCase[0] }
+           onMouseMove={ handleMouseMove }
+           onMouseUp={ handleMouseUp }
+           style={ workspaceSurfaceStyles }
+          >
+            <Surface
+              height={ 600 }
+              style={ surfaceStyles }
+              width={ width }
+            >
+              <MainBrick { ...mainBrick } />
+            </Surface>
+          </div>
+        )}
       </div>
     )
   }
@@ -54,7 +65,8 @@ WorkspaceSurface.propTypes = {
   }).isRequired,
   mainBrick: PropTypes.object.isRequired,
   moveElement: PropTypes.func.isRequired,
-  stopDrag: PropTypes.func.isRequired
+  stopDrag: PropTypes.func.isRequired,
+  testCases: PropTypes.array.isRequired
 }
 
 WorkspaceSurface._constants = Constants.Surface

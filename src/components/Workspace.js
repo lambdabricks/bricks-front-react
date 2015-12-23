@@ -4,8 +4,7 @@ import WorkspaceSurface from '../containers/WorkspaceSurface'
 
 const styles = {
   float: 'left',
-  height: '100%',
-  width: '500px'
+  height: '100%'
 }
 
 export default class Workspace extends Component {

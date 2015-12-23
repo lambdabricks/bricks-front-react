@@ -41,6 +41,8 @@ import { nextId } from './workspace/workspaceReducerUtils'
 const mainBrickId = nextId()
 const firstInputId = nextId()
 const secondInputId = nextId()
+const thirdInputId = nextId()
+const fourthInputId = nextId()
 
 const mainBrick = {
   Component: MainBrick,
@@ -82,6 +84,20 @@ const initialWorkspace = {
       size: TestInputConstants.defaultSize,
       value: null
     },
+    [thirdInputId]: {
+      id: thirdInputId,
+      name: null,
+      slotPosition: testInputPositions[0],
+      size: TestInputConstants.defaultSize,
+      value: null
+    },
+    [fourthInputId]: {
+      id: fourthInputId,
+      name: null,
+      slotPosition: testInputPositions[1],
+      size: TestInputConstants.defaultSize,
+      value: null
+    }
   },
   mainBrickId: mainBrickId,
   selectionState: {
@@ -91,7 +107,8 @@ const initialWorkspace = {
     }
   },
   testCases: [
-    [firstInputId, secondInputId]
+    [firstInputId, secondInputId],
+    [thirdInputId, fourthInputId]
   ]
 }
 
