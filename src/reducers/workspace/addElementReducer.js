@@ -68,7 +68,7 @@ export const newPipe = (workspace) => {
     Component: Pipe,
     id: nextId(),
     input,
-    name: null,
+    type: null,
     output,
     value: null
   }

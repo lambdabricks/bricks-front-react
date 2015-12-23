@@ -72,30 +72,30 @@ const initialWorkspace = {
     [mainBrickId]: mainBrick,
     [firstInputId]: {
       id: firstInputId,
-      name: 'string',
       slotPosition: testInputPositions[0],
       size: TestInputConstants.defaultSize,
+      type: 'string',
       value: null
     },
     [secondInputId]: {
       id: secondInputId,
-      name: null,
       slotPosition: testInputPositions[1],
       size: TestInputConstants.defaultSize,
+      type: null,
       value: null
     },
     [thirdInputId]: {
       id: thirdInputId,
-      name: null,
       slotPosition: testInputPositions[0],
       size: TestInputConstants.defaultSize,
+      type: null,
       value: null
     },
     [fourthInputId]: {
       id: fourthInputId,
-      name: 'number',
       slotPosition: testInputPositions[1],
       size: TestInputConstants.defaultSize,
+      type: 'number',
       value: null
     }
   },
@@ -108,7 +108,7 @@ const initialWorkspace = {
   },
   testCases: [
     [firstInputId, secondInputId],
-    [thirdInputId, fourthInputId]
+    // [thirdInputId, fourthInputId]
   ]
 }
 

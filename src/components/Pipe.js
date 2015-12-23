@@ -7,8 +7,8 @@ class Pipe extends Component {
   render() {
     const {
       inputPosition,
-      name,
       outputPosition,
+      type
     } = this.props
     let { strokeColor } = this.props
     const {
@@ -20,7 +20,7 @@ class Pipe extends Component {
       x: outputPosition.x - inputPosition.x,
       y: outputPosition.y - (inputPosition.y + SlotConstants.height)
     }
-    const fillColor = PipeConstants.fillColor[name]
+    const fillColor = PipeConstants.fillColor[type]
     strokeColor = strokeColor || PipeConstants.strokeColor
 
     const path = Path()
@@ -50,9 +50,8 @@ class Pipe extends Component {
 }
 
 Pipe.propTypes = {
-  name: PropTypes.string,
   strokeColor: PropTypes.string,
-  value: PropTypes.any
+  type: PropTypes.string
 }
 
 Pipe._constants = {

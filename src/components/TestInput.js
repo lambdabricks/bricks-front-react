@@ -10,9 +10,9 @@ class TestInput extends Component {
   render() {
     const {
       id,
-      name,
       slotPosition,
       size,
+      type,
       value
     } = this.props
 
@@ -20,7 +20,7 @@ class TestInput extends Component {
       Slot: SlotConstants,
       TestInput: TestInputConstants
     } = TestInput._constants
-    const fillColor = TestInputConstants.fillColor[name]
+    const fillColor = TestInputConstants.fillColor[type]
     const position = {
       x: slotPosition.x - ((size.width - SlotConstants.width) / 2),
       y: slotPosition.y - TestInputConstants.yOffset
@@ -49,7 +49,7 @@ class TestInput extends Component {
         </Text>
         <Pipe
           inputPosition={ inputPipePosition }
-          name={ name }
+          type={ type }
           outputPosition={ outputPipePosition }
           strokeColor={ fillColor }
         />
@@ -60,7 +60,7 @@ class TestInput extends Component {
 
 TestInput.propTypes = {
   id: PropTypes.number.isRequired,
-  name: PropTypes.string,
+  type: PropTypes.string,
   slotPosition: PositionPropTypes.isRequired,
   value: PropTypes.any
 }
