@@ -46,7 +46,7 @@ export default class Library extends Component {
                 { items.primitives.map((primitive) =>
                   <li
                     key={ primitive.id }
-                    onClick={ () => onPrimitiveClick(primitive.name) }
+                    onClick={ () => onPrimitiveClick(primitive.type) }
                     style={ primitiveStyles }
                   >
                     {primitive.label}
@@ -88,7 +88,7 @@ Library.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         label: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired
+        type: PropTypes.string.isRequired
       })
     )
   }).isRequired,

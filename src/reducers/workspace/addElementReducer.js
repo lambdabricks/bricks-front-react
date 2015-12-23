@@ -49,13 +49,13 @@ export const newBrick = (brick) => {
   }
 }
 
-export const newPrimitive = (name) => {
+export const newPrimitive = (type) => {
   return {
     Component: Primitive,
     id: nextId(),
-    name,
     position: PrimitiveDefaults.defaultPosition,
     size: PrimitiveDefaults.defaultSize,
+    type: type,
     // react or redux ignore pair with value `undefined`
     value: null
   }

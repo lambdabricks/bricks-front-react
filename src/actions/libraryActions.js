@@ -8,9 +8,9 @@ export const addBrick = (brick) => {
   }
 }
 
-export const addPrimitive = (primitive) => {
+export const addPrimitive = (type) => {
   return {
     type: ADD_PRIMITIVE,
-    payload: primitive
+    payload: type
   }
 }

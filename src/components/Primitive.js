@@ -23,7 +23,7 @@ class Primitive extends Component {
   render() {
     const {
       id,
-      name,
+      type,
       handleMouseDown,
       position,
       selectedSlots,
@@ -33,7 +33,7 @@ class Primitive extends Component {
     } = this.props
     const { Primitive: PrimitiveConstants } = Primitive._constants
 
-    const fillColor = PrimitiveConstants.fillColor[name]
+    const fillColor = PrimitiveConstants.fillColor[type]
     const slotPosition = innerInputSlotPosition(size)
 
     return (
@@ -71,7 +71,7 @@ class Primitive extends Component {
 
 Primitive.propTypes = {
   id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   handleMouseDown: PropTypes.func.isRequired,
   position: PositionPropTypes.isRequired,
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
