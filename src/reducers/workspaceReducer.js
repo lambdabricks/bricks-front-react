@@ -72,7 +72,7 @@ const initialWorkspace = {
     [mainBrickId]: mainBrick,
     [firstInputId]: {
       id: firstInputId,
-      name: null,
+      name: 'string',
       slotPosition: testInputPositions[0],
       size: TestInputConstants.defaultSize,
       value: null
@@ -93,7 +93,7 @@ const initialWorkspace = {
     },
     [fourthInputId]: {
       id: fourthInputId,
-      name: null,
+      name: 'number',
       slotPosition: testInputPositions[1],
       size: TestInputConstants.defaultSize,
       value: null

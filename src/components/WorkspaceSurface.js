@@ -50,7 +50,10 @@ class WorkspaceSurface extends Component {
               style={ surfaceStyles }
               width={ width }
             >
-              <MainBrick { ...mainBrick } />
+              <MainBrick
+                testCase={ testCase }
+                { ...mainBrick }
+              />
             </Surface>
           </div>
         )}

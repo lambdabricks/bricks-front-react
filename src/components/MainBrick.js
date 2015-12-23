@@ -11,12 +11,12 @@ import TestInput from './TestInput'
 
 class MainBrick extends Component {
   render() {
-    const { inner, size, testCases } = this.props
+    const { inner, size, testCase } = this.props
     const { Brick, Slot } = MainBrick._constants
 
     return (
       <Group y={ Slot.height } >
-        { testCases.map((element) => {
+        { testCase.map((element) => {
             return (
               <TestInput
                 key={ element.id }
@@ -57,7 +57,7 @@ MainBrick.propTypes = {
     })
   ).isRequired,
   size: SizePropTypes.isRequired,
-  testCases: PropTypes.array.isRequired
+  testCase: PropTypes.array.isRequired
 }
 
 MainBrick._constants = {
