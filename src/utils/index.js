@@ -1,4 +1,9 @@
 import { Brick, MainBrick, Slot } from '../components/constants'
+import {
+  BRICK,
+  MAIN_BRICK,
+  PRIMITIVE
+} from './componentsEnum'
 
 export const selectedSlots = (workspace) => {
   const { input, output } = workspace.selectionState.pipe
@@ -14,22 +19,22 @@ export const isSlotSelected = (selectedSlots, slotId) => {
 export const inputSlotPosition = (element, slotId) => {
   const { position, size } = element
 
-  switch(element.Component.WrappedComponent.displayName) {
-    case 'Brick':
+  switch(element.Component) {
+    case BRICK:
       const { outputSlots } = element
 
       return {
         x: position.x + brickSlotXPosition(outputSlots, slotId, size.width),
         y: position.y + size.height + Slot.height
       }
-    case 'MainBrick':
+    case MAIN_BRICK:
       const { inputSlots } = element
 
       return {
         x: mainBrickSlotXPosition(inputSlots, slotId, size.width),
         y: -Slot.height
       }
-    case 'Primitive':
+    case PRIMITIVE:
       const slotPosition = innerInputSlotPosition(size)
 
       return {
@@ -42,14 +47,14 @@ export const inputSlotPosition = (element, slotId) => {
 export const outputSlotPosition = (element, slotId) => {
   const { position, size } = element
 
-  switch(element.Component.WrappedComponent.displayName) {
-    case 'Brick':
+  switch(element.Component) {
+    case BRICK:
       const { inputSlots } = element
       return {
         x: position.x + brickSlotXPosition(inputSlots, slotId, size.width),
         y: position.y
       }
-    case 'MainBrick':
+    case MAIN_BRICK:
       const { outputSlots } = element
 
       return {

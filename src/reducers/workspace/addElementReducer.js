@@ -3,9 +3,11 @@ import {
   Primitive as PrimitiveDefaults
 } from '../../components/constants'
 
-import Brick from '../../containers/Brick'
-import Pipe from '../../containers/Pipe'
-import Primitive from '../../containers/Primitive'
+import {
+  BRICK,
+  PIPE,
+  PRIMITIVE
+} from '../../utils/componentsEnum'
 
 import { nextId } from './workspaceReducerUtils'
 
@@ -37,7 +39,7 @@ export const newBrick = (brick) => {
     inputSlots.push({ id: nextId() })
 
   return {
-    Component: Brick,
+    Component: BRICK,
     id: nextId(),
     inputSlots,
     name,
@@ -51,7 +53,7 @@ export const newBrick = (brick) => {
 
 export const newPrimitive = (type) => {
   return {
-    Component: Primitive,
+    Component: PRIMITIVE,
     id: nextId(),
     position: PrimitiveDefaults.defaultPosition,
     size: PrimitiveDefaults.defaultSize,
@@ -65,7 +67,7 @@ export const newPipe = (workspace) => {
   const { input, output } = workspace.selectionState.pipe
 
   return {
-    Component: Pipe,
+    Component: PIPE,
     id: nextId(),
     input,
     type: null,

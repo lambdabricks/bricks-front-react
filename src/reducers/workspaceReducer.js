@@ -17,6 +17,7 @@ import {
 import MainBrick from '../containers/MainBrick'
 
 import { inputSlotPosition } from '../utils'
+import { MAIN_BRICK } from '../utils/componentsEnum'
 
 import {
   appendToInner,
@@ -45,7 +46,7 @@ const thirdInputId = nextId()
 const fourthInputId = nextId()
 
 const mainBrick = {
-  Component: MainBrick,
+  Component: MAIN_BRICK,
   id: mainBrickId,
   inner: [],
   inputSlots:[

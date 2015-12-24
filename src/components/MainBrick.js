@@ -2,11 +2,10 @@ import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
-import Brick from '../containers/Brick'
 import composeBrick from './composeBrick'
 import Constants from './constants'
+import { getComponent } from '../utils/ComponentFactory'
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
-import Primitive from '../containers/Primitive'
 import TestInput from './TestInput'
 
 class MainBrick extends Component {
@@ -32,8 +31,10 @@ class MainBrick extends Component {
           fill={ Brick.fillColor }
         />
         { inner.map((element) => {
+            const ReactComponent = getComponent(element.Component)
+
             return (
-              <element.Component
+              <ReactComponent
                 key={ element.id }
                 { ...element }
               />
@@ -49,7 +50,7 @@ MainBrick.propTypes = {
   id: PropTypes.number.isRequired,
   inner: PropTypes.arrayOf(
     PropTypes.shape({
-      Component: PropTypes.func.isRequired,
+      Component: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       name: PropTypes.string,
       position: PositionPropTypes,
