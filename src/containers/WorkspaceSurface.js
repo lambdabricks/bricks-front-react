@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
   return {
     mainBrick: state.workspace.entities[mainBrickId],
     dragState: state.workspace.dragState,
-    testCases: state.workspace.testCases
+    unitTests: state.workspace.unitTests
   }
 }
 

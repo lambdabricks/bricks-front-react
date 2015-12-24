@@ -20,7 +20,7 @@ class WorkspaceSurface extends Component {
       mainBrick,
       moveElement,
       stopDrag,
-      testCases
+      unitTests
     } = this.props
     const { width } = WorkspaceSurface._constants
     let handleMouseMove, handleMouseUp
@@ -38,9 +38,9 @@ class WorkspaceSurface extends Component {
 
     return (
       <div>
-        { testCases.map((testCase) =>
+        { unitTests.map((unitTest, index) =>
           <div
-           key={ testCase[0] }
+           key={ index }
            onMouseMove={ handleMouseMove }
            onMouseUp={ handleMouseUp }
            style={ workspaceSurfaceStyles }
@@ -51,7 +51,7 @@ class WorkspaceSurface extends Component {
               width={ width }
             >
               <MainBrick
-                testCase={ testCase }
+                unitTest={ unitTest }
                 { ...mainBrick }
               />
             </Surface>
@@ -69,7 +69,7 @@ WorkspaceSurface.propTypes = {
   mainBrick: PropTypes.object.isRequired,
   moveElement: PropTypes.func.isRequired,
   stopDrag: PropTypes.func.isRequired,
-  testCases: PropTypes.array.isRequired
+  unitTests: PropTypes.array.isRequired
 }
 
 WorkspaceSurface._constants = Constants.Surface

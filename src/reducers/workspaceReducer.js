@@ -106,7 +106,7 @@ const initialWorkspace = {
       output: null
     }
   },
-  testCases: [
+  unitTests: [
     [firstInputId, secondInputId],
     // [thirdInputId, fourthInputId]
   ]
