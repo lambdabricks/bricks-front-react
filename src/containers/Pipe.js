@@ -19,8 +19,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return { }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Pipe)
+export default connect(mapStateToProps)(Pipe)
