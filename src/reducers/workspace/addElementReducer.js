@@ -5,7 +5,7 @@ import {
 
 import {
   BRICK,
-  PIPE,
+  CLICKABLE_PIPE,
   PRIMITIVE
 } from '../../utils/componentsEnum'
 
@@ -67,7 +67,7 @@ export const newPipe = (workspace) => {
   const { input, output } = workspace.selectionState.pipe
 
   return {
-    Component: PIPE,
+    Component: CLICKABLE_PIPE,
     id: nextId(),
     input,
     type: null,
