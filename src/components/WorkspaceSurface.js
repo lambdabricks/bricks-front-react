@@ -67,6 +67,7 @@ WorkspaceSurface.propTypes = {
     dragStarted: PropTypes.bool.isRequired
   }).isRequired,
   mainBrick: PropTypes.object.isRequired,
+  mainBrickId: PropTypes.number.isRequired,
   moveElement: PropTypes.func.isRequired,
   stopDrag: PropTypes.func.isRequired,
   unitTests: PropTypes.array.isRequired
