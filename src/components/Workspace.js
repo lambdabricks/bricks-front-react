@@ -10,20 +10,29 @@ const styles = {
 export default class Workspace extends Component {
   render() {
     const {
-      mainBrickId
+      mainBrickId,
+      unitTests
     } = this.props
 
     return (
       <div style={ styles }>
         <h2>Workspace</h2>
-        <WorkspaceSurface
-          mainBrickId={ mainBrickId }
-        />
+        { unitTests.map((unitTest, index) => {
+            return (
+              <WorkspaceSurface
+                key={ index }
+                mainBrickId={ mainBrickId }
+                unitTest={ unitTest }
+              />
+            )
+          })
+        }
       </div>
     )
   }
 }
 
 Workspace.propTypes = {
-  mainBrickId: PropTypes.number.isRequired
+  mainBrickId: PropTypes.number.isRequired,
+  unitTests: PropTypes.array.isRequired
 }

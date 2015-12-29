@@ -5,6 +5,7 @@ import Workspace from '../components/Workspace'
 const mapStateToProps = (state) => {
   return {
     mainBrickId: state.workspace.mainBrickId,
+    unitTests: state.workspace.unitTests
   }
 }
 
