@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 // import WorkspaceActions from './WorkspaceActions'
+
+import SelectedElementDialog from './SelectedElementDialog'
 import WorkspaceSurface from '../containers/WorkspaceSurface'
 
 const styles = {
@@ -11,6 +13,7 @@ export default class Workspace extends Component {
   render() {
     const {
       mainBrickId,
+      selectedElementId,
       unitTests
     } = this.props
 
@@ -26,6 +29,11 @@ export default class Workspace extends Component {
               />
             )
           })
+        }
+        { (() => {
+            if(selectedElementId)
+              return <SelectedElementDialog elementId={ selectedElementId }/>
+          })()
         }
       </div>
     )

@@ -102,6 +102,7 @@ const initialWorkspace = {
   },
   mainBrickId: mainBrickId,
   selectionState: {
+    elementId: 1,
     pipe: {
       input: null,
       output: null
