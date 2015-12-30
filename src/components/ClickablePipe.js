@@ -6,6 +6,7 @@ import Pipe from '../containers/Pipe'
 class ClickablePipe extends Component {
   render() {
     const {
+      handleClick,
       id,
       input,
       output,
@@ -15,7 +16,7 @@ class ClickablePipe extends Component {
 
     return (
       <Group
-        onClick={ () => console.log('click', id) }
+        onClick={ (e) => handleClick(id, e) }
       >
         <Pipe
           input={ input }
@@ -34,6 +35,7 @@ const PipeEndPropTypes = PropTypes.shape({
 })
 
 ClickablePipe.propTypes = {
+  handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   input: PipeEndPropTypes.isRequired,
   output: PipeEndPropTypes.isRequired,

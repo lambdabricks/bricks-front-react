@@ -1,5 +1,5 @@
 import Brick from '../containers/Brick'
-import ClickablePipe from '../components/ClickablePipe'
+import ClickablePipe from '../containers/ClickablePipe'
 import MainBrick from '../containers/MainBrick'
 import Primitive from '../containers/Primitive'
 
