@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react'
-// import WorkspaceActions from './WorkspaceActions'
 
 import SelectedElementDialog from './SelectedElementDialog'
 import WorkspaceSurface from '../containers/WorkspaceSurface'
