@@ -26,7 +26,7 @@ import {
   newBrick,
   newPipe,
   newPrimitive
-} from './workspace/addElementReducer'
+} from './workspace/addRemoveElementReducer'
 
 import {
   addDragStartedToWorkspace,
