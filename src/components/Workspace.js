@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 
+import { PositionPropTypes } from '../propTypes'
 import SelectedElementDialog from './SelectedElementDialog'
 import WorkspaceSurface from '../containers/WorkspaceSurface'
 
@@ -51,7 +52,7 @@ Workspace.propTypes = {
   mainBrickId: PropTypes.number.isRequired,
   selectedElement: PropTypes.shape({
     id: PropTypes.number,
-    mousePosition: PropTypes.object
+    mousePosition: PositionPropTypes
   }).isRequired,
   unitTests: PropTypes.array.isRequired
 }
