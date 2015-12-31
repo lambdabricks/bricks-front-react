@@ -4,9 +4,14 @@ import { PositionPropTypes } from '../propTypes'
 
 const baseStyles = {
   backgroundColor: 'rgba(0, 0, 255, 0.5)',
-  height: '50px',
-  position: 'absolute',
-  width: '50px'
+  padding: 6,
+  position: 'absolute'
+}
+
+const translations = {
+  en: {
+    delete: 'Delete'
+  }
 }
 
 export default class SelectedElementDialog extends Component {
@@ -18,7 +23,9 @@ export default class SelectedElementDialog extends Component {
     })
 
     return (
-      <div style={ styles } />
+      <div style={ styles }>
+        <button>{ translations['en'].delete }</button>
+      </div>
     )
   }
 }
@@ -26,5 +33,4 @@ export default class SelectedElementDialog extends Component {
 SelectedElementDialog.propTypes = {
   elementId: PropTypes.number.isRequired,
   mousePosition: PositionPropTypes.isRequired
-  // element: PropTypes.object.isRequired
 }
