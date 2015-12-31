@@ -12,9 +12,14 @@ export default class Workspace extends Component {
   render() {
     const {
       mainBrickId,
-      selectedElementId,
+      selectedElement,
       unitTests
     } = this.props
+
+    const {
+      id: selectedElementId,
+      mousePosition
+    } = selectedElement
 
     return (
       <div style={ styles }>
@@ -41,5 +46,9 @@ export default class Workspace extends Component {
 
 Workspace.propTypes = {
   mainBrickId: PropTypes.number.isRequired,
+  selectedElement: PropTypes.shape({
+    id: PropTypes.number,
+    mousePosition: PropTypes.object
+  }).isRequired,
   unitTests: PropTypes.array.isRequired
 }
