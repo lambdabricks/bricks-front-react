@@ -3,6 +3,7 @@ import {
   ADD_PIPE,
   ADD_PRIMITIVE,
   MOVE_ELEMENT,
+  REMOVE_ELEMENT,
   REMOVE_SELECTION,
   SELECT_ELEMENT,
   SELECT_SLOT,
@@ -131,6 +132,9 @@ export const workspace = (state = initialWorkspace, action) => {
       return appendToInner(state, newPrimitive(payload))
     case MOVE_ELEMENT:
       return updateElementInWorkspace(state, payload)
+    case REMOVE_ELEMENT:
+      console.log('remove', payload)
+      return state
     case REMOVE_SELECTION:
       return removeSlotSelectionState(state)
     case SELECT_ELEMENT:

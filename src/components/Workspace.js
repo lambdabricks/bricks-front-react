@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 
 import { PositionPropTypes } from '../propTypes'
-import SelectedElementDialog from './SelectedElementDialog'
+import SelectedElementDialog from '../containers/SelectedElementDialog'
 import WorkspaceSurface from '../containers/WorkspaceSurface'
 
 const styles = {

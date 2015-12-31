@@ -1,5 +1,6 @@
 export const ADD_PIPE = 'ADD_PIPE'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
+export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
 export const REMOVE_SELECTION = 'REMOVE_SELECTION'
 export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
@@ -80,6 +81,15 @@ export const selectElement = (elementId, mousePosition) => {
     payload: {
       elementId,
       mousePosition
+    }
+  }
+}
+
+export const removeElement = (elementId) => {
+  return {
+    type: REMOVE_ELEMENT,
+    payload: {
+      elementId
     }
   }
 }

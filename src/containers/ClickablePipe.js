@@ -11,8 +11,6 @@ const mapDispatchToProps = (dispatch) => {
       if(mouseEvent.button != LEFT)
         return
 
-      console.log(elementId, mouseEvent)
-
       dispatch(
         selectElement(
           elementId,

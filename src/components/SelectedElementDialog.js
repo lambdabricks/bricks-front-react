@@ -16,7 +16,12 @@ const translations = {
 
 export default class SelectedElementDialog extends Component {
   render() {
-    const { mousePosition } = this.props
+    const {
+      elementId,
+      handleClick,
+      mousePosition
+    } = this.props
+
     const styles = Object.assign({}, baseStyles, {
       left: mousePosition.x,
       top: mousePosition.y
@@ -24,7 +29,11 @@ export default class SelectedElementDialog extends Component {
 
     return (
       <div style={ styles }>
-        <button>{ translations['en'].delete }</button>
+        <button
+          onClick={ () => handleClick(elementId) }
+        >
+          { translations['en'].delete }
+        </button>
       </div>
     )
   }
@@ -32,5 +41,6 @@ export default class SelectedElementDialog extends Component {
 
 SelectedElementDialog.propTypes = {
   elementId: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
   mousePosition: PositionPropTypes.isRequired
 }
