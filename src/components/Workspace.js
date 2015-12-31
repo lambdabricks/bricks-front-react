@@ -36,7 +36,10 @@ export default class Workspace extends Component {
         }
         { (() => {
             if(selectedElementId)
-              return <SelectedElementDialog elementId={ selectedElementId }/>
+              return <SelectedElementDialog
+                elementId={ selectedElementId }
+                mousePosition={ mousePosition }
+              />
           })()
         }
       </div>
