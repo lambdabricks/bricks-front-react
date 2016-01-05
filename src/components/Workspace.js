@@ -6,7 +6,8 @@ import WorkspaceSurface from '../containers/WorkspaceSurface'
 
 const styles = {
   float: 'left',
-  height: '100%'
+  height: '100%',
+  WebkitUserSelect: 'none'
 }
 
 export default class Workspace extends Component {
