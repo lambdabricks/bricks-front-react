@@ -1,7 +1,7 @@
 export const ADD_PIPE = 'ADD_PIPE'
+export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
-export const REMOVE_SELECTION = 'REMOVE_SELECTION'
 export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
 export const SELECT_ELEMENT = 'SELECT_ELEMENT'
@@ -58,7 +58,7 @@ export const addPipeIfBothSlotsSelected = () => {
 
     if(input !== null && output !== null) {
       dispatch(addPipe())
-      dispatch(removeSelection())
+      dispatch(clearSlotSelection())
     }
   }
 }
@@ -69,9 +69,9 @@ export const addPipe = () => {
   }
 }
 
-export const removeSelection = () => {
+export const clearSlotSelection = () => {
   return {
-    type: REMOVE_SELECTION
+    type: CLEAR_SLOT_SELECTION
   }
 }
 
