@@ -2,6 +2,7 @@ import {
   ADD_BRICK,
   ADD_PIPE,
   ADD_PRIMITIVE,
+  DESELECT_ELEMENT,
   CLEAR_SLOT_SELECTION,
   MOVE_ELEMENT,
   REMOVE_ELEMENT,
@@ -38,6 +39,7 @@ import {
 import {
   addSelectedElementToWorkspace,
   removeSlotSelectionState,
+  removeSelectedElementFromWorkspace,
   updateSlotSelectionStateInWorkspace
 } from './workspace/selectionReducer'
 
@@ -131,6 +133,8 @@ export const workspace = (state = initialWorkspace, action) => {
       return appendToInner(state, newPipe(state))
     case ADD_PRIMITIVE:
       return appendToInner(state, newPrimitive(payload))
+    case DESELECT_ELEMENT:
+      return removeSelectedElementFromWorkspace(state)
     case MOVE_ELEMENT:
       return updateElementInWorkspace(state, payload)
     case REMOVE_ELEMENT:

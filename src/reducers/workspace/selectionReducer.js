@@ -52,3 +52,16 @@ export const addSelectedElementToWorkspace = (state, payload) => {
     }
   })
 }
+
+export const removeSelectedElementFromWorkspace = (state) => {
+  return Object.assign({}, state, {
+    ...state,
+    selectionState: {
+      ...state.selectionState,
+      element: {
+        id: null,
+        mousePosition: null
+      }
+    }
+  })
+}

@@ -1,5 +1,6 @@
 export const ADD_PIPE = 'ADD_PIPE'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
+export const DESELECT_ELEMENT = 'DESELECT_ELEMENT'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
 export const START_DRAG = 'START_DRAG'
@@ -86,10 +87,23 @@ export const selectElement = (elementId, mousePosition) => {
 }
 
 export const removeElement = (elementId) => {
+  return (dispatch, getState) => {
+    dispatch(deselectElement())
+    dispatch(_removeElement(elementId))
+  }
+}
+
+export const _removeElement = (elementId) => {
   return {
     type: REMOVE_ELEMENT,
     payload: {
       elementId
     }
+  }
+}
+
+export const deselectElement = () => {
+  return {
+    type: DESELECT_ELEMENT
   }
 }
