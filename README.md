@@ -28,7 +28,7 @@ an example in the real world is gravity.
 You need npm & browserify installed on your machine.
 
 ```
-$ git clone https://github.com/lambdablocks/blocks-front-react.git
+$ git clone https://github.com/lambdabricks/bricks-front-react.git
 $ cd blocks-front-react
 $ npm install
 $ npm start

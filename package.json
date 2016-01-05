@@ -1,5 +1,5 @@
 {
-  "name": "lambda-blocks",
+  "name": "lambda-bricks",
   "version": "0.1.0",
   "description": "Visual Programming Environment frontend",
   "author": {
@@ -9,7 +9,7 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "github.com/lambdablocks/blocks-front-react"
+    "url": "github.com/lambdabricks/bricks-front-react"
   },
   "browserify": {
     "transform": [

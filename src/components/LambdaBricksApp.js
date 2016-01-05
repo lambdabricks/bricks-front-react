@@ -7,7 +7,7 @@ const styles = {
   height: '100%'
 }
 
-export default class LambdaBlocksApp extends Component {
+export default class LambdaBricksApp extends Component {
   render() {
     return (
       <div style={ styles }>
