@@ -75,3 +75,26 @@ export const newPipe = (workspace) => {
     value: null
   }
 }
+
+export const removeElementInWorkspace = (workspace, payload) => {
+  const { elementId } = payload
+  const { entities, mainBrickId } = workspace
+  const mainBrick = entities[mainBrickId]
+
+  let newEntities = {}
+  for(let key in entities) {
+    if(key != elementId)
+      newEntities[key] = entities[key]
+  }
+
+  return Object.assign({}, workspace, {
+    ...workspace,
+    entities: {
+      ...newEntities,
+      [mainBrickId]: {
+        ...mainBrick,
+        inner: mainBrick.inner.filter((id) => id != elementId)
+      }
+    }
+  })
+}

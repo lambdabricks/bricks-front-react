@@ -25,7 +25,8 @@ import {
   appendToInner,
   newBrick,
   newPipe,
-  newPrimitive
+  newPrimitive,
+  removeElementInWorkspace
 } from './workspace/addRemoveElementReducer'
 
 import {
@@ -133,8 +134,7 @@ export const workspace = (state = initialWorkspace, action) => {
     case MOVE_ELEMENT:
       return updateElementInWorkspace(state, payload)
     case REMOVE_ELEMENT:
-      console.log('remove', payload)
-      return state
+      return removeElementInWorkspace(state, payload)
     case REMOVE_SELECTION:
       return removeSlotSelectionState(state)
     case SELECT_ELEMENT:
