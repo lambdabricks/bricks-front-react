@@ -1,12 +1,12 @@
 import Brick from '../containers/Brick'
-import ClickablePipe from '../containers/ClickablePipe'
+import SelectablePipe from '../containers/SelectablePipe'
 import MainBrick from '../containers/MainBrick'
 import Primitive from '../containers/Primitive'
 
 import {
   BRICK,
   MAIN_BRICK,
-  CLICKABLE_PIPE,
+  SELECTABLE_PIPE,
   PRIMITIVE
 } from './componentsEnum'
 
@@ -16,8 +16,8 @@ export const getComponent = (type) => {
       return Brick
     case MAIN_BRICK:
       return MainBrick
-    case CLICKABLE_PIPE:
-      return ClickablePipe
+    case SELECTABLE_PIPE:
+      return SelectablePipe
     case PRIMITIVE:
       return Primitive
   }

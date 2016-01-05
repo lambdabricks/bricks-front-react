@@ -3,7 +3,7 @@ import { Group } from 'react-art'
 
 import Pipe from '../containers/Pipe'
 
-class ClickablePipe extends Component {
+class SelectablePipe extends Component {
   render() {
     const {
       handleClick,
@@ -34,7 +34,7 @@ const PipeEndPropTypes = PropTypes.shape({
   slotId: PropTypes.number.isRequired
 })
 
-ClickablePipe.propTypes = {
+SelectablePipe.propTypes = {
   handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   input: PipeEndPropTypes.isRequired,
@@ -43,4 +43,4 @@ ClickablePipe.propTypes = {
   type: PropTypes.string
 }
 
-export default ClickablePipe
+export default SelectablePipe

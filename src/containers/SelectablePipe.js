@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import ClickablePipe from '../components/ClickablePipe'
+import SelectablePipe from '../components/SelectablePipe'
 import { selectElement } from '../actions'
 
 const LEFT = 0
@@ -21,4 +21,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(ClickablePipe)
+export default connect(null, mapDispatchToProps)(SelectablePipe)
