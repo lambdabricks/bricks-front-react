@@ -2,10 +2,10 @@ import {
   ADD_BRICK,
   ADD_PIPE,
   ADD_PRIMITIVE,
-  DESELECT_ELEMENT,
   CLEAR_SLOT_SELECTION,
   MOVE_ELEMENT,
   REMOVE_ELEMENT,
+  REMOVE_SELECTED_ELEMENT,
   SELECT_ELEMENT,
   SELECT_SLOT,
   START_DRAG,
@@ -128,12 +128,12 @@ export const workspace = (state = initialWorkspace, action) => {
       return appendToInner(state, newPipe(state))
     case ADD_PRIMITIVE:
       return appendToInner(state, newPrimitive(payload))
-    case DESELECT_ELEMENT:
-      return removeSelectedElementFromWorkspace(state)
     case MOVE_ELEMENT:
       return updateElementInWorkspace(state, payload)
     case REMOVE_ELEMENT:
       return removeElementInWorkspace(state, payload)
+    case REMOVE_SELECTED_ELEMENT:
+      return removeSelectedElementFromWorkspace(state)
     case CLEAR_SLOT_SELECTION:
       return removeSlotSelectionState(state)
     case SELECT_ELEMENT:

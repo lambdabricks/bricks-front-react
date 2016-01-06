@@ -2,9 +2,9 @@ import { isNotEmpty } from '../utils'
 
 export const ADD_PIPE = 'ADD_PIPE'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
-export const DESELECT_ELEMENT = 'DESELECT_ELEMENT'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
+export const REMOVE_SELECTED_ELEMENT = 'REMOVE_SELECTED_ELEMENT'
 export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
 export const SELECT_ELEMENT = 'SELECT_ELEMENT'
@@ -31,7 +31,7 @@ export const selectElementOrStopDrag = (mousePosition) => {
       element.mouseDownPosition.y == mousePosition.y ) {
       dispatch(selectElement(element.id, mousePosition))
     } else {
-      dispatch(deselectElement())
+      dispatch(removeSelectedElement())
     }
   }
 }
@@ -105,7 +105,7 @@ export const selectElement = (elementId, mousePosition) => {
 
 export const removeElement = (elementId) => {
   return (dispatch, getState) => {
-    dispatch(deselectElement())
+    dispatch(removeSelectedElement())
     dispatch(_removeElement(elementId))
   }
 }
@@ -119,8 +119,8 @@ export const _removeElement = (elementId) => {
   }
 }
 
-export const deselectElement = () => {
+export const removeSelectedElement = () => {
   return {
-    type: DESELECT_ELEMENT
+    type: REMOVE_SELECTED_ELEMENT
   }
 }
