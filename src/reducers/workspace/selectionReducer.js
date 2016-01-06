@@ -3,7 +3,7 @@ import * as Utils from '../../utils'
 export const updateSlotSelectionStateInWorkspace = (state, payload) => {
   const { elementId, slotId, type } = payload
   const selectedSlots = Utils.selectedSlots(state)
-  let slotSelectionState = null
+  let slotSelectionState = { }
 
   // Toggle state, only select slot if it is not already selected
   if(!Utils.isSlotSelected(selectedSlots, slotId)) {
