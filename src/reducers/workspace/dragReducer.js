@@ -29,7 +29,11 @@ export const updateElementInWorkspace = (workspace, payload) => {
 }
 
 export const addDragStartedToWorkspace = (workspace, payload) => {
-  let { elementId, elementPosition, mousePosition } = payload
+  const  {
+    elementId,
+    elementPosition,
+    mousePosition
+  } = payload
 
   return setDragStateToWorkspace(
     workspace,
