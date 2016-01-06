@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { moveElement, stopDrag } from '../actions'
+import { moveElement, selectElementOrStopDrag } from '../actions'
 import WorkspaceSurface from '../components/WorkspaceSurface'
 
 const mapStateToProps = (state, ownProps) => {
@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch) => {
     moveElement: (position) => {
       dispatch(moveElement(position))
     },
-    stopDrag: () => {
-      dispatch(stopDrag())
+    selectElementOrStopDrag: (mousePosition) => {
+      dispatch(selectElementOrStopDrag(mousePosition))
     }
   }
 }

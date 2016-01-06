@@ -21,6 +21,21 @@ export const startDrag = (elementId, mousePosition, elementPosition) => {
   }
 }
 
+export const selectElementOrStopDrag = (mousePosition) => {
+  return (dispatch, getState) => {
+    const { element } = getState().workspace.selectionState
+
+    dispatch(stopDrag())
+
+    if(element.mouseDownPosition.x == mousePosition.x &&
+      element.mouseDownPosition.y == mousePosition.y ) {
+      dispatch(selectElement(element.id, mousePosition))
+    } else {
+      dispatch(deselectElement())
+    }
+  }
+}
+
 export const stopDrag = () => {
   return {
     type: STOP_DRAG

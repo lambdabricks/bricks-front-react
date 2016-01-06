@@ -19,7 +19,7 @@ class WorkspaceSurface extends Component {
       dragStarted,
       mainBrick,
       moveElement,
-      stopDrag,
+      selectElementOrStopDrag,
       unitTest
     } = this.props
     const { width } = WorkspaceSurface._constants
@@ -29,7 +29,9 @@ class WorkspaceSurface extends Component {
       handleMouseMove = (e) => {
         moveElement({ x: e.clientX, y: e.clientY })
       }
-      handleMouseUp = stopDrag
+      handleMouseUp = (e) => {
+        selectElementOrStopDrag({ x: e.clientX, y: e.clientY })
+      }
     }
     else {
       handleMouseMove = () => {}
@@ -61,7 +63,7 @@ WorkspaceSurface.propTypes = {
   dragStarted: PropTypes.bool.isRequired,
   mainBrick: PropTypes.object.isRequired,
   moveElement: PropTypes.func.isRequired,
-  stopDrag: PropTypes.func.isRequired,
+  selectElementOrStopDrag: PropTypes.func.isRequired,
   unitTest: PropTypes.array.isRequired
 }
 
