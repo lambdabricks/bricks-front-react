@@ -31,8 +31,8 @@ export const removeSlotSelectionState = (state) => {
     selectionState: {
       ...state.selectionState,
       pipe: {
-        input: null,
-        output: null
+        input: { },
+        output: { }
       }
     }
   })

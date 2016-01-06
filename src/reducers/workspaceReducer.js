@@ -108,8 +108,8 @@ const initialWorkspace = {
     dragStarted: false,
     element: { },
     pipe: {
-      input: null,
-      output: null
+      input: { },
+      output: { }
     }
   },
   unitTests: [

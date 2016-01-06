@@ -1,3 +1,5 @@
+import { isNotEmpty } from '../utils'
+
 export const ADD_PIPE = 'ADD_PIPE'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
 export const DESELECT_ELEMENT = 'DESELECT_ELEMENT'
@@ -57,7 +59,7 @@ export const addPipeIfBothSlotsSelected = () => {
   return (dispatch, getState) => {
     const { input, output } = getState().workspace.selectionState.pipe
 
-    if(input !== null && output !== null) {
+    if(isNotEmpty(input) && isNotEmpty(output)) {
       dispatch(addPipe())
       dispatch(clearSlotSelection())
     }

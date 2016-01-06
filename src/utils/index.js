@@ -7,9 +7,9 @@ import {
 
 export const selectedSlots = (workspace) => {
   const { input, output } = workspace.selectionState.pipe
-  let selectedSlots = [input && input.slotId, output && output.slotId]
+  const selectedSlots = [input.slotId, output.slotId]
 
-  return selectedSlots.filter(element => element !== null)
+  return selectedSlots.filter(element => element)
 }
 
 export const isSlotSelected = (selectedSlots, slotId) => {
