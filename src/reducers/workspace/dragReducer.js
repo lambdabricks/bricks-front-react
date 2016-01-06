@@ -6,22 +6,18 @@ export const updateElementInWorkspace = (workspace, payload) => {
   }
 
   const { currentMousePosition } = payload
-  const {
-    elementId,
-    startElementPosition,
-    startMousePosition
-  } = selectionState
-  const element = workspace.entities[elementId]
+  const { element } = selectionState
+  const originalElement = workspace.entities[element.id]
 
   return Object.assign({}, workspace, {
     ...workspace,
     entities: {
       ...workspace.entities,
-      [elementId]: {
-        ...element,
+      [element.id]: {
+        ...originalElement,
         position: {
-          x: startElementPosition.x + currentMousePosition.x - startMousePosition.x,
-          y: startElementPosition.y + currentMousePosition.y - startMousePosition.y,
+          x: element.startPosition.x + currentMousePosition.x - element.mouseDownPosition.x,
+          y: element.startPosition.y + currentMousePosition.y - element.mouseDownPosition.y,
         }
       }
     }
@@ -39,9 +35,11 @@ export const addDragStartedToWorkspace = (workspace, payload) => {
     workspace,
     {
       dragStarted: true,
-      elementId: elementId,
-      startElementPosition: elementPosition,
-      startMousePosition: mousePosition
+      element: {
+        id: elementId,
+        mouseDownPosition: mousePosition,
+        startPosition: elementPosition
+      }
     }
   )
 }
