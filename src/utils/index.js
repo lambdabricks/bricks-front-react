@@ -96,3 +96,7 @@ export const innerInputSlotPosition = (size) => {
     y: size.height
   }
 }
+
+export const isNotEmpty = (object) => {
+  return Object.keys(object).length > 0
+}

@@ -58,10 +58,7 @@ export const removeSelectedElementFromWorkspace = (state) => {
     ...state,
     selectionState: {
       ...state.selectionState,
-      element: {
-        id: null,
-        mousePosition: null
-      }
+      element: { }
     }
   })
 }

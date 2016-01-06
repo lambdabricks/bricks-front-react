@@ -17,8 +17,8 @@ const translations = {
 export default class SelectedElementDialog extends Component {
   render() {
     const {
-      elementId,
       handleClick,
+      id,
       mousePosition
     } = this.props
 
@@ -30,7 +30,7 @@ export default class SelectedElementDialog extends Component {
     return (
       <div style={ styles }>
         <button
-          onClick={ () => handleClick(elementId) }
+          onClick={ () => handleClick(id) }
         >
           { translations['en'].delete }
         </button>
@@ -40,7 +40,7 @@ export default class SelectedElementDialog extends Component {
 }
 
 SelectedElementDialog.propTypes = {
-  elementId: PropTypes.number.isRequired,
   handleClick: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
   mousePosition: PositionPropTypes.isRequired
 }

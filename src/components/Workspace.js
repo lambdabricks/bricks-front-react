@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 
+import { isNotEmpty } from '../utils'
 import { PositionPropTypes } from '../propTypes'
 import SelectedElementDialog from '../containers/SelectedElementDialog'
 import WorkspaceSurface from '../containers/WorkspaceSurface'
@@ -18,11 +19,6 @@ export default class Workspace extends Component {
       unitTests
     } = this.props
 
-    const {
-      id: selectedElementId,
-      mousePosition
-    } = selectedElement
-
     return (
       <div style={ styles }>
         <h2>Workspace</h2>
@@ -37,11 +33,8 @@ export default class Workspace extends Component {
           })
         }
         { (() => {
-            if(selectedElementId)
-              return <SelectedElementDialog
-                elementId={ selectedElementId }
-                mousePosition={ mousePosition }
-              />
+            if(isNotEmpty(selectedElement))
+              return <SelectedElementDialog { ...selectedElement } />
           })()
         }
       </div>
@@ -51,9 +44,6 @@ export default class Workspace extends Component {
 
 Workspace.propTypes = {
   mainBrickId: PropTypes.number.isRequired,
-  selectedElement: PropTypes.shape({
-    id: PropTypes.number,
-    mousePosition: PositionPropTypes
-  }).isRequired,
+  selectedElement: PropTypes.object.isRequired,
   unitTests: PropTypes.array.isRequired
 }
