@@ -4,12 +4,13 @@ import { moveElement, stopDrag } from '../actions'
 import WorkspaceSurface from '../components/WorkspaceSurface'
 
 const mapStateToProps = (state, ownProps) => {
-  const mainBrickId = ownProps.mainBrickId
+  const { entities, selectionState, unitTests } = state.workspace
+  const { mainBrickId } = ownProps
 
   return {
-    mainBrick: state.workspace.entities[mainBrickId],
-    dragState: state.workspace.dragState,
-    unitTests: state.workspace.unitTests
+    dragStarted: selectionState.dragStarted,
+    mainBrick: entities[mainBrickId],
+    unitTests
   }
 }
 

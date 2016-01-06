@@ -16,7 +16,7 @@ const surfaceStyles = {
 class WorkspaceSurface extends Component {
   render() {
     const {
-      dragState,
+      dragStarted,
       mainBrick,
       moveElement,
       stopDrag,
@@ -25,7 +25,7 @@ class WorkspaceSurface extends Component {
     const { width } = WorkspaceSurface._constants
     let handleMouseMove, handleMouseUp
 
-    if(dragState.dragStarted) {
+    if(dragStarted) {
       handleMouseMove = (e) => {
         moveElement({ x: e.clientX, y: e.clientY })
       }
@@ -58,9 +58,7 @@ class WorkspaceSurface extends Component {
 }
 
 WorkspaceSurface.propTypes = {
-  dragState: PropTypes.shape({
-    dragStarted: PropTypes.bool.isRequired
-  }).isRequired,
+  dragStarted: PropTypes.bool.isRequired,
   mainBrick: PropTypes.object.isRequired,
   mainBrickId: PropTypes.number.isRequired,
   moveElement: PropTypes.func.isRequired,

@@ -72,9 +72,6 @@ const testInputPositions = mainBrick.inputSlots.map((inputSlot) => {
 
 const initialWorkspace = {
   actions: [],
-  dragState: {
-    dragStarted: false
-  },
   entities: {
     [mainBrickId]: mainBrick,
     [firstInputId]: {
@@ -108,6 +105,7 @@ const initialWorkspace = {
   },
   mainBrickId: mainBrickId,
   selectionState: {
+    dragStarted: false,
     element: { },
     pipe: {
       input: null,
