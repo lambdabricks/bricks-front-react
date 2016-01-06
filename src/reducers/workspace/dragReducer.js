@@ -48,7 +48,8 @@ export const addDragStoppedToWorkspace = (workspace, payload) => {
   return setDragStateToWorkspace(
     workspace,
     {
-      dragStarted: false
+      dragStarted: false,
+      element: { }
     }
   )
 }
