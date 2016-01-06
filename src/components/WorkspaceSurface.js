@@ -60,7 +60,6 @@ class WorkspaceSurface extends Component {
 WorkspaceSurface.propTypes = {
   dragStarted: PropTypes.bool.isRequired,
   mainBrick: PropTypes.object.isRequired,
-  mainBrickId: PropTypes.number.isRequired,
   moveElement: PropTypes.func.isRequired,
   stopDrag: PropTypes.func.isRequired,
   unitTest: PropTypes.array.isRequired
