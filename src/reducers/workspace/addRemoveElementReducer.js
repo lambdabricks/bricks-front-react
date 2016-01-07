@@ -83,8 +83,11 @@ export const removeElementInWorkspace = (workspace, payload) => {
 
   let newEntities = {}
   for(let key in entities) {
-    if(key != elementId)
-      newEntities[key] = entities[key]
+    const element = entities[key]
+
+    // Skip if key is the elementId or is a pipe connected to this elementId
+    if(!(key == elementId || pipeConnectedToElement(element, elementId)))
+      newEntities[key] = element
   }
 
   return Object.assign({}, workspace, {
@@ -93,8 +96,16 @@ export const removeElementInWorkspace = (workspace, payload) => {
       ...newEntities,
       [mainBrickId]: {
         ...mainBrick,
-        inner: mainBrick.inner.filter((id) => id != elementId)
+        // Remove from mainBrick.inner all the entities removed by
+        // the loop above
+        inner: mainBrick.inner.filter((id) => newEntities[id])
       }
     }
   })
+}
+
+const pipeConnectedToElement = (element, elementId) => {
+  return element.Component == SELECTABLE_PIPE &&
+    (element.input.elementId == elementId ||
+     element.output.elementId == elementId)
 }
