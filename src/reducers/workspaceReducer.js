@@ -71,7 +71,6 @@ const testInputPositions = mainBrick.inputSlots.map((inputSlot) => {
 })
 
 const initialWorkspace = {
-  actions: [],
   entities: {
     [mainBrickId]: mainBrick,
     [firstInputId]: {
