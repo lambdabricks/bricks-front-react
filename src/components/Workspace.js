@@ -32,10 +32,8 @@ export default class Workspace extends Component {
             )
           })
         }
-        { (() => {
-            if(isNotEmpty(selectedElement))
-              return <SelectedElementDialog { ...selectedElement } />
-          })()
+        { isNotEmpty(selectedElement) &&
+          <SelectedElementDialog { ...selectedElement } />
         }
       </div>
     )
