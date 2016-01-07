@@ -31,7 +31,7 @@ class MainBrick extends Component {
           fill={ Brick.fillColor }
         />
         { inner.map((element) => {
-            const ReactComponent = getComponent(element.Component)
+            const ReactComponent = getComponent(element.componentName)
 
             return (
               <ReactComponent
@@ -50,7 +50,7 @@ MainBrick.propTypes = {
   id: PropTypes.number.isRequired,
   inner: PropTypes.arrayOf(
     PropTypes.shape({
-      Component: PropTypes.string.isRequired,
+      componentName: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       name: PropTypes.string,
       position: PositionPropTypes,

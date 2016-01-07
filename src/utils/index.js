@@ -19,7 +19,7 @@ export const isSlotSelected = (selectedSlots, slotId) => {
 export const inputSlotPosition = (element, slotId) => {
   const { position, size } = element
 
-  switch(element.Component) {
+  switch(element.componentName) {
     case BRICK:
       const { outputSlots } = element
 
@@ -47,7 +47,7 @@ export const inputSlotPosition = (element, slotId) => {
 export const outputSlotPosition = (element, slotId) => {
   const { position, size } = element
 
-  switch(element.Component) {
+  switch(element.componentName) {
     case BRICK:
       const { inputSlots } = element
       return {

@@ -52,7 +52,7 @@ const thirdInputId = nextId()
 const fourthInputId = nextId()
 
 const mainBrick = {
-  Component: MAIN_BRICK,
+  componentName: MAIN_BRICK,
   id: mainBrickId,
   inner: [],
   inputSlots:[

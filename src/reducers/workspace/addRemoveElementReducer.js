@@ -39,7 +39,7 @@ export const newBrick = (brick) => {
     inputSlots.push({ id: nextId() })
 
   return {
-    Component: BRICK,
+    componentName: BRICK,
     id: nextId(),
     inputSlots,
     name,
@@ -53,7 +53,7 @@ export const newBrick = (brick) => {
 
 export const newPrimitive = (type) => {
   return {
-    Component: PRIMITIVE,
+    componentName: PRIMITIVE,
     id: nextId(),
     position: PrimitiveDefaults.defaultPosition,
     size: PrimitiveDefaults.defaultSize,
@@ -67,7 +67,7 @@ export const newPipe = (workspace) => {
   const { input, output } = workspace.selectionState.pipe
 
   return {
-    Component: SELECTABLE_PIPE,
+    componentName: SELECTABLE_PIPE,
     id: nextId(),
     input,
     type: null,
@@ -105,7 +105,7 @@ export const removeElementInWorkspace = (workspace, payload) => {
 }
 
 const pipeConnectedToElement = (element, elementId) => {
-  return element.Component == SELECTABLE_PIPE &&
+  return element.componentName == SELECTABLE_PIPE &&
     (element.input.elementId == elementId ||
      element.output.elementId == elementId)
 }
