@@ -31,14 +31,16 @@ class MainBrick extends Component {
           fill={ Brick.fillColor }
         />
         { inner.map((element) => {
-            const ReactComponent = getComponent(element.componentName)
+            if(element) {
+              const ReactComponent = getComponent(element.componentName)
 
-            return (
-              <ReactComponent
-                key={ element.id }
-                { ...element }
-              />
-            )
+              return (
+                <ReactComponent
+                  key={ element.id }
+                  { ...element }
+                />
+              )
+            }
           })
         }
       </Group>
