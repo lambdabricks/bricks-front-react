@@ -7,7 +7,7 @@ import {
   BRICK,
   SELECTABLE_PIPE,
   PRIMITIVE
-} from '../../utils/componentsEnum'
+} from '../../utils/componentNames'
 
 import { nextId } from './workspaceReducerUtils'
 

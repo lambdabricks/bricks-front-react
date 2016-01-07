@@ -3,7 +3,7 @@ import {
   BRICK,
   MAIN_BRICK,
   PRIMITIVE
-} from './componentsEnum'
+} from './componentNames'
 
 export const selectedSlots = (workspace) => {
   const { input, output } = workspace.selectionState.pipe

@@ -20,7 +20,7 @@ import {
 import MainBrick from '../containers/MainBrick'
 
 import { inputSlotPosition } from '../utils'
-import { MAIN_BRICK } from '../utils/componentsEnum'
+import { MAIN_BRICK } from '../utils/componentNames'
 
 import {
   appendToInner,

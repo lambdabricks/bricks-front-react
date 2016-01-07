@@ -8,7 +8,7 @@ import {
   MAIN_BRICK,
   SELECTABLE_PIPE,
   PRIMITIVE
-} from './componentsEnum'
+} from './componentNames'
 
 export const getComponent = (type) => {
   switch (type) {
