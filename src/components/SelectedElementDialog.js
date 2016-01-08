@@ -1,5 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 
+import {
+  MAIN_BRICK
+} from '../utils/componentNames'
+
 import { PositionPropTypes } from '../propTypes'
 
 const baseStyles = {
@@ -15,10 +19,37 @@ const translations = {
 }
 
 export default class SelectedElementDialog extends Component {
+  constructor(props) {
+    super(props)
+
+    this.renderElementDetails = this.renderElementDetails.bind(this)
+  }
+
+  renderElementDetails() {
+    const {
+      componentName,
+      handleClick,
+      id
+    } = this.props
+
+    switch (componentName) {
+      case MAIN_BRICK:
+        return (
+          <p>Main Brick</p>
+        )
+      default:
+        return (
+          <button
+            onClick={ () => handleClick(id) }
+          >
+            { translations['en'].delete }
+          </button>
+        )
+    }
+  }
+
   render() {
     const {
-      handleClick,
-      id,
       mousePosition
     } = this.props
 
@@ -29,17 +60,14 @@ export default class SelectedElementDialog extends Component {
 
     return (
       <div style={ styles }>
-        <button
-          onClick={ () => handleClick(id) }
-        >
-          { translations['en'].delete }
-        </button>
+        { this.renderElementDetails() }
       </div>
     )
   }
 }
 
 SelectedElementDialog.propTypes = {
+  componentName: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   mousePosition: PositionPropTypes.isRequired

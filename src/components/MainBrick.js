@@ -10,7 +10,13 @@ import TestInput from './TestInput'
 
 class MainBrick extends Component {
   render() {
-    const { inner, size, unitTest } = this.props
+    const {
+      handleClick,
+      id,
+      inner,
+      size,
+      unitTest
+    } = this.props
     const { Brick, Slot } = MainBrick._constants
 
     return (
@@ -29,6 +35,7 @@ class MainBrick extends Component {
           width={ size.width }
           stroke={ Brick.strokeColor }
           fill={ Brick.fillColor }
+          onClick={ (e) => handleClick(id, e) }
         />
         { inner.map((element) => {
             if(element) {
@@ -49,6 +56,7 @@ class MainBrick extends Component {
 }
 
 MainBrick.propTypes = {
+  handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   inner: PropTypes.arrayOf(
     PropTypes.shape({
