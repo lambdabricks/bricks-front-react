@@ -9,7 +9,10 @@ import {
   PRIMITIVE
 } from '../../utils/componentNames'
 
-import { nextId } from './workspaceReducerUtils'
+import {
+  newUnitTest,
+  nextId
+} from './workspaceReducerUtils'
 
 export const appendToInner = (workspace, element) => {
   const mainBrickId = workspace.mainBrickId
@@ -108,4 +111,21 @@ const pipeConnectedToElement = (element, elementId) => {
   return element.componentName == SELECTABLE_PIPE &&
     (element.input.elementId == elementId ||
      element.output.elementId == elementId)
+}
+
+export const addUnitTestToWorkspace = (workspace) => {
+  const { mainBrickId } = workspace
+  const testInputs = newUnitTest(workspace.entities[mainBrickId])
+
+  return Object.assign({}, workspace, {
+    ...workspace,
+    entities: {
+      ...workspace.entities,
+      ...testInputs
+    },
+    unitTests: [
+      ...workspace.unitTests,
+      Object.keys(testInputs)
+    ]
+  })
 }

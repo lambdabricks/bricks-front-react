@@ -23,6 +23,7 @@ import MainBrick from '../containers/MainBrick'
 import { MAIN_BRICK } from '../utils/componentNames'
 
 import {
+  addUnitTestToWorkspace,
   appendToInner,
   newBrick,
   newPipe,
@@ -97,8 +98,7 @@ export const workspace = (state = initialWorkspace, action) => {
     case ADD_PRIMITIVE:
       return appendToInner(state, newPrimitive(payload))
     case ADD_UNIT_TEST:
-      console.log('unit test')
-      return state
+      return addUnitTestToWorkspace(state)
     case CLEAR_SLOT_SELECTION:
       return removeSlotSelectionState(state)
     case MOVE_ELEMENT:
