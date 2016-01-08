@@ -13,15 +13,6 @@ import {
   STOP_DRAG,
 } from '../actions'
 
-// TODO: Read constants from MainBrick component
-import {
-  MainBrick as MainBrickConstants,
-  TestInput as TestInputConstants
-} from '../components/constants'
-import MainBrick from '../containers/MainBrick'
-
-import { MAIN_BRICK } from '../utils/componentNames'
-
 import {
   addUnitTestToWorkspace,
   appendToInner,
@@ -46,46 +37,11 @@ import {
 
 import {
   newUnitTest,
+  newWorkspace,
   nextId
 } from './workspace/workspaceReducerUtils'
 
-const mainBrickId = nextId()
-
-const mainBrick = {
-  componentName: MAIN_BRICK,
-  id: mainBrickId,
-  inner: [],
-  inputSlots:[
-    { id: nextId() },
-    { id: nextId() }
-  ],
-  outputSlots: [
-    { id: nextId() }
-  ],
-  position: MainBrickConstants.defaultPosition,
-  size: MainBrickConstants.defaultSize
-}
-
-const testInputs = newUnitTest(mainBrick)
-
-const initialWorkspace = {
-  entities: {
-    [mainBrickId]: mainBrick,
-    ...testInputs
-  },
-  mainBrickId: mainBrickId,
-  selectionState: {
-    dragStarted: false,
-    element: { },
-    pipe: {
-      input: { },
-      output: { }
-    }
-  },
-  unitTests: [
-    Object.keys(testInputs)
-  ]
-}
+const initialWorkspace = newWorkspace()
 
 export const workspace = (state = initialWorkspace, action) => {
   const { payload, type } = action
