@@ -2,6 +2,7 @@ import {
   ADD_BRICK,
   ADD_PIPE,
   ADD_PRIMITIVE,
+  ADD_UNIT_TEST,
   CLEAR_SLOT_SELECTION,
   MOVE_ELEMENT,
   REMOVE_ELEMENT,
@@ -127,6 +128,9 @@ export const workspace = (state = initialWorkspace, action) => {
       return appendToInner(state, newPipe(state))
     case ADD_PRIMITIVE:
       return appendToInner(state, newPrimitive(payload))
+    case ADD_UNIT_TEST:
+      console.log('unit test')
+      return state
     case CLEAR_SLOT_SELECTION:
       return removeSlotSelectionState(state)
     case MOVE_ELEMENT:

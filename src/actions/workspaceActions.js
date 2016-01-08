@@ -1,6 +1,7 @@
 import { isNotEmpty } from '../utils'
 
 export const ADD_PIPE = 'ADD_PIPE'
+export const ADD_UNIT_TEST = 'ADD_UNIT_TEST'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
@@ -122,5 +123,18 @@ export const _removeElement = (elementId) => {
 export const removeSelectedElement = () => {
   return {
     type: REMOVE_SELECTED_ELEMENT
+  }
+}
+
+export const addUnitTest = () => {
+  return (dispatch, getState) => {
+    dispatch(removeSelectedElement())
+    dispatch(_addUnitTest())
+  }
+}
+
+const _addUnitTest = () => {
+  return {
+    type: ADD_UNIT_TEST
   }
 }

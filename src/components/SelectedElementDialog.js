@@ -14,6 +14,7 @@ const baseStyles = {
 
 const translations = {
   en: {
+    addUnitTest: 'Add unit test',
     delete: 'Delete'
   }
 }
@@ -26,18 +27,27 @@ export default class SelectedElementDialog extends Component {
   }
 
   renderElementDetails() {
-    const {
-      componentName,
-      deleteElement,
-      id
-    } = this.props
+    const { componentName } = this.props
 
     switch (componentName) {
       case MAIN_BRICK:
+        const {
+          addUnitTest
+        } = this.props
+
         return (
-          <p>Main Brick</p>
+          <button
+            onClick={ addUnitTest }
+          >
+            { translations['en'].addUnitTest }
+          </button>
         )
       default:
+        const {
+          deleteElement,
+          id
+        } = this.props
+
         return (
           <button
             onClick={ () => deleteElement(id) }
@@ -67,6 +77,7 @@ export default class SelectedElementDialog extends Component {
 }
 
 SelectedElementDialog.propTypes = {
+  addUnitTest: PropTypes.func.isRequired,
   componentName: PropTypes.string.isRequired,
   deleteElement: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
