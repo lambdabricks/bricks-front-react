@@ -20,7 +20,6 @@ import {
 } from '../components/constants'
 import MainBrick from '../containers/MainBrick'
 
-import { inputSlotPosition } from '../utils'
 import { MAIN_BRICK } from '../utils/componentNames'
 
 import {
@@ -44,13 +43,12 @@ import {
   updateSlotSelectionStateInWorkspace
 } from './workspace/selectionReducer'
 
-import { nextId } from './workspace/workspaceReducerUtils'
+import {
+  newUnitTest,
+  nextId
+} from './workspace/workspaceReducerUtils'
 
 const mainBrickId = nextId()
-const firstInputId = nextId()
-const secondInputId = nextId()
-const thirdInputId = nextId()
-const fourthInputId = nextId()
 
 const mainBrick = {
   componentName: MAIN_BRICK,
@@ -67,41 +65,12 @@ const mainBrick = {
   size: MainBrickConstants.defaultSize
 }
 
-const testInputPositions = mainBrick.inputSlots.map((inputSlot) => {
-  return inputSlotPosition(mainBrick, inputSlot.id)
-})
+const testInputs = newUnitTest(mainBrick)
 
 const initialWorkspace = {
   entities: {
     [mainBrickId]: mainBrick,
-    [firstInputId]: {
-      id: firstInputId,
-      slotPosition: testInputPositions[0],
-      size: TestInputConstants.defaultSize,
-      type: 'string',
-      value: null
-    },
-    [secondInputId]: {
-      id: secondInputId,
-      slotPosition: testInputPositions[1],
-      size: TestInputConstants.defaultSize,
-      type: null,
-      value: null
-    },
-    [thirdInputId]: {
-      id: thirdInputId,
-      slotPosition: testInputPositions[0],
-      size: TestInputConstants.defaultSize,
-      type: null,
-      value: null
-    },
-    [fourthInputId]: {
-      id: fourthInputId,
-      slotPosition: testInputPositions[1],
-      size: TestInputConstants.defaultSize,
-      type: 'number',
-      value: null
-    }
+    ...testInputs
   },
   mainBrickId: mainBrickId,
   selectionState: {
@@ -113,8 +82,7 @@ const initialWorkspace = {
     }
   },
   unitTests: [
-    [firstInputId, secondInputId],
-    // [thirdInputId, fourthInputId]
+    Object.keys(testInputs)
   ]
 }
 
