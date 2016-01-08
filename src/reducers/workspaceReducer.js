@@ -14,11 +14,10 @@ import {
 } from '../actions'
 
 import {
+  addBrickToWorkspace,
+  addPipeToWorkspace,
+  addPrimitiveToWorkspace,
   addUnitTestToWorkspace,
-  appendToInner,
-  newBrick,
-  newPipe,
-  newPrimitive,
   removeElementInWorkspace
 } from './workspace/addRemoveElementReducer'
 
@@ -36,9 +35,7 @@ import {
 } from './workspace/selectionReducer'
 
 import {
-  newUnitTest,
-  newWorkspace,
-  nextId
+  newWorkspace
 } from './workspace/workspaceReducerUtils'
 
 const initialWorkspace = newWorkspace()
@@ -48,11 +45,11 @@ export const workspace = (state = initialWorkspace, action) => {
 
   switch (type) {
     case ADD_BRICK:
-      return appendToInner(state, newBrick(payload))
+      return addBrickToWorkspace(state, payload)
     case ADD_PIPE:
-      return appendToInner(state, newPipe(state))
+      return addPipeToWorkspace(state)
     case ADD_PRIMITIVE:
-      return appendToInner(state, newPrimitive(payload))
+      return addPrimitiveToWorkspace(state, payload)
     case ADD_UNIT_TEST:
       return addUnitTestToWorkspace(state)
     case CLEAR_SLOT_SELECTION:
