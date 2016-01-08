@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleClick: (elementId) => {
+    deleteElement: (elementId) => {
       dispatch(
         removeElement(elementId)
       )
