@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
+
 import Module from './Module'
+import { PrimitivePropTypes } from '../propTypes'
 
 const styles = {
   float: 'left',
@@ -84,13 +86,7 @@ Library.propTypes = {
         functions: PropTypes.array.isRequired
       })
     ),
-    primitives: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        label: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired
-      })
-    )
+    primitives: PropTypes.arrayOf(PrimitivePropTypes)
   }).isRequired,
   onFunctionClick: PropTypes.func.isRequired,
   onPrimitiveClick: PropTypes.func.isRequired

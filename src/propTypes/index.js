@@ -5,6 +5,12 @@ export const PositionPropTypes = PropTypes.shape({
   y: PropTypes.number.isRequired
 })
 
+export const PrimitivePropTypes = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
+})
+
 export const SizePropTypes = PropTypes.shape({
   height: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired
