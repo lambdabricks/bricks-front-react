@@ -9,8 +9,9 @@ import { inputSlotPosition } from '../../utils'
 import {
   BRICK,
   MAIN_BRICK,
+  PRIMITIVE,
   SELECTABLE_PIPE,
-  PRIMITIVE
+  TEST_INPUT
 } from '../../utils/componentNames'
 
 let id = 1
@@ -86,6 +87,7 @@ export const newUnitTest = (mainBrick) => {
     const testInputId = nextId()
 
     testInputs[testInputId] = {
+      componentName: TEST_INPUT,
       id: testInputId,
       slotPosition: inputSlotPosition(mainBrick, inputSlot.id),
       size: TestInputConstants.defaultSize,
