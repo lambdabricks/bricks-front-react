@@ -1,10 +1,14 @@
 import React, { PropTypes, Component } from 'react'
 
 import {
-  MAIN_BRICK
+  MAIN_BRICK,
+  TEST_INPUT
 } from '../utils/componentNames'
 
-import { PositionPropTypes } from '../propTypes'
+import {
+  PositionPropTypes,
+  PrimitivePropTypes
+} from '../propTypes'
 
 const baseStyles = {
   backgroundColor: 'rgba(0, 0, 255, 0.5)',
@@ -41,6 +45,24 @@ export default class SelectedElementDialog extends Component {
           >
             { translations['en'].addUnitTest }
           </button>
+        )
+      case TEST_INPUT:
+        const {
+          primitives,
+          type
+        } = this.props
+
+        return (
+          <select defaultValue={ type }>
+            { primitives.map((primitive) =>
+                <option
+                  key={ primitive.id }
+                  value={ primitive.type }
+                >
+                  { primitive.label }
+                </option>
+            ) }
+          </select>
         )
       default:
         const {
@@ -81,5 +103,6 @@ SelectedElementDialog.propTypes = {
   componentName: PropTypes.string.isRequired,
   deleteElement: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  mousePosition: PositionPropTypes.isRequired
+  mousePosition: PositionPropTypes.isRequired,
+  primitives: PropTypes.arrayOf(PrimitivePropTypes).isRequired
 }

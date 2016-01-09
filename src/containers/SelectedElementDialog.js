@@ -6,9 +6,11 @@ import SelectedElementDialog from '../components/SelectedElementDialog'
 const mapStateToProps = (state, ownProps) => {
   const { entities } = state.workspace
   const { id } = ownProps
+  const { primitives } = state.library.items
 
   return {
-    ...entities[id]
+    ...entities[id],
+    primitives
   }
 }
 
