@@ -63,7 +63,7 @@ export default class SelectedElementDialog extends Component {
           >
             { /* TestInput 'type' will be 'null' by default */ }
             <option
-              disabled={ true }
+              disabled
               value="null"
             >
               None
