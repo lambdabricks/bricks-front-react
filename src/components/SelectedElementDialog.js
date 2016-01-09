@@ -31,7 +31,10 @@ export default class SelectedElementDialog extends Component {
   }
 
   renderElementDetails() {
-    const { componentName } = this.props
+    const {
+      componentName,
+      id
+    } = this.props
 
     switch (componentName) {
       case MAIN_BRICK:
@@ -48,12 +51,17 @@ export default class SelectedElementDialog extends Component {
         )
       case TEST_INPUT:
         const {
+          changePrimitiveType,
           primitives,
           type
         } = this.props
 
         return (
-          <select defaultValue={ type }>
+          <select
+            value={ type }
+            onChange={ (e) => changePrimitiveType(id, e) }
+          >
+            <option value="null">None</option>
             { primitives.map((primitive) =>
                 <option
                   key={ primitive.id }
@@ -66,8 +74,7 @@ export default class SelectedElementDialog extends Component {
         )
       default:
         const {
-          deleteElement,
-          id
+          deleteElement
         } = this.props
 
         return (
@@ -100,6 +107,7 @@ export default class SelectedElementDialog extends Component {
 
 SelectedElementDialog.propTypes = {
   addUnitTest: PropTypes.func.isRequired,
+  changePrimitiveType: PropTypes.func.isRequired,
   componentName: PropTypes.string.isRequired,
   deleteElement: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,

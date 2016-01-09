@@ -3,6 +3,7 @@ import {
   ADD_PIPE,
   ADD_PRIMITIVE,
   ADD_UNIT_TEST,
+  CHANGE_PRIMITIVE_TYPE,
   CLEAR_SLOT_SELECTION,
   MOVE_ELEMENT,
   REMOVE_ELEMENT,
@@ -35,6 +36,10 @@ import {
 } from './workspace/selectionReducer'
 
 import {
+  changePrimitiveType
+} from './workspace/updateElementReducer'
+
+import {
   newWorkspace
 } from './workspace/workspaceReducerUtils'
 
@@ -52,6 +57,8 @@ export const workspace = (state = initialWorkspace, action) => {
       return addPrimitiveToWorkspace(state, payload)
     case ADD_UNIT_TEST:
       return addUnitTestToWorkspace(state)
+    case CHANGE_PRIMITIVE_TYPE:
+      return changePrimitiveType(state, payload)
     case CLEAR_SLOT_SELECTION:
       return removeSlotSelectionState(state)
     case MOVE_ELEMENT:

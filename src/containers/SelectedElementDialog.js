@@ -1,6 +1,10 @@
 import { connect } from 'react-redux'
 
-import { addUnitTest, removeElement } from '../actions'
+import {
+  addUnitTest,
+  changePrimitiveType,
+  removeElement
+} from '../actions'
 import SelectedElementDialog from '../components/SelectedElementDialog'
 
 const mapStateToProps = (state, ownProps) => {
@@ -24,6 +28,11 @@ const mapDispatchToProps = (dispatch) => {
     deleteElement: (elementId) => {
       dispatch(
         removeElement(elementId)
+      )
+    },
+    changePrimitiveType: (elementId, changeEvent) => {
+      dispatch(
+        changePrimitiveType(elementId, changeEvent.target.value)
       )
     }
   }
