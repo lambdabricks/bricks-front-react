@@ -36,22 +36,22 @@ class TestInput extends Component {
     }
 
     return (
-      <Group x={ position.x } y={ position.y } >
-        <Group
-          onClick={ (e) => handleClick(id, e) }
+      <Group
+        onClick={ (e) => handleClick(id, e) }
+        x={ position.x }
+        y={ position.y }
+      >
+        <Ellipse
+          fillColor={ fillColor }
+          size={ size }
+        />
+        <Text
+          fill={ TestInputConstants.textColor }
+          font={ TestInputConstants.font }
+          y={ size.height / 2 }
         >
-          <Ellipse
-            fillColor={ fillColor }
-            size={ size }
-          />
-          <Text
-            fill={ TestInputConstants.textColor }
-            font={ TestInputConstants.font }
-            y={ size.height / 2 }
-          >
-            { value === null ? "<NONE>" : value }
-          </Text>
-        </Group>
+          { value === null ? "<NONE>" : value }
+        </Text>
         <Pipe
           inputPosition={ inputPipePosition }
           type={ type }

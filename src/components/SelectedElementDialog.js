@@ -61,7 +61,9 @@ export default class SelectedElementDialog extends Component {
             value={ type }
             onChange={ (e) => changePrimitiveType(id, e) }
           >
+            { /* TestInput 'type' will be 'null' by default */ }
             <option value="null">None</option>
+
             { primitives.map((primitive) =>
                 <option
                   key={ primitive.id }
