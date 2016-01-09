@@ -6,7 +6,7 @@ import composeBrick from './composeBrick'
 import Constants from './constants'
 import { getComponent } from '../utils/ComponentFactory'
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
-import TestInput from './TestInput'
+import TestInput from '../containers/TestInput'
 
 class MainBrick extends Component {
   render() {

@@ -9,6 +9,7 @@ import { PositionPropTypes } from '../propTypes'
 class TestInput extends Component {
   render() {
     const {
+      handleClick,
       id,
       slotPosition,
       size,
@@ -36,17 +37,21 @@ class TestInput extends Component {
 
     return (
       <Group x={ position.x } y={ position.y } >
-        <Ellipse
-          fillColor={ fillColor }
-          size={ size }
-        />
-        <Text
-          fill={ TestInputConstants.textColor }
-          font={ TestInputConstants.font }
-          y={ size.height / 2 }
+        <Group
+          onClick={ (e) => handleClick(id, e) }
         >
-          { value === null ? "<NONE>" : value }
-        </Text>
+          <Ellipse
+            fillColor={ fillColor }
+            size={ size }
+          />
+          <Text
+            fill={ TestInputConstants.textColor }
+            font={ TestInputConstants.font }
+            y={ size.height / 2 }
+          >
+            { value === null ? "<NONE>" : value }
+          </Text>
+        </Group>
         <Pipe
           inputPosition={ inputPipePosition }
           type={ type }
@@ -59,6 +64,7 @@ class TestInput extends Component {
 }
 
 TestInput.propTypes = {
+  handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   type: PropTypes.string,
   slotPosition: PositionPropTypes.isRequired,
