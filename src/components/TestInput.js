@@ -66,7 +66,7 @@ class TestInput extends Component {
 TestInput.propTypes = {
   handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
   slotPosition: PositionPropTypes.isRequired,
   value: PropTypes.any
 }

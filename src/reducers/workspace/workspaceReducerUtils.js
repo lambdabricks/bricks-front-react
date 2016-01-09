@@ -91,7 +91,7 @@ export const newUnitTest = (mainBrick) => {
       id: testInputId,
       slotPosition: inputSlotPosition(mainBrick, inputSlot.id),
       size: TestInputConstants.defaultSize,
-      type: null,
+      type: "null",
       value: null
     }
   })
