@@ -11,27 +11,17 @@ import {
   PrimitivePropTypes
 } from '../propTypes'
 
+import Translate from './Translate'
+
 const baseStyles = {
   backgroundColor: 'rgba(0, 0, 255, 0.5)',
   padding: 6,
   position: 'absolute'
 }
 
-const translations = {
-  en: {
-    addUnitTest: 'Add unit test',
-    delete: 'Delete',
-    empty: 'None',
-    type: 'Type: ',
-    value: 'Value: '
-  }
-}
-
 export default class SelectedElementDialog extends Component {
   constructor(props) {
     super(props)
-
-    this.tr = this.tr.bind(this)
 
     this.renderDeleteElementButton = this.renderDeleteElementButton.bind(this)
     this.renderElementDetails = this.renderElementDetails.bind(this)
@@ -51,11 +41,11 @@ export default class SelectedElementDialog extends Component {
         } = this.props
 
         return (
-          <button
-            onClick={ addUnitTest }
-          >
-            { this.tr('addUnitTest') }
-          </button>
+          <Translate
+            childProps={ { onClick: addUnitTest } }
+            HtmlElement="button"
+            message="addUnitTest"
+          />
         )
       case PRIMITIVE:
         return (
@@ -83,11 +73,11 @@ export default class SelectedElementDialog extends Component {
     } = this.props
 
     return (
-      <button
-        onClick={ () => deleteElement(id) }
-      >
-        { this.tr('delete') }
-      </button>
+      <Translate
+        childProps={ { onClick: () => deleteElement(id) } }
+        HtmlElement="button"
+        message="delete"
+      />
     )
   }
 
@@ -101,20 +91,20 @@ export default class SelectedElementDialog extends Component {
 
     return (
       <div>
-        <label>
-          { this.tr('type') }
-        </label>
+        <Translate
+          HtmlElement="label"
+          message="type"
+        />
         <select
           value={ type }
           onChange={ (e) => changePrimitiveType(id, e) }
         >
           { /* TestInput 'type' will be 'null' by default */ }
-          <option
-            disabled
-            value="null"
-          >
-            { this.tr('empty') }
-          </option>
+          <Translate
+            childProps={ { disabled: true, value: "null" } }
+            HtmlElement="option"
+            message="empty"
+          />
 
           { primitives.map((primitive) =>
               <option
@@ -138,9 +128,10 @@ export default class SelectedElementDialog extends Component {
 
     return (
       <div>
-        <label>
-          { this.tr('value') }
-        </label>
+        <Translate
+          HtmlElement="label"
+          message="value"
+        />
         <input
           value={ value }
           onChange={ (e) => changePrimitiveValue(id, e) }
@@ -165,14 +156,6 @@ export default class SelectedElementDialog extends Component {
       </div>
     )
   }
-
-  tr(key) {
-    return translations[this.context.locale][key]
-  }
-}
-
-SelectedElementDialog.contextTypes = {
-  locale: PropTypes.string.isRequired
 }
 
 SelectedElementDialog.propTypes = {
