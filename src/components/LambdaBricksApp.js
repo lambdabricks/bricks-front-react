@@ -19,11 +19,11 @@ export default class LambdaBricksApp extends Component {
 
   getChildContext() {
     return {
-      naturalLanguage: 'en'
+      locale: 'en'
     }
   }
 }
 
 LambdaBricksApp.childContextTypes = {
-  naturalLanguage: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired
 }

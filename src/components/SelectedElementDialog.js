@@ -167,12 +167,12 @@ export default class SelectedElementDialog extends Component {
   }
 
   tr(key) {
-    return translations[this.context.naturalLanguage][key]
+    return translations[this.context.locale][key]
   }
 }
 
 SelectedElementDialog.contextTypes = {
-  naturalLanguage: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired
 }
 
 SelectedElementDialog.propTypes = {
