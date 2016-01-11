@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
   addUnitTest,
   changePrimitiveType,
+  changePrimitiveValue,
   removeElement
 } from '../actions'
 import SelectedElementDialog from '../components/SelectedElementDialog'
@@ -33,6 +34,11 @@ const mapDispatchToProps = (dispatch) => {
     changePrimitiveType: (elementId, changeEvent) => {
       dispatch(
         changePrimitiveType(elementId, changeEvent.target.value)
+      )
+    },
+    changePrimitiveValue: (elementId, changeEvent) => {
+      dispatch(
+        changePrimitiveValue(elementId, changeEvent.target.value)
       )
     }
   }

@@ -55,6 +55,7 @@ export default class SelectedElementDialog extends Component {
       case TEST_INPUT:
         const {
           changePrimitiveType,
+          changePrimitiveValue,
           primitives,
           type,
           value
@@ -92,7 +93,10 @@ export default class SelectedElementDialog extends Component {
               <label>
                 { translations['en'].value }
               </label>
-              <input defaultValue={ value } />
+              <input
+                value={ value }
+                onChange={ (e) => changePrimitiveValue(id, e) }
+              />
             </div>
           </div>
         )
@@ -132,6 +136,7 @@ export default class SelectedElementDialog extends Component {
 SelectedElementDialog.propTypes = {
   addUnitTest: PropTypes.func.isRequired,
   changePrimitiveType: PropTypes.func.isRequired,
+  changePrimitiveValue: PropTypes.func.isRequired,
   componentName: PropTypes.string.isRequired,
   deleteElement: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,

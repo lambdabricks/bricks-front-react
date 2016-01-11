@@ -3,6 +3,7 @@ import { isNotEmpty } from '../utils'
 export const ADD_PIPE = 'ADD_PIPE'
 export const ADD_UNIT_TEST = 'ADD_UNIT_TEST'
 export const CHANGE_PRIMITIVE_TYPE = 'CHANGE_PRIMITIVE_TYPE'
+export const CHANGE_PRIMITIVE_VALUE = 'CHANGE_PRIMITIVE_VALUE'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
@@ -146,6 +147,16 @@ export const changePrimitiveType = (elementId, newType) => {
     payload: {
       elementId,
       newType
+    }
+  }
+}
+
+export const changePrimitiveValue = (elementId, newValue) => {
+  return {
+    type: CHANGE_PRIMITIVE_VALUE,
+    payload: {
+      elementId,
+      newValue
     }
   }
 }
