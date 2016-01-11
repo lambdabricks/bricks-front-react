@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react'
 
 import {
   MAIN_BRICK,
+  PRIMITIVE,
   TEST_INPUT
 } from '../utils/componentNames'
 
@@ -30,7 +31,9 @@ export default class SelectedElementDialog extends Component {
   constructor(props) {
     super(props)
 
+    this.renderDeleteElementButton = this.renderDeleteElementButton.bind(this)
     this.renderElementDetails = this.renderElementDetails.bind(this)
+    this.renderPrimitiveValueInput = this.renderPrimitiveValueInput.bind(this)
   }
 
   renderElementDetails() {
@@ -52,13 +55,18 @@ export default class SelectedElementDialog extends Component {
             { translations['en'].addUnitTest }
           </button>
         )
+      case PRIMITIVE:
+        return (
+          <div>
+            { this.renderPrimitiveValueInput() }
+            { this.renderDeleteElementButton() }
+          </div>
+        )
       case TEST_INPUT:
         const {
           changePrimitiveType,
-          changePrimitiveValue,
           primitives,
-          type,
-          value
+          type
         } = this.props
 
         return (
@@ -89,30 +97,47 @@ export default class SelectedElementDialog extends Component {
                 ) }
               </select>
             </div>
-            <div>
-              <label>
-                { translations['en'].value }
-              </label>
-              <input
-                value={ value }
-                onChange={ (e) => changePrimitiveValue(id, e) }
-              />
-            </div>
+            { this.renderPrimitiveValueInput() }
           </div>
         )
       default:
-        const {
-          deleteElement
-        } = this.props
-
-        return (
-          <button
-            onClick={ () => deleteElement(id) }
-          >
-            { translations['en'].delete }
-          </button>
-        )
+        return this.renderDeleteElementButton()
     }
+  }
+
+  renderDeleteElementButton() {
+    const {
+      deleteElement,
+      id
+    } = this.props
+
+    return (
+      <button
+        onClick={ () => deleteElement(id) }
+      >
+        { translations['en'].delete }
+      </button>
+    )
+  }
+
+  renderPrimitiveValueInput() {
+    const {
+      changePrimitiveValue,
+      id,
+      value
+    } = this.props
+
+    return (
+      <div>
+        <label>
+          { translations['en'].value }
+        </label>
+        <input
+          value={ value }
+          onChange={ (e) => changePrimitiveValue(id, e) }
+        />
+      </div>
+    )
   }
 
   render() {
