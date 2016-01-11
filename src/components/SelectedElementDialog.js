@@ -21,7 +21,8 @@ const translations = {
     addUnitTest: 'Add unit test',
     delete: 'Delete',
     empty: 'None',
-    type: 'Type:'
+    type: 'Type: ',
+    value: 'Value: '
   }
 }
 
@@ -55,35 +56,44 @@ export default class SelectedElementDialog extends Component {
         const {
           changePrimitiveType,
           primitives,
-          type
+          type,
+          value
         } = this.props
 
         return (
           <div>
-            <label>
-              { translations['en'].type }
-            </label>
-            <select
-              value={ type }
-              onChange={ (e) => changePrimitiveType(id, e) }
-            >
-              { /* TestInput 'type' will be 'null' by default */ }
-              <option
-                disabled
-                value="null"
+            <div>
+              <label>
+                { translations['en'].type }
+              </label>
+              <select
+                value={ type }
+                onChange={ (e) => changePrimitiveType(id, e) }
               >
-                { translations['en'].empty }
-              </option>
+                { /* TestInput 'type' will be 'null' by default */ }
+                <option
+                  disabled
+                  value="null"
+                >
+                  { translations['en'].empty }
+                </option>
 
-              { primitives.map((primitive) =>
-                  <option
-                    key={ primitive.id }
-                    value={ primitive.type }
-                  >
-                    { primitive.label }
-                  </option>
-              ) }
-            </select>
+                { primitives.map((primitive) =>
+                    <option
+                      key={ primitive.id }
+                      value={ primitive.type }
+                    >
+                      { primitive.label }
+                    </option>
+                ) }
+              </select>
+            </div>
+            <div>
+              <label>
+                { translations['en'].value }
+              </label>
+              <input defaultValue={ value } />
+            </div>
           </div>
         )
       default:
