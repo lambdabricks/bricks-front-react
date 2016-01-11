@@ -33,13 +33,13 @@ export default class SelectedElementDialog extends Component {
 
     this.renderDeleteElementButton = this.renderDeleteElementButton.bind(this)
     this.renderElementDetails = this.renderElementDetails.bind(this)
+    this.renderPrimitiveTypesSelect = this.renderPrimitiveTypesSelect.bind(this)
     this.renderPrimitiveValueInput = this.renderPrimitiveValueInput.bind(this)
   }
 
   renderElementDetails() {
     const {
-      componentName,
-      id
+      componentName
     } = this.props
 
     switch (componentName) {
@@ -63,40 +63,9 @@ export default class SelectedElementDialog extends Component {
           </div>
         )
       case TEST_INPUT:
-        const {
-          changePrimitiveType,
-          primitives,
-          type
-        } = this.props
-
         return (
           <div>
-            <div>
-              <label>
-                { translations['en'].type }
-              </label>
-              <select
-                value={ type }
-                onChange={ (e) => changePrimitiveType(id, e) }
-              >
-                { /* TestInput 'type' will be 'null' by default */ }
-                <option
-                  disabled
-                  value="null"
-                >
-                  { translations['en'].empty }
-                </option>
-
-                { primitives.map((primitive) =>
-                    <option
-                      key={ primitive.id }
-                      value={ primitive.type }
-                    >
-                      { primitive.label }
-                    </option>
-                ) }
-              </select>
-            </div>
+            { this.renderPrimitiveTypesSelect() }
             { this.renderPrimitiveValueInput() }
           </div>
         )
@@ -117,6 +86,44 @@ export default class SelectedElementDialog extends Component {
       >
         { translations['en'].delete }
       </button>
+    )
+  }
+
+  renderPrimitiveTypesSelect() {
+    const {
+      changePrimitiveType,
+      id,
+      primitives,
+      type
+    } = this.props
+
+    return (
+      <div>
+        <label>
+          { translations['en'].type }
+        </label>
+        <select
+          value={ type }
+          onChange={ (e) => changePrimitiveType(id, e) }
+        >
+          { /* TestInput 'type' will be 'null' by default */ }
+          <option
+            disabled
+            value="null"
+          >
+            { translations['en'].empty }
+          </option>
+
+          { primitives.map((primitive) =>
+              <option
+                key={ primitive.id }
+                value={ primitive.type }
+              >
+                { primitive.label }
+              </option>
+          ) }
+        </select>
+      </div>
     )
   }
 
