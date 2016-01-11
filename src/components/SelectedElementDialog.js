@@ -19,7 +19,9 @@ const baseStyles = {
 const translations = {
   en: {
     addUnitTest: 'Add unit test',
-    delete: 'Delete'
+    delete: 'Delete',
+    empty: 'None',
+    type: 'Type:'
   }
 }
 
@@ -57,27 +59,32 @@ export default class SelectedElementDialog extends Component {
         } = this.props
 
         return (
-          <select
-            value={ type }
-            onChange={ (e) => changePrimitiveType(id, e) }
-          >
-            { /* TestInput 'type' will be 'null' by default */ }
-            <option
-              disabled
-              value="null"
+          <div>
+            <label>
+              { translations['en'].type }
+            </label>
+            <select
+              value={ type }
+              onChange={ (e) => changePrimitiveType(id, e) }
             >
-              None
-            </option>
+              { /* TestInput 'type' will be 'null' by default */ }
+              <option
+                disabled
+                value="null"
+              >
+                { translations['en'].empty }
+              </option>
 
-            { primitives.map((primitive) =>
-                <option
-                  key={ primitive.id }
-                  value={ primitive.type }
-                >
-                  { primitive.label }
-                </option>
-            ) }
-          </select>
+              { primitives.map((primitive) =>
+                  <option
+                    key={ primitive.id }
+                    value={ primitive.type }
+                  >
+                    { primitive.label }
+                  </option>
+              ) }
+            </select>
+          </div>
         )
       default:
         const {
