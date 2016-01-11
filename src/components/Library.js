@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react'
 
 import Module from './Module'
 import { PrimitivePropTypes } from '../propTypes'
+import Translate from './Translate'
 
 const styles = {
   float: 'left',
@@ -35,14 +36,23 @@ export default class Library extends Component {
 
     return (
       <div style={ styles }>
-        <h2>Library</h2>
+        <Translate
+          HtmlElement="h2"
+          message="library"
+        />
         { isFetching &&
-          <h3>Loading...</h3>
+          <Translate
+            HtmlElement="h3"
+            message="loading"
+          />
         }
         { !isFetching && items.primitives &&
           <div>
             <div>
-              <h3>Primitives</h3>
+              <Translate
+                HtmlElement="h3"
+                message="primitives"
+              />
               <ul style={ ulStyles }>
                 { items.primitives.map((primitive) =>
                   <li
@@ -56,7 +66,10 @@ export default class Library extends Component {
               </ul>
             </div>
             <div>
-              <h3>Functions</h3>
+              <Translate
+                HtmlElement="h3"
+                message="functions"
+              />
               <ul>
                 { items.modules.map((module, i) =>
                   <Module

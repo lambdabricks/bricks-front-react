@@ -3,6 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import { isNotEmpty } from '../utils'
 import { PositionPropTypes } from '../propTypes'
 import SelectedElementDialog from '../containers/SelectedElementDialog'
+import Translate from './Translate'
 import WorkspaceSurface from '../containers/WorkspaceSurface'
 
 const styles = {
@@ -21,7 +22,10 @@ export default class Workspace extends Component {
 
     return (
       <div style={ styles }>
-        <h2>Workspace</h2>
+        <Translate
+          HtmlElement="h2"
+          message="workspace"
+        />
         { unitTests.map((unitTest, index) => {
             return (
               <WorkspaceSurface

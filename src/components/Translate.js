@@ -5,8 +5,14 @@ const translations = {
     addUnitTest: 'Add unit test',
     delete: 'Delete',
     empty: 'None',
+    functions: 'Functions',
+    library: 'Library',
+    loading: 'Loading...',
+    noValue: '<NONE>',
+    primitives: 'Primitives',
     type: 'Type: ',
-    value: 'Value: '
+    value: 'Value: ',
+    workspace: 'Workspace'
   }
 }
 
