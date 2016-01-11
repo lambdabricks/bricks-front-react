@@ -16,4 +16,14 @@ export default class LambdaBricksApp extends Component {
       </div>
     )
   }
+
+  getChildContext() {
+    return {
+      naturalLanguage: 'en'
+    }
+  }
+}
+
+LambdaBricksApp.childContextTypes = {
+  naturalLanguage: PropTypes.string.isRequired
 }

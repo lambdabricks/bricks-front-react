@@ -31,6 +31,8 @@ export default class SelectedElementDialog extends Component {
   constructor(props) {
     super(props)
 
+    this.tr = this.tr.bind(this)
+
     this.renderDeleteElementButton = this.renderDeleteElementButton.bind(this)
     this.renderElementDetails = this.renderElementDetails.bind(this)
     this.renderPrimitiveTypesSelect = this.renderPrimitiveTypesSelect.bind(this)
@@ -52,7 +54,7 @@ export default class SelectedElementDialog extends Component {
           <button
             onClick={ addUnitTest }
           >
-            { translations['en'].addUnitTest }
+            { this.tr('addUnitTest') }
           </button>
         )
       case PRIMITIVE:
@@ -84,7 +86,7 @@ export default class SelectedElementDialog extends Component {
       <button
         onClick={ () => deleteElement(id) }
       >
-        { translations['en'].delete }
+        { this.tr('delete') }
       </button>
     )
   }
@@ -100,7 +102,7 @@ export default class SelectedElementDialog extends Component {
     return (
       <div>
         <label>
-          { translations['en'].type }
+          { this.tr('type') }
         </label>
         <select
           value={ type }
@@ -111,7 +113,7 @@ export default class SelectedElementDialog extends Component {
             disabled
             value="null"
           >
-            { translations['en'].empty }
+            { this.tr('empty') }
           </option>
 
           { primitives.map((primitive) =>
@@ -137,7 +139,7 @@ export default class SelectedElementDialog extends Component {
     return (
       <div>
         <label>
-          { translations['en'].value }
+          { this.tr('value') }
         </label>
         <input
           value={ value }
@@ -163,6 +165,14 @@ export default class SelectedElementDialog extends Component {
       </div>
     )
   }
+
+  tr(key) {
+    return translations[this.context.naturalLanguage][key]
+  }
+}
+
+SelectedElementDialog.contextTypes = {
+  naturalLanguage: PropTypes.string.isRequired
 }
 
 SelectedElementDialog.propTypes = {
