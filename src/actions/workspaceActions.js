@@ -1,6 +1,8 @@
 import { isNotEmpty } from '../utils'
 
+export const ADD_BRICK = 'ADD_BRICK'
 export const ADD_PIPE = 'ADD_PIPE'
+export const ADD_PRIMITIVE = 'ADD_PRIMITIVE'
 export const ADD_UNIT_TEST = 'ADD_UNIT_TEST'
 export const CHANGE_PRIMITIVE_TYPE = 'CHANGE_PRIMITIVE_TYPE'
 export const CHANGE_PRIMITIVE_VALUE = 'CHANGE_PRIMITIVE_VALUE'
@@ -12,6 +14,20 @@ export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
 export const SELECT_ELEMENT = 'SELECT_ELEMENT'
 export const SELECT_SLOT = 'SELECT_SLOT'
+
+export const addBrick = (brick) => {
+  return {
+    type: ADD_BRICK,
+    payload: brick
+  }
+}
+
+export const addPrimitive = (type) => {
+  return {
+    type: ADD_PRIMITIVE,
+    payload: type
+  }
+}
 
 export const startDrag = (elementId, mousePosition, elementPosition) => {
   return {
