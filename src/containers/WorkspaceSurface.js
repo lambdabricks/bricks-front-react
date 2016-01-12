@@ -1,6 +1,10 @@
 import { connect } from 'react-redux'
 
-import { moveElement, selectElementOrStopDrag } from '../actions'
+import {
+  moveElement,
+  removeSelectedElement,
+  selectElementOrStopDrag
+} from '../actions'
 import WorkspaceSurface from '../components/WorkspaceSurface'
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     moveElement: (position) => {
       dispatch(moveElement(position))
+    },
+    removeSelectedElement: () => {
+      dispatch(removeSelectedElement())
     },
     selectElementOrStopDrag: (mousePosition) => {
       dispatch(selectElementOrStopDrag(mousePosition))

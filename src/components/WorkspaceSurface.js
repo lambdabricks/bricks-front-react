@@ -19,6 +19,7 @@ class WorkspaceSurface extends Component {
       dragStarted,
       mainBrick,
       moveElement,
+      removeSelectedElement,
       selectElementOrStopDrag,
       unitTest
     } = this.props
@@ -40,6 +41,7 @@ class WorkspaceSurface extends Component {
 
     return (
       <div
+       onMouseDown={ removeSelectedElement }
        onMouseMove={ handleMouseMove }
        onMouseUp={ handleMouseUp }
        style={ workspaceSurfaceStyles }
@@ -63,6 +65,7 @@ WorkspaceSurface.propTypes = {
   dragStarted: PropTypes.bool.isRequired,
   mainBrick: PropTypes.object.isRequired,
   moveElement: PropTypes.func.isRequired,
+  removeSelectedElement: PropTypes.func.isRequired,
   selectElementOrStopDrag: PropTypes.func.isRequired,
   unitTest: PropTypes.array.isRequired
 }
