@@ -19,7 +19,9 @@ const requestLibrary = () => {
 const receiveLibrary = (items) => {
   return {
     type: RECEIVE_LIBRARY,
-    items: items
+    payload: {
+      items
+    }
   }
 }
 

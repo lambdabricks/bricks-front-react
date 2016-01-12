@@ -8,13 +8,15 @@ const initialLibrary = {
   items: {}
 }
 
-export function library(state = initialLibrary, action) {
-  switch (action.type) {
+export const library = (state = initialLibrary, action) => {
+  const { payload, type } = action
+
+  switch (type) {
     case RECEIVE_LIBRARY:
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        items: action.items
+        items: payload.items
       })
     case REQUEST_LIBRARY:
       return Object.assign({}, state, {
