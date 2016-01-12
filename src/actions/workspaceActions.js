@@ -16,6 +16,13 @@ export const SELECT_ELEMENT = 'SELECT_ELEMENT'
 export const SELECT_SLOT = 'SELECT_SLOT'
 
 export const addBrick = (brick) => {
+  return (dispatch, getState) => {
+    dispatch(removeSelectedElement())
+    dispatch(_addBrick(brick))
+  }
+}
+
+export const _addBrick = (brick) => {
   return {
     type: ADD_BRICK,
     payload: brick
@@ -23,6 +30,13 @@ export const addBrick = (brick) => {
 }
 
 export const addPrimitive = (type) => {
+  return (dispatch, getState) => {
+    dispatch(removeSelectedElement())
+    dispatch(_addPrimitive(type))
+  }
+}
+
+export const _addPrimitive = (type) => {
   return {
     type: ADD_PRIMITIVE,
     payload: type
@@ -72,6 +86,7 @@ export const moveElement = (currentMousePosition) => {
 
 export const addPipeOrSelectSlot = (type, elementId, slotId) => {
   return (dispatch, getState) => {
+    dispatch(removeSelectedElement())
     dispatch(selectSlot(type, elementId, slotId))
     dispatch(addPipeIfBothSlotsSelected())
   }
