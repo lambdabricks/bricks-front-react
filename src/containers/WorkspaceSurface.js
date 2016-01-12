@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(moveElement(position))
     },
     removeSelectedElement: () => {
-      dispatch(removeSelectedElement())
+      // dispatch(removeSelectedElement())
     },
     selectElementOrStopDrag: (mousePosition) => {
       dispatch(selectElementOrStopDrag(mousePosition))
