@@ -22,7 +22,7 @@ export const addBrick = (brick) => {
   }
 }
 
-export const _addBrick = (brick) => {
+const _addBrick = (brick) => {
   return {
     type: ADD_BRICK,
     payload: brick
@@ -36,7 +36,7 @@ export const addPrimitive = (type) => {
   }
 }
 
-export const _addPrimitive = (type) => {
+const _addPrimitive = (type) => {
   return {
     type: ADD_PRIMITIVE,
     payload: type
@@ -144,7 +144,7 @@ export const removeElement = (elementId) => {
   }
 }
 
-export const _removeElement = (elementId) => {
+const _removeElement = (elementId) => {
   return {
     type: REMOVE_ELEMENT,
     payload: {
