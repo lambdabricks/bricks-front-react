@@ -74,7 +74,7 @@ export const newPipe = (workspace) => {
     componentName: SELECTABLE_PIPE,
     id: nextId(),
     input,
-    type: null,
+    type: "null",
     output,
     value: null
   }

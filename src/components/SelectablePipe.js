@@ -40,7 +40,7 @@ SelectablePipe.propTypes = {
   input: PipeEndPropTypes.isRequired,
   output: PipeEndPropTypes.isRequired,
   strokeColor: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string.isRequired
 }
 
 export default SelectablePipe

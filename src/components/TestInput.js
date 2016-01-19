@@ -59,7 +59,6 @@ class TestInput extends Component {
           inputPosition={ inputPipePosition }
           outputPosition={ outputPipePosition }
           strokeColor={ fillColor }
-          type={ type }
         />
       </Group>
     )
