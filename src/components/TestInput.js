@@ -3,6 +3,7 @@ import { Group, Text } from 'react-art'
 
 import Constants from './constants'
 import Ellipse from './Ellipse'
+import { getFillColor } from '../utils'
 import Pipe from './Pipe'
 import { PositionPropTypes } from '../propTypes'
 
@@ -21,7 +22,8 @@ class TestInput extends Component {
       Slot: SlotConstants,
       TestInput: TestInputConstants
     } = TestInput._constants
-    const fillColor = TestInputConstants.fillColor[type]
+
+    const fillColor = getFillColor(type, value)
     const position = {
       x: slotPosition.x - ((size.width - SlotConstants.width) / 2),
       y: slotPosition.y - TestInputConstants.yOffset
@@ -53,10 +55,11 @@ class TestInput extends Component {
           { value === null ? "<NONE>" : value }
         </Text>
         <Pipe
+          fillColor={ fillColor }
           inputPosition={ inputPipePosition }
-          type={ type }
           outputPosition={ outputPipePosition }
           strokeColor={ fillColor }
+          type={ type }
         />
       </Group>
     )

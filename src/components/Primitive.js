@@ -3,7 +3,7 @@ import { Group, Text } from 'react-art'
 
 import Constants from './constants'
 import Ellipse from './Ellipse'
-import { innerInputSlotPosition } from '../utils'
+import { getFillColor, innerInputSlotPosition } from '../utils'
 import { PositionPropTypes } from '../propTypes'
 import Slot from './Slot'
 
@@ -33,7 +33,7 @@ class Primitive extends Component {
     } = this.props
     const { Primitive: PrimitiveConstants } = Primitive._constants
 
-    const fillColor = PrimitiveConstants.fillColor[type]
+    const fillColor = getFillColor(type, value)
     const slotPosition = innerInputSlotPosition(size)
 
     return (

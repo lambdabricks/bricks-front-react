@@ -1,8 +1,9 @@
 import { selectElement } from '../actions'
 import { LEFT } from '../components/constants'
 
-export * from './slotSelection'
+export * from './colors'
 export * from './slotPosition'
+export * from './slotSelection'
 
 export const isNotEmpty = (object) => {
   return Object.keys(object).length > 0

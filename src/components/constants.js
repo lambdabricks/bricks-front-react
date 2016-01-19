@@ -1,10 +1,11 @@
-const colorsForTypes = {
+const colors = {
   boolean: "#A359E9",
+  False: "#E44B37",
   list: "#E9E759",
   null: "#BFBFBF",
   number: "#E96859",
-  string: "#E9A559"
-  // "#59E974"
+  string: "#E9A559",
+  True: "#358DE2"
 }
 const font = '15px monospace'
 const slotWidth = 15
@@ -43,7 +44,6 @@ const MainBrick = {
 MainBrick.slotAndOffset = slotWidth + MainBrick.slotOffset
 
 const Pipe = {
-  fillColor: colorsForTypes,
   font: font,
   strokeColor: 'black',
   textColor: 'black'
@@ -58,7 +58,6 @@ const Primitive = {
     height: 30,
     width: 60
   },
-  fillColor: colorsForTypes,
   font: font,
   fontAlignment: 'middle',
   textColor: 'black'
@@ -80,7 +79,6 @@ const TestInput = {
     height: 30,
     width: 60
   },
-  fillColor: colorsForTypes,
   font,
   textColor: 'black',
   yOffset: 60
@@ -90,6 +88,7 @@ const LEFT = 0
 
 export default {
   Brick,
+  colors,
   MainBrick,
   LEFT,
   Pipe,
