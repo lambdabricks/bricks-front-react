@@ -86,9 +86,12 @@ const TestInput = {
   yOffset: 60
 }
 
+const LEFT = 0
+
 export default {
   Brick,
   MainBrick,
+  LEFT,
   Pipe,
   Primitive,
   Slot,

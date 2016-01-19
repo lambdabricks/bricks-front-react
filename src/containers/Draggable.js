@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import { startDrag } from '../actions'
-
-const LEFT = 0
+import { LEFT } from '../components/constants'
 
 const mapDispatchToProps = (dispatch) => {
   return {
