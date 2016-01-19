@@ -1,5 +1,5 @@
 const colors = {
-  boolean: "#A359E9",
+  boolean: "#8A2BE2",
   False: "#E44B37",
   list: "#E9E759",
   null: "#BFBFBF",
