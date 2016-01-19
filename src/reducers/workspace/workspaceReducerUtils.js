@@ -104,6 +104,11 @@ export const newWorkspace = () => {
   const mainBrick = newMainBrick(mainBrickId)
   const testInputs = newUnitTest(mainBrick)
 
+  let testInputIds = []
+
+  for(var testInput in testInputs)
+    testInputIds.push(testInputs[testInput].id)
+
   return {
     entities: {
       [mainBrickId]: mainBrick,
@@ -119,7 +124,7 @@ export const newWorkspace = () => {
       }
     },
     unitTests: [
-      Object.keys(testInputs)
+      testInputIds
     ]
   }
 }
