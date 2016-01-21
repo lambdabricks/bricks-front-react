@@ -2,7 +2,6 @@ import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
-import { isSlotSelected } from '../utils'
 import { PositionPropTypes, SizePropTypes, SlotPropTypes } from '../propTypes'
 import SlotGroup from './SlotGroup'
 
