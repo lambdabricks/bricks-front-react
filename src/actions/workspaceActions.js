@@ -1,4 +1,5 @@
 import { isNotEmpty } from '../utils'
+import { nextId } from '../reducers/workspace/workspaceReducerUtils'
 
 export const ADD_BRICK = 'ADD_BRICK'
 export const ADD_PIPE = 'ADD_PIPE'
@@ -109,15 +110,18 @@ export const addPipeIfBothSlotsSelected = () => {
     const { input, output } = getState().workspace.selectionState.pipe
 
     if(isNotEmpty(input) && isNotEmpty(output)) {
-      dispatch(addPipe())
+      const pipeId = nextId()
+
+      dispatch(_addPipe(pipeId))
       dispatch(clearSlotSelection())
     }
   }
 }
 
-export const addPipe = () => {
+const _addPipe = (elementId) => {
   return {
-    type: ADD_PIPE
+    type: ADD_PIPE,
+    payload: elementId
   }
 }
 

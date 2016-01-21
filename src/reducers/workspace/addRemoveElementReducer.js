@@ -9,8 +9,8 @@ import {
 export const addBrickToWorkspace = (workspace, attributes) =>
   addToWorkspace(workspace, newBrick(attributes))
 
-export const addPipeToWorkspace = (workspace) =>
-  addToWorkspace(workspace, newPipe(workspace))
+export const addPipeToWorkspace = (workspace, attributes) =>
+  addToWorkspace(workspace, newPipe(workspace, attributes))
 
 export const addPrimitiveToWorkspace = (workspace, attributes) =>
   addToWorkspace(workspace, newPrimitive(attributes))

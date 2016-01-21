@@ -54,7 +54,7 @@ export const workspace = (state = initialWorkspace, action) => {
     case ADD_BRICK:
       return addBrickToWorkspace(state, payload)
     case ADD_PIPE:
-      return addPipeToWorkspace(state)
+      return addPipeToWorkspace(state, payload)
     case ADD_PRIMITIVE:
       return addPrimitiveToWorkspace(state, payload)
     case ADD_UNIT_TEST:

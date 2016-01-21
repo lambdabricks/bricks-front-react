@@ -16,7 +16,7 @@ import {
 
 let id = 1
 // TODO: Generate id's with an UID function ??
-const nextId = () => id++
+export const nextId = () => id++
 
 export const newBrick = (brick) => {
   const { arity, name } = brick
@@ -67,12 +67,12 @@ export const newPrimitive = (type) => {
   }
 }
 
-export const newPipe = (workspace) => {
+export const newPipe = (workspace, elementId) => {
   const { input, output } = workspace.selectionState.pipe
 
   return {
     componentName: SELECTABLE_PIPE,
-    id: nextId(),
+    id: elementId,
     input,
     type: "null",
     output,
