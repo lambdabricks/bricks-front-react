@@ -6,6 +6,7 @@ import {
   CHANGE_PRIMITIVE_TYPE,
   CHANGE_PRIMITIVE_VALUE,
   CLEAR_SLOT_SELECTION,
+  EVALUATE,
   MOVE_ELEMENT,
   REMOVE_ELEMENT,
   REMOVE_SELECTED_ELEMENT,
@@ -28,6 +29,10 @@ import {
   addDragStoppedToWorkspace,
   updateElementInWorkspace
 } from './workspace/dragReducer'
+
+import {
+  evaluate
+} from './workspace/evaluationReducer'
 
 import {
   addSelectedElementToWorkspace,
@@ -65,6 +70,8 @@ export const workspace = (state = initialWorkspace, action) => {
       return changePrimitiveValue(state, payload)
     case CLEAR_SLOT_SELECTION:
       return removeSlotSelectionState(state)
+    case EVALUATE:
+      return evaluate(state, payload)
     case MOVE_ELEMENT:
       return updateElementInWorkspace(state, payload)
     case REMOVE_ELEMENT:

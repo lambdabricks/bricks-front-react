@@ -8,6 +8,7 @@ export const ADD_UNIT_TEST = 'ADD_UNIT_TEST'
 export const CHANGE_PRIMITIVE_TYPE = 'CHANGE_PRIMITIVE_TYPE'
 export const CHANGE_PRIMITIVE_VALUE = 'CHANGE_PRIMITIVE_VALUE'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
+export const EVALUATE = 'EVALUATE'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
 export const REMOVE_SELECTED_ELEMENT = 'REMOVE_SELECTED_ELEMENT'
@@ -114,6 +115,7 @@ export const addPipeIfBothSlotsSelected = () => {
 
       dispatch(_addPipe(pipeId))
       dispatch(clearSlotSelection())
+      dispatch(_evaluate(pipeId))
     }
   }
 }
@@ -121,6 +123,13 @@ export const addPipeIfBothSlotsSelected = () => {
 const _addPipe = (elementId) => {
   return {
     type: ADD_PIPE,
+    payload: elementId
+  }
+}
+
+const _evaluate = (elementId) => {
+  return {
+    type: EVALUATE,
     payload: elementId
   }
 }
