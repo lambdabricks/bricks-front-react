@@ -124,7 +124,7 @@ export const newWorkspace = () => {
       }
     },
     unitTests: [
-      testInputIds
+      { testInputIds }
     ]
   }
 }

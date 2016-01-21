@@ -67,7 +67,7 @@ WorkspaceSurface.propTypes = {
   moveElement: PropTypes.func.isRequired,
   removeSelectedElement: PropTypes.func.isRequired,
   selectElementOrStopDrag: PropTypes.func.isRequired,
-  unitTest: PropTypes.array.isRequired
+  unitTest: PropTypes.object.isRequired
 }
 
 WorkspaceSurface._constants = Constants.Surface
