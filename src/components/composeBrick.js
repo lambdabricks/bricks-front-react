@@ -22,6 +22,7 @@ export default function composeBrick(InnerComponent) {
 
       return (
         <Group x={ position.x } y={ position.y }>
+          <InnerComponent { ...this.props } />
           <SlotGroup
             fillColor={ Brick.fillColor }
             parentId={ id }
@@ -46,7 +47,6 @@ export default function composeBrick(InnerComponent) {
             strokeColor={ Brick.strokeColor }
             y={ size.height + Slot.height }
           />
-          <InnerComponent { ...this.props } />
         </Group>
       )
     }
