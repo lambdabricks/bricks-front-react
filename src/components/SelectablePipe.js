@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 
+import { Pipe as PipeConstants } from './constants'
+import { getFillColor } from '../utils'
 import Pipe from '../containers/Pipe'
 
 class SelectablePipe extends Component {
@@ -10,19 +12,25 @@ class SelectablePipe extends Component {
       id,
       input,
       output,
-      strokeColor,
-      type
+      type,
+      value
     } = this.props
+
+    const {
+      strokeColor
+    } = SelectablePipe._constants
+
+    const fillColor = getFillColor(type, value)
 
     return (
       <Group
         onClick={ (e) => handleClick(id, e) }
       >
         <Pipe
+          fillColor={ fillColor }
           input={ input }
           output={ output }
           strokeColor={ strokeColor }
-          type={ type }
         />
       </Group>
     )
@@ -39,8 +47,10 @@ SelectablePipe.propTypes = {
   id: PropTypes.number.isRequired,
   input: PipeEndPropTypes.isRequired,
   output: PipeEndPropTypes.isRequired,
-  strokeColor: PropTypes.string,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string
 }
+
+SelectablePipe._constants = PipeConstants
 
 export default SelectablePipe

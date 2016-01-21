@@ -2,21 +2,19 @@ import React, { PropTypes, Component } from 'react'
 import { Group, Path, Shape } from 'react-art'
 
 import Constants from './constants'
-import { getFillColor } from '../utils'
 import { PositionPropTypes } from '../propTypes'
 
 class Pipe extends Component {
   render() {
     const {
       inputPosition,
-      fillColor: maybeFillColor,
-      strokeColor: maybeStrokeColor,
+      fillColor,
+      strokeColor,
       outputPosition,
       type
     } = this.props
 
     const {
-      Pipe: PipeConstants,
       Slot: SlotConstants
     } = Pipe._constants
 
@@ -24,9 +22,6 @@ class Pipe extends Component {
       x: outputPosition.x - inputPosition.x,
       y: outputPosition.y - (inputPosition.y + SlotConstants.height)
     }
-    const fillColor = maybeFillColor || getFillColor(type)
-    const strokeColor = maybeStrokeColor || PipeConstants.strokeColor
-
     const path = Path()
 
     path.move(inputPosition.x, inputPosition.y + SlotConstants.height)
@@ -46,15 +41,13 @@ class Pipe extends Component {
 }
 
 Pipe.propTypes = {
-  fillColor: PropTypes.string,
+  fillColor: PropTypes.string.isRequired,
   inputPosition: PositionPropTypes.isRequired,
   outputPosition: PositionPropTypes.isRequired,
-  strokeColor: PropTypes.string,
-  type: PropTypes.string
+  strokeColor: PropTypes.string.isRequired
 }
 
 Pipe._constants = {
-  Pipe: Constants.Pipe,
   Slot: Constants.Slot
 }
 

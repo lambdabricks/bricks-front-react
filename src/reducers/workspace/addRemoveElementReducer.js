@@ -33,7 +33,8 @@ export const addUnitTestToWorkspace = (workspace) => {
     unitTests: [
       ...workspace.unitTests,
       {
-        testInputIds
+        testInputIds,
+        values: { }
       }
     ]
   })

@@ -74,9 +74,8 @@ export const newPipe = (workspace, elementId) => {
     componentName: SELECTABLE_PIPE,
     id: elementId,
     input,
-    type: "null",
     output,
-    value: null
+    type: "null"
   }
 }
 
@@ -125,7 +124,8 @@ export const newWorkspace = () => {
     },
     unitTests: [
       {
-        testInputIds
+        testInputIds,
+        values: { }
       }
     ]
   }
