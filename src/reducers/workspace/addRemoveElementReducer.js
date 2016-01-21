@@ -19,6 +19,11 @@ export const addUnitTestToWorkspace = (workspace) => {
   const { mainBrickId } = workspace
   const testInputs = newUnitTest(workspace.entities[mainBrickId])
 
+  let testInputIds = []
+
+  for(var testInput in testInputs)
+    testInputIds.push(testInputs[testInput].id)
+
   return Object.assign({}, workspace, {
     ...workspace,
     entities: {
@@ -27,7 +32,7 @@ export const addUnitTestToWorkspace = (workspace) => {
     },
     unitTests: [
       ...workspace.unitTests,
-      Object.keys(testInputs)
+      testInputIds
     ]
   })
 }
