@@ -28,8 +28,8 @@ export const evaluate = (workspace, elementId) => {
   })
 }
 
-const evalNewPipe = (workspace, element) => {
-  const { input, output } = element
+const evalNewPipe = (workspace, pipe) => {
+  const { input, output } = pipe
   const inputElement = workspace.entities[input.elementId]
 
   let newEntities = workspace.entities
@@ -37,8 +37,8 @@ const evalNewPipe = (workspace, element) => {
 
   if(inputElement.componentName == PRIMITIVE) {
     newEntities = Object.assign({}, workspace.entities, {
-      [element.id]: {
-        ...element,
+      [pipe.id]: {
+        ...pipe,
         type: inputElement.type,
         value: inputElement.value
       }
@@ -49,7 +49,7 @@ const evalNewPipe = (workspace, element) => {
     const slotIndex = inputElement.inputSlots.findIndex((inputSlot) =>
       inputSlot.id == input.slotId)
 
-    newUnitTests = workspace.unitTests.map((unitTest) => {
+    newUnitTests = newUnitTests.map((unitTest) => {
       const testInputId = unitTest.testInputIds[slotIndex]
       const testInput = workspace.entities[testInputId]
 
@@ -57,7 +57,7 @@ const evalNewPipe = (workspace, element) => {
         ...unitTest,
         values: {
           ...unitTest.values,
-          [element.id]: {
+          [pipe.id]: {
             type: testInput.type,
             value: testInput.value
           }
