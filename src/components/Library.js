@@ -71,12 +71,11 @@ export default class Library extends Component {
                 message="functions"
               />
               <ul>
-                { items.modules.map((module, i) =>
+                { items.modules.map((module) =>
                   <Module
-                    key={ i }
-                    name={ module.name }
-                    functions={ module.functions }
+                    key={ module.name }
                     onFunctionClick={ onFunctionClick }
+                    { ...module }
                   />
                 )}
               </ul>
@@ -92,12 +91,7 @@ Library.propTypes = {
   fetchLibrary: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   items: PropTypes.shape({
-    modules: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        functions: PropTypes.array.isRequired
-      })
-    ),
+    modules: PropTypes.array,
     primitives: PropTypes.arrayOf(PrimitivePropTypes)
   }).isRequired,
   onFunctionClick: PropTypes.func.isRequired,

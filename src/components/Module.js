@@ -11,11 +11,17 @@ const libraryFunctionStyles = {
 
 export default class Module extends Component {
   render() {
-    const { functions, name, onFunctionClick } = this.props
+    const {
+      functions,
+      label,
+      name,
+      onFunctionClick
+    } = this.props
+
     return (
       <div>
         <li>
-          { name }
+          { label }
         </li>
         <ul style={ ulStyles }>
           { functions.map((libraryFunction) => {
@@ -37,6 +43,7 @@ export default class Module extends Component {
 }
 
 Module.propTypes = {
+  label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   functions: PropTypes.arrayOf(
     PropTypes.shape({
