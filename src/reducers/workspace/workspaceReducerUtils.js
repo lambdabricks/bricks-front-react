@@ -19,7 +19,7 @@ let id = 1
 export const nextId = () => id++
 
 export const newBrick = (brick) => {
-  const { arity, name } = brick
+  const { arity, moduleName, name } = brick
   let inputSlots = []
 
   for(var i=0; i < arity; i++)
@@ -29,6 +29,7 @@ export const newBrick = (brick) => {
     componentName: BRICK,
     id: nextId(),
     inputSlots,
+    moduleName,
     name,
     outputSlots: [
       { id: nextId() }

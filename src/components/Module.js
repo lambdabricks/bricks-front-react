@@ -22,7 +22,7 @@ export default class Module extends Component {
               return (
                 <li
                   key={ libraryFunction.id }
-                  onClick={ () => onFunctionClick(libraryFunction) }
+                  onClick={ () => onFunctionClick(name, libraryFunction) }
                   style={ libraryFunctionStyles }
                 >
                   { libraryFunction.label }
