@@ -6,6 +6,7 @@ import {
 
 export const evaluate = (workspace, elementId) => {
   const element = workspace.entities[elementId]
+  let newEntities = workspace.entities
   let newUnitTests = workspace.unitTests
 
   if(element.componentName == SELECTABLE_PIPE) {
@@ -13,15 +14,11 @@ export const evaluate = (workspace, elementId) => {
     const inputElement = workspace.entities[input.elementId]
 
     if(inputElement.componentName == PRIMITIVE) {
-      return Object.assign({}, workspace, {
-        ...workspace,
-        entities: {
-          ...workspace.entities,
-          [elementId]: {
-            ...element,
-            type: inputElement.type,
-            value: inputElement.value
-          }
+      newEntities = Object.assign({}, workspace.entities, {
+        [elementId]: {
+          ...element,
+          type: inputElement.type,
+          value: inputElement.value
         }
       })
     }
@@ -50,6 +47,7 @@ export const evaluate = (workspace, elementId) => {
 
   return Object.assign({}, workspace, {
     ...workspace,
+    entities: newEntities,
     unitTests: newUnitTests
   })
 }
