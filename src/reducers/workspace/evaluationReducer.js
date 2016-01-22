@@ -13,14 +13,34 @@ export const evaluate = (workspace, elementId) => {
     const inputElement = workspace.entities[input.elementId]
 
     if(inputElement.componentName == PRIMITIVE) {
+      return Object.assign({}, workspace, {
+        ...workspace,
+        entities: {
+          ...workspace.entities,
+          [elementId]: {
+            ...element,
+            type: inputElement.type,
+            value: inputElement.value
+          }
+        }
+      })
+    }
+
+    if(inputElement.componentName == MAIN_BRICK) {
+      const slotIndex = inputElement.inputSlots.findIndex((inputSlot) =>
+        inputSlot.id == input.slotId)
+
       newUnitTests = workspace.unitTests.map((unitTest) => {
+        const testInputId = unitTest.testInputIds[slotIndex]
+        const testInput = workspace.entities[testInputId]
+
         return {
           ...unitTest,
           values: {
             ...unitTest.values,
             [elementId]: {
-              type: inputElement.type,
-              value: inputElement.value
+              type: testInput.type,
+              value: testInput.value
             }
           }
         }
