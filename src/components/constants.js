@@ -1,11 +1,11 @@
 const colors = {
   boolean: "#8A2BE2",
-  False: "#E44B37",
+  false: "#E44B37",
   list: "#E9E759",
   null: "#BFBFBF",
   number: "#E96859",
   string: "#E9A559",
-  True: "#358DE2"
+  true: "#358DE2"
 }
 const font = '15px monospace'
 const slotWidth = 15
