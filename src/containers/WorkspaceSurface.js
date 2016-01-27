@@ -7,16 +7,6 @@ import {
 } from '../actions'
 import WorkspaceSurface from '../components/WorkspaceSurface'
 
-const mapStateToProps = (state, ownProps) => {
-  const { entities, selectionState } = state.workspace
-  const { mainBrickId } = ownProps
-
-  return {
-    dragStarted: selectionState.dragStarted,
-    mainBrick: entities[mainBrickId]
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     moveElement: (position) => {
@@ -31,4 +21,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WorkspaceSurface)
+export default connect(null, mapDispatchToProps)(WorkspaceSurface)

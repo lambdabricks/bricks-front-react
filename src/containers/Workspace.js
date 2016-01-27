@@ -3,14 +3,15 @@ import { connect } from 'react-redux'
 import Workspace from '../components/Workspace'
 
 const mapStateToProps = (state) => {
-  const { selectionState } = state.workspace
+  const { entities, selectionState } = state.workspace
   let selectedElement = {}
 
   if(!selectionState.dragStarted)
     selectedElement = selectionState.element
 
   return {
-    mainBrickId: state.workspace.mainBrickId,
+    dragStarted: selectionState.dragStarted,
+    mainBrick: entities[state.workspace.mainBrickId],
     selectedElement,
     unitTests: state.workspace.unitTests
   }

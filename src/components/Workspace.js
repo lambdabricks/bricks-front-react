@@ -15,7 +15,8 @@ const styles = {
 export default class Workspace extends Component {
   render() {
     const {
-      mainBrickId,
+      dragStarted,
+      mainBrick,
       selectedElement,
       unitTests
     } = this.props
@@ -29,8 +30,9 @@ export default class Workspace extends Component {
         { unitTests.map((unitTest, index) => {
             return (
               <WorkspaceSurface
+                dragStarted={ dragStarted }
                 key={ index }
-                mainBrickId={ mainBrickId }
+                mainBrick={ mainBrick }
                 unitTest={ unitTest }
               />
             )
@@ -45,7 +47,8 @@ export default class Workspace extends Component {
 }
 
 Workspace.propTypes = {
-  mainBrickId: PropTypes.number.isRequired,
+  dragStarted: PropTypes.bool.isRequired,
+  mainBrick: PropTypes.object.isRequired,
   selectedElement: PropTypes.object.isRequired,
   unitTests: PropTypes.array.isRequired
 }
