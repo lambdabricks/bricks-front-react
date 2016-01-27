@@ -19,6 +19,7 @@ export default class Workspace extends Component {
       mainBrick,
       moveElement,
       selectedElement,
+      selectedSlots,
       selectElementOrStopDrag,
       unitTests
     } = this.props
@@ -52,6 +53,7 @@ export default class Workspace extends Component {
               <WorkspaceSurface
                 key={ index }
                 mainBrick={ mainBrick }
+                selectedSlots={ selectedSlots }
                 unitTest={ unitTest }
               />
             )
@@ -70,6 +72,7 @@ Workspace.propTypes = {
   mainBrick: PropTypes.object.isRequired,
   moveElement: PropTypes.func.isRequired,
   selectedElement: PropTypes.object.isRequired,
+  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   selectElementOrStopDrag: PropTypes.func.isRequired,
   unitTests: PropTypes.array.isRequired
 }

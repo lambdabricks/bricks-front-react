@@ -17,6 +17,7 @@ class WorkspaceSurface extends Component {
   render() {
     const {
       mainBrick,
+      selectedSlots,
       unitTest
     } = this.props
     const { width } = WorkspaceSurface._constants
@@ -31,6 +32,7 @@ class WorkspaceSurface extends Component {
           width={ width }
         >
           <MainBrick
+            selectedSlots={ selectedSlots }
             unitTest={ unitTest }
             { ...mainBrick }
           />
@@ -42,6 +44,7 @@ class WorkspaceSurface extends Component {
 
 WorkspaceSurface.propTypes = {
   mainBrick: PropTypes.object.isRequired,
+  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   unitTest: PropTypes.object.isRequired
 }
 

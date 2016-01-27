@@ -3,17 +3,9 @@ import { connect } from 'react-redux'
 import { addPipeOrSelectSlot } from '../actions'
 import { handleSelectElement } from '../utils'
 import MainBrick from '../components/MainBrick'
-import { selectedSlots } from '../utils'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    inner: ownProps.innerIds.map((elementId) => {
-      return {
-        ...state.workspace.entities[elementId],
-        ...ownProps.unitTest.values[elementId]
-      }
-    }),
-    selectedSlots: selectedSlots(state.workspace),
     unitTest: {
       ...ownProps.unitTest,
       testInputs: ownProps.unitTest.testInputIds.map((elementId) => {

@@ -4,10 +4,14 @@ import {
   moveElement,
   selectElementOrStopDrag
 } from '../actions'
+import { selectedSlots } from '../utils'
+
 import Workspace from '../components/Workspace'
 
 const mapStateToProps = (state) => {
   const { entities, selectionState } = state.workspace
+  const mainBrick = entities[state.workspace.mainBrickId]
+
   let selectedElement = {}
 
   if(!selectionState.dragStarted)
@@ -15,8 +19,12 @@ const mapStateToProps = (state) => {
 
   return {
     dragStarted: selectionState.dragStarted,
-    mainBrick: entities[state.workspace.mainBrickId],
+    mainBrick: {
+      ...mainBrick,
+      inner: mainBrick.innerIds.map((elementId) => entities[elementId])
+    },
     selectedElement,
+    selectedSlots: selectedSlots(state.workspace),
     unitTests: state.workspace.unitTests
   }
 }
