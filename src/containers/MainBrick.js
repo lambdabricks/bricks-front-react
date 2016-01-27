@@ -7,7 +7,7 @@ import { selectedSlots } from '../utils'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    inner: ownProps.inner.map((elementId) => {
+    inner: ownProps.innerIds.map((elementId) => {
       return {
         ...state.workspace.entities[elementId],
         ...ownProps.unitTest.values[elementId]

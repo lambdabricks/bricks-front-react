@@ -50,8 +50,8 @@ const addToWorkspace = (workspace, element) => {
       ...workspace.entities,
       [mainBrickId]: {
         ...mainBrick,
-        inner: [
-          ...mainBrick.inner,
+        innerIds: [
+          ...mainBrick.innerIds,
           element.id
         ]
       },
@@ -97,9 +97,9 @@ export const removeElementInWorkspace = (workspace, payload) => {
       ...newEntities,
       [mainBrickId]: {
         ...mainBrick,
-        // Remove from mainBrick.inner all the entities removed by
+        // Remove from mainBrick.innerIds all the entities removed by
         // the loop above
-        inner: mainBrick.inner.filter((id) => newEntities[id])
+        innerIds: mainBrick.innerIds.filter((id) => newEntities[id])
       }
     },
     unitTests: newUnitTests

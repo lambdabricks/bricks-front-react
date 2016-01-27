@@ -43,7 +43,7 @@ const newMainBrick = (mainBrickId) => {
   return {
     componentName: MAIN_BRICK,
     id: mainBrickId,
-    inner: [],
+    innerIds: [],
     inputSlots:[
       { id: nextId() },
       { id: nextId() }
