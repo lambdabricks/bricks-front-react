@@ -4,7 +4,7 @@ import { isNotEmpty } from '../utils'
 import { PositionPropTypes } from '../propTypes'
 import SelectedElementDialog from '../containers/SelectedElementDialog'
 import Translate from './Translate'
-import WorkspaceSurface from '../containers/WorkspaceSurface'
+import WorkspaceSurface from './WorkspaceSurface'
 
 const styles = {
   float: 'left',
@@ -17,12 +17,32 @@ export default class Workspace extends Component {
     const {
       dragStarted,
       mainBrick,
+      moveElement,
       selectedElement,
+      selectElementOrStopDrag,
       unitTests
     } = this.props
+    let handleMouseMove, handleMouseUp
+
+    if(dragStarted) {
+      handleMouseMove = (e) => {
+        moveElement({ x: e.clientX, y: e.clientY })
+      }
+      handleMouseUp = (e) => {
+        selectElementOrStopDrag({ x: e.clientX, y: e.clientY })
+      }
+    }
+    else {
+      handleMouseMove = () => {}
+      handleMouseUp = () => {}
+    }
 
     return (
-      <div style={ styles }>
+      <div
+        onMouseMove={ handleMouseMove }
+        onMouseUp={ handleMouseUp }
+        style={ styles }
+      >
         <Translate
           HtmlElement="h2"
           message="workspace"
@@ -30,7 +50,6 @@ export default class Workspace extends Component {
         { unitTests.map((unitTest, index) => {
             return (
               <WorkspaceSurface
-                dragStarted={ dragStarted }
                 key={ index }
                 mainBrick={ mainBrick }
                 unitTest={ unitTest }
@@ -49,6 +68,8 @@ export default class Workspace extends Component {
 Workspace.propTypes = {
   dragStarted: PropTypes.bool.isRequired,
   mainBrick: PropTypes.object.isRequired,
+  moveElement: PropTypes.func.isRequired,
   selectedElement: PropTypes.object.isRequired,
+  selectElementOrStopDrag: PropTypes.func.isRequired,
   unitTests: PropTypes.array.isRequired
 }
