@@ -111,7 +111,10 @@ export const newWorkspace = () => {
 
   return {
     entities: {
-      [mainBrickId]: mainBrick,
+      [mainBrickId]: {
+        ...mainBrick,
+        testInputIds
+      },
       ...testInputs
     },
     mainBrickId: mainBrickId,
@@ -125,7 +128,6 @@ export const newWorkspace = () => {
     },
     unitTests: [
       {
-        testInputIds,
         values: { }
       }
     ]

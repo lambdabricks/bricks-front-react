@@ -21,7 +21,8 @@ const mapStateToProps = (state) => {
     dragStarted: selectionState.dragStarted,
     mainBrick: {
       ...mainBrick,
-      inner: mainBrick.innerIds.map((elementId) => entities[elementId])
+      inner: mainBrick.innerIds.map((elementId) => entities[elementId]),
+      testInputs: mainBrick.testInputIds.map((elementId) => entities[elementId])
     },
     selectedElement,
     selectedSlots: selectedSlots(state.workspace),

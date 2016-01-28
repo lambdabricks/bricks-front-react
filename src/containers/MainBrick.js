@@ -4,17 +4,6 @@ import { addPipeOrSelectSlot } from '../actions'
 import { handleSelectElement } from '../utils'
 import MainBrick from '../components/MainBrick'
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    unitTest: {
-      ...ownProps.unitTest,
-      testInputs: ownProps.unitTest.testInputIds.map((elementId) => {
-        return state.workspace.entities[elementId]
-      })
-    }
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     handleClick: handleSelectElement(dispatch),
@@ -27,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainBrick)
+export default connect(null, mapDispatchToProps)(MainBrick)

@@ -15,13 +15,14 @@ class MainBrick extends Component {
       id,
       inner,
       size,
+      testInputs,
       unitTest
     } = this.props
     const { Brick, Slot } = MainBrick._constants
 
     return (
       <Group y={ Slot.height } >
-        { unitTest.testInputs.map((element) => {
+        { testInputs.map((element) => {
             return (
               <TestInput
                 key={ element.id }
@@ -68,6 +69,7 @@ MainBrick.propTypes = {
     })
   ).isRequired,
   size: SizePropTypes.isRequired,
+  testInputs: PropTypes.arrayOf(PropTypes.object).isRequired,
   unitTest: PropTypes.object.isRequired
 }
 
