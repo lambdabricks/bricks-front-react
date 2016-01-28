@@ -25,7 +25,7 @@ const updateElementInWorkspace = (workspace, elementId, workspaceIndex, newProps
         values: {
           ...unitTests[workspaceIndex].values,
           [elementId]: {
-            elementValues,
+            ...elementValues,
             ...newProps
           }
         }
@@ -50,8 +50,17 @@ export const changeTestInputType = (workspace, payload) => {
   )
 }
 
-export const changePrimitiveValue = (workspace, payload) => {
-  const { elementId, newValue } = payload
+export const changeTestInputValue = (workspace, payload) => {
+  const {
+    elementId,
+    newValue,
+    workspaceIndex
+  } = payload
 
-  return updateElement(workspace, elementId, { value: newValue })
+  return updateElementInWorkspace(
+    workspace,
+    elementId,
+    workspaceIndex,
+    { value: newValue }
+  )
 }
