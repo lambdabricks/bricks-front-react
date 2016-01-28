@@ -4,7 +4,7 @@ import { LEFT } from '../components/constants'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleMouseDown: (elementId, mouseEvent, elementPosition) => {
+    handleMouseDown: (elementId, mouseEvent, elementPosition, workspaceIndex) => {
       if(mouseEvent.button != LEFT)
         return
 
@@ -12,7 +12,8 @@ const mapDispatchToProps = (dispatch) => {
         startDrag(
           elementId,
           { x: mouseEvent.clientX, y: mouseEvent.clientY },
-          elementPosition
+          elementPosition,
+          workspaceIndex
         )
       )
     }
