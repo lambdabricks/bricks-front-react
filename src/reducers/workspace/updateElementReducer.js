@@ -11,7 +11,6 @@ const updateElement = (workspace, elementId, newProps) => {
       }
     }
   })
-
 }
 
 export const changePrimitiveType = (workspace, payload) => {
