@@ -39,7 +39,7 @@ class MainBrick extends Component {
           width={ size.width }
           stroke={ Brick.strokeColor }
           fill={ Brick.fillColor }
-          onClick={ (e) => handleClick(id, e) }
+          onClick={ (e) => handleClick(id, e, workspaceIndex) }
         />
         { inner.map((element) => {
             if(element) {
