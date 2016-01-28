@@ -80,7 +80,7 @@ export const newPipe = (workspace, elementId) => {
   }
 }
 
-export const newUnitTest = (mainBrick) => {
+export const newTestInputs = (mainBrick) => {
   let testInputs = {}
 
   mainBrick.inputSlots.forEach((inputSlot, index) => {
@@ -102,7 +102,7 @@ export const newUnitTest = (mainBrick) => {
 export const newWorkspace = () => {
   const mainBrickId = nextId()
   const mainBrick = newMainBrick(mainBrickId)
-  const testInputs = newUnitTest(mainBrick)
+  const testInputs = newTestInputs(mainBrick)
 
   let testInputIds = []
 

@@ -16,24 +16,11 @@ export const addPrimitiveToWorkspace = (workspace, attributes) =>
   addToWorkspace(workspace, newPrimitive(attributes))
 
 export const addUnitTestToWorkspace = (workspace) => {
-  const { mainBrickId } = workspace
-  const testInputs = newUnitTest(workspace.entities[mainBrickId])
-
-  let testInputIds = []
-
-  for(var testInput in testInputs)
-    testInputIds.push(testInputs[testInput].id)
-
   return Object.assign({}, workspace, {
     ...workspace,
-    entities: {
-      ...workspace.entities,
-      ...testInputs
-    },
     unitTests: [
       ...workspace.unitTests,
       {
-        testInputIds,
         values: { }
       }
     ]
