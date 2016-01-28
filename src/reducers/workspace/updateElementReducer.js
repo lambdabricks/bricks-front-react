@@ -13,10 +13,41 @@ const updateElement = (workspace, elementId, newProps) => {
   })
 }
 
-export const changePrimitiveType = (workspace, payload) => {
-  const { elementId, newType } = payload
+const updateElementInWorkspace = (workspace, elementId, workspaceIndex, newProps) => {
+  const { unitTests } = workspace
+  const elementValues = unitTests[workspaceIndex].values[elementId]
 
-  return updateElement(workspace, elementId, { type: newType })
+  return Object.assign({}, workspace, {
+    ...workspace,
+    unitTests: [
+      ...unitTests.slice(0, workspaceIndex),
+      Object.assign({}, unitTests[workspaceIndex], {
+        values: {
+          ...unitTests[workspaceIndex].values,
+          [elementId]: {
+            elementValues,
+            ...newProps
+          }
+        }
+      }),
+      ...unitTests.slice(workspaceIndex + 1)
+    ]
+  })
+}
+
+export const changePrimitiveType = (workspace, payload) => {
+  const {
+    elementId,
+    newType,
+    workspaceIndex
+  } = payload
+
+  return updateElementInWorkspace(
+    workspace,
+    elementId,
+    workspaceIndex,
+    { type: newType }
+  )
 }
 
 export const changePrimitiveValue = (workspace, payload) => {

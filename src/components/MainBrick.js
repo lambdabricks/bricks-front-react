@@ -29,6 +29,7 @@ class MainBrick extends Component {
                 key={ element.id }
                 workspaceIndex={ workspaceIndex }
                 { ...element }
+                { ...unitTest.values[element.id] }
               />
             )
           })
