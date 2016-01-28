@@ -16,7 +16,8 @@ class MainBrick extends Component {
       inner,
       size,
       testInputs,
-      unitTest
+      unitTest,
+      workspaceIndex
     } = this.props
     const { Brick, Slot } = MainBrick._constants
 
@@ -26,6 +27,7 @@ class MainBrick extends Component {
             return (
               <TestInput
                 key={ element.id }
+                workspaceIndex={ workspaceIndex }
                 { ...element }
               />
             )
@@ -70,7 +72,8 @@ MainBrick.propTypes = {
   ).isRequired,
   size: SizePropTypes.isRequired,
   testInputs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  unitTest: PropTypes.object.isRequired
+  unitTest: PropTypes.object.isRequired,
+  workspaceIndex: PropTypes.number.isRequired
 }
 
 MainBrick._constants = {

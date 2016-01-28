@@ -51,6 +51,7 @@ export default class Workspace extends Component {
         { unitTests.map((unitTest, index) => {
             return (
               <WorkspaceSurface
+                index={ index }
                 key={ index }
                 mainBrick={ mainBrick }
                 selectedSlots={ selectedSlots }

@@ -10,14 +10,15 @@ export const isNotEmpty = (object) => {
 }
 
 export const handleSelectElement = (dispatch) => {
-  return (elementId, mouseEvent) => {
+  return (elementId, mouseEvent, workspaceIndex) => {
     if(mouseEvent.button != LEFT)
       return
 
     dispatch(
       selectElement(
         elementId,
-        { x: mouseEvent.clientX, y: mouseEvent.clientY }
+        { x: mouseEvent.clientX, y: mouseEvent.clientY },
+        workspaceIndex
       )
     )
   }

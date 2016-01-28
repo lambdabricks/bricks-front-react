@@ -15,7 +15,8 @@ class TestInput extends Component {
       slotPosition,
       size,
       type,
-      value
+      value,
+      workspaceIndex
     } = this.props
 
     const {
@@ -39,7 +40,7 @@ class TestInput extends Component {
 
     return (
       <Group
-        onClick={ (e) => handleClick(id, e) }
+        onClick={ (e) => handleClick(id, e, workspaceIndex) }
         x={ position.x }
         y={ position.y }
       >
@@ -70,7 +71,8 @@ TestInput.propTypes = {
   id: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   slotPosition: PositionPropTypes.isRequired,
-  value: PropTypes.any
+  value: PropTypes.any,
+  workspaceIndex: PropTypes.number.isRequired
 }
 
 TestInput._constants = {

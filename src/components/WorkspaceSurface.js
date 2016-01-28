@@ -16,6 +16,7 @@ const surfaceStyles = {
 class WorkspaceSurface extends Component {
   render() {
     const {
+      index,
       mainBrick,
       selectedSlots,
       unitTest
@@ -34,6 +35,7 @@ class WorkspaceSurface extends Component {
           <MainBrick
             selectedSlots={ selectedSlots }
             unitTest={ unitTest }
+            workspaceIndex={ index }
             { ...mainBrick }
           />
         </Surface>
@@ -43,6 +45,7 @@ class WorkspaceSurface extends Component {
 }
 
 WorkspaceSurface.propTypes = {
+  index: PropTypes.number.isRequired,
   mainBrick: PropTypes.object.isRequired,
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   unitTest: PropTypes.object.isRequired

@@ -31,14 +31,14 @@ const mapDispatchToProps = (dispatch) => {
         removeElement(elementId)
       )
     },
-    changePrimitiveType: (elementId, changeEvent) => {
+    changePrimitiveType: (elementId, changeEvent, workspaceIndex) => {
       dispatch(
-        changePrimitiveType(elementId, changeEvent.target.value)
+        changePrimitiveType(elementId, changeEvent.target.value, workspaceIndex)
       )
     },
-    changePrimitiveValue: (elementId, changeEvent) => {
+    changePrimitiveValue: (elementId, changeEvent, workspaceIndex) => {
       dispatch(
-        changePrimitiveValue(elementId, changeEvent.target.value)
+        changePrimitiveValue(elementId, changeEvent.target.value, workspaceIndex)
       )
     }
   }

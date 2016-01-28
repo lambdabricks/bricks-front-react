@@ -39,7 +39,11 @@ export const removeSlotSelectionState = (state) => {
 }
 
 export const addSelectedElementToWorkspace = (state, payload) => {
-  const { elementId, mousePosition } = payload
+  const {
+    elementId,
+    mousePosition,
+    workspaceIndex
+  } = payload
 
   return Object.assign({}, state, {
     ...state,
@@ -47,7 +51,8 @@ export const addSelectedElementToWorkspace = (state, payload) => {
       ...state.selectionState,
       element: {
         id: elementId,
-        mousePosition
+        mousePosition,
+        workspaceIndex
       }
     }
   })

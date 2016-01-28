@@ -140,12 +140,13 @@ export const clearSlotSelection = () => {
   }
 }
 
-export const selectElement = (elementId, mousePosition) => {
+export const selectElement = (elementId, mousePosition, workspaceIndex) => {
   return {
     type: SELECT_ELEMENT,
     payload: {
       elementId,
-      mousePosition
+      mousePosition,
+      workspaceIndex
     }
   }
 }
@@ -185,22 +186,24 @@ const _addUnitTest = () => {
   }
 }
 
-export const changePrimitiveType = (elementId, newType) => {
+export const changePrimitiveType = (elementId, newType, workspaceIndex) => {
   return {
     type: CHANGE_PRIMITIVE_TYPE,
     payload: {
       elementId,
-      newType
+      newType,
+      workspaceIndex
     }
   }
 }
 
-export const changePrimitiveValue = (elementId, newValue) => {
+export const changePrimitiveValue = (elementId, newValue, workspaceIndex) => {
   return {
     type: CHANGE_PRIMITIVE_VALUE,
     payload: {
       elementId,
-      newValue
+      newValue,
+      workspaceIndex
     }
   }
 }

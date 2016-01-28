@@ -86,7 +86,8 @@ export default class SelectedElementDialog extends Component {
       changePrimitiveType,
       id,
       primitives,
-      type
+      type,
+      workspaceIndex
     } = this.props
 
     return (
@@ -97,7 +98,7 @@ export default class SelectedElementDialog extends Component {
         />
         <select
           value={ type }
-          onChange={ (e) => changePrimitiveType(id, e) }
+          onChange={ (e) => changePrimitiveType(id, e, workspaceIndex) }
         >
           { /* TestInput 'type' will be 'null' by default */ }
           <Translate
@@ -123,7 +124,8 @@ export default class SelectedElementDialog extends Component {
     const {
       changePrimitiveValue,
       id,
-      value
+      value,
+      workspaceIndex
     } = this.props
 
     return (
@@ -134,7 +136,7 @@ export default class SelectedElementDialog extends Component {
         />
         <input
           value={ value }
-          onChange={ (e) => changePrimitiveValue(id, e) }
+          onChange={ (e) => changePrimitiveValue(id, e, workspaceIndex) }
         />
       </div>
     )
@@ -166,5 +168,6 @@ SelectedElementDialog.propTypes = {
   deleteElement: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   mousePosition: PositionPropTypes.isRequired,
-  primitives: PropTypes.arrayOf(PrimitivePropTypes).isRequired
+  primitives: PropTypes.arrayOf(PrimitivePropTypes).isRequired,
+  workspaceIndex: PropTypes.number
 }
