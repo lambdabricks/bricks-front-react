@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import {
   addUnitTest,
-  changePrimitiveType,
+  changeTestInputType,
   changePrimitiveValue,
   removeElement
 } from '../actions'
@@ -31,14 +31,14 @@ const mapDispatchToProps = (dispatch) => {
         removeElement(elementId)
       )
     },
-    changePrimitiveType: (elementId, changeEvent, workspaceIndex) => {
-      dispatch(
-        changePrimitiveType(elementId, changeEvent.target.value, workspaceIndex)
-      )
-    },
     changePrimitiveValue: (elementId, changeEvent, workspaceIndex) => {
       dispatch(
         changePrimitiveValue(elementId, changeEvent.target.value, workspaceIndex)
+      )
+    },
+    changeTestInputType: (elementId, changeEvent, workspaceIndex) => {
+      dispatch(
+        changeTestInputType(elementId, changeEvent.target.value, workspaceIndex)
       )
     }
   }

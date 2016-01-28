@@ -5,7 +5,7 @@ export const ADD_BRICK = 'ADD_BRICK'
 export const ADD_PIPE = 'ADD_PIPE'
 export const ADD_PRIMITIVE = 'ADD_PRIMITIVE'
 export const ADD_UNIT_TEST = 'ADD_UNIT_TEST'
-export const CHANGE_PRIMITIVE_TYPE = 'CHANGE_PRIMITIVE_TYPE'
+export const CHANGE_TEST_INPUT_TYPE = 'CHANGE_TEST_INPUT_TYPE'
 export const CHANGE_PRIMITIVE_VALUE = 'CHANGE_PRIMITIVE_VALUE'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
 export const EVALUATE = 'EVALUATE'
@@ -186,9 +186,9 @@ const _addUnitTest = () => {
   }
 }
 
-export const changePrimitiveType = (elementId, newType, workspaceIndex) => {
+export const changeTestInputType = (elementId, newType, workspaceIndex) => {
   return {
-    type: CHANGE_PRIMITIVE_TYPE,
+    type: CHANGE_TEST_INPUT_TYPE,
     payload: {
       elementId,
       newType,

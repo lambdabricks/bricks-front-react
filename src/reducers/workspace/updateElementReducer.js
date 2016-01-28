@@ -35,7 +35,7 @@ const updateElementInWorkspace = (workspace, elementId, workspaceIndex, newProps
   })
 }
 
-export const changePrimitiveType = (workspace, payload) => {
+export const changeTestInputType = (workspace, payload) => {
   const {
     elementId,
     newType,
