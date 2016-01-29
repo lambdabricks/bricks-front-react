@@ -16,8 +16,24 @@ export const addBrickToWorkspace = (workspace, attributes) =>
 export const addPipeToWorkspace = (workspace, attributes) =>
   addToWorkspace(workspace, newPipe(attributes))
 
-export const addPrimitiveToWorkspace = (workspace, attributes) =>
-  addToWorkspace(workspace, newPrimitive(attributes))
+export const addPrimitiveToWorkspace = (workspace, primitiveType) => {
+  const primitive = newPrimitive(primitiveType)
+  const newWorkspace = addToWorkspace(workspace, primitive)
+
+  newWorkspace.unitTests = newWorkspace.unitTests.map((unitTest) => {
+    return Object.assign({}, unitTest, {
+      values: {
+        ...unitTest.values,
+        [primitive.id]: {
+          componentName: PRIMITIVE,
+          type: primitiveType
+        }
+      }
+    })
+  })
+
+  return newWorkspace
+}
 
 export const addUnitTestToWorkspace = (workspace) => {
   const values = workspace.unitTests[0].values

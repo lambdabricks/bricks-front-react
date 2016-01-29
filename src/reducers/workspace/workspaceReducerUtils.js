@@ -62,7 +62,6 @@ export const newPrimitive = (type) => {
     id: nextId(),
     position: PrimitiveDefaults.defaultPosition,
     size: PrimitiveDefaults.defaultSize,
-    type: type,
     // react or redux ignore pair with value `undefined`
     value: null
   }
