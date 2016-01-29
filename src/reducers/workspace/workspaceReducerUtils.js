@@ -68,8 +68,8 @@ export const newPrimitive = (type) => {
   }
 }
 
-export const newPipe = (workspace, elementId) => {
-  const { input, output } = workspace.selectionState.pipe
+export const newPipe = (payload) => {
+  const { elementId, input, output } = payload
 
   return {
     componentName: SELECTABLE_PIPE,

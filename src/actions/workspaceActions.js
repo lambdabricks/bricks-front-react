@@ -114,17 +114,21 @@ export const addPipeIfBothSlotsSelected = () => {
     if(isNotEmpty(input) && isNotEmpty(output)) {
       const pipeId = nextId()
 
-      dispatch(_addPipe(pipeId))
+      dispatch(_addPipe(pipeId, input, output))
       dispatch(clearSlotSelection())
       dispatch(_evaluate(pipeId))
     }
   }
 }
 
-const _addPipe = (elementId) => {
+const _addPipe = (elementId, input, output) => {
   return {
     type: ADD_PIPE,
-    payload: elementId
+    payload: {
+      elementId,
+      input,
+      output
+    }
   }
 }
 

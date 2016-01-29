@@ -14,7 +14,7 @@ export const addBrickToWorkspace = (workspace, attributes) =>
   addToWorkspace(workspace, newBrick(attributes))
 
 export const addPipeToWorkspace = (workspace, attributes) =>
-  addToWorkspace(workspace, newPipe(workspace, attributes))
+  addToWorkspace(workspace, newPipe(attributes))
 
 export const addPrimitiveToWorkspace = (workspace, attributes) =>
   addToWorkspace(workspace, newPrimitive(attributes))
