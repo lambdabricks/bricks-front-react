@@ -52,6 +52,7 @@ class MainBrick extends Component {
                   selectedSlots={ selectedSlots }
                   { ...element }
                   { ...unitTest.values[element.id] }
+                  { ...unitTest.values[element.valueId] }
                 />
               )
             }

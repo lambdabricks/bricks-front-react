@@ -75,7 +75,8 @@ export const newPipe = (payload) => {
     id: elementId,
     input,
     output,
-    type: "null"
+    type: "null",
+    valueId: input.slotId
   }
 }
 
