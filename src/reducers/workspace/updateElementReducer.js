@@ -1,4 +1,4 @@
-const updateElementInAllWorkspaces = (workspace, elementId, newProps) => {
+const updateElementInAllUnitTests = (workspace, elementId, newProps) => {
   const { unitTests } = workspace
 
   return Object.assign({}, workspace, {
@@ -9,7 +9,7 @@ const updateElementInAllWorkspaces = (workspace, elementId, newProps) => {
   })
 }
 
-const updateElementInWorkspace = (workspace, elementId, workspaceIndex, newProps) => {
+const updateElementInUnitTest = (workspace, elementId, workspaceIndex, newProps) => {
   const { unitTests } = workspace
 
   return Object.assign({}, workspace, {
@@ -41,7 +41,7 @@ export const changePrimitiveValue = (workspace, payload) => {
     newValue
   } = payload
 
-  return updateElementInAllWorkspaces(
+  return updateElementInAllUnitTests(
     workspace,
     elementId,
     { value: newValue }
@@ -55,7 +55,7 @@ export const changeTestInputType = (workspace, payload) => {
     workspaceIndex
   } = payload
 
-  return updateElementInWorkspace(
+  return updateElementInUnitTest(
     workspace,
     elementId,
     workspaceIndex,
@@ -70,7 +70,7 @@ export const changeTestInputValue = (workspace, payload) => {
     workspaceIndex
   } = payload
 
-  return updateElementInWorkspace(
+  return updateElementInUnitTest(
     workspace,
     elementId,
     workspaceIndex,
