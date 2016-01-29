@@ -28,8 +28,7 @@ export const addDragStartedToWorkspace = (workspace, payload) => {
   const  {
     elementId,
     elementPosition,
-    mousePosition,
-    workspaceIndex
+    mousePosition
   } = payload
 
   return setDragStateToWorkspace(
@@ -39,8 +38,7 @@ export const addDragStartedToWorkspace = (workspace, payload) => {
       element: {
         id: elementId,
         mouseDownPosition: mousePosition,
-        startPosition: elementPosition,
-        workspaceIndex
+        startPosition: elementPosition
       }
     }
   )

@@ -48,7 +48,6 @@ class MainBrick extends Component {
               return (
                 <ReactComponent
                   key={ element.id }
-                  workspaceIndex={ workspaceIndex }
                   { ...element }
                 />
               )

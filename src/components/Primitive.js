@@ -15,14 +15,9 @@ class Primitive extends Component {
   }
 
   startDrag(mouseEvent) {
-    const {
-      handleMouseDown,
-      id,
-      position,
-      workspaceIndex
-    } = this.props
+    const { handleMouseDown, id, position } = this.props
 
-    handleMouseDown(id, mouseEvent, position, workspaceIndex)
+    handleMouseDown(id, mouseEvent, position)
   }
 
   render() {
@@ -81,8 +76,7 @@ Primitive.propTypes = {
   position: PositionPropTypes.isRequired,
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   selectSlot: PropTypes.func.isRequired,
-  value: PropTypes.any,
-  workspaceIndex: PropTypes.number.isRequired
+  value: PropTypes.any
 }
 
 Primitive._constants = {

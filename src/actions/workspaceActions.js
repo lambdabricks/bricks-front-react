@@ -45,14 +45,13 @@ const _addPrimitive = (type) => {
   }
 }
 
-export const startDrag = (elementId, mousePosition, elementPosition, workspaceIndex) => {
+export const startDrag = (elementId, mousePosition, elementPosition) => {
   return {
     type: START_DRAG,
     payload: {
       elementId,
       mousePosition,
-      elementPosition,
-      workspaceIndex
+      elementPosition
     }
   }
 }
@@ -65,7 +64,7 @@ export const selectElementOrStopDrag = (mousePosition) => {
 
     if(element.mouseDownPosition.x == mousePosition.x &&
       element.mouseDownPosition.y == mousePosition.y ) {
-      dispatch(selectElement(element.id, mousePosition, element.workspaceIndex))
+      dispatch(selectElement(element.id, mousePosition))
     } else {
       dispatch(removeSelectedElement())
     }
