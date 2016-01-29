@@ -84,11 +84,9 @@ export const newTestInputs = (mainBrick) => {
   let testInputs = {}
 
   mainBrick.inputSlots.forEach((inputSlot, index) => {
-    const testInputId = nextId()
-
-    testInputs[testInputId] = {
+    testInputs[inputSlot.id] = {
       componentName: TEST_INPUT,
-      id: testInputId,
+      id: inputSlot.id,
       slotPosition: inputSlotPosition(mainBrick, inputSlot.id),
       size: TestInputConstants.defaultSize,
       type: "null",
