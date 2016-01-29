@@ -25,8 +25,10 @@ export default class SelectedElementDialog extends Component {
 
     this.renderDeleteElementButton = this.renderDeleteElementButton.bind(this)
     this.renderElementDetails = this.renderElementDetails.bind(this)
+    this.renderPrimitiveValueInput = this.renderPrimitiveValueInput.bind(this)
     this.renderTestInputTypesSelect = this.renderTestInputTypesSelect.bind(this)
     this.renderTestInputValueInput = this.renderTestInputValueInput.bind(this)
+    this.renderValueInput = this.renderValueInput.bind(this)
   }
 
   renderElementDetails() {
@@ -120,9 +122,20 @@ export default class SelectedElementDialog extends Component {
     )
   }
 
+  renderPrimitiveValueInput() {
+    const { changePrimitiveValue } = this.props
+
+    return this.renderValueInput(changePrimitiveValue)
+  }
+
   renderTestInputValueInput() {
+    const { changeTestInputValue } = this.props
+
+    return this.renderValueInput(changeTestInputValue)
+  }
+
+  renderValueInput(handleChange) {
     const {
-      changeTestInputValue,
       id,
       value,
       workspaceIndex
@@ -136,7 +149,7 @@ export default class SelectedElementDialog extends Component {
         />
         <input
           value={ value }
-          onChange={ (e) => changeTestInputValue(id, e, workspaceIndex) }
+          onChange={ (e) => handleChange(id, e, workspaceIndex) }
         />
       </div>
     )
@@ -162,6 +175,7 @@ export default class SelectedElementDialog extends Component {
 
 SelectedElementDialog.propTypes = {
   addUnitTest: PropTypes.func.isRequired,
+  changePrimitiveValue: PropTypes.func.isRequired,
   changeTestInputType: PropTypes.func.isRequired,
   changeTestInputValue: PropTypes.func.isRequired,
   componentName: PropTypes.string.isRequired,

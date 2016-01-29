@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 
 import {
   addUnitTest,
+  changePrimitiveValue,
   changeTestInputType,
   changeTestInputValue,
   removeElement
@@ -15,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     ...entities[id],
-    ...unitTests[workspaceIndex].values[id],
+    ...unitTests[workspaceIndex || 0].values[id],
     primitives
   }
 }
@@ -30,6 +31,11 @@ const mapDispatchToProps = (dispatch) => {
     deleteElement: (elementId) => {
       dispatch(
         removeElement(elementId)
+      )
+    },
+    changePrimitiveValue: (elementId, changeEvent, workspaceIndex) => {
+      dispatch(
+        changePrimitiveValue(elementId, changeEvent.target.value, workspaceIndex)
       )
     },
     changeTestInputType: (elementId, changeEvent, workspaceIndex) => {

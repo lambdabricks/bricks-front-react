@@ -49,6 +49,7 @@ class MainBrick extends Component {
                 <ReactComponent
                   key={ element.id }
                   { ...element }
+                  { ...unitTest.values[element.id] }
                 />
               )
             }
