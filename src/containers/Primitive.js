@@ -4,13 +4,6 @@ import Draggable from './Draggable'
 import Primitive from '../components/Primitive'
 
 import { addPipeOrSelectSlot } from '../actions'
-import { selectedSlots } from '../utils'
-
-const mapStateToProps = (state) => {
-  return {
-    selectedSlots: selectedSlots(state.workspace)
-  }
-}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -20,4 +13,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Draggable(Primitive))
+export default connect(null, mapDispatchToProps)(Draggable(Primitive))

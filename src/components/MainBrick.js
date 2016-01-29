@@ -14,6 +14,7 @@ class MainBrick extends Component {
       handleClick,
       id,
       inner,
+      selectedSlots,
       size,
       testInputs,
       unitTest,
@@ -48,6 +49,7 @@ class MainBrick extends Component {
               return (
                 <ReactComponent
                   key={ element.id }
+                  selectedSlots={ selectedSlots }
                   { ...element }
                   { ...unitTest.values[element.id] }
                 />
@@ -72,6 +74,7 @@ MainBrick.propTypes = {
       value: PropTypes.any
     })
   ).isRequired,
+  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   size: SizePropTypes.isRequired,
   testInputs: PropTypes.arrayOf(PropTypes.object).isRequired,
   unitTest: PropTypes.object.isRequired,

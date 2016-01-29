@@ -3,13 +3,6 @@ import { connect } from 'react-redux'
 import Brick from '../components/Brick'
 import { addPipeOrSelectSlot } from '../actions'
 import Draggable from './Draggable'
-import { selectedSlots } from '../utils'
-
-const mapStateToProps = (state) => {
-  return {
-    selectedSlots: selectedSlots(state.workspace)
-  }
-}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -24,4 +17,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Draggable(Brick))
+export default connect(null, mapDispatchToProps)(Draggable(Brick))
