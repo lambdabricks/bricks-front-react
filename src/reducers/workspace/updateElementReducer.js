@@ -1,3 +1,8 @@
+import {
+  PRIMITIVE,
+  TEST_INPUT
+} from '../../utils/componentNames'
+
 const updateElementInAllUnitTests = (workspace, elementId, newProps) => {
   const { unitTests } = workspace
 
@@ -44,7 +49,10 @@ export const changePrimitiveValue = (workspace, payload) => {
   return updateElementInAllUnitTests(
     workspace,
     elementId,
-    { value: newValue }
+    {
+      componentName: PRIMITIVE,
+      value: newValue
+    }
   )
 }
 
@@ -59,7 +67,10 @@ export const changeTestInputType = (workspace, payload) => {
     workspace,
     elementId,
     workspaceIndex,
-    { type: newType }
+    {
+      componentName: TEST_INPUT,
+      type: newType
+    }
   )
 }
 
@@ -74,6 +85,9 @@ export const changeTestInputValue = (workspace, payload) => {
     workspace,
     elementId,
     workspaceIndex,
-    { value: newValue }
+    {
+      componentName: TEST_INPUT,
+      value: newValue
+    }
   )
 }

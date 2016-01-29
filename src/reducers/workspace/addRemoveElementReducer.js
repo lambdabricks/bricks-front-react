@@ -1,4 +1,8 @@
 import {
+  PRIMITIVE
+} from '../../utils/componentNames'
+
+import {
   newBrick,
   newPipe,
   newPrimitive,
@@ -16,12 +20,20 @@ export const addPrimitiveToWorkspace = (workspace, attributes) =>
   addToWorkspace(workspace, newPrimitive(attributes))
 
 export const addUnitTestToWorkspace = (workspace) => {
+  const values = workspace.unitTests[0].values
+  let newValues = {}
+
+  for(let elementId in values) {
+    if(values[elementId].componentName == PRIMITIVE)
+      newValues[elementId] = values[elementId]
+  }
+
   return Object.assign({}, workspace, {
     ...workspace,
     unitTests: [
       ...workspace.unitTests,
       {
-        values: { }
+        values: newValues
       }
     ]
   })
