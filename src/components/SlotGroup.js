@@ -63,7 +63,7 @@ SlotGroup.propTypes = {
   selectSlot: PropTypes.func.isRequired,
   slotAndOffset: PropTypes.number.isRequired,
   slotOffset: PropTypes.number.isRequired,
-  // slots: SlotPropTypes.isRequired,
+  slots: SlotPropTypes.isRequired,
   strokeColor: PropTypes.string.isRequired,
   y: PropTypes.number.isRequired
 }

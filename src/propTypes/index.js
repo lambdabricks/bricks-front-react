@@ -16,8 +16,9 @@ export const SizePropTypes = PropTypes.shape({
   width: PropTypes.number.isRequired
 })
 
-export const SlotPropTypes = PropTypes.arrayOf(
+export const SlotPropTypes = PropTypes.objectOf(
   PropTypes.shape({
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    index: PropTypes.number.isRequired
   }).isRequired
 )
