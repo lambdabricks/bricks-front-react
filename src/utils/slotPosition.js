@@ -57,26 +57,21 @@ const brickSlotXPosition = (slots, slotId, width) => {
   return slotXPosition(slots, slotId, width, Brick)
 }
 
-const mainBrickSlotXPosition = (slots, slotId, width) => {
-  return slotXPosition(slots, slotId, width, MainBrick)
+const mainBrickSlotXPosition = (slots, slot, width) => {
+  return slotXPosition(slots, slot, width, MainBrick)
 }
 
-const slotXPosition = (slots, slotId, width, constants) => {
+const slotXPosition = (slots, slot, width, constants) => {
   const xOffset = (width - slotGroupWidth(slots, constants)) / 2
-  let slotIndex = 0
 
-  for(var i=0; i < slots.length; i++) {
-    if(slots[i].id == slotId) {
-      slotIndex = i
-      break
-    }
-  }
-
-  return xOffset + (constants.slotOffset + (slotIndex * constants.slotAndOffset))
+  return xOffset +
+    (constants.slotOffset + (slot.index * constants.slotAndOffset))
 }
 
 const slotGroupWidth = (slots, constants) => {
-  return constants.slotOffset + (slots.length * constants.slotAndOffset)
+  const totalSlots = Object.keys(slots).length
+
+  return constants.slotOffset + (totalSlots * constants.slotAndOffset)
 }
 
 export const innerInputSlotPosition = (size) => {

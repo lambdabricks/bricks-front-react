@@ -20,10 +20,10 @@ const nextId = () => id++
 
 export const newBrick = (brick) => {
   const { arity, moduleName, name } = brick
-  let inputSlots = []
+  let inputSlots = {}
 
   for(var i=0; i < arity; i++)
-    inputSlots.push({ id: nextId() })
+    inputSlots[nextId()] = { index: i }
 
   return {
     componentName: BRICK,
@@ -44,10 +44,14 @@ const newMainBrick = (mainBrickId) => {
     componentName: MAIN_BRICK,
     id: mainBrickId,
     innerIds: [],
-    inputSlots:[
-      { id: nextId() },
-      { id: nextId() }
-    ],
+    inputSlots: {
+      [nextId()]: {
+        index: 0
+      },
+      [nextId()]: {
+        index: 1
+      }
+    },
     outputSlots: [
       { id: nextId() }
     ],
@@ -83,16 +87,18 @@ export const newPipe = (payload) => {
 export const newTestInputs = (mainBrick) => {
   let testInputs = {}
 
-  mainBrick.inputSlots.forEach((inputSlot, index) => {
-    testInputs[inputSlot.id] = {
+  for(var id in mainBrick.inputSlots) {
+    const inputSlot = mainBrick.inputSlots[id]
+
+    testInputs[id] = {
       componentName: TEST_INPUT,
-      id: inputSlot.id,
-      slotPosition: inputSlotPosition(mainBrick, inputSlot.id),
+      id: id,
+      slotPosition: inputSlotPosition(mainBrick, inputSlot),
       size: TestInputConstants.defaultSize,
       type: "null",
       value: null
     }
-  })
+  }
 
   return testInputs
 }

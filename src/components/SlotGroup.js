@@ -19,36 +19,39 @@ class SlotGroup extends Component {
       strokeColor,
       y
     } = this.props
-    const width = this.slotGroupWidth(slots.length, slotOffset, slotAndOffset)
+    const width = this.slotGroupWidth(slots, slotOffset, slotAndOffset)
     const xOffset = (parentWidth - width) / 2
+    let Slots = []
 
+    for(var id in slots) {
+      const slot = slots[id]
+      const x = slotOffset + (slot.index * slotAndOffset)
+
+      Slots.push(
+        <Slot
+          key={ id }
+          fillColor={ fillColor }
+          id={ id }
+          parentId={ parentId }
+          selectedSlots={ selectedSlots }
+          selectSlot={ selectSlot }
+          strokeColor={ strokeColor }
+          x={ x }
+          y={ 0 }
+        />
+      )
+    }
     return (
       <Group x={ xOffset } y={ y }>
-        {
-          slots.map((slot, index) => {
-            const x = slotOffset + (index * slotAndOffset)
-
-            return (
-              <Slot
-                key={ slot.id }
-                fillColor={ fillColor }
-                id={ slot.id }
-                parentId={ parentId }
-                selectedSlots={ selectedSlots }
-                selectSlot={ selectSlot }
-                strokeColor={ strokeColor }
-                x={ x }
-                y={ 0 }
-              />
-            )
-          })
-        }
+        { Slots }
       </Group>
     )
   }
 
-  slotGroupWidth(total, slotOffset, slotAndOffset) {
-    return slotOffset + (total * slotAndOffset)
+  slotGroupWidth(slots, slotOffset, slotAndOffset) {
+    const totalSlots = Object.keys(slots).length
+
+    return slotOffset + (totalSlots * slotAndOffset)
   }
 }
 
@@ -60,7 +63,7 @@ SlotGroup.propTypes = {
   selectSlot: PropTypes.func.isRequired,
   slotAndOffset: PropTypes.number.isRequired,
   slotOffset: PropTypes.number.isRequired,
-  slots: SlotPropTypes.isRequired,
+  // slots: SlotPropTypes.isRequired,
   strokeColor: PropTypes.string.isRequired,
   y: PropTypes.number.isRequired
 }

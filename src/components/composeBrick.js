@@ -53,8 +53,8 @@ export default function composeBrick(InnerComponent) {
   }
 
   AbstractBrick.propTypes = {
-    inputSlots: SlotPropTypes.isRequired,
-    outputSlots: SlotPropTypes.isRequired,
+    // inputSlots: SlotPropTypes.isRequired,
+    // outputSlots: SlotPropTypes.isRequired,
     position: PositionPropTypes.isRequired,
     selectBrickInputSlot: PropTypes.func.isRequired,
     selectBrickOutputSlot: PropTypes.func.isRequired,
