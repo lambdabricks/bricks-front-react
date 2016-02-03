@@ -9,6 +9,7 @@ export const CHANGE_TEST_INPUT_TYPE = 'CHANGE_TEST_INPUT_TYPE'
 export const CHANGE_TEST_INPUT_VALUE = 'CHANGE_TEST_INPUT_VALUE'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
 export const EVALUATE = 'EVALUATE'
+export const LINK_SLOTS = 'LINK_SLOTS'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
 export const REMOVE_SELECTED_ELEMENT = 'REMOVE_SELECTED_ELEMENT'
@@ -113,6 +114,7 @@ export const addPipeIfBothSlotsSelected = () => {
     if(isNotEmpty(input) && isNotEmpty(output)) {
       dispatch(_addPipe(input, output))
       dispatch(clearSlotSelection())
+      dispatch(_linkSlots(input, output))
     }
   }
 }
@@ -120,6 +122,16 @@ export const addPipeIfBothSlotsSelected = () => {
 const _addPipe = (input, output) => {
   return {
     type: ADD_PIPE,
+    payload: {
+      input,
+      output
+    }
+  }
+}
+
+const _linkSlots = (input, output) => {
+  return {
+    type: LINK_SLOTS,
     payload: {
       input,
       output

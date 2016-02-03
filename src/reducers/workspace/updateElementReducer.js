@@ -1,4 +1,6 @@
 import {
+  BRICK,
+  MAIN_BRICK,
   PRIMITIVE,
   TEST_INPUT
 } from '../../utils/componentNames'
@@ -90,4 +92,40 @@ export const changeTestInputValue = (workspace, payload) => {
       value: newValue
     }
   )
+}
+
+export const linkSlots = (workspace, payload) => {
+  const { input, output } = payload
+  const outputElement = workspace.entities[output.elementId]
+  let newSlots = {}
+
+  if(outputElement.componentName == BRICK) {
+    const { inputSlots } = outputElement
+
+    newSlots = { inputSlots: addValueToSlots(inputSlots, input, output) }
+  }
+  if(outputElement.componentName == MAIN_BRICK) {
+    const { outputSlots } = outputElement
+
+    newSlots = { outputSlots: addValueToSlots(outputSlots, input, output) }
+  }
+
+  return Object.assign({}, workspace, {
+    entities: {
+      ...workspace.entities,
+      [outputElement.id]: {
+        ...outputElement,
+        ...newSlots
+      }
+    }
+  })
+}
+
+const addValueToSlots = (slots, input, output) => {
+  return Object.assign({}, slots, {
+    [output.slotId]: {
+      ...slots[output.slotId],
+      valueId: input.slotId
+    }
+  })
 }

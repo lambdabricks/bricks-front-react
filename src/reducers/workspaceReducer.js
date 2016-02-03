@@ -8,6 +8,7 @@ import {
   CHANGE_TEST_INPUT_VALUE,
   CLEAR_SLOT_SELECTION,
   EVALUATE,
+  LINK_SLOTS,
   MOVE_ELEMENT,
   REMOVE_ELEMENT,
   REMOVE_SELECTED_ELEMENT,
@@ -45,7 +46,8 @@ import {
 import {
   changePrimitiveValue,
   changeTestInputType,
-  changeTestInputValue
+  changeTestInputValue,
+  linkSlots
 } from './workspace/updateElementReducer'
 
 import {
@@ -76,6 +78,8 @@ export const workspace = (state = initialWorkspace, action) => {
       return removeSlotSelectionState(state)
     case EVALUATE:
       return evaluate(state, payload)
+    case LINK_SLOTS:
+      return linkSlots(state, payload)
     case MOVE_ELEMENT:
       return updateElementInWorkspace(state, payload)
     case REMOVE_ELEMENT:
