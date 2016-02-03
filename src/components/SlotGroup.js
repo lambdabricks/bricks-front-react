@@ -29,9 +29,9 @@ class SlotGroup extends Component {
 
       Slots.push(
         <Slot
-          key={ id }
+          key={ slot.id }
           fillColor={ fillColor }
-          id={ id }
+          id={ slot.id }
           parentId={ parentId }
           selectedSlots={ selectedSlots }
           selectSlot={ selectSlot }
