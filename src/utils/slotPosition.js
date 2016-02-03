@@ -54,7 +54,7 @@ export const outputSlotPosition = (element, slotId) => {
 }
 
 const brickSlotXPosition = (slots, slotId, width) => {
-  return slotXPosition(slots, slotId, width, Brick)
+  return slotXPosition(slots, slot[slotId], width, Brick)
 }
 
 const mainBrickSlotXPosition = (slots, slot, width) => {

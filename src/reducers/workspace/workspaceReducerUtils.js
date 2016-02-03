@@ -21,6 +21,7 @@ const nextId = () => id++
 export const newBrick = (brick) => {
   const { arity, moduleName, name } = brick
   let inputSlots = {}
+  const outputSlotId = nextId()
 
   for(var i=0; i < arity; i++) {
     const id = nextId()
@@ -37,9 +38,12 @@ export const newBrick = (brick) => {
     inputSlots,
     moduleName,
     name,
-    outputSlots: [
-      { id: nextId() }
-    ],
+    outputSlots: {
+      [outputSlotId]: {
+        id: outputSlotId,
+        index: 0
+      }
+    },
     position: BrickDefaults.defaultPosition,
     size: BrickDefaults.defaultSize
   }
