@@ -16,7 +16,7 @@ import {
 
 let id = 1
 // TODO: Generate id's with an UID function ??
-export const nextId = () => id++
+const nextId = () => id++
 
 export const newBrick = (brick) => {
   const { arity, moduleName, name } = brick
@@ -68,11 +68,11 @@ export const newPrimitive = (type) => {
 }
 
 export const newPipe = (payload) => {
-  const { elementId, input, output } = payload
+  const { input, output } = payload
 
   return {
     componentName: SELECTABLE_PIPE,
-    id: elementId,
+    id: nextId(),
     input,
     output,
     type: "null",
