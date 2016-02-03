@@ -47,6 +47,7 @@ export const newBrick = (brick) => {
 
 const newMainBrick = (mainBrickId) => {
   const inputSlotIds = [nextId(), nextId()]
+  const outputSlotId = nextId()
 
   return {
     componentName: MAIN_BRICK,
@@ -62,9 +63,12 @@ const newMainBrick = (mainBrickId) => {
         index: 1
       }
     },
-    outputSlots: [
-      { id: nextId() }
-    ],
+    outputSlots: {
+      [outputSlotId]: {
+        id: outputSlotId,
+        index: 0
+      }
+    },
     position: MainBrickConstants.defaultPosition,
     size: MainBrickConstants.defaultSize
   }
