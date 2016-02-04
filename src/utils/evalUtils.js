@@ -5,7 +5,7 @@ import {
 export const doesAllInputsHaveValues = (element, valueIds, unitTest) => {
   const numberOfInputs = Object.keys(element.inputSlots).length
 
-  return (numberOfInputs != valueIds.length) &&
+  return (numberOfInputs == valueIds.length) &&
     (unitTestValues(valueIds, unitTest).length == numberOfInputs)
 }
 
@@ -16,7 +16,7 @@ export const elementInputValueIds = (element) => {
     const inputSlot = element.inputSlots[id]
 
     if(inputSlot.valueId) {
-      valueIds[inputSlot.index] = id
+      valueIds[inputSlot.index] = inputSlot.valueId
     }
   }
 
@@ -26,12 +26,13 @@ export const elementInputValueIds = (element) => {
 const unitTestValues = (valueIds, unitTest) => {
   let values = []
 
-  for(let id in unitTest.values) {
-    const element = unitTest.values[id]
+  for(let id in valueIds) {
+    const valueId = valueIds[id]
+    const element = unitTest.values[valueId]
 
     if(element.type && element.value) {
       values.push({
-        id,
+        id: valueId,
         type: element.type,
         value: element.value
       })
@@ -59,10 +60,8 @@ export const evalBrick = (brick, valueIds, unitTest) => {
   const { moduleName, name } = brick
 
   const values = unitTestValues(valueIds, unitTest)
-  let args = []
-
-  values.map((element) => {
-    args.push(parsers[element.type](element.value))
+  const args = values.map((element) => {
+    return parsers[element.type](element.value)
   })
 
   return nativeBricks[moduleName][name].apply(null, args)

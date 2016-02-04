@@ -13,9 +13,9 @@ import {
 export const evaluateAllWorkspaces = (workspace, elementId) => {
   const brick = workspace.entities[elementId]
   const valueIds = elementInputValueIds(brick)
+
   const outputSlotId = Object.keys(brick.outputSlots)[0]
   const outputSlot = brick.outputSlots[outputSlotId]
-
   const brickOutput = evalBrick(brick, valueIds, workspace.unitTests[0])
 
   const newUnitTest = Object.assign({}, workspace.unitTests[0], {

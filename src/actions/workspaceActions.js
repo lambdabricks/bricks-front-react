@@ -125,22 +125,24 @@ export const addPipeIfBothSlotsSelected = () => {
       dispatch(_addPipe(input, output))
       dispatch(clearSlotSelection())
       dispatch(_linkSlots(input, output))
-      dispatch(_evalAllWorkspacesIfNeeded(output.elementId, workspace))
+      dispatch(_evalAllWorkspacesIfNeeded(output.elementId))
     }
   }
 }
 
-const _evalAllWorkspacesIfNeeded = (elementId, workspace) => {
+const _evalAllWorkspacesIfNeeded = (elementId) => {
   return (dispatch, getState) => {
-    const element = workspace.entities[elementId]
+    const { workspace } = getState()
 
-    if(_shouldEval(element, workspace)) {
+    if(_shouldEval(elementId, workspace)) {
       return dispatch(_evalWorkspaces(elementId))
     }
   }
 }
 
-const _shouldEval = (element, workspace) => {
+const _shouldEval = (elementId, workspace) => {
+  const element = workspace.entities[elementId]
+
   if(element.componentName != BRICK) {
     return false
   }
