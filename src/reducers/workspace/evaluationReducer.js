@@ -1,30 +1,37 @@
 import {
+  BRICK,
   MAIN_BRICK,
   PRIMITIVE,
   SELECTABLE_PIPE
 } from '../../utils/componentNames'
 
-export const evaluate = (workspace, elementId) => {
-  const element = workspace.entities[elementId]
-  let newEntities = {}
-  let newUnitTests = {}
+import {
+  elementInputValueIds,
+  evalBrick
+} from '../../utils/evalUtils'
 
-  switch (element.componentName) {
-    case SELECTABLE_PIPE:
-      const newWorkspace = evalNewPipe(workspace, element)
-      newEntities = newWorkspace.newEntities
-      newUnitTests = newWorkspace.newUnitTests
+export const evaluateAllWorkspaces = (workspace, elementId) => {
+  const brick = workspace.entities[elementId]
+  const valueIds = elementInputValueIds(brick)
+  const outputSlotId = Object.keys(brick.outputSlots)[0]
+  const outputSlot = brick.outputSlots[outputSlotId]
 
-      break;
-    default:
-      newEntities = workspace.entities
-      newUnitTests = workspace.newUnitTests
-  }
+  const brickOutput = evalBrick(brick, valueIds, workspace.unitTests[0])
+
+  const newUnitTest = Object.assign({}, workspace.unitTests[0], {
+    values: {
+      ...workspace.unitTests[0].values,
+      [outputSlotId]: {
+        componentName: BRICK,
+        type: typeof brickOutput,
+        value: brickOutput.toString()
+      }
+    }
+  })
 
   return Object.assign({}, workspace, {
     ...workspace,
-    entities: newEntities,
-    unitTests: newUnitTests
+    unitTests: [newUnitTest]
   })
 }
 

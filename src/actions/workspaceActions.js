@@ -1,5 +1,14 @@
 import { isNotEmpty } from '../utils'
 
+import {
+  BRICK
+} from '../utils/componentNames'
+
+import {
+  doesAllInputsHaveValues,
+  elementInputValueIds
+} from '../utils/evalUtils'
+
 export const ADD_BRICK = 'ADD_BRICK'
 export const ADD_PIPE = 'ADD_PIPE'
 export const ADD_PRIMITIVE = 'ADD_PRIMITIVE'
@@ -109,13 +118,45 @@ export const selectSlot = (type, elementId, slotId) => {
 
 export const addPipeIfBothSlotsSelected = () => {
   return (dispatch, getState) => {
-    const { input, output } = getState().workspace.selectionState.pipe
+    const { workspace } = getState()
+    const { input, output } = workspace.selectionState.pipe
 
     if(isNotEmpty(input) && isNotEmpty(output)) {
       dispatch(_addPipe(input, output))
       dispatch(clearSlotSelection())
       dispatch(_linkSlots(input, output))
+      dispatch(_evalAllWorkspacesIfNeeded(output.elementId, workspace))
     }
+  }
+}
+
+const _evalAllWorkspacesIfNeeded = (elementId, workspace) => {
+  return (dispatch, getState) => {
+    const element = workspace.entities[elementId]
+
+    if(_shouldEval(element, workspace)) {
+      return dispatch(_evalWorkspaces(elementId))
+    }
+  }
+}
+
+const _shouldEval = (element, workspace) => {
+  if(element.componentName != BRICK) {
+    return false
+  }
+
+  const valueIds = elementInputValueIds(element)
+  const shouldEvalWorkspaces = workspace.unitTests.map((unitTest) =>
+    doesAllInputsHaveValues(element, valueIds, unitTest)
+  )
+
+  return shouldEvalWorkspaces.filter((shouldEval) => shouldEval).length
+}
+
+const _evalWorkspaces = (elementId) => {
+  return {
+    type: EVALUATE,
+    payload: elementId
   }
 }
 
@@ -136,13 +177,6 @@ const _linkSlots = (input, output) => {
       input,
       output
     }
-  }
-}
-
-const _evaluate = (elementId) => {
-  return {
-    type: EVALUATE,
-    payload: elementId
   }
 }
 

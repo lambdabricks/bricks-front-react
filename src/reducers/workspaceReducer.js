@@ -33,7 +33,7 @@ import {
 } from './workspace/dragReducer'
 
 import {
-  evaluate
+  evaluateAllWorkspaces
 } from './workspace/evaluationReducer'
 
 import {
@@ -77,7 +77,7 @@ export const workspace = (state = initialWorkspace, action) => {
     case CLEAR_SLOT_SELECTION:
       return removeSlotSelectionState(state)
     case EVALUATE:
-      return evaluate(state, payload)
+      return evaluateAllWorkspaces(state, payload)
     case LINK_SLOTS:
       return linkSlots(state, payload)
     case MOVE_ELEMENT:
