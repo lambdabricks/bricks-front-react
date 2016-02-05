@@ -123,7 +123,7 @@ export const addPipeIfBothSlotsSelected = () => {
 
     if(isNotEmpty(input) && isNotEmpty(output)) {
       dispatch(_addPipe(input, output))
-      dispatch(clearSlotSelection())
+      dispatch(_clearSlotSelection())
       dispatch(_linkSlots(input, output))
       dispatch(_evalAllWorkspacesIfNeeded(output.elementId))
     }
@@ -182,7 +182,7 @@ const _linkSlots = (input, output) => {
   }
 }
 
-export const clearSlotSelection = () => {
+const _clearSlotSelection = () => {
   return {
     type: CLEAR_SLOT_SELECTION
   }
