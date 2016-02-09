@@ -42,6 +42,7 @@ export const newBrick = (brick) => {
       [outputSlotId]: {
         id: outputSlotId,
         index: 0,
+        outputElementIds: [],
         valueId: outputSlotId
       }
     },

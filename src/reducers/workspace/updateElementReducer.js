@@ -96,18 +96,41 @@ export const changeTestInputValue = (workspace, payload) => {
 
 export const linkSlots = (workspace, payload) => {
   const { input, output } = payload
+  const inputElement = workspace.entities[input.elementId]
   const outputElement = workspace.entities[output.elementId]
-  let newSlots = {}
+  let newOutputElementSlots = {}
+  let newInputElementSlots = {}
+
+  if(inputElement.componentName == BRICK) {
+    const outputSlot = inputElement.outputSlots[input.slotId]
+
+    newInputElementSlots = {
+      outputSlots: _addPropsToSlot(
+        inputElement.outputSlots,
+        input.slotId,
+        {
+          outputElementIds: [
+            ...outputSlot.outputElementIds,
+            outputElement.id
+          ]
+        }
+      )
+    }
+  }
 
   if(outputElement.componentName == BRICK) {
     const { inputSlots } = outputElement
 
-    newSlots = { inputSlots: addValueToSlots(inputSlots, input, output) }
+    newOutputElementSlots = {
+      inputSlots: addValueToSlots(inputSlots, input, output)
+    }
   }
   if(outputElement.componentName == MAIN_BRICK) {
     const { outputSlots } = outputElement
 
-    newSlots = { outputSlots: addValueToSlots(outputSlots, input, output) }
+    newOutputElementSlots = {
+      outputSlots: addValueToSlots(outputSlots, input, output)
+    }
   }
 
   return Object.assign({}, workspace, {
@@ -115,17 +138,25 @@ export const linkSlots = (workspace, payload) => {
       ...workspace.entities,
       [outputElement.id]: {
         ...outputElement,
-        ...newSlots
+        ...newOutputElementSlots
+      },
+      [inputElement.id]: {
+        ...inputElement,
+        ...newInputElementSlots
       }
     }
   })
 }
 
 const addValueToSlots = (slots, input, output) => {
+  return _addPropsToSlot(slots, output.slotId, { valueId: input.slotId })
+}
+
+const _addPropsToSlot = (slots, slotId, newProps) => {
   return Object.assign({}, slots, {
-    [output.slotId]: {
-      ...slots[output.slotId],
-      valueId: input.slotId
+    [slotId]: {
+      ...slots[slotId],
+      ...newProps
     }
   })
 }
