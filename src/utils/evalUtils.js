@@ -56,13 +56,50 @@ const parsers = {
   string: (value) => value
 }
 
-export const evalBrick = (brick, valueIds, unitTest) => {
+const _evalBrick = (brick, args) => {
   const { moduleName, name } = brick
+  const brickOutput = nativeBricks[moduleName][name].apply(null, args)
 
-  const values = unitTestValues(valueIds, unitTest)
-  const args = values.map((element) => {
-    return parsers[element.type](element.value)
-  })
+  return {
+    componentName: BRICK,
+    type: typeof brickOutput,
+    value: brickOutput.toString()
+  }
+}
 
-  return nativeBricks[moduleName][name].apply(null, args)
+export const tryEvalPath = (workspace, unitTest, elementId) => {
+  let newUnitTest = Object.assign({}, unitTest)
+
+  return _tryEvalPath(workspace, newUnitTest, elementId)
+}
+
+const _tryEvalPath = (workspace, unitTest, elementId) => {
+  const brick = workspace.entities[elementId]
+  let args = []
+
+  if(brick.componentName != BRICK) {
+    return unitTest
+  }
+
+  for(var id in brick.inputSlots) {
+    const { valueId } = brick.inputSlots[id]
+    const slotValue = unitTest.values[valueId]
+
+    if(slotValue && slotValue.type && slotValue.value) {
+      args.push(parsers[slotValue.type](slotValue.value))
+    } else {
+      return unitTest
+    }
+  }
+
+  const outputSlotId = Object.keys(brick.outputSlots)[0]
+  const outputSlot = brick.outputSlots[outputSlotId]
+
+  unitTest.values[outputSlotId] = _evalBrick(brick, args)
+
+  outputSlot.outputElementIds.forEach((id) =>
+    _tryEvalPath(workspace, unitTest, id)
+  )
+
+  return unitTest
 }
