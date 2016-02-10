@@ -30,7 +30,7 @@ const unitTestValues = (valueIds, unitTest) => {
     const valueId = valueIds[id]
     const element = unitTest.values[valueId]
 
-    if(element.type && element.value) {
+    if(element && element.type && element.value) {
       values.push({
         id: valueId,
         type: element.type,

@@ -152,7 +152,7 @@ const _shouldEval = (elementId, workspace) => {
     doesAllInputsHaveValues(element, valueIds, unitTest)
   )
 
-  return shouldEvalWorkspaces.filter((shouldEval) => shouldEval).length
+  return shouldEvalWorkspaces.filter((shouldEval) => shouldEval).length > 0
 }
 
 const _evalWorkspaces = (elementId) => {
