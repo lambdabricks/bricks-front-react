@@ -71,7 +71,7 @@ const Slot = {
 }
 
 const Surface = {
-  width: 500
+  width: 450
 }
 
 const TestInput = {
