@@ -14,7 +14,7 @@ This project is an experiment around this question.
 
 ![Screenshot](docs/images/screenshot.png)
 
-[![Alpha status](http://img.youtube.com/vi/bf7bJLPxivc/0.jpg)](http://www.youtube.com/watch?v=bf7bJLPxivc)
+[![Alpha status](docs/images/video-preview.png)](http://www.youtube.com/watch?v=bf7bJLPxivc)
 
 - [How this project started](#how-this-project-started)
 - [Benefits](#benefits)
