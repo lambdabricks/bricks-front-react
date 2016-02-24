@@ -35,8 +35,9 @@ We could use the ideas above to think of a programming environment
 that makes learning to program easier.
 Here are some ways in which applying this ideas could help:
 - Having translations or a visual representation could help non-English speakers.
-- Avoid problems that have nothing to do with programming.
-For example: errors with keywords and syntax (',' ';' '()' '[]' '{}').
+- Avoid the need to know all the syntax of a programing language
+before starting to program. You don't need to know where all the commas,
+parenthesis, brackets, keywords, etc. are placed.
 - Teach programming concepts and not a programming language.
 General concepts could be applied to different programming languages later.
 - All you need in one place: documentation, usage examples, tests, etc.
