@@ -132,7 +132,7 @@ Wrap bricks inside a funnel, so it can flow through a pipe.
 ### Search bar for defined bricks
 
 Add a search bar for bricks with autocompletion.
-![Search](docs/images/search-brick.jpg)
+![Search](docs/images/search-brick.png)
 
 ### Change locale/programming language
 
