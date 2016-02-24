@@ -104,6 +104,7 @@ there will be visual cue that the test is passing.
 ### Pattern matching/Guards
 
 The only way to do control flow will be with multiple brick heads.
+
 ![Guards](docs/images/guards.jpg)
 
 ### Collapse/Expand bricks
@@ -132,6 +133,7 @@ Wrap bricks inside a funnel, so it can flow through a pipe.
 ### Search bar for defined bricks
 
 Add a search bar for bricks with autocompletion.
+
 ![Search](docs/images/search-brick.png)
 
 ### Change locale/programming language
