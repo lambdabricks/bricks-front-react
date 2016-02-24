@@ -79,6 +79,8 @@ an example in the real world is gravity.
 
 ## Roadmap
 
+### Evaluate technologies
+
 The first step is to evaluate
 if the project will continue to be developed with react/redux/canvas.
 Using it in Firefox feels slow.
@@ -86,6 +88,56 @@ I don't know if it is because my limited knowledge of react/redux,
 or because the project is not suited for using these technologies.
 Please open an issue with your OS, browser, pc specs
 if the project feels slow in your machine.
+
+### Test output
+
+The same way as you select the values/types of the test inputs,
+you will select the value/type of the test output.
+If the test output is the same as the brick output
+there will be visual cue that the test is passing.
+
+### Custom constant value input depending on type
+
+![Custom boolean value input](docs/images/custom-boolean-value-input.png)
+![Custom number value input](docs/images/custom-number-value-input.png)
+
+### Pattern matching/Guards
+
+The only way to do control flow will be with multiple brick heads.
+![Guards](docs/images/guards.jpg)
+
+### Collapse/Expand bricks
+
+This way you could see the dataflow inside other bricks.
+Also expand bricks implemented by other people to see what
+is happening inside.
+
+### Keyboard shortcuts
+
+Just examples, the actual shortcuts will be defined later.
+- B Add new brick
+- C Add new constant
+- L Link slots
+- E Select element
+
+I think that with just this shortcuts and some autocompletion
+you could program with fewer keystrokes than even inside an IDE.
+This is because with each shortcut you are narrowing a lot
+the potential following actions.
+
+### High order functions
+
+Wrap bricks inside a funnel, so it can flow through a pipe.
+
+### Search bar for defined bricks
+
+Add a search bar for bricks with autocompletion.
+![Search](docs/images/search-brick.jpg)
+
+### Change locale/programming language
+
+There will be the need to implement backends in different programming languages
+that can evaluate Lambda Bricks state.
 
 
 ## Further work
