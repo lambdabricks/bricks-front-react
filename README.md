@@ -149,7 +149,8 @@ that can evaluate Lambda Bricks state.
 3. Apply this ideas for tools in:
   - Debugging
   - Refactoring
-  - Visualization of a project architecture/Navigating code
+  - Navigating code
+  - Visualization of a project architecture
 
 
 ## License
