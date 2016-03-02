@@ -22,7 +22,7 @@ const Brick = {
   fillColor: '#ADD8E6',
   font: font,
   slotOffset: 20,
-  strokeColor: '#ADD8E6',
+  strokeColor: 'black',
   textColor: 'black'
 }
 Brick.slotAndOffset = slotWidth + Brick.slotOffset
