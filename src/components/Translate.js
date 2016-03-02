@@ -3,6 +3,7 @@ import React, { PropTypes, Component } from 'react'
 const translations = {
   en: {
     addUnitTest: 'Add unit test',
+    constants: 'Constants',
     delete: 'Delete',
     empty: 'None',
     functions: 'Functions',

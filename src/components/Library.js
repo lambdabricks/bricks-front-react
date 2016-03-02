@@ -51,7 +51,7 @@ export default class Library extends Component {
             <div>
               <Translate
                 HtmlElement="h3"
-                message="primitives"
+                message="constants"
               />
               <ul style={ ulStyles }>
                 { items.primitives.map((primitive) =>
