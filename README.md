@@ -12,8 +12,6 @@ The code could behave as data, and we could have multiple views of it.
 
 This project is an experiment around this question.
 
-![Screenshot](docs/images/screenshot.png)
-
 [![Alpha status](docs/images/video-preview.png)](http://www.youtube.com/watch?v=bf7bJLPxivc)
 
 - [How this project started](#how-this-project-started)
