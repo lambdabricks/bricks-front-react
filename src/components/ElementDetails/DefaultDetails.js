@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 
-import Translate from '../Translate'
+import DialogButton from './DialogButton'
 
 export default class DefaultDetails extends Component {
   render() {
@@ -10,9 +10,8 @@ export default class DefaultDetails extends Component {
     } = this.props
 
     return (
-      <Translate
-        childProps={ { onClick: () => deleteElement(id) } }
-        HtmlElement="button"
+      <DialogButton
+        onClick={ () => deleteElement(id) }
         message="delete"
       />
     )

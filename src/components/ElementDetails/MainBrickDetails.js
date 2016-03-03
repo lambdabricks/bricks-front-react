@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 
-import Translate from '../Translate'
+import DialogButton from './DialogButton'
 
 export default class MainBrickDetails extends Component {
   render() {
@@ -9,9 +9,8 @@ export default class MainBrickDetails extends Component {
     } = this.props
 
     return (
-      <Translate
-        childProps={ { onClick: addUnitTest } }
-        HtmlElement="button"
+      <DialogButton
+        onClick={ addUnitTest }
         message="addUnitTest"
       />
     )
