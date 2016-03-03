@@ -1,22 +1,13 @@
 import React, { PropTypes, Component } from 'react'
 
 import {
-  MAIN_BRICK,
-  PRIMITIVE,
-  TEST_INPUT
-} from '../utils/componentNames'
+  getDetailsComponent
+} from './ElementDetails/ElementDetailsFactory'
 
 import {
   PositionPropTypes,
   PrimitivePropTypes
 } from '../propTypes'
-
-import DefaultDetails from './ElementDetails/DefaultDetails'
-import MainBrickDetails from './ElementDetails/MainBrickDetails'
-import PrimitiveDetails from './ElementDetails/PrimitiveDetails'
-import TestInputDetails from './ElementDetails/TestInputDetails'
-
-import Translate from './Translate'
 
 const baseStyles = {
   backgroundColor: 'rgba(0, 0, 255, 0.5)',
@@ -25,47 +16,9 @@ const baseStyles = {
 }
 
 export default class SelectedElementDialog extends Component {
-  constructor(props) {
-    super(props)
-
-    this.renderElementDetails = this.renderElementDetails.bind(this)
-  }
-
-  renderElementDetails() {
-    const {
-      componentName
-    } = this.props
-
-    switch (componentName) {
-      case MAIN_BRICK:
-        return (
-          <MainBrickDetails { ...this.props } />
-        )
-      case PRIMITIVE:
-        return (
-          <PrimitiveDetails { ...this.props } />
-        )
-      case TEST_INPUT:
-        return (
-          <TestInputDetails { ...this.props } />
-        )
-      default:
-        const {
-          deleteElement,
-          id
-        } = this.props
-
-        return (
-          <DefaultDetails
-            deleteElement={ deleteElement }
-            id={ id }
-          />
-        )
-    }
-  }
-
   render() {
     const {
+      componentName,
       mousePosition
     } = this.props
 
@@ -74,9 +27,11 @@ export default class SelectedElementDialog extends Component {
       top: mousePosition.y
     })
 
+    const ReactComponent = getDetailsComponent(componentName)
+
     return (
       <div style={ styles }>
-        { this.renderElementDetails() }
+        <ReactComponent { ...this.props } />
       </div>
     )
   }
@@ -92,5 +47,7 @@ SelectedElementDialog.propTypes = {
   id: PropTypes.number.isRequired,
   mousePosition: PositionPropTypes.isRequired,
   primitives: PropTypes.arrayOf(PrimitivePropTypes).isRequired,
+  value: PropTypes.string,
+  type: PropTypes.string,
   workspaceIndex: PropTypes.number
 }
