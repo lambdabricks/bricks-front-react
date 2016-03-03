@@ -11,6 +11,7 @@ import {
   PrimitivePropTypes
 } from '../propTypes'
 
+import DefaultDetails from './ElementDetails/DefaultDetails'
 import Translate from './Translate'
 
 const baseStyles = {
@@ -64,7 +65,17 @@ export default class SelectedElementDialog extends Component {
           </div>
         )
       default:
-        return this.renderDeleteElementButton()
+        const {
+          deleteElement,
+          id
+        } = this.props
+
+        return (
+          <DefaultDetails
+            deleteElement={ deleteElement }
+            id={ id }
+          />
+        )
     }
   }
 
