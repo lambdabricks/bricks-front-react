@@ -14,6 +14,8 @@ import {
 import DefaultDetails from './ElementDetails/DefaultDetails'
 import MainBrickDetails from './ElementDetails/MainBrickDetails'
 import PrimitiveDetails from './ElementDetails/PrimitiveDetails'
+import TestInputDetails from './ElementDetails/TestInputDetails'
+
 import Translate from './Translate'
 
 const baseStyles = {
@@ -27,9 +29,6 @@ export default class SelectedElementDialog extends Component {
     super(props)
 
     this.renderElementDetails = this.renderElementDetails.bind(this)
-    this.renderTestInputTypesSelect = this.renderTestInputTypesSelect.bind(this)
-    this.renderTestInputValueInput = this.renderTestInputValueInput.bind(this)
-    this.renderValueInput = this.renderValueInput.bind(this)
   }
 
   renderElementDetails() {
@@ -48,10 +47,7 @@ export default class SelectedElementDialog extends Component {
         )
       case TEST_INPUT:
         return (
-          <div>
-            { this.renderTestInputTypesSelect() }
-            { this.renderTestInputValueInput() }
-          </div>
+          <TestInputDetails { ...this.props } />
         )
       default:
         const {
@@ -66,72 +62,6 @@ export default class SelectedElementDialog extends Component {
           />
         )
     }
-  }
-
-  renderTestInputTypesSelect() {
-    const {
-      changeTestInputType,
-      id,
-      primitives,
-      type,
-      workspaceIndex
-    } = this.props
-
-    return (
-      <div>
-        <Translate
-          HtmlElement="label"
-          message="type"
-        />
-        <select
-          value={ type }
-          onChange={ (e) => changeTestInputType(id, e, workspaceIndex) }
-        >
-          { /* TestInput 'type' will be 'null' by default */ }
-          <Translate
-            childProps={ { disabled: true, value: "null" } }
-            HtmlElement="option"
-            message="empty"
-          />
-
-          { primitives.map((primitive) =>
-              <option
-                key={ primitive.id }
-                value={ primitive.type }
-              >
-                { primitive.label }
-              </option>
-          ) }
-        </select>
-      </div>
-    )
-  }
-
-  renderTestInputValueInput() {
-    const { changeTestInputValue } = this.props
-
-    return this.renderValueInput(changeTestInputValue)
-  }
-
-  renderValueInput(handleChange) {
-    const {
-      id,
-      value,
-      workspaceIndex
-    } = this.props
-
-    return (
-      <div>
-        <Translate
-          HtmlElement="label"
-          message="value"
-        />
-        <input
-          value={ value }
-          onChange={ (e) => handleChange(id, e, workspaceIndex) }
-        />
-      </div>
-    )
   }
 
   render() {
