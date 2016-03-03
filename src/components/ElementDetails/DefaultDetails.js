@@ -21,5 +21,5 @@ export default class DefaultDetails extends Component {
 
 DefaultDetails.propTypes = {
   deleteElement: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired
 }
