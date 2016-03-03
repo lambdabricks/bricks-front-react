@@ -9,6 +9,7 @@ export default class PrimitiveDetails extends Component {
       changePrimitiveValue,
       deleteElement,
       id,
+      type,
       value,
       workspaceIndex
     } = this.props
@@ -18,6 +19,7 @@ export default class PrimitiveDetails extends Component {
         <CustomValueInput
           handleChange={ changePrimitiveValue }
           id={ id }
+          type={ type }
           value={ value }
           workspaceIndex={ workspaceIndex }
         />
@@ -34,6 +36,7 @@ PrimitiveDetails.propTypes = {
   deleteElement: PropTypes.func.isRequired,
   changePrimitiveValue: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
   value: PropTypes.string,
   workspaceIndex: PropTypes.number
 }

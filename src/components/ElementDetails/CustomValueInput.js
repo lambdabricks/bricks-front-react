@@ -3,24 +3,42 @@ import React, { PropTypes, Component } from 'react'
 import Translate from '../Translate'
 
 export default class CustomValueInput extends Component {
-  render() {
+  constructor(props) {
+    super(props)
+
+    this.customInput = this.customInput.bind(this)
+  }
+
+  customInput() {
     const {
       handleChange,
       id,
+      type,
       value,
       workspaceIndex
     } = this.props
 
+    switch (type) {
+      default:
+        const inputType = type == "number" ? type : "text"
+        return (
+          <input
+            onChange={ (e) => handleChange(id, e, workspaceIndex) }
+            type={ inputType }
+            value={ value }
+          />
+        )
+    }
+  }
+
+  render() {
     return (
       <div>
         <Translate
           HtmlElement="label"
           message="value"
         />
-        <input
-          value={ value }
-          onChange={ (e) => handleChange(id, e, workspaceIndex) }
-        />
+        { this.customInput() }
       </div>
     )
   }
@@ -29,6 +47,7 @@ export default class CustomValueInput extends Component {
 CustomValueInput.propTypes = {
   handleChange: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
   value: PropTypes.string,
   workspaceIndex: PropTypes.number
 }

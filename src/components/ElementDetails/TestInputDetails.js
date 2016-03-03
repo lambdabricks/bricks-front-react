@@ -36,6 +36,7 @@ export default class TestInputDetails extends Component {
           <CustomValueInput
             handleChange={ changeTestInputValue }
             id={ id }
+            type={ type }
             value={ value }
             workspaceIndex={ workspaceIndex }
           />
