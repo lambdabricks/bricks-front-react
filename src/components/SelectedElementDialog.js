@@ -13,6 +13,7 @@ import {
 
 import DefaultDetails from './ElementDetails/DefaultDetails'
 import MainBrickDetails from './ElementDetails/MainBrickDetails'
+import PrimitiveDetails from './ElementDetails/PrimitiveDetails'
 import Translate from './Translate'
 
 const baseStyles = {
@@ -25,9 +26,7 @@ export default class SelectedElementDialog extends Component {
   constructor(props) {
     super(props)
 
-    this.renderDeleteElementButton = this.renderDeleteElementButton.bind(this)
     this.renderElementDetails = this.renderElementDetails.bind(this)
-    this.renderPrimitiveValueInput = this.renderPrimitiveValueInput.bind(this)
     this.renderTestInputTypesSelect = this.renderTestInputTypesSelect.bind(this)
     this.renderTestInputValueInput = this.renderTestInputValueInput.bind(this)
     this.renderValueInput = this.renderValueInput.bind(this)
@@ -45,10 +44,7 @@ export default class SelectedElementDialog extends Component {
         )
       case PRIMITIVE:
         return (
-          <div>
-            { this.renderPrimitiveValueInput() }
-            { this.renderDeleteElementButton() }
-          </div>
+          <PrimitiveDetails { ...this.props } />
         )
       case TEST_INPUT:
         return (
@@ -70,21 +66,6 @@ export default class SelectedElementDialog extends Component {
           />
         )
     }
-  }
-
-  renderDeleteElementButton() {
-    const {
-      deleteElement,
-      id
-    } = this.props
-
-    return (
-      <Translate
-        childProps={ { onClick: () => deleteElement(id) } }
-        HtmlElement="button"
-        message="delete"
-      />
-    )
   }
 
   renderTestInputTypesSelect() {
@@ -124,12 +105,6 @@ export default class SelectedElementDialog extends Component {
         </select>
       </div>
     )
-  }
-
-  renderPrimitiveValueInput() {
-    const { changePrimitiveValue } = this.props
-
-    return this.renderValueInput(changePrimitiveValue)
   }
 
   renderTestInputValueInput() {
