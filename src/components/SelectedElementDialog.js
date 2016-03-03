@@ -12,6 +12,7 @@ import {
 } from '../propTypes'
 
 import DefaultDetails from './ElementDetails/DefaultDetails'
+import MainBrickDetails from './ElementDetails/MainBrickDetails'
 import Translate from './Translate'
 
 const baseStyles = {
@@ -39,16 +40,8 @@ export default class SelectedElementDialog extends Component {
 
     switch (componentName) {
       case MAIN_BRICK:
-        const {
-          addUnitTest
-        } = this.props
-
         return (
-          <Translate
-            childProps={ { onClick: addUnitTest } }
-            HtmlElement="button"
-            message="addUnitTest"
-          />
+          <MainBrickDetails { ...this.props } />
         )
       case PRIMITIVE:
         return (
