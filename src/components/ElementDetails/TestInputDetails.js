@@ -7,6 +7,10 @@ import {
 import CustomValueInput from './CustomValueInput'
 import TypesSelect from './TypesSelect'
 
+const styles = {
+  width: 300
+}
+
 export default class TestInputDetails extends Component {
   render() {
     const {
@@ -20,7 +24,7 @@ export default class TestInputDetails extends Component {
     } = this.props
 
     return (
-      <div>
+      <div style={ styles} >
         <TypesSelect
           handleChange={ changeTestInputType }
           id={ id }
@@ -28,12 +32,14 @@ export default class TestInputDetails extends Component {
           type={ type }
           workspaceIndex={ workspaceIndex }
         />
-        <CustomValueInput
-          handleChange={ changeTestInputValue }
-          id={ id }
-          value={ value }
-          workspaceIndex={ workspaceIndex }
-        />
+        { type != "null" &&
+          <CustomValueInput
+            handleChange={ changeTestInputValue }
+            id={ id }
+            value={ value }
+            workspaceIndex={ workspaceIndex }
+          />
+        }
       </div>
     )
   }
