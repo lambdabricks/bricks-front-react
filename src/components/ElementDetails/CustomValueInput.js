@@ -4,6 +4,7 @@ import {
   PrimitivePropTypes
 } from '../../propTypes'
 
+import { colors } from '../constants'
 import Translate from '../Translate'
 
 export default class CustomValueInput extends Component {
@@ -26,7 +27,7 @@ export default class CustomValueInput extends Component {
 
     if(primitive && primitive.values) {
       return (
-        <span>
+        <span id="CustomValueInput">
           { primitive.values.map((primitiveValue) =>
             <span key={ primitiveValue.name }>
               <input
@@ -37,7 +38,10 @@ export default class CustomValueInput extends Component {
                 value={ primitiveValue.name }
                 checked={ primitiveValue.name == value }
               />
-              <label htmlFor={ primitiveValue.name }>
+              <label
+                htmlFor={ primitiveValue.name }
+                style={ { backgroundColor: colors[primitiveValue.name] } }
+              >
                 { primitiveValue.label }
               </label>
             </span>
