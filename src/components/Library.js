@@ -54,14 +54,19 @@ export default class Library extends Component {
                 message="constants"
               />
               <ul style={ ulStyles }>
-                { items.primitives.map((primitive) =>
-                  <li
-                    key={ primitive.id }
-                    onClick={ () => onPrimitiveClick(primitive.type) }
-                    style={ primitiveStyles }
-                  >
-                    {primitive.label}
-                  </li>
+                { Object.keys(items.primitives).map((key) => {
+                    const primitive = items.primitives[key]
+
+                    return (
+                      <li
+                        key={ primitive.id }
+                        onClick={ () => onPrimitiveClick(primitive.type) }
+                        style={ primitiveStyles }
+                      >
+                        {primitive.label}
+                      </li>
+                    )
+                  }
                 )}
               </ul>
             </div>
@@ -92,7 +97,7 @@ Library.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   items: PropTypes.shape({
     modules: PropTypes.array,
-    primitives: PropTypes.arrayOf(PrimitivePropTypes)
+    primitives: PropTypes.objectOf(PrimitivePropTypes)
   }).isRequired,
   onFunctionClick: PropTypes.func.isRequired,
   onPrimitiveClick: PropTypes.func.isRequired

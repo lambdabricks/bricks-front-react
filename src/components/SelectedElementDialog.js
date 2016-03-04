@@ -46,7 +46,7 @@ SelectedElementDialog.propTypes = {
   deleteElement: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   mousePosition: PositionPropTypes.isRequired,
-  primitives: PropTypes.arrayOf(PrimitivePropTypes).isRequired,
+  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
   value: PropTypes.string,
   type: PropTypes.string,
   workspaceIndex: PropTypes.number

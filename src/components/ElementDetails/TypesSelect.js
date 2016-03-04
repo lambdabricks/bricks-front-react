@@ -33,14 +33,19 @@ export default class TypesSelect extends Component {
             message="empty"
           />
 
-          { primitives.map((primitive) =>
-              <option
-                key={ primitive.id }
-                value={ primitive.type }
-              >
-                { primitive.label }
-              </option>
-          ) }
+          { Object.keys(primitives).map((key) => {
+              const primitive = primitives[key]
+
+              return (
+                <option
+                  key={ primitive.id }
+                  value={ primitive.type }
+                >
+                  { primitive.label }
+                </option>
+              )
+            }
+          )}
         </select>
       </div>
     )
@@ -51,7 +56,7 @@ export default class TypesSelect extends Component {
 TypesSelect.propTypes = {
   handleChange: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  primitives: PropTypes.arrayOf(PrimitivePropTypes).isRequired,
+  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
   type: PropTypes.string.isRequired,
   workspaceIndex: PropTypes.number
 }
