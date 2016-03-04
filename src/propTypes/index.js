@@ -8,7 +8,13 @@ export const PositionPropTypes = PropTypes.shape({
 export const PrimitivePropTypes = PropTypes.shape({
   id: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  values: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  )
 })
 
 export const SizePropTypes = PropTypes.shape({

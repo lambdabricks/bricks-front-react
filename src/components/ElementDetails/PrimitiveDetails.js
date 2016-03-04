@@ -1,5 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 
+import {
+  PrimitivePropTypes
+} from '../../propTypes'
+
 import CustomValueInput from './CustomValueInput'
 import DialogButton from './DialogButton'
 
@@ -9,6 +13,7 @@ export default class PrimitiveDetails extends Component {
       changePrimitiveValue,
       deleteElement,
       id,
+      primitives,
       type,
       value,
       workspaceIndex
@@ -19,6 +24,7 @@ export default class PrimitiveDetails extends Component {
         <CustomValueInput
           handleChange={ changePrimitiveValue }
           id={ id }
+          primitives={ primitives }
           type={ type }
           value={ value }
           workspaceIndex={ workspaceIndex }
@@ -36,6 +42,7 @@ PrimitiveDetails.propTypes = {
   deleteElement: PropTypes.func.isRequired,
   changePrimitiveValue: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.string,
   workspaceIndex: PropTypes.number
