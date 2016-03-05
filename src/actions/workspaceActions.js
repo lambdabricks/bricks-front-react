@@ -235,6 +235,20 @@ const _addUnitTest = () => {
 }
 
 export const changePrimitiveValue = (elementId, newValue) => {
+  return (dispatch, getState) => {
+    const { workspace } = getState()
+    const primitive = workspace.entities[elementId]
+    const { outputElementIds } = primitive.outputSlots[elementId]
+
+    dispatch(_changePrimitiveValue(elementId, newValue))
+
+    outputElementIds.forEach((outputElementId) =>
+      dispatch(_evalAllWorkspacesIfNeeded(outputElementId))
+    )
+  }
+}
+
+export const _changePrimitiveValue = (elementId, newValue) => {
   return {
     type: CHANGE_PRIMITIVE_VALUE,
     payload: {

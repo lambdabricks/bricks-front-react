@@ -106,17 +106,19 @@ export const linkSlots = (workspace, payload) => {
   ) {
     const outputSlot = inputElement.outputSlots[input.slotId]
 
-    newInputElementSlots = {
-      outputSlots: _addPropsToSlot(
-        inputElement.outputSlots,
-        input.slotId,
-        {
-          outputElementIds: [
-            ...outputSlot.outputElementIds,
-            outputElement.id
-          ]
-        }
-      )
+    if(outputSlot.outputElementIds.indexOf(outputElement.id) == -1) {
+      newInputElementSlots = {
+        outputSlots: _addPropsToSlot(
+          inputElement.outputSlots,
+          input.slotId,
+          {
+            outputElementIds: [
+              ...outputSlot.outputElementIds,
+              outputElement.id
+            ]
+          }
+        )
+      }
     }
   }
 
