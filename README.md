@@ -96,7 +96,7 @@ you will select the value/type of the test output.
 If the test output is the same as the brick output
 there will be visual cue that the test is passing.
 
-### Custom constant value input depending on type
+### ~~Custom constant value input depending on type~~ DONE
 
 ![Custom boolean value input](docs/images/custom-boolean-value-input.png)
 ![Custom number value input](docs/images/custom-number-value-input.png)
