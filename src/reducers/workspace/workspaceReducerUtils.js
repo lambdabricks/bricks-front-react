@@ -81,9 +81,19 @@ const newMainBrick = (mainBrickId) => {
 }
 
 export const newPrimitive = (type) => {
+  const elementId = nextId()
+
   return {
     componentName: PRIMITIVE,
-    id: nextId(),
+    id: elementId,
+    outputSlots: {
+      [elementId]: {
+        id: elementId,
+        index: 0,
+        outputElementIds: [],
+        valueId: elementId
+      }
+    },
     position: PrimitiveDefaults.defaultPosition,
     size: PrimitiveDefaults.defaultSize,
     // react or redux ignore pair with value `undefined`

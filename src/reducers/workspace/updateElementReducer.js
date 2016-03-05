@@ -101,7 +101,9 @@ export const linkSlots = (workspace, payload) => {
   let newOutputElementSlots = {}
   let newInputElementSlots = {}
 
-  if(inputElement.componentName == BRICK) {
+  if(inputElement.componentName == BRICK ||
+     inputElement.componentName == PRIMITIVE
+  ) {
     const outputSlot = inputElement.outputSlots[input.slotId]
 
     newInputElementSlots = {
