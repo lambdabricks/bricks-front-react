@@ -123,6 +123,13 @@ export const newTestInputs = (mainBrick) => {
     testInputs[id] = {
       componentName: TEST_INPUT,
       id: inputSlot.id,
+      outputSlots: {
+        [inputSlot.id]: {
+          id: inputSlot.id,
+          index: 0,
+          outputElementIds: []
+        }
+      },
       slotPosition: inputSlotPosition(mainBrick, inputSlot.id),
       size: TestInputConstants.defaultSize,
       type: "null",

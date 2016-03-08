@@ -96,29 +96,29 @@ export const changeTestInputValue = (workspace, payload) => {
 
 export const linkSlots = (workspace, payload) => {
   const { input, output } = payload
-  const inputElement = workspace.entities[input.elementId]
   const outputElement = workspace.entities[output.elementId]
   let newOutputElementSlots = {}
   let newInputElementSlots = {}
+  let inputElement = workspace.entities[input.elementId]
 
-  if(inputElement.componentName == BRICK ||
-     inputElement.componentName == PRIMITIVE
-  ) {
-    const outputSlot = inputElement.outputSlots[input.slotId]
+  if(inputElement.componentName == MAIN_BRICK) {
+    inputElement = workspace.entities[input.slotId]
+  }
 
-    if(outputSlot.outputElementIds.indexOf(outputElement.id) == -1) {
-      newInputElementSlots = {
-        outputSlots: _addPropsToSlot(
-          inputElement.outputSlots,
-          input.slotId,
-          {
-            outputElementIds: [
-              ...outputSlot.outputElementIds,
-              outputElement.id
-            ]
-          }
-        )
-      }
+  const outputSlot = inputElement.outputSlots[input.slotId]
+
+  if(outputSlot.outputElementIds.indexOf(outputElement.id) == -1) {
+    newInputElementSlots = {
+      outputSlots: _addPropsToSlot(
+        inputElement.outputSlots,
+        input.slotId,
+        {
+          outputElementIds: [
+            ...outputSlot.outputElementIds,
+            outputElement.id
+          ]
+        }
+      )
     }
   }
 
