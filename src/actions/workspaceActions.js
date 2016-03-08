@@ -248,7 +248,7 @@ export const changePrimitiveValue = (elementId, newValue) => {
   }
 }
 
-export const _changePrimitiveValue = (elementId, newValue) => {
+const _changePrimitiveValue = (elementId, newValue) => {
   return {
     type: CHANGE_PRIMITIVE_VALUE,
     payload: {
@@ -270,6 +270,20 @@ export const changeTestInputType = (elementId, newType, workspaceIndex) => {
 }
 
 export const changeTestInputValue = (elementId, newValue, workspaceIndex) => {
+  return (dispatch, getState) => {
+    const { workspace } = getState()
+    const testInput = workspace.entities[elementId]
+    const { outputElementIds } = testInput.outputSlots[elementId]
+
+    dispatch(_changeTestInputValue(elementId, newValue, workspaceIndex))
+
+    outputElementIds.forEach((outputElementId) =>
+      dispatch(_evalAllWorkspacesIfNeeded(outputElementId))
+    )
+  }
+}
+
+const _changeTestInputValue = (elementId, newValue, workspaceIndex) => {
   return {
     type: CHANGE_TEST_INPUT_VALUE,
     payload: {
