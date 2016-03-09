@@ -23,3 +23,10 @@ export const handleSelectElement = (dispatch) => {
     )
   }
 }
+
+export const unique = (array) => {
+  return array.filter((() => {
+    var seen = {}
+    return (element, index, array) => !(element in seen) && (seen[element] = 1)
+  })())
+}

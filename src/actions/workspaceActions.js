@@ -5,6 +5,10 @@ import {
 } from '../utils/componentNames'
 
 import {
+  unique
+} from '../utils'
+
+import {
   doesAllInputsHaveValues,
   elementInputValueIds
 } from '../utils/evalUtils'
@@ -242,7 +246,7 @@ export const changePrimitiveValue = (elementId, newValue) => {
 
     dispatch(_changePrimitiveValue(elementId, newValue))
 
-    outputElementIds.forEach((outputElementId) =>
+    unique(outputElementIds).forEach((outputElementId) =>
       dispatch(_evalAllWorkspacesIfNeeded(outputElementId))
     )
   }
@@ -277,7 +281,7 @@ export const changeTestInputValue = (elementId, newValue, workspaceIndex) => {
 
     dispatch(_changeTestInputValue(elementId, newValue, workspaceIndex))
 
-    outputElementIds.forEach((outputElementId) =>
+    unique(outputElementIds).forEach((outputElementId) =>
       dispatch(_evalAllWorkspacesIfNeeded(outputElementId))
     )
   }
