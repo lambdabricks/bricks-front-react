@@ -16,6 +16,7 @@ import {
   SELECT_SLOT,
   START_DRAG,
   STOP_DRAG,
+  UNLINK_SLOTS,
 } from '../actions'
 
 import {
@@ -47,7 +48,8 @@ import {
   changePrimitiveValue,
   changeTestInputType,
   changeTestInputValue,
-  linkSlots
+  linkSlots,
+  unlinkSlots
 } from './workspace/updateElementReducer'
 
 import {
@@ -94,6 +96,8 @@ export const workspace = (state = initialWorkspace, action) => {
       return addDragStartedToWorkspace(state, payload)
     case STOP_DRAG:
       return addDragStoppedToWorkspace(state, payload)
+    case UNLINK_SLOTS:
+      return unlinkSlots(state, payload)
     default:
       return state
   }

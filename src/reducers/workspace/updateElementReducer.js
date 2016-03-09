@@ -98,7 +98,6 @@ export const linkSlots = (workspace, payload) => {
   const { input, output } = payload
   const outputElement = workspace.entities[output.elementId]
   let newOutputElementSlots = {}
-  let newInputElementSlots = {}
   let inputElement = workspace.entities[input.elementId]
 
   if(inputElement.componentName == MAIN_BRICK) {
@@ -107,7 +106,7 @@ export const linkSlots = (workspace, payload) => {
 
   const outputSlot = inputElement.outputSlots[input.slotId]
 
-  newInputElementSlots = {
+  const newInputElementSlots = {
     outputSlots: _addPropsToSlot(
       inputElement.outputSlots,
       input.slotId,
@@ -159,6 +158,54 @@ const _addPropsToSlot = (slots, slotId, newProps) => {
     [slotId]: {
       ...slots[slotId],
       ...newProps
+    }
+  })
+}
+
+export const unlinkSlots = (workspace, payload) => {
+  const { input, output } = payload
+  let inputElement = workspace.entities[input.elementId]
+
+  if(inputElement.componentName == MAIN_BRICK) {
+    inputElement = workspace.entities[input.slotId]
+  }
+
+  const outputSlot = inputElement.outputSlots[input.slotId]
+  const index = outputSlot.outputElementIds.indexOf(output.elementId)
+
+  const outputElement = workspace.entities[output.elementId]
+  const inputSlot = outputElement.inputSlots[output.slotId]
+
+  let newInputSlot = {}
+  for(var key in outputSlot) {
+    if(key != "valueId") {
+      newInputSlot[key] = inputSlot[key]
+    }
+  }
+
+  return Object.assign({}, workspace, {
+    entities: {
+      ...workspace.entities,
+      [outputElement.id]: {
+        ...outputElement,
+        inputSlots: {
+          ...outputElement.inputSlots,
+          [output.slotId]: newInputSlot
+        }
+      },
+      [inputElement.id]: {
+        ...inputElement,
+        outputSlots: {
+          ...inputElement.outputSlots,
+          [input.slotId]: {
+            ...outputSlot,
+            outputElementIds:
+              outputSlot.outputElementIds
+                .slice(0, index)
+                .concat(outputSlot.outputElementIds.slice(index + 1))
+          }
+        }
+      }
     }
   })
 }

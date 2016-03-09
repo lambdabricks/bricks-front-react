@@ -1,7 +1,8 @@
 import { isNotEmpty } from '../utils'
 
 import {
-  BRICK
+  BRICK,
+  SELECTABLE_PIPE
 } from '../utils/componentNames'
 
 import {
@@ -30,6 +31,7 @@ export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
 export const SELECT_ELEMENT = 'SELECT_ELEMENT'
 export const SELECT_SLOT = 'SELECT_SLOT'
+export const UNLINK_SLOTS = 'UNLINK_SLOTS'
 
 export const addBrick = (brick) => {
   return (dispatch, getState) => {
@@ -205,8 +207,15 @@ export const selectElement = (elementId, mousePosition, workspaceIndex) => {
 
 export const removeElement = (elementId) => {
   return (dispatch, getState) => {
+    const { workspace } = getState()
+    const element = workspace.entities[elementId]
+
     dispatch(removeSelectedElement())
     dispatch(_removeElement(elementId))
+
+    if(element.componentName == SELECTABLE_PIPE) {
+      dispatch(_unlinkSlots(element))
+    }
   }
 }
 
@@ -215,6 +224,16 @@ const _removeElement = (elementId) => {
     type: REMOVE_ELEMENT,
     payload: {
       elementId
+    }
+  }
+}
+
+const _unlinkSlots = (element) => {
+  return {
+    type: UNLINK_SLOTS,
+    payload: {
+      input: element.input,
+      output: element.output
     }
   }
 }
