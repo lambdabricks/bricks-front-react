@@ -31,6 +31,7 @@ export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
 export const SELECT_ELEMENT = 'SELECT_ELEMENT'
 export const SELECT_SLOT = 'SELECT_SLOT'
+export const UNEVALUATE = 'UNEVALUATE'
 export const UNLINK_SLOTS = 'UNLINK_SLOTS'
 
 export const addBrick = (brick) => {
@@ -213,6 +214,17 @@ export const removeElement = (elementId) => {
     dispatch(removeSelectedElement())
     dispatch(_removeElement(elementId))
 
+    let outputSlots = {}
+
+    if(element.componentName == SELECTABLE_PIPE) {
+      let outputElement = workspace.entities[element.output.elementId]
+      outputSlots = outputElement.outputSlots
+    } else {
+      outputSlots = element.outputSlots
+    }
+
+    dispatch(_uneval(outputSlots))
+
     if(element.componentName == SELECTABLE_PIPE) {
       dispatch(_unlinkSlots(element))
     }
@@ -225,6 +237,13 @@ const _removeElement = (elementId) => {
     payload: {
       elementId
     }
+  }
+}
+
+const _uneval = (outputSlots) => {
+  return {
+    type: UNEVALUATE,
+    payload: outputSlots
   }
 }
 

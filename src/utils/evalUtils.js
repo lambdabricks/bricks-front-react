@@ -103,3 +103,20 @@ const _tryEvalPath = (workspace, unitTest, elementId) => {
 
   return unitTest
 }
+
+export const evalPathValueIds = (workspace, outputSlots, valueIds) => {
+  const outputSlotId = Object.keys(outputSlots)[0]
+  const outputSlot = outputSlots[outputSlotId]
+
+  valueIds.push(outputSlot.id)
+
+  if(outputSlot.outputElementIds) {
+    outputSlot.outputElementIds.forEach((id) => {
+      const element = workspace.entities[id]
+
+      evalPathValueIds(workspace, element.outputSlots, valueIds)
+    })
+  }
+
+  return valueIds
+}

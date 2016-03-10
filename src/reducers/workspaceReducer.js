@@ -16,6 +16,7 @@ import {
   SELECT_SLOT,
   START_DRAG,
   STOP_DRAG,
+  UNEVALUATE,
   UNLINK_SLOTS,
 } from '../actions'
 
@@ -34,7 +35,8 @@ import {
 } from './workspace/dragReducer'
 
 import {
-  evaluateAllWorkspaces
+  evaluateAllWorkspaces,
+  unevaluate
 } from './workspace/evaluationReducer'
 
 import {
@@ -96,6 +98,8 @@ export const workspace = (state = initialWorkspace, action) => {
       return addDragStartedToWorkspace(state, payload)
     case STOP_DRAG:
       return addDragStoppedToWorkspace(state, payload)
+    case UNEVALUATE:
+      return unevaluate(state, payload)
     case UNLINK_SLOTS:
       return unlinkSlots(state, payload)
     default:
