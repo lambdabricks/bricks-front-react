@@ -199,10 +199,10 @@ export const unlinkSlots = (workspace, payload) => {
           ...inputElement.outputSlots,
           [input.slotId]: {
             ...outputSlot,
-            outputElementIds:
-              outputSlot.outputElementIds
-                .slice(0, index)
-                .concat(outputSlot.outputElementIds.slice(index + 1))
+            outputElementIds: [
+              ...outputSlot.outputElementIds.slice(0, index),
+              ...outputSlot.outputElementIds.slice(index + 1)
+            ]
           }
         }
       }
