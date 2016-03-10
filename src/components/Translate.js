@@ -5,6 +5,7 @@ const translations = {
     addUnitTest: 'Add unit test',
     constants: 'Constants',
     delete: 'Delete',
+    deleteUnitTest: 'Delete unit test',
     empty: 'None',
     functions: 'Functions',
     library: 'Library',

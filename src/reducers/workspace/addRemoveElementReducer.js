@@ -120,3 +120,14 @@ export const removeElementInWorkspace = (workspace, payload) => {
     unitTests: newUnitTests
   })
 }
+
+export const removeUnitTest = (workspace, workspaceIndex) => {
+  const { unitTests } = workspace
+
+  return Object.assign({}, workspace, {
+    unitTests: [
+      ...unitTests.slice(0, workspaceIndex),
+      ...unitTests.slice(workspaceIndex + 1)
+    ]
+  })
+}

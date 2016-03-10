@@ -27,6 +27,7 @@ export const LINK_SLOTS = 'LINK_SLOTS'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
 export const REMOVE_SELECTED_ELEMENT = 'REMOVE_SELECTED_ELEMENT'
+export const REMOVE_UNIT_TEST = 'REMOVE_UNIT_TEST'
 export const START_DRAG = 'START_DRAG'
 export const STOP_DRAG = 'STOP_DRAG'
 export const SELECT_ELEMENT = 'SELECT_ELEMENT'
@@ -333,5 +334,19 @@ const _changeTestInputValue = (elementId, newValue, workspaceIndex) => {
       newValue,
       workspaceIndex
     }
+  }
+}
+
+export const removeUnitTest = (workspaceIndex) => {
+  return (dispatch, getState) => {
+    dispatch(removeSelectedElement())
+    dispatch(_removeUnitTest(workspaceIndex))
+  }
+}
+
+const _removeUnitTest = (workspaceIndex) => {
+  return {
+    type: REMOVE_UNIT_TEST,
+    payload: workspaceIndex
   }
 }

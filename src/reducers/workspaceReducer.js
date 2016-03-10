@@ -12,6 +12,7 @@ import {
   MOVE_ELEMENT,
   REMOVE_ELEMENT,
   REMOVE_SELECTED_ELEMENT,
+  REMOVE_UNIT_TEST,
   SELECT_ELEMENT,
   SELECT_SLOT,
   START_DRAG,
@@ -25,7 +26,8 @@ import {
   addPipeToWorkspace,
   addPrimitiveToWorkspace,
   addUnitTestToWorkspace,
-  removeElementInWorkspace
+  removeElementInWorkspace,
+  removeUnitTest
 } from './workspace/addRemoveElementReducer'
 
 import {
@@ -90,6 +92,8 @@ export const workspace = (state = initialWorkspace, action) => {
       return removeElementInWorkspace(state, payload)
     case REMOVE_SELECTED_ELEMENT:
       return removeSelectedElementFromWorkspace(state)
+    case REMOVE_UNIT_TEST:
+      return removeUnitTest(state, payload)
     case SELECT_ELEMENT:
       return addSelectedElementToWorkspace(state, payload)
     case SELECT_SLOT:

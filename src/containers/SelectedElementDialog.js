@@ -5,7 +5,8 @@ import {
   changePrimitiveValue,
   changeTestInputType,
   changeTestInputValue,
-  removeElement
+  removeElement,
+  removeUnitTest
 } from '../actions'
 import SelectedElementDialog from '../components/SelectedElementDialog'
 
@@ -17,21 +18,21 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...entities[id],
     ...unitTests[workspaceIndex || 0].values[id],
-    primitives
+    primitives,
+    totalUnitTests: unitTests.length
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addUnitTest: () => {
-      dispatch(
-        addUnitTest()
-      )
+      dispatch(addUnitTest())
     },
     deleteElement: (elementId) => {
-      dispatch(
-        removeElement(elementId)
-      )
+      dispatch(removeElement(elementId))
+    },
+    deleteUnitTest: (workspaceIndex) => {
+      dispatch(removeUnitTest(workspaceIndex))
     },
     changePrimitiveValue: (elementId, changeEvent, workspaceIndex) => {
       dispatch(

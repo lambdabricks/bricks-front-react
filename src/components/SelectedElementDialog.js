@@ -48,6 +48,7 @@ SelectedElementDialog.propTypes = {
   mousePosition: PositionPropTypes.isRequired,
   primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
   value: PropTypes.string,
+  totalUnitTests: PropTypes.number.isRequired,
   type: PropTypes.string,
   workspaceIndex: PropTypes.number
 }
