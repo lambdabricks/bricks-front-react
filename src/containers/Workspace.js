@@ -4,7 +4,16 @@ import {
   moveElement,
   selectElementOrStopDrag
 } from '../actions'
-import { selectedSlots } from '../utils'
+
+import {
+  SELECTABLE_PIPE
+} from '../utils/componentNames'
+
+import {
+  inputSlotPosition,
+  outputSlotPosition,
+  selectedSlots
+} from '../utils'
 
 import Workspace from '../components/Workspace'
 
@@ -21,7 +30,25 @@ const mapStateToProps = (state) => {
     dragStarted: selectionState.dragStarted,
     mainBrick: {
       ...mainBrick,
-      inner: mainBrick.innerIds.map((elementId) => entities[elementId]),
+      inner: mainBrick.innerIds.map((elementId) => {
+        const element = entities[elementId]
+
+        if(element.componentName == SELECTABLE_PIPE) {
+          return {
+            ...element,
+            inputPosition: inputSlotPosition(
+              entities[element.input.elementId],
+              element.input.slotId
+            ),
+            outputPosition: outputSlotPosition(
+              entities[element.output.elementId],
+              element.output.slotId
+            )
+          }
+        } else {
+          return element
+        }
+      }),
       testInputs: mainBrick.testInputIds.map((elementId) => entities[elementId])
     },
     selectedElement,

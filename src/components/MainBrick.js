@@ -43,19 +43,17 @@ class MainBrick extends Component {
           onClick={ (e) => handleClick(id, e, workspaceIndex) }
         />
         { inner.map((element) => {
-            if(element) {
-              const ReactComponent = getComponent(element.componentName)
+            const ReactComponent = getComponent(element.componentName)
 
-              return (
-                <ReactComponent
-                  key={ element.id }
-                  selectedSlots={ selectedSlots }
-                  { ...element }
-                  { ...unitTest.values[element.id] }
-                  { ...unitTest.values[element.valueId] }
-                />
-              )
-            }
+            return (
+              <ReactComponent
+                key={ element.id }
+                selectedSlots={ selectedSlots }
+                { ...element }
+                { ...unitTest.values[element.id] }
+                { ...unitTest.values[element.valueId] }
+              />
+            )
           })
         }
       </Group>

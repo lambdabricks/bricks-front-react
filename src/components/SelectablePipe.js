@@ -2,16 +2,17 @@ import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 
 import { Pipe as PipeConstants } from './constants'
+import { PositionPropTypes } from '../propTypes'
 import { getFillColor } from '../utils'
-import Pipe from '../containers/Pipe'
+import Pipe from './Pipe'
 
 class SelectablePipe extends Component {
   render() {
     const {
       handleClick,
       id,
-      input,
-      output,
+      inputPosition,
+      outputPosition,
       type,
       value
     } = this.props
@@ -28,8 +29,8 @@ class SelectablePipe extends Component {
       >
         <Pipe
           fillColor={ fillColor }
-          input={ input }
-          output={ output }
+          inputPosition={ inputPosition }
+          outputPosition={ outputPosition }
           strokeColor={ strokeColor }
         />
       </Group>
@@ -37,16 +38,11 @@ class SelectablePipe extends Component {
   }
 }
 
-const PipeEndPropTypes = PropTypes.shape({
-  elementId: PropTypes.number.isRequired,
-  slotId: PropTypes.number.isRequired
-})
-
 SelectablePipe.propTypes = {
   handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  input: PipeEndPropTypes.isRequired,
-  output: PipeEndPropTypes.isRequired,
+  inputPosition: PositionPropTypes.isRequired,
+  outputPosition: PositionPropTypes.isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.string
 }
