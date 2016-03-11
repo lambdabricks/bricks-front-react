@@ -5,13 +5,18 @@ import {
   TestInput as TestInputConstants
 } from '../../components/constants'
 
-import { inputSlotPosition } from '../../utils'
+import {
+  inputSlotPosition,
+  outputSlotPosition
+} from '../../utils'
+
 import {
   BRICK,
   MAIN_BRICK,
   PRIMITIVE,
   SELECTABLE_PIPE,
-  TEST_INPUT
+  TEST_INPUT,
+  TEST_OUTPUT
 } from '../../utils/componentNames'
 
 let id = 1
@@ -115,48 +120,83 @@ export const newPipe = (payload) => {
 }
 
 export const newTestInputs = (mainBrick) => {
-  let testInputs = {}
+  let testInputs = _newTestNodes(
+    mainBrick,
+    TEST_INPUT,
+    mainBrick.inputSlots,
+    inputSlotPosition
+  )
 
-  for(var id in mainBrick.inputSlots) {
-    const inputSlot = mainBrick.inputSlots[id]
+  for(var id in testInputs) {
+    const testInput = testInputs[id]
 
-    testInputs[id] = {
-      componentName: TEST_INPUT,
-      id: inputSlot.id,
-      outputSlots: {
-        [inputSlot.id]: {
-          id: inputSlot.id,
-          index: 0,
-          outputElementIds: []
-        }
-      },
-      slotPosition: inputSlotPosition(mainBrick, inputSlot.id),
-      size: TestInputConstants.defaultSize,
-      type: "null",
-      value: null
+    testInput.outputSlots = {
+      [testInput.id]: {
+        id: testInput.id,
+        index: 0,
+        outputElementIds: []
+      }
     }
   }
 
   return testInputs
 }
 
+export const newTestOutputs = (mainBrick) => {
+  return _newTestNodes(
+    mainBrick,
+    TEST_OUTPUT,
+    mainBrick.outputSlots,
+    outputSlotPosition
+  )
+}
+
+const _newTestNodes = (mainBrick, componentName, slots, slotPosition) => {
+  let testNodes = {}
+
+  for(var id in slots) {
+    const slot = slots[id]
+
+    testNodes[id] = {
+      componentName,
+      id: slot.id,
+      slotPosition: slotPosition(mainBrick, slot.id),
+      size: TestInputConstants.defaultSize,
+      type: "null",
+      value: null
+    }
+  }
+
+  return testNodes
+}
+
 export const newWorkspace = () => {
   const mainBrickId = nextId()
   const mainBrick = newMainBrick(mainBrickId)
   const testInputs = newTestInputs(mainBrick)
+  const testOutputs = newTestOutputs(mainBrick)
 
   let testInputIds = []
 
-  for(var testInput in testInputs)
+  for(var testInput in testInputs) {
     testInputIds.push(testInputs[testInput].id)
+  }
+
+  let testOutputIds = []
+
+  for(var testOutput in testOutputs) {
+    testOutputIds.push(testOutputs[testOutput].id)
+  }
 
   return {
     entities: {
       [mainBrickId]: {
         ...mainBrick,
-        testInputIds
+        testInputIds,
+        testOutputIds
       },
-      ...testInputs
+      ...testInputs,
+      ...testOutputs
     },
     mainBrickId: mainBrickId,
     selectionState: {

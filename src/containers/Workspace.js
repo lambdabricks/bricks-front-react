@@ -49,7 +49,8 @@ const mapStateToProps = (state) => {
           return element
         }
       }),
-      testInputs: mainBrick.testInputIds.map((elementId) => entities[elementId])
+      testInputs: mainBrick.testInputIds.map((elementId) => entities[elementId]),
+      testOutputs: mainBrick.testOutputIds.map((elementId) => entities[elementId])
     },
     selectedElement,
     selectedSlots: selectedSlots(state.workspace),

@@ -30,7 +30,7 @@ Brick.slotAndOffset = slotWidth + Brick.slotOffset
 const MainBrick = {
   defaultPosition: {
     x: 50,
-    y: 100
+    y: 80
   },
   defaultSize: {
     height: 400,
@@ -74,7 +74,7 @@ const Surface = {
   width: 450
 }
 
-const TestInput = {
+const TestNode = {
   defaultSize: {
     height: 30,
     width: 60
@@ -83,6 +83,10 @@ const TestInput = {
   textColor: 'black',
   yOffset: 60
 }
+
+const TestInput = TestNode
+
+const TestOutput = TestNode
 
 const LEFT = 0
 
@@ -95,5 +99,6 @@ export default {
   Primitive,
   Slot,
   Surface,
-  TestInput
+  TestInput,
+  TestOutput
 }

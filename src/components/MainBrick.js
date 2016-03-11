@@ -7,6 +7,7 @@ import Constants from './constants'
 import { getComponent } from '../utils/ComponentFactory'
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
 import TestInput from '../containers/TestInput'
+import TestOutput from '../containers/TestOutput'
 
 class MainBrick extends Component {
   render() {
@@ -17,6 +18,7 @@ class MainBrick extends Component {
       selectedSlots,
       size,
       testInputs,
+      testOutputs,
       unitTest,
       workspaceIndex
     } = this.props
@@ -56,6 +58,17 @@ class MainBrick extends Component {
             )
           })
         }
+        { testOutputs.map((element) => {
+            return (
+              <TestOutput
+                key={ element.id }
+                workspaceIndex={ workspaceIndex }
+                { ...element }
+                { ...unitTest.values[element.id] }
+              />
+            )
+          })
+        }
       </Group>
     )
   }
@@ -76,6 +89,7 @@ MainBrick.propTypes = {
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   size: SizePropTypes.isRequired,
   testInputs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  testOutputs: PropTypes.arrayOf(PropTypes.object).isRequired,
   unitTest: PropTypes.object.isRequired,
   workspaceIndex: PropTypes.number.isRequired
 }
