@@ -165,7 +165,7 @@ You need npm & browserify installed on your machine.
 
 ```
 $ git clone https://github.com/lambdabricks/bricks-front-react.git
-$ cd blocks-front-react
+$ cd bricks-front-react
 $ npm install
 $ npm start
 ```
