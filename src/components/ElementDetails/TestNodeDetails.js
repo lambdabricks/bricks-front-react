@@ -11,11 +11,11 @@ const styles = {
   width: 300
 }
 
-export default class TestInputDetails extends Component {
+export default class TestNodeDetails extends Component {
   render() {
     const {
-      changeTestInputType,
-      changeTestInputValue,
+      changeTestNodeType,
+      changeTestNodeValue,
       id,
       primitives,
       value,
@@ -26,7 +26,7 @@ export default class TestInputDetails extends Component {
     return (
       <div style={ styles} >
         <TypesSelect
-          handleChange={ changeTestInputType }
+          handleChange={ changeTestNodeType }
           id={ id }
           primitives={ primitives }
           type={ type }
@@ -34,7 +34,7 @@ export default class TestInputDetails extends Component {
         />
         { type != "null" &&
           <CustomValueInput
-            handleChange={ changeTestInputValue }
+            handleChange={ changeTestNodeValue }
             id={ id }
             primitives={ primitives }
             type={ type }
@@ -47,9 +47,9 @@ export default class TestInputDetails extends Component {
   }
 }
 
-TestInputDetails.propTypes = {
-  changeTestInputType: PropTypes.func.isRequired,
-  changeTestInputValue: PropTypes.func.isRequired,
+TestNodeDetails.propTypes = {
+  changeTestNodeType: PropTypes.func.isRequired,
+  changeTestNodeValue: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
   value: PropTypes.string,

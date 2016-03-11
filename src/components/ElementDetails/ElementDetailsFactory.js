@@ -1,12 +1,13 @@
 import DefaultDetails from './DefaultDetails'
 import MainBrickDetails from './MainBrickDetails'
 import PrimitiveDetails from './PrimitiveDetails'
-import TestInputDetails from './TestInputDetails'
+import TestNodeDetails from './TestNodeDetails'
 
 import {
   MAIN_BRICK,
   PRIMITIVE,
-  TEST_INPUT
+  TEST_INPUT,
+  TEST_OUTPUT
 } from '../../utils/componentNames'
 
 export const getDetailsComponent = (type) => {
@@ -16,7 +17,8 @@ export const getDetailsComponent = (type) => {
     case PRIMITIVE:
       return PrimitiveDetails
     case TEST_INPUT:
-      return TestInputDetails
+    case TEST_OUTPUT:
+      return TestNodeDetails
     default:
       return DefaultDetails
   }

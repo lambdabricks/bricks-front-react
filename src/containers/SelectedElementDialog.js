@@ -39,12 +39,12 @@ const mapDispatchToProps = (dispatch) => {
         changePrimitiveValue(elementId, changeEvent.target.value, workspaceIndex)
       )
     },
-    changeTestInputType: (elementId, changeEvent, workspaceIndex) => {
+    changeTestNodeType: (elementId, changeEvent, workspaceIndex) => {
       dispatch(
         changeTestInputType(elementId, changeEvent.target.value, workspaceIndex)
       )
     },
-    changeTestInputValue: (elementId, changeEvent, workspaceIndex) => {
+    changeTestNodeValue: (elementId, changeEvent, workspaceIndex) => {
       dispatch(
         changeTestInputValue(elementId, changeEvent.target.value, workspaceIndex)
       )

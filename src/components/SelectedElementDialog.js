@@ -40,8 +40,8 @@ export default class SelectedElementDialog extends Component {
 SelectedElementDialog.propTypes = {
   addUnitTest: PropTypes.func.isRequired,
   changePrimitiveValue: PropTypes.func.isRequired,
-  changeTestInputType: PropTypes.func.isRequired,
-  changeTestInputValue: PropTypes.func.isRequired,
+  changeTestNodeType: PropTypes.func.isRequired,
+  changeTestNodeValue: PropTypes.func.isRequired,
   componentName: PropTypes.string.isRequired,
   deleteElement: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
