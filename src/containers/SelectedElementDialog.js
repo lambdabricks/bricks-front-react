@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import {
   addUnitTest,
   changePrimitiveValue,
-  changeTestInputType,
-  changeTestInputValue,
+  changeTestNodeType,
+  changeTestNodeValue,
   removeElement,
   removeUnitTest
 } from '../actions'
@@ -41,12 +41,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeTestNodeType: (elementId, changeEvent, workspaceIndex) => {
       dispatch(
-        changeTestInputType(elementId, changeEvent.target.value, workspaceIndex)
+        changeTestNodeType(elementId, changeEvent.target.value, workspaceIndex)
       )
     },
     changeTestNodeValue: (elementId, changeEvent, workspaceIndex) => {
       dispatch(
-        changeTestInputValue(elementId, changeEvent.target.value, workspaceIndex)
+        changeTestNodeValue(elementId, changeEvent.target.value, workspaceIndex)
       )
     }
   }

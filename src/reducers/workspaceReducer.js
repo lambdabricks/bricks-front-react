@@ -4,8 +4,8 @@ import {
   ADD_PRIMITIVE,
   ADD_UNIT_TEST,
   CHANGE_PRIMITIVE_VALUE,
-  CHANGE_TEST_INPUT_TYPE,
-  CHANGE_TEST_INPUT_VALUE,
+  CHANGE_TEST_NODE_TYPE,
+  CHANGE_TEST_NODE_VALUE,
   CLEAR_SLOT_SELECTION,
   EVALUATE,
   LINK_SLOTS,
@@ -50,8 +50,8 @@ import {
 
 import {
   changePrimitiveValue,
-  changeTestInputType,
-  changeTestInputValue,
+  changeTestNodeType,
+  changeTestNodeValue,
   linkSlots,
   unlinkSlots
 } from './workspace/updateElementReducer'
@@ -76,10 +76,10 @@ export const workspace = (state = initialWorkspace, action) => {
       return addUnitTestToWorkspace(state)
     case CHANGE_PRIMITIVE_VALUE:
       return changePrimitiveValue(state, payload)
-    case CHANGE_TEST_INPUT_TYPE:
-      return changeTestInputType(state, payload)
-    case CHANGE_TEST_INPUT_VALUE:
-      return changeTestInputValue(state, payload)
+    case CHANGE_TEST_NODE_TYPE:
+      return changeTestNodeType(state, payload)
+    case CHANGE_TEST_NODE_VALUE:
+      return changeTestNodeValue(state, payload)
     case CLEAR_SLOT_SELECTION:
       return removeSlotSelectionState(state)
     case EVALUATE:

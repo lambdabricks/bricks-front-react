@@ -58,8 +58,9 @@ export const changePrimitiveValue = (workspace, payload) => {
   )
 }
 
-export const changeTestInputType = (workspace, payload) => {
+export const changeTestNodeType = (workspace, payload) => {
   const {
+    componentName,
     elementId,
     newType,
     workspaceIndex
@@ -70,14 +71,15 @@ export const changeTestInputType = (workspace, payload) => {
     elementId,
     workspaceIndex,
     {
-      componentName: TEST_INPUT,
+      componentName,
       type: newType
     }
   )
 }
 
-export const changeTestInputValue = (workspace, payload) => {
+export const changeTestNodeValue = (workspace, payload) => {
   const {
+    componentName,
     elementId,
     newValue,
     workspaceIndex
@@ -88,7 +90,7 @@ export const changeTestInputValue = (workspace, payload) => {
     elementId,
     workspaceIndex,
     {
-      componentName: TEST_INPUT,
+      componentName,
       value: newValue
     }
   )

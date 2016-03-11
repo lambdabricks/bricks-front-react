@@ -19,8 +19,8 @@ export const ADD_PIPE = 'ADD_PIPE'
 export const ADD_PRIMITIVE = 'ADD_PRIMITIVE'
 export const ADD_UNIT_TEST = 'ADD_UNIT_TEST'
 export const CHANGE_PRIMITIVE_VALUE = 'CHANGE_PRIMITIVE_VALUE'
-export const CHANGE_TEST_INPUT_TYPE = 'CHANGE_TEST_INPUT_TYPE'
-export const CHANGE_TEST_INPUT_VALUE = 'CHANGE_TEST_INPUT_VALUE'
+export const CHANGE_TEST_NODE_TYPE = 'CHANGE_TEST_NODE_TYPE'
+export const CHANGE_TEST_NODE_VALUE = 'CHANGE_TEST_NODE_VALUE'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
 export const EVALUATE = 'EVALUATE'
 export const LINK_SLOTS = 'LINK_SLOTS'
@@ -301,36 +301,50 @@ const _changePrimitiveValue = (elementId, newValue) => {
   }
 }
 
-export const changeTestInputType = (elementId, newType, workspaceIndex) => {
+export const changeTestNodeType = (elementId, newType, workspaceIndex) => {
+  return (dispatch, getState) => {
+    const { workspace } = getState()
+    const testNode = workspace.entities[elementId]
+
+    dispatch(_changeTestNodeType(testNode, newType, workspaceIndex))
+  }
+}
+
+const _changeTestNodeType = (testNode, newType, workspaceIndex) => {
   return {
-    type: CHANGE_TEST_INPUT_TYPE,
+    type: CHANGE_TEST_NODE_TYPE,
     payload: {
-      elementId,
+      componentName: testNode.componentName,
+      elementId: testNode.id,
       newType,
       workspaceIndex
     }
   }
 }
 
-export const changeTestInputValue = (elementId, newValue, workspaceIndex) => {
+export const changeTestNodeValue = (elementId, newValue, workspaceIndex) => {
   return (dispatch, getState) => {
     const { workspace } = getState()
-    const testInput = workspace.entities[elementId]
-    const { outputElementIds } = testInput.outputSlots[elementId]
+    const testNode = workspace.entities[elementId]
 
-    dispatch(_changeTestInputValue(elementId, newValue, workspaceIndex))
+    dispatch(_changeTestNodeValue(testNode, newValue, workspaceIndex))
 
-    unique(outputElementIds).forEach((outputElementId) =>
-      dispatch(_evalAllWorkspacesIfNeeded(outputElementId))
-    )
+    if(testNode.outputSlots){
+      const { outputElementIds } = testNode.outputSlots[elementId]
+
+      unique(outputElementIds).forEach((outputElementId) =>
+        dispatch(_evalAllWorkspacesIfNeeded(outputElementId))
+      )
+    }
   }
 }
 
-const _changeTestInputValue = (elementId, newValue, workspaceIndex) => {
+const _changeTestNodeValue = (testNode, newValue, workspaceIndex) => {
   return {
-    type: CHANGE_TEST_INPUT_VALUE,
+    type: CHANGE_TEST_NODE_VALUE,
     payload: {
-      elementId,
+      componentName: testNode.componentName,
+      elementId: testNode.id,
       newValue,
       workspaceIndex
     }
