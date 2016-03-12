@@ -32,7 +32,9 @@ TestResult.propTypes = {
     position: PositionPropTypes.isRequired,
     size: SizePropTypes.isRequired
   }).isRequired,
-  unitTest: PropTypes.object.isRequired
+  unitTest: PropTypes.shape({
+    values: PropTypes.object.isRequired
+  }).isRequired
 }
 
 export default TestResult
