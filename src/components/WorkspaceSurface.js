@@ -3,6 +3,7 @@ import { Surface } from 'react-art'
 
 import Constants from './constants'
 import MainBrick from '../containers/MainBrick'
+import TestResult from '../components/TestResult'
 
 const workspaceSurfaceStyles = {
   float: 'left',
@@ -32,6 +33,10 @@ class WorkspaceSurface extends Component {
           style={ surfaceStyles }
           width={ width }
         >
+          <TestResult
+            mainBrick={ mainBrick }
+            unitTest={ unitTest }
+          />
           <MainBrick
             selectedSlots={ selectedSlots }
             unitTest={ unitTest }

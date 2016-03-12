@@ -7,6 +7,13 @@ const colors = {
   string: "#E9A559",
   true: "#358DE2"
 }
+
+const testColors = {
+  false: '#d87777',
+  pending: '#d8d8d8',
+  true: '#77d877'
+}
+
 const font = '15px monospace'
 const slotWidth = 15
 
@@ -99,6 +106,7 @@ export default {
   Primitive,
   Slot,
   Surface,
+  testColors,
   TestInput,
   TestOutput
 }
