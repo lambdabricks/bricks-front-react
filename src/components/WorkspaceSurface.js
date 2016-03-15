@@ -6,7 +6,6 @@ import MainBrick from '../containers/MainBrick'
 import TestResult from '../components/TestResult'
 
 const workspaceSurfaceStyles = {
-  float: 'left',
   marginRight: '10px'
 }
 

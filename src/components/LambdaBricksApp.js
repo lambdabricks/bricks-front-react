@@ -4,7 +4,7 @@ import Library from '../containers/Library'
 import Workspace from '../containers/Workspace'
 
 const styles = {
-  height: '100%'
+  display: 'flex'
 }
 
 export default class LambdaBricksApp extends Component {

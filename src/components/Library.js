@@ -5,10 +5,7 @@ import { PrimitivePropTypes } from '../propTypes'
 import Translate from './Translate'
 
 const styles = {
-  float: 'left',
-  height: '100%',
-  width: '250px',
-  overflow: 'auto'
+  width: '250px'
 }
 
 const ulStyles = {

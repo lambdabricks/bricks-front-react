@@ -9,14 +9,16 @@ import Translate from './Translate'
 import WorkspaceSurface from './WorkspaceSurface'
 
 const styles = {
-  float: 'left',
-  height: '100%',
   WebkitUserSelect: 'none'
 }
 
 const workspaceHeaderStyles = {
   display: 'inline-block',
   marginRight: '30px'
+}
+
+const workspacesStyles = {
+  display: 'flex'
 }
 
 export default class Workspace extends Component {
@@ -59,18 +61,20 @@ export default class Workspace extends Component {
           />
           <TestSummary unitTests={ unitTests } />
         </div>
-        { unitTests.map((unitTest, index) => {
-            return (
-              <WorkspaceSurface
-                index={ index }
-                key={ index }
-                mainBrick={ mainBrick }
-                selectedSlots={ selectedSlots }
-                unitTest={ unitTest }
-              />
-            )
-          })
-        }
+        <div style={ workspacesStyles} >
+          { unitTests.map((unitTest, index) => {
+              return (
+                <WorkspaceSurface
+                  index={ index }
+                  key={ index }
+                  mainBrick={ mainBrick }
+                  selectedSlots={ selectedSlots }
+                  unitTest={ unitTest }
+                />
+              )
+            })
+          }
+        </div>
         { isNotEmpty(selectedElement) &&
           <SelectedElementDialog { ...selectedElement } />
         }
