@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(
         startDrag(
           elementId,
-          { x: mouseEvent.clientX, y: mouseEvent.clientY },
+          { x: mouseEvent.pageX, y: mouseEvent.pageY },
           elementPosition
         )
       )

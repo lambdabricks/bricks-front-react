@@ -17,7 +17,7 @@ export const handleSelectElement = (dispatch) => {
     dispatch(
       selectElement(
         elementId,
-        { x: mouseEvent.clientX, y: mouseEvent.clientY },
+        { x: mouseEvent.pageX, y: mouseEvent.pageY },
         workspaceIndex
       )
     )

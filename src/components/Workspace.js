@@ -36,10 +36,10 @@ export default class Workspace extends Component {
 
     if(dragStarted) {
       handleMouseMove = (e) => {
-        moveElement({ x: e.clientX, y: e.clientY })
+        moveElement({ x: e.pageX, y: e.pageY })
       }
       handleMouseUp = (e) => {
-        selectElementOrStopDrag({ x: e.clientX, y: e.clientY })
+        selectElementOrStopDrag({ x: e.pageX, y: e.pageY })
       }
     }
     else {
