@@ -89,7 +89,7 @@ or because the project is not suited for using these technologies.
 Please open an issue with your OS, browser, pc specs
 if the project feels slow in your machine.
 
-### Test output
+### ~~Test output~~ DONE
 
 The same way as you select the values/types of the test inputs,
 you will select the value/type of the test output.
