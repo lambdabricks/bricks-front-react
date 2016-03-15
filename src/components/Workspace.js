@@ -2,7 +2,9 @@ import React, { PropTypes, Component } from 'react'
 
 import { isNotEmpty } from '../utils'
 import { PositionPropTypes } from '../propTypes'
+
 import SelectedElementDialog from '../containers/SelectedElementDialog'
+import TestSummary from './TestSummary'
 import Translate from './Translate'
 import WorkspaceSurface from './WorkspaceSurface'
 
@@ -10,6 +12,11 @@ const styles = {
   float: 'left',
   height: '100%',
   WebkitUserSelect: 'none'
+}
+
+const workspaceHeaderStyles = {
+  display: 'inline-block',
+  marginRight: '30px'
 }
 
 export default class Workspace extends Component {
@@ -44,10 +51,14 @@ export default class Workspace extends Component {
         onMouseUp={ handleMouseUp }
         style={ styles }
       >
-        <Translate
-          HtmlElement="h2"
-          message="workspace"
-        />
+        <div>
+          <Translate
+            childProps={ { style: workspaceHeaderStyles } }
+            HtmlElement="h2"
+            message="workspace"
+          />
+          <TestSummary unitTests={ unitTests } />
+        </div>
         { unitTests.map((unitTest, index) => {
             return (
               <WorkspaceSurface
