@@ -9,9 +9,9 @@ const colors = {
 }
 
 const testColors = {
-  false: '#d87777',
-  pending: '#d8d8d8',
-  true: '#77d877'
+  failing: '#d87777',
+  passing: '#77d877',
+  pending: '#d8d8d8'
 }
 
 const font = '15px monospace'

@@ -15,6 +15,10 @@ import {
   selectedSlots
 } from '../utils'
 
+import {
+  getTestResult
+} from '../utils/unitTestUtils'
+
 import Workspace from '../components/Workspace'
 
 const mapStateToProps = (state) => {
@@ -54,7 +58,12 @@ const mapStateToProps = (state) => {
     },
     selectedElement,
     selectedSlots: selectedSlots(state.workspace),
-    unitTests: state.workspace.unitTests
+    unitTests: state.workspace.unitTests.map((unitTest) => {
+      return {
+        ...unitTest,
+        result: getTestResult(mainBrick, unitTest)
+      }
+    })
   }
 }
 

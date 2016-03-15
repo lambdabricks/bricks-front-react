@@ -1,19 +1,28 @@
 import { testColors } from '../components/constants'
 
-export const getFillColor = (mainBrick, unitTest) => {
+export const FAILING = 'failing'
+export const PASSING = 'passing'
+export const PENDING = 'pending'
+
+export const getTestResult = (mainBrick, unitTest) => {
   const testOutputId = mainBrick.testOutputIds[0]
   const { valueId } = mainBrick.outputSlots[testOutputId]
   const value = unitTest.values[valueId]
-  const testOutputValue = unitTest.values[testOutputId]
+  const testOutput = unitTest.values[testOutputId]
 
   if(value && value.type && value.value &&
-     testOutputValue && testOutputValue.type && testOutputValue.value
+     testOutput && testOutput.type && testOutput.value
   ) {
-    return testColors[
-      value.type == testOutputValue.type &&
-      value.value == testOutputValue.value
-    ]
+    if(value.type == testOutput.type && value.value == testOutput.value) {
+      return PASSING
+    } else {
+      return FAILING
+    }
   }
 
-  return testColors['pending']
+  return PENDING
+}
+
+export const getTestResultColor = (unitTest) => {
+  return testColors[unitTest.result]
 }
