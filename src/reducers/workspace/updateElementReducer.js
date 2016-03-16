@@ -176,13 +176,18 @@ export const unlinkSlots = (workspace, payload) => {
   const index = outputSlot.outputElementIds.indexOf(output.elementId)
 
   const outputElement = workspace.entities[output.elementId]
-  const inputSlot = outputElement.inputSlots[output.slotId]
+  let slots = {}
 
-  let newInputSlot = {}
-  for(var key in outputSlot) {
-    if(key != "valueId") {
-      newInputSlot[key] = inputSlot[key]
-    }
+  if(outputElement.componentName == MAIN_BRICK) {
+    Object.assign(slots, {
+      outputSlots: outputElement.outputSlots
+    })
+    delete slots.outputSlots[output.slotId]['valueId']
+  } else {
+    Object.assign(slots, {
+      inputSlots: outputElement.inputSlots
+    })
+    delete slots.inputSlots[output.slotId]['valueId']
   }
 
   return Object.assign({}, workspace, {
@@ -190,10 +195,7 @@ export const unlinkSlots = (workspace, payload) => {
       ...workspace.entities,
       [outputElement.id]: {
         ...outputElement,
-        inputSlots: {
-          ...outputElement.inputSlots,
-          [output.slotId]: newInputSlot
-        }
+        ...slots
       },
       [inputElement.id]: {
         ...inputElement,
