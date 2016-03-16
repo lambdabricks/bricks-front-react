@@ -126,7 +126,7 @@ you could program with fewer keystrokes than even inside an IDE.
 This is because with each shortcut you are narrowing a lot
 the potential following actions.
 
-### High order functions
+### Higher order functions
 
 Wrap bricks inside a funnel, so it can flow through a pipe.
 
