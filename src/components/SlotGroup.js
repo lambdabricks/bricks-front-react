@@ -21,29 +21,28 @@ class SlotGroup extends Component {
     } = this.props
     const width = this.slotGroupWidth(slots, slotOffset, slotAndOffset)
     const xOffset = (parentWidth - width) / 2
-    let Slots = []
 
-    for(var id in slots) {
-      const slot = slots[id]
-      const x = slotOffset + (slot.index * slotAndOffset)
-
-      Slots.push(
-        <Slot
-          key={ slot.id }
-          fillColor={ fillColor }
-          id={ slot.id }
-          parentId={ parentId }
-          selectedSlots={ selectedSlots }
-          selectSlot={ selectSlot }
-          strokeColor={ strokeColor }
-          x={ x }
-          y={ 0 }
-        />
-      )
-    }
     return (
       <Group x={ xOffset } y={ y }>
-        { Slots }
+        { Object.keys(slots).map((slotId, index) => {
+            const slot = slots[slotId]
+            const x = slotOffset + (slot.index * slotAndOffset)
+
+            return (
+              <Slot
+                key={ slot.id }
+                fillColor={ fillColor }
+                id={ slot.id }
+                parentId={ parentId }
+                selectedSlots={ selectedSlots }
+                selectSlot={ selectSlot }
+                strokeColor={ strokeColor }
+                x={ x }
+                y={ 0 }
+              />
+            )
+          })
+        }
       </Group>
     )
   }
