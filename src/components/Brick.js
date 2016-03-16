@@ -20,8 +20,15 @@ class Brick extends Component {
   }
 
   render() {
-    const { name, size } = this.props
-    const { Brick: BrickConstants, Slot } = Brick._constants
+    const {
+      name,
+      outputSlotValue,
+      size
+    } = this.props
+    const {
+      Brick: BrickConstants,
+      Slot
+    } = Brick._constants
     const midHeight = size.height / 2
 
     return (
@@ -42,6 +49,15 @@ class Brick extends Component {
         >
           { name }
         </Text>
+        { outputSlotValue && outputSlotValue.value &&
+          <Text
+            fill={ BrickConstants.textColor }
+            font={ BrickConstants.font }
+            y={ size.height }
+          >
+            { outputSlotValue.value }
+          </Text>
+        }
       </Group>
     )
   }
@@ -51,6 +67,9 @@ Brick.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   position: PositionPropTypes.isRequired,
+  outputSlotValue: PropTypes.shape({
+    value: PropTypes.string
+  }),
   size: SizePropTypes.isRequired
 }
 

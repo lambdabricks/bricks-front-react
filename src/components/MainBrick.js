@@ -46,11 +46,14 @@ class MainBrick extends Component {
         />
         { inner.map((element) => {
             const ReactComponent = getComponent(element.componentName)
+            const outputSlotValueId = element.outputSlots &&
+              Object.keys(element.outputSlots)[0]
 
             return (
               <ReactComponent
                 key={ element.id }
                 selectedSlots={ selectedSlots }
+                outputSlotValue={ unitTest.values[outputSlotValueId] }
                 { ...element }
                 { ...unitTest.values[element.id] }
                 { ...unitTest.values[element.valueId] }

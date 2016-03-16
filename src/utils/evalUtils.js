@@ -44,10 +44,21 @@ const unitTestValues = (valueIds, unitTest) => {
 }
 
 const nativeBricks = {
+  arithmetic: {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "*": (a, b) => a * b,
+    "/": (a, b) => a / b
+  },
   boolean: {
     "&&": (a, b) => a && b,
     "||": (a, b) => a || b,
     "!": (a) => !a
+  },
+  string: {
+    "length": (a) => a.length,
+    "reverse": (a) => a.split('').reverse().join(''),
+    "split": (a) => a.split(''),
   }
 }
 
@@ -63,7 +74,7 @@ const _evalBrick = (brick, args) => {
 
   return {
     componentName: BRICK,
-    type: typeof brickOutput,
+    type: _getOutputType(brickOutput),
     value: brickOutput.toString()
   }
 }
@@ -120,4 +131,12 @@ export const evalPathValueIds = (workspace, element, valueIds) => {
   }
 
   return valueIds
+}
+
+const _getOutputType = (output) => {
+  if(Array.isArray(output)) {
+    return 'list'
+  } else {
+    return typeof output
+  }
 }
