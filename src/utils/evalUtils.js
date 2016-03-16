@@ -56,6 +56,7 @@ const nativeBricks = {
     "!": (a) => !a
   },
   string: {
+    "concat": (a, b) => a.concat(b),
     "length": (a) => a.length,
     "reverse": (a) => a.split('').reverse().join(''),
     "split": (a) => a.split(''),

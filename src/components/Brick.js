@@ -4,7 +4,11 @@ import Rectangle from 'react-art/lib/Rectangle.art'
 
 import composeBrick from './composeBrick'
 import Constants from './constants'
-import { PositionPropTypes, SizePropTypes } from '../propTypes'
+import {
+  PositionPropTypes,
+  SizePropTypes,
+  SlotPropTypes
+} from '../propTypes'
 
 class Brick extends Component {
   constructor(props) {
@@ -22,6 +26,7 @@ class Brick extends Component {
   render() {
     const {
       name,
+      outputSlots,
       outputSlotValue,
       size
     } = this.props
@@ -30,6 +35,8 @@ class Brick extends Component {
       Slot
     } = Brick._constants
     const midHeight = size.height / 2
+    const outputSlotId = Object.keys(outputSlots)[0]
+    const { outputElementIds } = outputSlots[outputSlotId]
 
     return (
       <Group
@@ -49,7 +56,7 @@ class Brick extends Component {
         >
           { name }
         </Text>
-        { outputSlotValue && outputSlotValue.value &&
+        { outputElementIds.length == 0 && outputSlotValue && outputSlotValue.value &&
           <Text
             fill={ BrickConstants.textColor }
             font={ BrickConstants.font }
@@ -67,6 +74,7 @@ Brick.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   position: PositionPropTypes.isRequired,
+  outputSlots: SlotPropTypes.isRequired,
   outputSlotValue: PropTypes.shape({
     value: PropTypes.string
   }),

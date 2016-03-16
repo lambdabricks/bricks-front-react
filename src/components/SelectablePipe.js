@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { Group } from 'react-art'
+import { Group, Text } from 'react-art'
 
 import { Pipe as PipeConstants } from './constants'
 import { PositionPropTypes } from '../propTypes'
@@ -18,7 +18,9 @@ class SelectablePipe extends Component {
     } = this.props
 
     const {
-      strokeColor
+      font,
+      strokeColor,
+      textColor
     } = SelectablePipe._constants
 
     const fillColor = getFillColor(type, value)
@@ -33,6 +35,16 @@ class SelectablePipe extends Component {
           outputPosition={ outputPosition }
           strokeColor={ strokeColor }
         />
+        { value &&
+          <Text
+            fill={ textColor }
+            font={ font }
+            x={ (inputPosition.x + outputPosition.x) / 2 }
+            y={ (inputPosition.y + outputPosition.y) / 2 }
+          >
+            { value }
+          </Text>
+        }
       </Group>
     )
   }
