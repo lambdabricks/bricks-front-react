@@ -1,5 +1,6 @@
 import {
-  BRICK
+  BRICK,
+  MAIN_BRICK
 } from './componentNames'
 
 export const doesAllInputsHaveValues = (element, valueIds, unitTest) => {
@@ -104,18 +105,18 @@ const _tryEvalPath = (workspace, unitTest, elementId) => {
   return unitTest
 }
 
-export const evalPathValueIds = (workspace, outputSlots, valueIds) => {
-  const outputSlotId = Object.keys(outputSlots)[0]
-  const outputSlot = outputSlots[outputSlotId]
+export const evalPathValueIds = (workspace, element, valueIds) => {
+  if(element.componentName != MAIN_BRICK) {
+    const outputSlotId = Object.keys(element.outputSlots)[0]
+    const outputSlot = element.outputSlots[outputSlotId]
 
-  valueIds.push(outputSlot.id)
+    valueIds.push(outputSlot.id)
 
-  if(outputSlot.outputElementIds) {
-    outputSlot.outputElementIds.forEach((id) => {
-      const element = workspace.entities[id]
-
-      evalPathValueIds(workspace, element.outputSlots, valueIds)
-    })
+    if(outputSlot.outputElementIds) {
+      outputSlot.outputElementIds.forEach((id) => {
+        evalPathValueIds(workspace, workspace.entities[id], valueIds)
+      })
+    }
   }
 
   return valueIds

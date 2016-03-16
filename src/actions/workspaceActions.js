@@ -213,18 +213,8 @@ export const removeElement = (elementId) => {
     const element = workspace.entities[elementId]
 
     dispatch(removeSelectedElement())
+    dispatch(_uneval(elementId))
     dispatch(_removeElement(elementId))
-
-    let outputSlots = {}
-
-    if(element.componentName == SELECTABLE_PIPE) {
-      let outputElement = workspace.entities[element.output.elementId]
-      outputSlots = outputElement.outputSlots
-    } else {
-      outputSlots = element.outputSlots
-    }
-
-    dispatch(_uneval(outputSlots))
 
     if(element.componentName == SELECTABLE_PIPE) {
       dispatch(_unlinkSlots(element))
@@ -241,10 +231,10 @@ const _removeElement = (elementId) => {
   }
 }
 
-const _uneval = (outputSlots) => {
+const _uneval = (elementId) => {
   return {
     type: UNEVALUATE,
-    payload: outputSlots
+    payload: elementId
   }
 }
 

@@ -22,8 +22,14 @@ export const evaluateAllWorkspaces = (workspace, elementId) => {
   })
 }
 
-export const unevaluate = (workspace, outputSlots) => {
-  const valueIds = evalPathValueIds(workspace, outputSlots, [])
+export const unevaluate = (workspace, elementId) => {
+  let element = workspace.entities[elementId]
+
+  if(element.componentName == SELECTABLE_PIPE) {
+    element = workspace.entities[element.output.elementId]
+  }
+
+  const valueIds = evalPathValueIds(workspace, element, [])
 
   const newUnitTests = workspace.unitTests.map((unitTest) => {
     let newUnitTest = { values: {} }
