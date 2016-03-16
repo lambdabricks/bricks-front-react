@@ -60,6 +60,7 @@ class Brick extends Component {
           <Text
             fill={ BrickConstants.textColor }
             font={ BrickConstants.font }
+            x={ ((size.width - Slot.width) / 2) + Slot.width }
             y={ size.height }
           >
             { outputSlotValue.value }
