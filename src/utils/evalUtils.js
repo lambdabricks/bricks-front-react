@@ -73,17 +73,17 @@ const _evalBrick = (brick, args) => {
   const { moduleName, name } = brick
   const brickOutput = nativeBricks[moduleName][name].apply(null, args)
 
-  if(brickOutput) {
+  if(brickOutput === undefined) {
     return {
       componentName: BRICK,
-      type: _getOutputType(brickOutput),
-      value: brickOutput.toString()
+      type: 'error'
     }
   }
 
   return {
     componentName: BRICK,
-    type: 'error'
+    type: _getOutputType(brickOutput),
+    value: brickOutput.toString()
   }
 }
 
