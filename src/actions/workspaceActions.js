@@ -212,13 +212,31 @@ export const removeElement = (elementId) => {
     const { workspace } = getState()
     const element = workspace.entities[elementId]
 
-    dispatch(removeSelectedElement())
-    dispatch(_uneval(elementId))
-    dispatch(_removeElement(elementId))
-
     if(element.componentName == SELECTABLE_PIPE) {
       dispatch(_unlinkSlots(element))
     }
+
+    if(element.componentName == BRICK) {
+      Object.keys(element.inputSlots).forEach((slotId) => {
+        const slot = element.inputSlots[slotId]
+
+        if(slot.value) {
+          dispatch(
+            _unlinkSlots({
+              input: slot.value,
+              output: {
+                elementId: element.id,
+                slotId: slot.id
+              },
+            })
+          )
+        }
+      })
+    }
+
+    dispatch(removeSelectedElement())
+    dispatch(_uneval(elementId))
+    dispatch(_removeElement(elementId))
   }
 }
 
