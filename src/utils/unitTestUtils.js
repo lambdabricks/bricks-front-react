@@ -6,8 +6,8 @@ export const PENDING = 'pending'
 
 export const getTestResult = (mainBrick, unitTest) => {
   const testOutputId = mainBrick.testOutputIds[0]
-  const { valueId } = mainBrick.outputSlots[testOutputId]
-  const value = unitTest.values[valueId]
+  const brickValue = mainBrick.outputSlots[testOutputId].value
+  const value = unitTest.values[brickValue && brickValue.slotId]
   const testOutput = unitTest.values[testOutputId]
 
   if(value && value.type && value.value &&

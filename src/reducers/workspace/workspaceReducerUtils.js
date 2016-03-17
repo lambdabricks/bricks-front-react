@@ -48,7 +48,9 @@ export const newBrick = (brick) => {
         id: outputSlotId,
         index: 0,
         outputElementIds: [],
-        valueId: outputSlotId
+        value: {
+          slotId: outputSlotId
+        }
       }
     },
     position: BrickDefaults.defaultPosition,

@@ -152,7 +152,12 @@ export const linkSlots = (workspace, payload) => {
 }
 
 const addValueToSlots = (slots, input, output) => {
-  return _addPropsToSlot(slots, output.slotId, { valueId: input.slotId })
+  return _addPropsToSlot(slots, output.slotId, {
+    value: {
+      slotId: input.slotId,
+      elementId: input.elementId
+    }
+  })
 }
 
 const _addPropsToSlot = (slots, slotId, newProps) => {
@@ -182,12 +187,12 @@ export const unlinkSlots = (workspace, payload) => {
     Object.assign(slots, {
       outputSlots: outputElement.outputSlots
     })
-    delete slots.outputSlots[output.slotId]['valueId']
+    delete slots.outputSlots[output.slotId]['value']
   } else {
     Object.assign(slots, {
       inputSlots: outputElement.inputSlots
     })
-    delete slots.inputSlots[output.slotId]['valueId']
+    delete slots.inputSlots[output.slotId]['value']
   }
 
   return Object.assign({}, workspace, {

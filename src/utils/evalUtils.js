@@ -16,8 +16,8 @@ export const elementInputValueIds = (element) => {
   for(let id in element.inputSlots) {
     const inputSlot = element.inputSlots[id]
 
-    if(inputSlot.valueId) {
-      valueIds[inputSlot.index] = inputSlot.valueId
+    if(inputSlot.value) {
+      valueIds[inputSlot.index] = inputSlot.value.slotId
     }
   }
 
@@ -102,8 +102,8 @@ const _tryEvalPath = (workspace, unitTest, elementId) => {
   }
 
   for(var id in brick.inputSlots) {
-    const { valueId } = brick.inputSlots[id]
-    const slotValue = unitTest.values[valueId]
+    const { value } = brick.inputSlots[id]
+    const slotValue = unitTest.values[value.slotId]
 
     if(slotValue && slotValue.type && slotValue.value) {
       args.push(parsers[slotValue.type](slotValue.value))
