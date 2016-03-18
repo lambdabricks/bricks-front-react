@@ -3,15 +3,17 @@ import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
 import composeBrick from './composeBrick'
-import Constants from './constants'
+import Constants, { getConstant } from './constants'
 import { getComponent } from '../utils/ComponentFactory'
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
+
 import TestInput from '../containers/TestInput'
 import TestOutput from '../containers/TestOutput'
 
 class MainBrick extends Component {
   render() {
     const {
+      componentName,
       handleClick,
       id,
       inner,
@@ -22,7 +24,7 @@ class MainBrick extends Component {
       unitTest,
       workspaceIndex
     } = this.props
-    const { Brick, Slot } = MainBrick._constants
+    const { Slot } = MainBrick._constants
 
     return (
       <Group y={ Slot.height } >
@@ -40,8 +42,8 @@ class MainBrick extends Component {
         <Rectangle
           height={ size.height }
           width={ size.width }
-          stroke={ Brick.strokeColor }
-          fill={ Brick.fillColor }
+          stroke={ getConstant(componentName, 'strokeColor') }
+          fill={ getConstant(componentName, 'fillColor') }
           onClick={ (e) => handleClick(id, e, workspaceIndex) }
         />
         { inner.map((element) => {
@@ -81,6 +83,7 @@ class MainBrick extends Component {
 }
 
 MainBrick.propTypes = {
+  componentName: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   inner: PropTypes.arrayOf(
@@ -101,8 +104,7 @@ MainBrick.propTypes = {
 }
 
 MainBrick._constants = {
-  Slot: Constants.Slot,
-  Brick: Constants.MainBrick
+  Slot: Constants.Slot
 }
 
 export default composeBrick(MainBrick)

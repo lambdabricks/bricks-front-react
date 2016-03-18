@@ -88,8 +88,7 @@ Brick.propTypes = {
 }
 
 Brick._constants = {
-  Slot: Constants.Slot,
-  Brick: Constants.Brick
+  Slot: Constants.Slot
 }
 
 export default composeBrick(Brick)
