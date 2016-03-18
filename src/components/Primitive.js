@@ -1,10 +1,11 @@
 import React, { PropTypes, Component } from 'react'
 import { Group, Text } from 'react-art'
 
-import Constants from './constants'
-import Ellipse from './Ellipse'
+import { getConstant } from './constants'
 import { getFillColor, innerInputSlotPosition } from '../utils'
 import { PositionPropTypes } from '../propTypes'
+
+import Ellipse from './Ellipse'
 import Slot from './Slot'
 
 class Primitive extends Component {
@@ -22,6 +23,7 @@ class Primitive extends Component {
 
   render() {
     const {
+      componentName,
       id,
       type,
       handleMouseDown,
@@ -31,7 +33,6 @@ class Primitive extends Component {
       size,
       value
     } = this.props
-    const { Primitive: PrimitiveConstants } = Primitive._constants
 
     const fillColor = getFillColor(type, value)
     const slotPosition = innerInputSlotPosition(size)
@@ -46,8 +47,8 @@ class Primitive extends Component {
             size={ size }
           />
           <Text
-            fill={ PrimitiveConstants.textColor }
-            font={ PrimitiveConstants.font }
+            fill={ getConstant(componentName, 'textColor') }
+            font={ getConstant(componentName, 'font') }
             y={ size.height / 2 }
           >
             { value === null ? "<NONE>" : value }
@@ -70,6 +71,7 @@ class Primitive extends Component {
 }
 
 Primitive.propTypes = {
+  componentName: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   handleMouseDown: PropTypes.func.isRequired,
@@ -77,11 +79,6 @@ Primitive.propTypes = {
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   selectSlot: PropTypes.func.isRequired,
   value: PropTypes.any
-}
-
-Primitive._constants = {
-  Primitive: Constants.Primitive,
-  Slot: Constants.Slot
 }
 
 Primitive.displayName = Primitive.name

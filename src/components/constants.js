@@ -1,3 +1,7 @@
+import {
+  PRIMITIVE
+} from './componentNames'
+
 import { ERROR } from '../utils/evalUtils'
 
 const colors = {
@@ -44,12 +48,6 @@ const Pipe = {
   textColor: 'black'
 }
 
-const Primitive = {
-  font: font,
-  fontAlignment: 'middle',
-  textColor: 'black'
-}
-
 const Slot = {
   cursor: 'pointer',
   height: 15,
@@ -73,13 +71,24 @@ const TestOutput = TestNode
 
 const LEFT = 0
 
+const Constants = {
+  [PRIMITIVE]: {
+    font: font,
+    fontAlignment: 'middle',
+    textColor: 'black'
+  }
+}
+
+export default getConstant = (componentName, key) => {
+  return Constants[componentName][key]
+}
+
 export default {
   Brick,
   colors,
   MainBrick,
   LEFT,
   Pipe,
-  Primitive,
   Slot,
   Surface,
   testColors,
