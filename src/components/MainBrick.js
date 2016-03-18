@@ -31,8 +31,8 @@ class MainBrick extends Component {
               <TestInput
                 key={ element.id }
                 workspaceIndex={ workspaceIndex }
+                environment={ unitTest.values[element.id] || {} }
                 { ...element }
-                { ...unitTest.values[element.id] }
               />
             )
           })
