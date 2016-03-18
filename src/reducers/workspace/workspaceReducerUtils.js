@@ -18,6 +18,7 @@ const TestNodeDefaults = {
     width: 60
   }
 }
+
 const Defaults = {
   [BRICK]: {
     position: {
