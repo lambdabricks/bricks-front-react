@@ -1,4 +1,5 @@
 import {
+  BRICK,
   PRIMITIVE,
   SELECTABLE_PIPE,
   TEST_INPUT,
@@ -76,6 +77,7 @@ const TestOutput = TestNode
 const LEFT = 0
 
 const Constants = {
+  [BRICK]: Brick,
   [PRIMITIVE]: {
     font: font,
     fontAlignment: 'middle',

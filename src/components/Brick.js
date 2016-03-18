@@ -3,7 +3,7 @@ import { Group, Text } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
 import composeBrick from './composeBrick'
-import Constants from './constants'
+import Constants, { getConstant } from './constants'
 import {
   EnvironmentPropTypes,
   PositionPropTypes,
@@ -28,13 +28,13 @@ class Brick extends Component {
 
   render() {
     const {
+      componentName,
       environment,
       name,
       outputSlots,
       size
     } = this.props
     const {
-      Brick: BrickConstants,
       Slot
     } = Brick._constants
     const midHeight = size.height / 2
@@ -49,12 +49,12 @@ class Brick extends Component {
         <Rectangle
           height={ size.height }
           width={ size.width }
-          stroke={ BrickConstants.strokeColor }
-          fill={ BrickConstants.fillColor }
+          stroke={ getConstant(componentName, 'strokeColor') }
+          fill={ getConstant(componentName, 'fillColor') }
         />
         <Text
-          fill={ BrickConstants.textColor }
-          font={ BrickConstants.font }
+          fill={ getConstant(componentName, 'textColor') }
+          font={ getConstant(componentName, 'font') }
           y={ midHeight }
         >
           { name }
@@ -62,10 +62,10 @@ class Brick extends Component {
         { outputElementIds.length == 0 && environment.type &&
           <Text
             fill={ environment.type === ERROR ?
-              BrickConstants.textErrorColor :
-              BrickConstants.textColor
+              getConstant(componentName, 'textErrorColor') :
+              getConstant(componentName, 'textColor')
             }
-            font={ BrickConstants.font }
+            font={ getConstant(componentName, 'font') }
             x={ ((size.width - Slot.width) / 2) + Slot.width }
             y={ size.height }
           >
@@ -78,6 +78,7 @@ class Brick extends Component {
 }
 
 Brick.propTypes = {
+  componentName: PropTypes.string.isRequired,
   environment: EnvironmentPropTypes,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
