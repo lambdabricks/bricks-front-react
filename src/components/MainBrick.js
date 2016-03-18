@@ -60,8 +60,6 @@ class MainBrick extends Component {
                   }
                 }
                 { ...element }
-                { ...unitTest.values[element.id] }
-                { ...unitTest.values[element.valueId] }
               />
             )
           })

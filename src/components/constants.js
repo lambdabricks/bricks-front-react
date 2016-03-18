@@ -1,6 +1,7 @@
 import {
-  PRIMITIVE
-} from './componentNames'
+  PRIMITIVE,
+  SELECTABLE_PIPE
+} from '../utils/componentNames'
 
 import { ERROR } from '../utils/evalUtils'
 
@@ -77,16 +78,18 @@ const Constants = {
     font: font,
     fontAlignment: 'middle',
     textColor: 'black'
-  }
+  },
+  [SELECTABLE_PIPE]: Pipe
 }
 
-export default getConstant = (componentName, key) => {
+const getConstant = (componentName, key) => {
   return Constants[componentName][key]
 }
 
 export default {
   Brick,
   colors,
+  getConstant,
   MainBrick,
   LEFT,
   Pipe,
