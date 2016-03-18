@@ -3,6 +3,8 @@ import {
   MAIN_BRICK
 } from './componentNames'
 
+export const ERROR = 'error'
+
 export const doesAllInputsHaveValues = (element, valueIds, unitTest) => {
   const numberOfInputs = Object.keys(element.inputSlots).length
 
@@ -31,7 +33,7 @@ const unitTestValues = (valueIds, unitTest) => {
     const valueId = valueIds[id]
     const element = unitTest.values[valueId]
 
-    if(element && element.type !== 'error' && element.value) {
+    if(element && element.type !== ERROR && element.value) {
       values.push({
         id: valueId,
         type: element.type,
@@ -76,7 +78,7 @@ const _evalBrick = (brick, args) => {
   if(brickOutput === undefined) {
     return {
       componentName: BRICK,
-      type: 'error',
+      type: ERROR,
       value: 'error'
     }
   }

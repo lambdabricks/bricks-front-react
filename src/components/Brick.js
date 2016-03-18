@@ -10,6 +10,8 @@ import {
   SlotPropTypes
 } from '../propTypes'
 
+import { ERROR } from '../utils/evalUtils'
+
 class Brick extends Component {
   constructor(props) {
     super(props)
@@ -58,7 +60,7 @@ class Brick extends Component {
         </Text>
         { outputElementIds.length == 0 && outputSlotValue && outputSlotValue.type &&
           <Text
-            fill={ outputSlotValue.type === 'error' ?
+            fill={ outputSlotValue.type === ERROR ?
               BrickConstants.textErrorColor :
               BrickConstants.textColor
             }

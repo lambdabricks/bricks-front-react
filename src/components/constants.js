@@ -1,6 +1,8 @@
+import { ERROR } from '../utils/evalUtils'
+
 const colors = {
   boolean: "#8A2BE2",
-  error: '#D80000',
+  [ERROR]: '#D80000',
   false: "#E44B37",
   list: "#E9E759",
   null: "#BFBFBF",
@@ -32,7 +34,7 @@ const Brick = {
   slotOffset: 20,
   strokeColor: 'black',
   textColor: 'black',
-  textErrorColor: colors['error']
+  textErrorColor: colors[ERROR]
 }
 Brick.slotAndOffset = slotWidth + Brick.slotOffset
 
