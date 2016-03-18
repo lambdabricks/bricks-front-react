@@ -9,6 +9,7 @@ export default function composeBrick(InnerComponent) {
   class AbstractBrick extends Component {
     render() {
       const {
+        componentName,
         id,
         inputSlots,
         outputSlots,
@@ -18,33 +19,27 @@ export default function composeBrick(InnerComponent) {
         selectedSlots,
         size
       } = this.props
-      const { Brick, Slot } = InnerComponent._constants
+      const { Slot } = InnerComponent._constants
 
       return (
         <Group x={ position.x } y={ position.y }>
           <InnerComponent { ...this.props } />
           <SlotGroup
-            fillColor={ Brick.fillColor }
+            componentName={ componentName }
             parentId={ id }
             parentWidth={ size.width }
             selectedSlots={ selectedSlots }
             selectSlot={ selectBrickInputSlot }
-            slotAndOffset={ Brick.slotAndOffset }
-            slotOffset={ Brick.slotOffset }
             slots={ inputSlots }
-            strokeColor={ Brick.strokeColor }
             y={ 0 }
           />
           <SlotGroup
-            fillColor={ Brick.fillColor }
+            componentName={ componentName }
             parentId={ id }
             parentWidth={ size.width }
             selectedSlots={ selectedSlots }
             selectSlot={ selectBrickOutputSlot }
-            slotAndOffset={ Brick.slotAndOffset }
-            slotOffset={ Brick.slotOffset }
             slots={ outputSlots }
-            strokeColor={ Brick.strokeColor }
             y={ size.height + Slot.height }
           />
         </Group>
@@ -53,6 +48,7 @@ export default function composeBrick(InnerComponent) {
   }
 
   AbstractBrick.propTypes = {
+    componentName: PropTypes.string.isRequired,
     inputSlots: SlotPropTypes.isRequired,
     outputSlots: SlotPropTypes.isRequired,
     position: PositionPropTypes.isRequired,

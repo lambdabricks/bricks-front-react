@@ -1,5 +1,6 @@
 import {
   BRICK,
+  MAIN_BRICK,
   PRIMITIVE,
   SELECTABLE_PIPE,
   TEST_INPUT,
@@ -78,6 +79,7 @@ const LEFT = 0
 
 const Constants = {
   [BRICK]: Brick,
+  [MAIN_BRICK]: MainBrick,
   [PRIMITIVE]: {
     font: font,
     fontAlignment: 'middle',

@@ -2,23 +2,26 @@ import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
-import Slot from './Slot'
+import { getConstant } from './constants'
 import { SlotPropTypes } from '../propTypes'
+
+import Slot from './Slot'
 
 class SlotGroup extends Component {
   render() {
     const {
-      fillColor,
+      componentName,
       parentId,
       parentWidth,
       selectedSlots,
       selectSlot,
-      slotAndOffset,
-      slotOffset,
       slots,
-      strokeColor,
       y
     } = this.props
+
+    const slotOffset = getConstant(componentName, 'slotOffset')
+    const slotAndOffset = getConstant(componentName, 'slotAndOffset')
+
     const width = this.slotGroupWidth(slots, slotOffset, slotAndOffset)
     const xOffset = (parentWidth - width) / 2
 
@@ -31,12 +34,12 @@ class SlotGroup extends Component {
             return (
               <Slot
                 key={ slot.id }
-                fillColor={ fillColor }
+                fillColor={ getConstant(componentName, 'fillColor') }
                 id={ slot.id }
                 parentId={ parentId }
                 selectedSlots={ selectedSlots }
                 selectSlot={ selectSlot }
-                strokeColor={ strokeColor }
+                strokeColor={ getConstant(componentName, 'strokeColor') }
                 x={ x }
                 y={ 0 }
               />
@@ -55,15 +58,12 @@ class SlotGroup extends Component {
 }
 
 SlotGroup.propTypes = {
-  fillColor: PropTypes.string.isRequired,
+  componentName: PropTypes.string.isRequired,
   parentId: PropTypes.number.isRequired,
   parentWidth: PropTypes.number.isRequired,
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   selectSlot: PropTypes.func.isRequired,
-  slotAndOffset: PropTypes.number.isRequired,
-  slotOffset: PropTypes.number.isRequired,
   slots: SlotPropTypes.isRequired,
-  strokeColor: PropTypes.string.isRequired,
   y: PropTypes.number.isRequired
 }
 
