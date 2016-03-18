@@ -12,7 +12,8 @@ const colors = {
   null: "#BFBFBF",
   number: "#E96859",
   string: "#E9A559",
-  true: "#358DE2"
+  true: "#358DE2",
+  undefined: "#BFBFBF"
 }
 
 const testColors = {

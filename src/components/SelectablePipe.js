@@ -2,19 +2,18 @@ import React, { PropTypes, Component } from 'react'
 import { Group, Text } from 'react-art'
 
 import { Pipe as PipeConstants } from './constants'
-import { PositionPropTypes } from '../propTypes'
+import { EnvironmentPropTypes, PositionPropTypes } from '../propTypes'
 import { getFillColor } from '../utils'
 import Pipe from './Pipe'
 
 class SelectablePipe extends Component {
   render() {
     const {
+      environment,
       handleClick,
       id,
       inputPosition,
-      outputPosition,
-      type,
-      value
+      outputPosition
     } = this.props
 
     const {
@@ -23,7 +22,7 @@ class SelectablePipe extends Component {
       textColor
     } = SelectablePipe._constants
 
-    const fillColor = getFillColor(type, value)
+    const fillColor = getFillColor(environment.type, environment.value)
 
     return (
       <Group
@@ -35,14 +34,14 @@ class SelectablePipe extends Component {
           outputPosition={ outputPosition }
           strokeColor={ strokeColor }
         />
-        { value &&
+        { environment.value &&
           <Text
             fill={ textColor }
             font={ font }
             x={ (inputPosition.x + outputPosition.x) / 2 }
             y={ (inputPosition.y + outputPosition.y) / 2 }
           >
-            { value }
+            { environment.value }
           </Text>
         }
       </Group>
@@ -51,12 +50,11 @@ class SelectablePipe extends Component {
 }
 
 SelectablePipe.propTypes = {
+  environment: EnvironmentPropTypes.isRequired,
   handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   inputPosition: PositionPropTypes.isRequired,
-  outputPosition: PositionPropTypes.isRequired,
-  type: PropTypes.string.isRequired,
-  value: PropTypes.string
+  outputPosition: PositionPropTypes.isRequired
 }
 
 SelectablePipe._constants = PipeConstants
