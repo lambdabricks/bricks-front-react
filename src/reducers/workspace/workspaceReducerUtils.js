@@ -216,17 +216,13 @@ export const newWorkspace = () => {
   const testInputs = newTestInputs(mainBrick)
   const testOutputs = newTestOutputs(mainBrick)
 
-  let testInputIds = []
+  const testInputIds = Object.keys(testInputs).map((testInput) => {
+    return testInputs[testInput].id
+  })
 
-  for(var testInput in testInputs) {
-    testInputIds.push(testInputs[testInput].id)
-  }
-
-  let testOutputIds = []
-
-  for(var testOutput in testOutputs) {
-    testOutputIds.push(testOutputs[testOutput].id)
-  }
+  const testOutputIds = Object.keys(testOutputs).map((testOutput) => {
+    return testOutputs[testOutput].id
+  })
 
   return {
     entities: {
