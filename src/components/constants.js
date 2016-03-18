@@ -1,6 +1,8 @@
 import {
   PRIMITIVE,
-  SELECTABLE_PIPE
+  SELECTABLE_PIPE,
+  TEST_INPUT,
+  TEST_OUTPUT
 } from '../utils/componentNames'
 
 import { ERROR } from '../utils/evalUtils'
@@ -79,7 +81,9 @@ const Constants = {
     fontAlignment: 'middle',
     textColor: 'black'
   },
-  [SELECTABLE_PIPE]: Pipe
+  [SELECTABLE_PIPE]: Pipe,
+  [TEST_INPUT]: TestInput,
+  [TEST_OUTPUT]: TestOutput
 }
 
 const getConstant = (componentName, key) => {

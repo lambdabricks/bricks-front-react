@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { Group, Text } from 'react-art'
 
-import Constants from './constants'
+import Constants, { getConstant } from './constants'
 import Ellipse from './Ellipse'
 import { getFillColor } from '../utils'
 import Pipe from './Pipe'
@@ -10,6 +10,7 @@ import { EnvironmentPropTypes, PositionPropTypes } from '../propTypes'
 class TestOutput extends Component {
   render() {
     const {
+      componentName,
       environment,
       handleClick,
       id,
@@ -52,8 +53,8 @@ class TestOutput extends Component {
             size={ size }
           />
           <Text
-            fill={ TestOutputConstants.textColor }
-            font={ TestOutputConstants.font }
+            fill={ getConstant(componentName, 'textColor') }
+            font={ getConstant(componentName, 'font') }
             y={ size.height / 2 }
           >
             { environment.value === undefined ? "<NONE>" : environment.value }
@@ -71,6 +72,7 @@ class TestOutput extends Component {
 }
 
 TestOutput.propTypes = {
+  componentName: PropTypes.string.isRequired,
   environment: EnvironmentPropTypes,
   handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
