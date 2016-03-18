@@ -21,14 +21,6 @@ const font = '15px monospace'
 const slotWidth = 15
 
 const Brick = {
-  defaultPosition: {
-    x: 50,
-    y: 50
-  },
-  defaultSize: {
-    height: 40,
-    width: 100
-  },
   fillColor: '#ADD8E6',
   font: font,
   slotOffset: 20,
@@ -39,14 +31,6 @@ const Brick = {
 Brick.slotAndOffset = slotWidth + Brick.slotOffset
 
 const MainBrick = {
-  defaultPosition: {
-    x: 50,
-    y: 80
-  },
-  defaultSize: {
-    height: 400,
-    width: 350
-  },
   fillColor: '#789',
   hoverFillColor: '#385661',
   slotOffset: 100,
@@ -61,14 +45,6 @@ const Pipe = {
 }
 
 const Primitive = {
-  defaultPosition: {
-    x: 50,
-    y: 50
-  },
-  defaultSize: {
-    height: 30,
-    width: 60
-  },
   font: font,
   fontAlignment: 'middle',
   textColor: 'black'
@@ -86,10 +62,6 @@ const Surface = {
 }
 
 const TestNode = {
-  defaultSize: {
-    height: 30,
-    width: 60
-  },
   font,
   textColor: 'black',
   yOffset: 60

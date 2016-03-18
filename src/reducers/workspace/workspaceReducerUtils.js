@@ -1,11 +1,4 @@
 import {
-  Brick as BrickDefaults,
-  MainBrick as MainBrickConstants,
-  Primitive as PrimitiveDefaults,
-  TestInput as TestInputConstants
-} from '../../components/constants'
-
-import {
   inputSlotPosition,
   outputSlotPosition
 } from '../../utils'
@@ -18,6 +11,51 @@ import {
   TEST_INPUT,
   TEST_OUTPUT
 } from '../../utils/componentNames'
+
+const TestNodeDefaults = {
+  size: {
+    height: 30,
+    width: 60
+  }
+}
+const Defaults = {
+  [BRICK]: {
+    position: {
+      x: 50,
+      y: 50
+    },
+    size: {
+      height: 40,
+      width: 100
+    }
+  },
+  [MAIN_BRICK]: {
+    position: {
+      x: 50,
+      y: 80
+    },
+    size: {
+      height: 400,
+      width: 350
+    }
+  },
+  [PRIMITIVE]: {
+    position: {
+      x: 50,
+      y: 50
+    },
+    size: {
+      height: 30,
+      width: 60
+    }
+  },
+  [TEST_INPUT]: {
+    size: TestNodeDefaults.size
+  },
+  [TEST_OUTPUT]: {
+    size: TestNodeDefaults.size
+  }
+}
 
 let id = 1
 // TODO: Generate id's with an UID function ??
@@ -53,8 +91,8 @@ export const newBrick = (brick) => {
         }
       }
     },
-    position: BrickDefaults.defaultPosition,
-    size: BrickDefaults.defaultSize
+    position: Defaults[BRICK].position,
+    size: Defaults[BRICK].size
   }
 }
 
@@ -82,8 +120,8 @@ const newMainBrick = (mainBrickId) => {
         index: 0
       }
     },
-    position: MainBrickConstants.defaultPosition,
-    size: MainBrickConstants.defaultSize
+    position: Defaults[MAIN_BRICK].position,
+    size: Defaults[MAIN_BRICK].size,
   }
 }
 
@@ -101,8 +139,8 @@ export const newPrimitive = (type) => {
         valueId: elementId
       }
     },
-    position: PrimitiveDefaults.defaultPosition,
-    size: PrimitiveDefaults.defaultSize,
+    position: Defaults[PRIMITIVE].position,
+    size: Defaults[PRIMITIVE].size,
     // react or redux ignore pair with value `undefined`
     value: null
   }
@@ -163,7 +201,7 @@ const _newTestNodes = (mainBrick, componentName, slots, slotPosition) => {
       componentName,
       id: slot.id,
       slotPosition: slotPosition(mainBrick, slot.id),
-      size: TestInputConstants.defaultSize,
+      size: Defaults[componentName].size,
       type: "null",
       value: null
     }
