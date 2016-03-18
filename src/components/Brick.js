@@ -5,6 +5,7 @@ import Rectangle from 'react-art/lib/Rectangle.art'
 import composeBrick from './composeBrick'
 import Constants from './constants'
 import {
+  EnvironmentPropTypes,
   PositionPropTypes,
   SizePropTypes,
   SlotPropTypes
@@ -27,9 +28,9 @@ class Brick extends Component {
 
   render() {
     const {
+      environment,
       name,
       outputSlots,
-      outputSlotValue,
       size
     } = this.props
     const {
@@ -58,9 +59,9 @@ class Brick extends Component {
         >
           { name }
         </Text>
-        { outputElementIds.length == 0 && outputSlotValue && outputSlotValue.type &&
+        { outputElementIds.length == 0 && environment.type &&
           <Text
-            fill={ outputSlotValue.type === ERROR ?
+            fill={ environment.type === ERROR ?
               BrickConstants.textErrorColor :
               BrickConstants.textColor
             }
@@ -68,7 +69,7 @@ class Brick extends Component {
             x={ ((size.width - Slot.width) / 2) + Slot.width }
             y={ size.height }
           >
-            { outputSlotValue.value }
+            { environment.value }
           </Text>
         }
       </Group>
@@ -77,14 +78,11 @@ class Brick extends Component {
 }
 
 Brick.propTypes = {
+  environment: EnvironmentPropTypes,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   position: PositionPropTypes.isRequired,
   outputSlots: SlotPropTypes.isRequired,
-  outputSlotValue: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    value: PropTypes.string
-  }),
   size: SizePropTypes.isRequired
 }
 
