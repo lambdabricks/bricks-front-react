@@ -1,5 +1,6 @@
 const colors = {
   boolean: "#8A2BE2",
+  error: '#D80000',
   false: "#E44B37",
   list: "#E9E759",
   null: "#BFBFBF",
@@ -30,7 +31,8 @@ const Brick = {
   font: font,
   slotOffset: 20,
   strokeColor: 'black',
-  textColor: 'black'
+  textColor: 'black',
+  textErrorColor: colors['error']
 }
 Brick.slotAndOffset = slotWidth + Brick.slotOffset
 

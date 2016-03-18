@@ -56,9 +56,12 @@ class Brick extends Component {
         >
           { name }
         </Text>
-        { outputElementIds.length == 0 && outputSlotValue && outputSlotValue.value &&
+        { outputElementIds.length == 0 && outputSlotValue && outputSlotValue.type &&
           <Text
-            fill={ BrickConstants.textColor }
+            fill={ outputSlotValue.type === 'error' ?
+              BrickConstants.textErrorColor :
+              BrickConstants.textColor
+            }
             font={ BrickConstants.font }
             x={ ((size.width - Slot.width) / 2) + Slot.width }
             y={ size.height }
@@ -77,6 +80,7 @@ Brick.propTypes = {
   position: PositionPropTypes.isRequired,
   outputSlots: SlotPropTypes.isRequired,
   outputSlotValue: PropTypes.shape({
+    type: PropTypes.string.isRequired,
     value: PropTypes.string
   }),
   size: SizePropTypes.isRequired

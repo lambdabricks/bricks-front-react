@@ -31,7 +31,7 @@ const unitTestValues = (valueIds, unitTest) => {
     const valueId = valueIds[id]
     const element = unitTest.values[valueId]
 
-    if(element && element.type && element.value) {
+    if(element && element.type !== 'error' && element.value) {
       values.push({
         id: valueId,
         type: element.type,
@@ -76,7 +76,8 @@ const _evalBrick = (brick, args) => {
   if(brickOutput === undefined) {
     return {
       componentName: BRICK,
-      type: 'error'
+      type: 'error',
+      value: 'error'
     }
   }
 
