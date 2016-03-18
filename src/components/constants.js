@@ -3,6 +3,7 @@ import {
   MAIN_BRICK,
   PRIMITIVE,
   SELECTABLE_PIPE,
+  SURFACE,
   TEST_INPUT,
   TEST_OUTPUT
 } from '../utils/componentNames'
@@ -61,10 +62,6 @@ const Slot = {
   selectedFillColor: '#00FA9A'
 }
 
-const Surface = {
-  width: 450
-}
-
 const TestNode = {
   font,
   textColor: 'black',
@@ -86,6 +83,9 @@ const Constants = {
     textColor: 'black'
   },
   [SELECTABLE_PIPE]: Pipe,
+  [SURFACE]: {
+    width: 450
+  },
   [TEST_INPUT]: TestInput,
   [TEST_OUTPUT]: TestOutput
 }
@@ -102,7 +102,6 @@ export default {
   LEFT,
   Pipe,
   Slot,
-  Surface,
   testColors,
   TestInput,
   TestOutput

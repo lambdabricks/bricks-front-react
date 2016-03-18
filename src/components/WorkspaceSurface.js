@@ -1,7 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 import { Surface } from 'react-art'
 
-import Constants from './constants'
+import { getConstant } from './constants'
+import { SURFACE } from '../utils/componentNames'
+
 import MainBrick from '../containers/MainBrick'
 import TestResult from '../components/TestResult'
 
@@ -21,7 +23,6 @@ class WorkspaceSurface extends Component {
       selectedSlots,
       unitTest
     } = this.props
-    const { width } = WorkspaceSurface._constants
 
     return (
       <div
@@ -30,7 +31,7 @@ class WorkspaceSurface extends Component {
         <Surface
           height={ 600 }
           style={ surfaceStyles }
-          width={ width }
+          width={ getConstant(SURFACE, 'width') }
         >
           <TestResult
             mainBrick={ mainBrick }
@@ -54,7 +55,5 @@ WorkspaceSurface.propTypes = {
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   unitTest: PropTypes.object.isRequired
 }
-
-WorkspaceSurface._constants = Constants.Surface
 
 export default WorkspaceSurface
