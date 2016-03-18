@@ -54,6 +54,12 @@ class MainBrick extends Component {
                 key={ element.id }
                 selectedSlots={ selectedSlots }
                 outputSlotValue={ unitTest.values[outputSlotValueId] }
+                environment={
+                  {
+                    ...unitTest.values[element.id],
+                    ...unitTest.values[element.valueId]
+                  }
+                }
                 { ...element }
                 { ...unitTest.values[element.id] }
                 { ...unitTest.values[element.valueId] }

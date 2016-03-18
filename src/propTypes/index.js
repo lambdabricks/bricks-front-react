@@ -1,5 +1,10 @@
 import { PropTypes } from 'react'
 
+export const EnvironmentPropTypes = PropTypes.shape({
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string
+})
+
 export const PositionPropTypes = PropTypes.shape({
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired

@@ -3,7 +3,7 @@ import { Group, Text } from 'react-art'
 
 import { getConstant } from './constants'
 import { getFillColor, innerInputSlotPosition } from '../utils'
-import { PositionPropTypes } from '../propTypes'
+import { EnvironmentPropTypes, PositionPropTypes } from '../propTypes'
 
 import Ellipse from './Ellipse'
 import Slot from './Slot'
@@ -24,17 +24,16 @@ class Primitive extends Component {
   render() {
     const {
       componentName,
+      environment,
       id,
-      type,
       handleMouseDown,
       position,
       selectedSlots,
       selectSlot,
       size,
-      value
     } = this.props
 
-    const fillColor = getFillColor(type, value)
+    const fillColor = getFillColor(environment.type, environment.value)
     const slotPosition = innerInputSlotPosition(size)
 
     return (
@@ -51,7 +50,7 @@ class Primitive extends Component {
             font={ getConstant(componentName, 'font') }
             y={ size.height / 2 }
           >
-            { value === null ? "<NONE>" : value }
+            { environment.value === undefined ? "<NONE>" : environment.value }
           </Text>
         </Group>
         <Slot
@@ -72,13 +71,12 @@ class Primitive extends Component {
 
 Primitive.propTypes = {
   componentName: PropTypes.string.isRequired,
+  environment: EnvironmentPropTypes.isRequired,
   id: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
   handleMouseDown: PropTypes.func.isRequired,
   position: PositionPropTypes.isRequired,
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  selectSlot: PropTypes.func.isRequired,
-  value: PropTypes.any
+  selectSlot: PropTypes.func.isRequired
 }
 
 Primitive.displayName = Primitive.name

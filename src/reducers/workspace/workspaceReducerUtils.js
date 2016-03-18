@@ -142,6 +142,7 @@ export const newPrimitive = (type) => {
     },
     position: Defaults[PRIMITIVE].position,
     size: Defaults[PRIMITIVE].size,
+    // TODO: value can be safely removed ?
     // react or redux ignore pair with value `undefined`
     value: null
   }
