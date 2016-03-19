@@ -44,9 +44,6 @@ const TestNode = {
   yOffset: 60
 }
 
-const TestInput = TestNode
-const TestOutput = TestNode
-
 const LEFT = 0
 
 const brickSlotOffset = 20
@@ -82,8 +79,8 @@ const Constants = {
   [SURFACE]: {
     width: 450
   },
-  [TEST_INPUT]: TestInput,
-  [TEST_OUTPUT]: TestOutput
+  [TEST_INPUT]: TestNode,
+  [TEST_OUTPUT]: TestNode
 }
 
 const getConstant = (componentName, key) => {
@@ -95,7 +92,5 @@ export default {
   getConstant,
   LEFT,
   Slot,
-  testColors,
-  TestInput,
-  TestOutput
+  testColors
 }

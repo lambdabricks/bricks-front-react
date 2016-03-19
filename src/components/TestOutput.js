@@ -20,14 +20,13 @@ class TestOutput extends Component {
     } = this.props
 
     const {
-      Slot: SlotConstants,
-      TestOutput: TestOutputConstants
+      Slot: SlotConstants
     } = TestOutput._constants
 
     const fillColor = getFillColor(environment.type, environment.value)
     const position = {
       x: - ((size.width - SlotConstants.width) / 2),
-      y: SlotConstants.height + TestOutputConstants.yOffset - size.height
+      y: SlotConstants.height + getConstant(componentName, 'yOffset') - size.height
     }
     const inputPipePosition = {
       x: 0,
@@ -35,7 +34,7 @@ class TestOutput extends Component {
     }
     const outputPipePosition = {
       x: 0,
-      y: TestOutputConstants.yOffset - (size.height / 2)
+      y: getConstant(componentName, 'yOffset') - (size.height / 2)
     }
 
     return (
@@ -81,8 +80,7 @@ TestOutput.propTypes = {
 }
 
 TestOutput._constants = {
-  Slot: Constants.Slot,
-  TestOutput: Constants.TestOutput
+  Slot: Constants.Slot
 }
 
 export default TestOutput
