@@ -3,7 +3,7 @@ import { Group, Text } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
 import composeBrick from './composeBrick'
-import Constants, { getConstant } from './constants'
+import { getConstant } from './constants'
 import {
   EnvironmentPropTypes,
   PositionPropTypes,
@@ -34,17 +34,17 @@ class Brick extends Component {
       outputSlots,
       size
     } = this.props
-    const {
-      Slot
-    } = Brick._constants
+
     const midHeight = size.height / 2
     const outputSlotId = Object.keys(outputSlots)[0]
     const { outputElementIds } = outputSlots[outputSlotId]
+    const slotHeight = getConstant(componentName, 'slotHeight')
+    const slotWidth = getConstant(componentName, 'slotWidth')
 
     return (
       <Group
         onMouseDown={ this.startDrag }
-        y={ Slot.height }
+        y={ slotHeight }
       >
         <Rectangle
           height={ size.height }
@@ -66,7 +66,7 @@ class Brick extends Component {
               getConstant(componentName, 'textColor')
             }
             font={ getConstant(componentName, 'font') }
-            x={ ((size.width - Slot.width) / 2) + Slot.width }
+            x={ ((size.width - slotWidth) / 2) + slotWidth }
             y={ size.height }
           >
             { environment.value }
@@ -85,10 +85,6 @@ Brick.propTypes = {
   position: PositionPropTypes.isRequired,
   outputSlots: SlotPropTypes.isRequired,
   size: SizePropTypes.isRequired
-}
-
-Brick._constants = {
-  Slot: Constants.Slot
 }
 
 export default composeBrick(Brick)

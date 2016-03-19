@@ -2,7 +2,9 @@ import React, { PropTypes, Component } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
+import { getConstant } from './constants'
 import { PositionPropTypes, SizePropTypes, SlotPropTypes } from '../propTypes'
+
 import SlotGroup from './SlotGroup'
 
 export default function composeBrick(InnerComponent) {
@@ -19,7 +21,7 @@ export default function composeBrick(InnerComponent) {
         selectedSlots,
         size
       } = this.props
-      const { Slot } = InnerComponent._constants
+      const slotHeight = getConstant(componentName, 'slotHeight')
 
       return (
         <Group x={ position.x } y={ position.y }>
@@ -40,7 +42,7 @@ export default function composeBrick(InnerComponent) {
             selectedSlots={ selectedSlots }
             selectSlot={ selectBrickOutputSlot }
             slots={ outputSlots }
-            y={ size.height + Slot.height }
+            y={ size.height + slotHeight }
           />
         </Group>
       )

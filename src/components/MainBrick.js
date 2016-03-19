@@ -3,7 +3,7 @@ import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
 import composeBrick from './composeBrick'
-import Constants, { getConstant } from './constants'
+import { getConstant } from './constants'
 import { getComponent } from '../utils/ComponentFactory'
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
 
@@ -24,10 +24,10 @@ class MainBrick extends Component {
       unitTest,
       workspaceIndex
     } = this.props
-    const { Slot } = MainBrick._constants
+    const slotHeight = getConstant(componentName, 'slotHeight')
 
     return (
-      <Group y={ Slot.height } >
+      <Group y={ slotHeight } >
         { testInputs.map((element) => {
             return (
               <TestInput
@@ -101,10 +101,6 @@ MainBrick.propTypes = {
   testOutputs: PropTypes.arrayOf(PropTypes.object).isRequired,
   unitTest: PropTypes.object.isRequired,
   workspaceIndex: PropTypes.number.isRequired
-}
-
-MainBrick._constants = {
-  Slot: Constants.Slot
 }
 
 export default composeBrick(MainBrick)

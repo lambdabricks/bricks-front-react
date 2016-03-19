@@ -40,8 +40,8 @@ const Slot = {
 
 const TestNode = {
   font,
-  slotWidth: Slot.width,
   slotHeight: Slot.height,
+  slotWidth: Slot.width,
   textColor: 'black',
   yOffset: 60
 }
@@ -56,7 +56,9 @@ const Constants = {
     fillColor: '#ADD8E6',
     font: font,
     slotAndOffset: brickSlotOffset + slotWidth,
+    slotHeight: Slot.height,
     slotOffset: brickSlotOffset,
+    slotWidth: Slot.width,
     strokeColor: 'black',
     textColor: 'black',
     textErrorColor: colors[ERROR]
@@ -65,7 +67,9 @@ const Constants = {
     fillColor: '#789',
     hoverFillColor: '#385661',
     slotAndOffset: mainBrickSlotOffset + slotWidth,
+    slotHeight: Slot.height,
     slotOffset: mainBrickSlotOffset,
+    slotWidth: Slot.width,
     strokeColor: 'black'
   },
   [PRIMITIVE]: {
