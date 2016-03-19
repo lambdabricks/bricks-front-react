@@ -48,8 +48,6 @@ class MainBrick extends Component {
         />
         { inner.map((element) => {
             const ReactComponent = getComponent(element.componentName)
-            const valueId = element.valueId || (element.outputSlots &&
-              Object.keys(element.outputSlots)[0])
 
             return (
               <ReactComponent
@@ -58,7 +56,7 @@ class MainBrick extends Component {
                 environment={
                   {
                     ...unitTest.values[element.id],
-                    ...unitTest.values[valueId]
+                    ...unitTest.values[element.valueId]
                   }
                 }
                 { ...element }

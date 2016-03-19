@@ -93,7 +93,8 @@ export const newBrick = (brick) => {
       }
     },
     position: Defaults[BRICK].position,
-    size: Defaults[BRICK].size
+    size: Defaults[BRICK].size,
+    valueId: outputSlotId
   }
 }
 
