@@ -53,12 +53,7 @@ class MainBrick extends Component {
               <ReactComponent
                 key={ element.id }
                 selectedSlots={ selectedSlots }
-                environment={
-                  {
-                    ...unitTest.values[element.id],
-                    ...unitTest.values[element.valueId]
-                  }
-                }
+                environment={ unitTest.values[element.valueId] || {} }
                 { ...element }
               />
             )

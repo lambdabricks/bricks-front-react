@@ -142,7 +142,8 @@ export const newPrimitive = (type) => {
       }
     },
     position: Defaults[PRIMITIVE].position,
-    size: Defaults[PRIMITIVE].size
+    size: Defaults[PRIMITIVE].size,
+    valueId: elementId
   }
 }
 
