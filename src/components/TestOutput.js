@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { Group, Text } from 'react-art'
 
-import Constants, { getConstant } from './constants'
+import { getConstant } from './constants'
 import Ellipse from './Ellipse'
 import { getFillColor } from '../utils'
 import Pipe from './Pipe'
@@ -19,14 +19,11 @@ class TestOutput extends Component {
       workspaceIndex
     } = this.props
 
-    const {
-      Slot: SlotConstants
-    } = TestOutput._constants
-
     const fillColor = getFillColor(environment.type, environment.value)
     const position = {
-      x: - ((size.width - SlotConstants.width) / 2),
-      y: SlotConstants.height + getConstant(componentName, 'yOffset') - size.height
+      x: - ((size.width - getConstant(componentName, 'slotWidth')) / 2),
+      y: getConstant(componentName, 'slotHeight') +
+        getConstant(componentName, 'yOffset') - size.height
     }
     const inputPipePosition = {
       x: 0,
@@ -77,10 +74,6 @@ TestOutput.propTypes = {
   id: PropTypes.number.isRequired,
   slotPosition: PositionPropTypes.isRequired,
   workspaceIndex: PropTypes.number.isRequired
-}
-
-TestOutput._constants = {
-  Slot: Constants.Slot
 }
 
 export default TestOutput

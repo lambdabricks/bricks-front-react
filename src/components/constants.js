@@ -40,6 +40,8 @@ const Slot = {
 
 const TestNode = {
   font,
+  slotWidth: Slot.width,
+  slotHeight: Slot.height,
   textColor: 'black',
   yOffset: 60
 }
