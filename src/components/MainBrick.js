@@ -33,7 +33,7 @@ class MainBrick extends Component {
               <TestInput
                 key={ element.id }
                 workspaceIndex={ workspaceIndex }
-                environment={ unitTest.values[element.id] || {} }
+                environment={ unitTest.values[element.valueId] || {} }
                 { ...element }
               />
             )
@@ -71,7 +71,7 @@ class MainBrick extends Component {
               <TestOutput
                 key={ element.id }
                 workspaceIndex={ workspaceIndex }
-                environment={ unitTest.values[element.id] || {} }
+                environment={ unitTest.values[element.valueId] || {} }
                 { ...element }
               />
             )

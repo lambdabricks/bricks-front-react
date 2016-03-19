@@ -201,7 +201,8 @@ const _newTestNodes = (mainBrick, componentName, slots, slotPosition) => {
       id: slot.id,
       slotPosition: slotPosition(mainBrick, slot.id),
       size: Defaults[componentName].size,
-      type: "null"
+      type: "null",
+      valueId: slot.id
     }
   }
 
