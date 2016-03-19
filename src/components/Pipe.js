@@ -1,7 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import { Group, Path, Shape } from 'react-art'
 
-import Constants from './constants'
+import { getConstant } from './constants'
+import { PIPE } from '../utils/componentNames'
 import { PositionPropTypes } from '../propTypes'
 
 class Pipe extends Component {
@@ -13,21 +14,20 @@ class Pipe extends Component {
       outputPosition,
       type
     } = this.props
-
-    const {
-      Slot: SlotConstants
-    } = Pipe._constants
+    const componentName = PIPE
+    const slotHeight = getConstant(componentName, 'slotHeight')
+    const slotWidth = getConstant(componentName, 'slotWidth')
 
     const deltaPosition = {
       x: outputPosition.x - inputPosition.x,
-      y: outputPosition.y - (inputPosition.y + SlotConstants.height)
+      y: outputPosition.y - (inputPosition.y + slotHeight)
     }
     const path = Path()
 
-    path.move(inputPosition.x, inputPosition.y + SlotConstants.height)
-    path.line(SlotConstants.width, 0)
+    path.move(inputPosition.x, inputPosition.y + slotHeight)
+    path.line(slotWidth, 0)
     path.line(deltaPosition.x, deltaPosition.y)
-    path.line(-SlotConstants.width, 0)
+    path.line(-slotWidth, 0)
     path.close()
 
     return (
@@ -45,10 +45,6 @@ Pipe.propTypes = {
   inputPosition: PositionPropTypes.isRequired,
   outputPosition: PositionPropTypes.isRequired,
   strokeColor: PropTypes.string.isRequired
-}
-
-Pipe._constants = {
-  Slot: Constants.Slot
 }
 
 export default Pipe

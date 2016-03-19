@@ -1,6 +1,7 @@
 import {
   BRICK,
   MAIN_BRICK,
+  PIPE,
   PRIMITIVE,
   SELECTABLE_PIPE,
   SURFACE,
@@ -71,6 +72,10 @@ const Constants = {
     slotOffset: mainBrickSlotOffset,
     slotWidth: Slot.width,
     strokeColor: 'black'
+  },
+  [PIPE]: {
+    slotHeight: Slot.height,
+    slotWidth: Slot.width
   },
   [PRIMITIVE]: {
     font: font,
