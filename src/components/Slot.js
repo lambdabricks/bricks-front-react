@@ -1,8 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
-import Constants from './constants'
+import { getConstant } from './constants'
 import { isSlotSelected } from '../utils'
+import { SLOT } from '../utils/componentNames'
 
 class Slot extends Component {
   render() {
@@ -16,21 +17,21 @@ class Slot extends Component {
       x,
       y
     } = this.props
-    const { cursor, height, selectedFillColor, width } = Slot._constants
+    const componentName = SLOT
 
     const fillColor = isSlotSelected(selectedSlots, id) ?
-      selectedFillColor :
+      getConstant(componentName, 'fillColor') :
       unselectedFillColor
 
     return (
       <Rectangle
         key={ id }
-        height={ height }
-        width={ width }
+        height={ getConstant(componentName, 'height') }
+        width={ getConstant(componentName, 'width') }
         x={ x }
         y={ y }
         onClick={ () => selectSlot(parentId, id) }
-        cursor={ cursor }
+        cursor={ getConstant(componentName, 'cursor') }
         fill={ fillColor }
         stroke={ strokeColor }
       />
@@ -48,7 +49,5 @@ Slot.propTypes = {
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired
 }
-
-Slot._constants = Constants.Slot
 
 export default Slot

@@ -4,6 +4,7 @@ import {
   PIPE,
   PRIMITIVE,
   SELECTABLE_PIPE,
+  SLOT,
   SURFACE,
   TEST_INPUT,
   TEST_OUTPUT,
@@ -30,25 +31,19 @@ const testColors = {
   pending: '#d8d8d8'
 }
 
-const font = '15px monospace'
-const slotWidth = 15
+const LEFT = 0
 
-const Slot = {
-  cursor: 'pointer',
-  height: 15,
-  width: slotWidth,
-  selectedFillColor: '#00FA9A'
-}
+const font = '15px monospace'
+const slotHeight = 15
+const slotWidth = slotHeight
 
 const TestNode = {
   font,
-  slotHeight: Slot.height,
-  slotWidth: Slot.width,
+  slotHeight: slotHeight,
+  slotWidth: slotWidth,
   textColor: 'black',
   yOffset: 60
 }
-
-const LEFT = 0
 
 const brickSlotOffset = 20
 const mainBrickSlotOffset = 100
@@ -58,9 +53,9 @@ const Constants = {
     fillColor: '#ADD8E6',
     font: font,
     slotAndOffset: brickSlotOffset + slotWidth,
-    slotHeight: Slot.height,
+    slotHeight: slotHeight,
     slotOffset: brickSlotOffset,
-    slotWidth: Slot.width,
+    slotWidth: slotWidth,
     strokeColor: 'black',
     textColor: 'black',
     textErrorColor: colors[ERROR]
@@ -69,25 +64,31 @@ const Constants = {
     fillColor: '#789',
     hoverFillColor: '#385661',
     slotAndOffset: mainBrickSlotOffset + slotWidth,
-    slotHeight: Slot.height,
+    slotHeight: slotHeight,
     slotOffset: mainBrickSlotOffset,
-    slotWidth: Slot.width,
+    slotWidth: slotWidth,
     strokeColor: 'black'
   },
   [PIPE]: {
-    slotHeight: Slot.height,
-    slotWidth: Slot.width
+    slotHeight: slotHeight,
+    slotWidth: slotWidth
   },
   [PRIMITIVE]: {
     font: font,
     fontAlignment: 'middle',
-    slotWidth: Slot.width,
+    slotWidth: slotWidth,
     textColor: 'black'
   },
   [SELECTABLE_PIPE]: {
     font: font,
     strokeColor: 'black',
     textColor: 'black'
+  },
+  [SLOT]: {
+    cursor: 'pointer',
+    height: 15,
+    width: slotWidth,
+    fillColor: '#00FA9A'
   },
   [SURFACE]: {
     width: 450
@@ -107,6 +108,5 @@ export default {
   colors,
   getConstant,
   LEFT,
-  Slot,
   testColors
 }
