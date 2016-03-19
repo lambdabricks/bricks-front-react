@@ -4,7 +4,8 @@ import Rectangle from 'react-art/lib/Rectangle.art'
 import { getTestResultColor } from '../utils/unitTestUtils'
 import { PositionPropTypes, SizePropTypes } from '../propTypes'
 
-import { Slot } from './constants'
+import { getConstant } from './constants'
+import { TEST_RESULT } from '../utils/componentNames'
 
 class TestResult extends Component {
   render() {
@@ -13,14 +14,16 @@ class TestResult extends Component {
       unitTest
     } = this.props
 
-    const delta = Slot.height * 5 / 3
+    const componentName = TEST_RESULT
+    const slotHeight = getConstant(componentName, 'slotHeight')
+    const delta = slotHeight * 5 / 3
 
     return (
       <Rectangle
         fill={ getTestResultColor(unitTest) }
         height={ mainBrick.size.height + (delta * 2) }
         x={ mainBrick.position.x - delta }
-        y={ mainBrick.position.y - delta + Slot.height }
+        y={ mainBrick.position.y - delta + slotHeight }
         width={ mainBrick.size.width + (delta * 2) }
       />
     )

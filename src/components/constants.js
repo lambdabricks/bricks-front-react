@@ -6,7 +6,8 @@ import {
   SELECTABLE_PIPE,
   SURFACE,
   TEST_INPUT,
-  TEST_OUTPUT
+  TEST_OUTPUT,
+  TEST_RESULT
 } from '../utils/componentNames'
 
 import { ERROR } from '../utils/evalUtils'
@@ -92,7 +93,10 @@ const Constants = {
     width: 450
   },
   [TEST_INPUT]: TestNode,
-  [TEST_OUTPUT]: TestNode
+  [TEST_OUTPUT]: TestNode,
+  [TEST_RESULT]: {
+    slotHeight: slotHeight
+  }
 }
 
 const getConstant = (componentName, key) => {
