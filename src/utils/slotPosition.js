@@ -1,4 +1,5 @@
-import { Brick, MainBrick, Slot } from '../components/constants'
+import { getConstant, Slot } from '../components/constants'
+
 import {
   BRICK,
   MAIN_BRICK,
@@ -6,21 +7,22 @@ import {
 } from './componentNames'
 
 export const inputSlotPosition = (element, slotId) => {
-  const { position, size } = element
+  const { componentName, position, size } = element
 
-  switch(element.componentName) {
+  switch(componentName) {
     case BRICK:
       const { outputSlots } = element
 
       return {
-        x: position.x + brickSlotXPosition(outputSlots, slotId, size.width),
+        x: position.x +
+          slotXPosition(outputSlots, slotId, size.width, componentName),
         y: position.y + size.height + Slot.height
       }
     case MAIN_BRICK:
       const { inputSlots } = element
 
       return {
-        x: mainBrickSlotXPosition(inputSlots, slotId, size.width),
+        x: slotXPosition(inputSlots, slotId, size.width, componentName),
         y: -Slot.height
       }
     case PRIMITIVE:
@@ -34,44 +36,41 @@ export const inputSlotPosition = (element, slotId) => {
 }
 
 export const outputSlotPosition = (element, slotId) => {
-  const { position, size } = element
+  const { componentName, position, size } = element
 
-  switch(element.componentName) {
+  switch(componentName) {
     case BRICK:
       const { inputSlots } = element
       return {
-        x: position.x + brickSlotXPosition(inputSlots, slotId, size.width),
+        x: position.x +
+          slotXPosition(inputSlots, slotId, size.width, componentName),
         y: position.y
       }
     case MAIN_BRICK:
       const { outputSlots } = element
 
       return {
-        x: mainBrickSlotXPosition(outputSlots, slotId, size.width),
+        x: slotXPosition(outputSlots, slotId, size.width, componentName),
         y: size.height
       }
   }
 }
 
-const brickSlotXPosition = (slots, slotId, width) => {
-  return slotXPosition(slots, slots[slotId], width, Brick)
-}
-
-const mainBrickSlotXPosition = (slots, slotId, width) => {
-  return slotXPosition(slots, slots[slotId], width, MainBrick)
-}
-
-const slotXPosition = (slots, slot, width, constants) => {
-  const xOffset = (width - slotGroupWidth(slots, constants)) / 2
+const slotXPosition = (slots, slotId, width, componentName) => {
+  const slot = slots[slotId]
+  const xOffset = (width - slotGroupWidth(slots, componentName)) / 2
 
   return xOffset +
-    (constants.slotOffset + (slot.index * constants.slotAndOffset))
+    (getConstant(componentName, 'slotOffset') +
+      (slot.index * getConstant(componentName, 'slotAndOffset'))
+    )
 }
 
-const slotGroupWidth = (slots, constants) => {
+const slotGroupWidth = (slots, componentName) => {
   const totalSlots = Object.keys(slots).length
 
-  return constants.slotOffset + (totalSlots * constants.slotAndOffset)
+  return getConstant(componentName, 'slotOffset') +
+    (totalSlots * getConstant(componentName, 'slotAndOffset'))
 }
 
 export const innerInputSlotPosition = (size) => {
