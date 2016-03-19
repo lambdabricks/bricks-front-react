@@ -1,4 +1,4 @@
-import { getConstant, Slot } from '../components/constants'
+import { getConstant } from '../components/constants'
 
 import {
   BRICK,
@@ -8,6 +8,7 @@ import {
 
 export const inputSlotPosition = (element, slotId) => {
   const { componentName, position, size } = element
+  const slotHeight = getConstant(componentName, 'slotHeight')
 
   switch(componentName) {
     case BRICK:
@@ -16,17 +17,17 @@ export const inputSlotPosition = (element, slotId) => {
       return {
         x: position.x +
           slotXPosition(outputSlots, slotId, size.width, componentName),
-        y: position.y + size.height + Slot.height
+        y: position.y + size.height + slotHeight
       }
     case MAIN_BRICK:
       const { inputSlots } = element
 
       return {
         x: slotXPosition(inputSlots, slotId, size.width, componentName),
-        y: -Slot.height
+        y: -slotHeight
       }
     case PRIMITIVE:
-      const slotPosition = innerInputSlotPosition(size)
+      const slotPosition = centeredSlotPosition(size, componentName)
 
       return {
         x: position.x + slotPosition.x,
@@ -73,9 +74,11 @@ const slotGroupWidth = (slots, componentName) => {
     (totalSlots * getConstant(componentName, 'slotAndOffset'))
 }
 
-export const innerInputSlotPosition = (size) => {
+export const centeredSlotPosition = (size, componentName) => {
+  const slotWidth = getConstant(componentName, 'slotWidth')
+
   return {
-    x: (size.width - Slot.width) / 2,
+    x: (size.width - slotWidth) / 2,
     y: size.height
   }
 }

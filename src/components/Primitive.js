@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { Group, Text } from 'react-art'
 
 import { getConstant } from './constants'
-import { getFillColor, innerInputSlotPosition } from '../utils'
+import { getFillColor, centeredSlotPosition } from '../utils'
 import { EnvironmentPropTypes, PositionPropTypes } from '../propTypes'
 
 import Ellipse from './Ellipse'
@@ -34,7 +34,7 @@ class Primitive extends Component {
     } = this.props
 
     const fillColor = getFillColor(environment.type, environment.value)
-    const slotPosition = innerInputSlotPosition(size)
+    const slotPosition = centeredSlotPosition(size, componentName)
 
     return (
       <Group x={ position.x } y={ position.y } >

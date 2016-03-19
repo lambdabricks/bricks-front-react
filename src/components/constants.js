@@ -75,6 +75,7 @@ const Constants = {
   [PRIMITIVE]: {
     font: font,
     fontAlignment: 'middle',
+    slotWidth: Slot.width,
     textColor: 'black'
   },
   [SELECTABLE_PIPE]: {
