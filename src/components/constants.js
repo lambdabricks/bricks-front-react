@@ -33,7 +33,9 @@ export const testColors = {
 
 export const LEFT = 0
 
+const brickSlotOffset = 20
 const font = '15px monospace'
+const mainBrickSlotOffset = 100
 const slotHeight = 15
 const slotWidth = slotHeight
 
@@ -44,9 +46,6 @@ const TestNode = {
   textColor: 'black',
   yOffset: 60
 }
-
-const brickSlotOffset = 20
-const mainBrickSlotOffset = 100
 
 const Constants = {
   [BRICK]: {
