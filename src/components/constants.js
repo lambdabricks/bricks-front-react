@@ -13,7 +13,7 @@ import {
 
 import { ERROR } from '../utils/evalUtils'
 
-const colors = {
+export const colors = {
   boolean: "#8A2BE2",
   [ERROR]: '#D80000',
   false: "#E44B37",
@@ -25,13 +25,13 @@ const colors = {
   undefined: "#BFBFBF"
 }
 
-const testColors = {
+export const testColors = {
   failing: '#d87777',
   passing: '#77d877',
   pending: '#d8d8d8'
 }
 
-const LEFT = 0
+export const LEFT = 0
 
 const font = '15px monospace'
 const slotHeight = 15
@@ -100,13 +100,6 @@ const Constants = {
   }
 }
 
-const getConstant = (componentName, key) => {
+export const getConstant = (componentName, key) => {
   return Constants[componentName][key]
-}
-
-export default {
-  colors,
-  getConstant,
-  LEFT,
-  testColors
 }
