@@ -141,10 +141,7 @@ export const newPrimitive = (type) => {
       }
     },
     position: Defaults[PRIMITIVE].position,
-    size: Defaults[PRIMITIVE].size,
-    // TODO: value can be safely removed ?
-    // react or redux ignore pair with value `undefined`
-    value: null
+    size: Defaults[PRIMITIVE].size
   }
 }
 
@@ -204,8 +201,7 @@ const _newTestNodes = (mainBrick, componentName, slots, slotPosition) => {
       id: slot.id,
       slotPosition: slotPosition(mainBrick, slot.id),
       size: Defaults[componentName].size,
-      type: "null",
-      value: null
+      type: "null"
     }
   }
 
