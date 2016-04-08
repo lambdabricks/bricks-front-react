@@ -57,6 +57,12 @@ const nativeBricks = {
     "||": (a, b) => a || b,
     "!": (a) => !a
   },
+  eq: {
+    "==": (a, b) => a === b,
+  },
+  hof: {
+    "sort": (a) => a.slice(0).sort()
+  },
   string: {
     "concat": (a, b) => a.concat(b),
     "length": (a) => a.length,
@@ -67,6 +73,7 @@ const nativeBricks = {
 
 const parsers = {
   boolean: (value) => value.toLowerCase() == "true",
+  list: (value) => value.split(','),
   number: (value) => parseFloat(value),
   string: (value) => value
 }
