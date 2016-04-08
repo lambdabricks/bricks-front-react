@@ -62,7 +62,7 @@ let id = 1
 // TODO: Generate id's with an UID function ??
 const nextId = () => id++
 
-export const newBrick = (brick) => {
+export const newBrick = (brick, parentId) => {
   const { arity, moduleName, name } = brick
   let inputSlots = {}
   const outputSlotId = nextId()
@@ -92,6 +92,7 @@ export const newBrick = (brick) => {
         }
       }
     },
+    parentId,
     position: Defaults[BRICK].position,
     size: Defaults[BRICK].size,
     valueId: outputSlotId
@@ -127,7 +128,7 @@ const newMainBrick = (mainBrickId) => {
   }
 }
 
-export const newPrimitive = (type) => {
+export const newPrimitive = (type, parentId) => {
   const elementId = nextId()
 
   return {
@@ -141,6 +142,7 @@ export const newPrimitive = (type) => {
         valueId: elementId
       }
     },
+    parentId,
     position: Defaults[PRIMITIVE].position,
     size: Defaults[PRIMITIVE].size,
     valueId: elementId

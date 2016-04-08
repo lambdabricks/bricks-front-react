@@ -11,13 +11,13 @@ import {
 } from './workspaceReducerUtils'
 
 export const addBrickToWorkspace = (workspace, attributes) =>
-  addToWorkspace(workspace, newBrick(attributes))
+  addToWorkspace(workspace, newBrick(attributes, workspace.mainBrickId))
 
 export const addPipeToWorkspace = (workspace, attributes) =>
   addToWorkspace(workspace, newPipe(attributes))
 
 export const addPrimitiveToWorkspace = (workspace, primitiveType) => {
-  const primitive = newPrimitive(primitiveType)
+  const primitive = newPrimitive(primitiveType, workspace.mainBrickId)
   const newWorkspace = addToWorkspace(workspace, primitive)
 
   newWorkspace.unitTests = newWorkspace.unitTests.map((unitTest) => {
