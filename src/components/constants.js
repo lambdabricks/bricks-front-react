@@ -62,6 +62,7 @@ const Constants = {
   [MAIN_BRICK]: {
     fillColor: '#789',
     hoverFillColor: '#385661',
+    margin: 20,
     slotAndOffset: mainBrickSlotOffset + slotWidth,
     slotHeight: slotHeight,
     slotOffset: mainBrickSlotOffset,

@@ -30,3 +30,14 @@ export const unique = (array) => {
     return (element, index, array) => !(element in seen) && (seen[element] = 1)
   })())
 }
+
+export const bound = (value, lowerLimit, upperLimit) => {
+  if(value < lowerLimit) {
+    return lowerLimit
+  }
+  if(value > upperLimit) {
+    return upperLimit
+  }
+
+  return value
+}

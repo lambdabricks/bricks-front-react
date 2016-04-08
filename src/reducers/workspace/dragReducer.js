@@ -1,3 +1,6 @@
+import { bound } from '../../utils'
+import { getConstant } from '../../components/constants'
+
 export const updateElementInWorkspace = (workspace, payload) => {
   const { selectionState } = workspace
 
@@ -8,6 +11,11 @@ export const updateElementInWorkspace = (workspace, payload) => {
   const { currentMousePosition } = payload
   const { element } = selectionState
   const originalElement = workspace.entities[element.id]
+  const parentElement = workspace.entities[originalElement.parentId]
+  const margin = getConstant(parentElement.componentName, 'margin')
+
+  const x = element.startPosition.x + currentMousePosition.x - element.mouseDownPosition.x
+  const y = element.startPosition.y + currentMousePosition.y - element.mouseDownPosition.y
 
   return Object.assign({}, workspace, {
     ...workspace,
@@ -16,8 +24,16 @@ export const updateElementInWorkspace = (workspace, payload) => {
       [element.id]: {
         ...originalElement,
         position: {
-          x: element.startPosition.x + currentMousePosition.x - element.mouseDownPosition.x,
-          y: element.startPosition.y + currentMousePosition.y - element.mouseDownPosition.y,
+          x: bound(
+            x,
+            margin,
+            parentElement.size.width - originalElement.size.width - margin
+          ),
+          y: bound(
+            y,
+            margin,
+            parentElement.size.height - originalElement.size.height - margin
+          ),
         }
       }
     }
