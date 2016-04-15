@@ -80,8 +80,8 @@ export const selectElementOrStopDrag = (mousePosition) => {
 
     dispatch(stopDrag())
 
-    if(element.mouseDownPosition.x == mousePosition.x &&
-      element.mouseDownPosition.y == mousePosition.y ) {
+    if(element.mouseDownPosition.x === mousePosition.x &&
+      element.mouseDownPosition.y === mousePosition.y ) {
       dispatch(selectElement(element.id, mousePosition))
     } else {
       dispatch(removeSelectedElement())
