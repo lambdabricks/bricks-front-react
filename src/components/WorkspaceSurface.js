@@ -1,9 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { Surface } from 'react-art'
 
-import { getConstant } from './constants'
-import { SURFACE } from '../utils/componentNames'
-
 import MainBrick from '../containers/MainBrick'
 import TestResult from '../components/TestResult'
 
@@ -31,7 +28,7 @@ class WorkspaceSurface extends Component {
         <Surface
           height={ 600 }
           style={ surfaceStyles }
-          width={ getConstant(SURFACE, 'width') }
+          width={ mainBrick.size.width + mainBrick.position.x * 2 }
         >
           <TestResult
             mainBrick={ mainBrick }

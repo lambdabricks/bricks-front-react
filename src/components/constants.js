@@ -90,9 +90,6 @@ const Constants = {
     width: slotWidth,
     fillColor: '#00FA9A'
   },
-  [SURFACE]: {
-    width: 450
-  },
   [TEST_INPUT]: TestNode,
   [TEST_OUTPUT]: TestNode,
   [TEST_RESULT]: {
