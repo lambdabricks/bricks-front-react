@@ -12,6 +12,9 @@ import {
   TEST_OUTPUT
 } from '../../utils/componentNames'
 
+const CLEAN = '1'
+const UNIT_TEST = '2'
+
 const TestNodeDefaults = {
   size: {
     height: 30,
@@ -36,8 +39,14 @@ const Defaults = {
       y: 80
     },
     size: {
-      height: 400,
-      width: 350
+      [CLEAN]: {
+        height: 400,
+        width: 900
+      },
+      [UNIT_TEST]: {
+        height: 400,
+        width: 350
+      }
     }
   },
   [PRIMITIVE]: {
@@ -99,15 +108,22 @@ export const newBrick = (brick, parentId) => {
   }
 }
 
-const newMainBrick = (mainBrickId) => {
-  const inputSlotIds = [nextId(), nextId()]
-  const outputSlotId = nextId()
-
-  return {
+const newMainBrick = (mainBrickId, workspaceType = UNIT_TEST) => {
+  let mainBrick = {
     componentName: MAIN_BRICK,
     id: mainBrickId,
     innerIds: [],
-    inputSlots: {
+    inputSlots: { },
+    outputSlots: { },
+    position: Defaults[MAIN_BRICK].position,
+    size: Defaults[MAIN_BRICK].size[workspaceType],
+  }
+
+  if(workspaceType != CLEAN) {
+    const inputSlotIds = [nextId(), nextId()]
+    const outputSlotId = nextId()
+
+    mainBrick.inputSlots = {
       [inputSlotIds[0]]: {
         id: inputSlotIds[0],
         index: 0
@@ -116,16 +132,17 @@ const newMainBrick = (mainBrickId) => {
         id: inputSlotIds[1],
         index: 1
       }
-    },
-    outputSlots: {
+    }
+
+    mainBrick.outputSlots = {
       [outputSlotId]: {
         id: outputSlotId,
         index: 0
       }
-    },
-    position: Defaults[MAIN_BRICK].position,
-    size: Defaults[MAIN_BRICK].size,
+    }
   }
+
+  return mainBrick
 }
 
 export const newPrimitive = (type, parentId) => {
@@ -213,9 +230,9 @@ const _newTestNodes = (mainBrick, componentName, slots, slotPosition) => {
   return testNodes
 }
 
-export const newWorkspace = () => {
+export const newWorkspace = (queryParams) => {
   const mainBrickId = nextId()
-  const mainBrick = newMainBrick(mainBrickId)
+  const mainBrick = newMainBrick(mainBrickId, queryParams['ws'])
   const testInputs = newTestInputs(mainBrick)
   const testOutputs = newTestOutputs(mainBrick)
 
