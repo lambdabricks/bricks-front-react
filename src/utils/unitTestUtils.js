@@ -6,6 +6,11 @@ export const PENDING = 'pending'
 
 export const getTestResult = (mainBrick, unitTest) => {
   const testOutputId = mainBrick.testOutputIds[0]
+
+  if(!testOutputId) {
+    return PENDING
+  }
+
   const brickValue = mainBrick.outputSlots[testOutputId].value
   const value = unitTest.values[brickValue && brickValue.slotId]
   const testOutput = unitTest.values[testOutputId]
