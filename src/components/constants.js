@@ -33,6 +33,9 @@ export const testColors = {
 
 export const LEFT = 0
 
+export const CLEAN = '1'
+export const UNIT_TEST = '2'
+
 const brickSlotOffset = 20
 const font = '15px monospace'
 const mainBrickSlotOffset = 100

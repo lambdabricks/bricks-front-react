@@ -1,12 +1,15 @@
 import { connect } from 'react-redux'
 
 import { addPipeOrSelectSlot } from '../actions'
+import { CLEAN } from '../components/constants'
 import { handleSelectElement } from '../utils'
 import MainBrick from '../components/MainBrick'
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { workspaceType } = ownProps
+
   return {
-    handleClick: handleSelectElement(dispatch),
+    handleClick: workspaceType != CLEAN ? handleSelectElement(dispatch) : () => { },
     selectBrickInputSlot: (elementId, slotId) => {
       dispatch(addPipeOrSelectSlot('input', elementId, slotId))
     },

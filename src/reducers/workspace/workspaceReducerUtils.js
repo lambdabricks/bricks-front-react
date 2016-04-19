@@ -1,4 +1,9 @@
 import {
+  CLEAN,
+  UNIT_TEST
+} from '../../components/constants'
+
+import {
   inputSlotPosition,
   outputSlotPosition
 } from '../../utils'
@@ -11,9 +16,6 @@ import {
   TEST_INPUT,
   TEST_OUTPUT
 } from '../../utils/componentNames'
-
-const CLEAN = '1'
-const UNIT_TEST = '2'
 
 const TestNodeDefaults = {
   size: {
@@ -117,6 +119,7 @@ const newMainBrick = (mainBrickId, workspaceType = UNIT_TEST) => {
     outputSlots: { },
     position: Defaults[MAIN_BRICK].position,
     size: Defaults[MAIN_BRICK].size[workspaceType],
+    workspaceType
   }
 
   if(workspaceType != CLEAN) {
