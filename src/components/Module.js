@@ -30,6 +30,7 @@ export default class Module extends Component {
                   key={ libraryFunction.id }
                   onClick={ () => onFunctionClick(name, libraryFunction) }
                   style={ libraryFunctionStyles }
+                  title={ libraryFunction.title }
                 >
                   { libraryFunction.label }
                 </li>
