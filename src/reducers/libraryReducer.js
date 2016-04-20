@@ -6,7 +6,7 @@ import {
 } from '../actions'
 
 const initialLibrary = {
-  id: parse(location.search)['id'] || 1,
+  id: parse(location.search)['id'] || '1',
   isFetching: false,
   items: {}
 }

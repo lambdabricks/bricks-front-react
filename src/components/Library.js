@@ -91,6 +91,7 @@ export default class Library extends Component {
 
 Library.propTypes = {
   fetchLibrary: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
   items: PropTypes.shape({
     modules: PropTypes.array,
