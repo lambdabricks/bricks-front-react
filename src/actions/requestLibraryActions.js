@@ -25,10 +25,10 @@ const receiveLibrary = (items) => {
   }
 }
 
-const fetchLibrary = () => {
+const fetchLibrary = (id) => {
   return dispatch => {
     dispatch(requestLibrary())
-    return fetch(`http://demo5895613.mockable.io/library/js/2`)
+    return fetch(`http://demo5895613.mockable.io/library/js/${id}`)
       .then(response => response.json())
       .then(items => dispatch(receiveLibrary(items)))
   }
@@ -48,8 +48,10 @@ const shouldFetchLibrary = (state) => {
 
 export const fetchLibraryIfNeeded = () => {
   return (dispatch, getState) => {
-    if (shouldFetchLibrary(getState())) {
-      return dispatch(fetchLibrary())
+    const { library } = getState()
+
+    if (shouldFetchLibrary(library)) {
+      return dispatch(fetchLibrary(library.id))
     }
   }
 }

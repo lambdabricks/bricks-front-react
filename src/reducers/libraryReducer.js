@@ -1,9 +1,12 @@
+import { parse } from 'query-string'
+
 import {
   REQUEST_LIBRARY,
   RECEIVE_LIBRARY
 } from '../actions'
 
 const initialLibrary = {
+  id: parse(location.search)['id'] || 1,
   isFetching: false,
   items: {}
 }
@@ -21,7 +24,7 @@ export const library = (state = initialLibrary, action) => {
     case REQUEST_LIBRARY:
       return Object.assign({}, state, {
         isFetching: true,
-        didInvalidate: false,
+        didInvalidate: false
       })
     default:
       return state
