@@ -37,12 +37,18 @@ const Defaults = {
   },
   [MAIN_BRICK]: {
     position: {
-      x: 50,
-      y: 80
+      [CLEAN]: {
+        x: 50,
+        y: 50
+      },
+      [UNIT_TEST]: {
+        x: 50,
+        y: 80
+      }
     },
     size: {
       [CLEAN]: {
-        height: 400,
+        height: 450,
         width: 900
       },
       [UNIT_TEST]: {
@@ -117,7 +123,7 @@ const newMainBrick = (mainBrickId, workspaceType = UNIT_TEST) => {
     innerIds: [],
     inputSlots: { },
     outputSlots: { },
-    position: Defaults[MAIN_BRICK].position,
+    position: Defaults[MAIN_BRICK].position[workspaceType],
     size: Defaults[MAIN_BRICK].size[workspaceType],
     workspaceType
   }
