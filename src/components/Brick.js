@@ -4,6 +4,7 @@ import Rectangle from 'react-art/lib/Rectangle.art'
 
 import composeBrick from './composeBrick'
 import { getConstant } from './constants'
+import { getFillColor } from '../utils'
 import {
   EnvironmentPropTypes,
   PositionPropTypes,
@@ -61,10 +62,7 @@ class Brick extends Component {
         </Text>
         { outputElementIds.length == 0 && environment.type &&
           <Text
-            fill={ environment.type === ERROR ?
-              getConstant(componentName, 'textErrorColor') :
-              getConstant(componentName, 'textColor')
-            }
+            fill={ getFillColor(environment.type, environment.value) }
             font={ getConstant(componentName, 'font') }
             x={ ((size.width - slotWidth) / 2) + slotWidth }
             y={ size.height }

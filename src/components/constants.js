@@ -59,8 +59,7 @@ const Constants = {
     slotOffset: brickSlotOffset,
     slotWidth: slotWidth,
     strokeColor: 'black',
-    textColor: 'black',
-    textErrorColor: colors[ERROR]
+    textColor: 'black'
   },
   [MAIN_BRICK]: {
     fillColor: '#789',
