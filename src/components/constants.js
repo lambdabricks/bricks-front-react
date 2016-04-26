@@ -63,7 +63,7 @@ const Constants = {
     textColor: 'black'
   },
   [MAIN_BRICK]: {
-    fillColor: '#789',
+    fillColor: 'rgba(119, 136, 153, 0.7)',
     hoverFillColor: '#385661',
     margin: 20,
     slotAndOffset: mainBrickSlotOffset + slotWidth,
