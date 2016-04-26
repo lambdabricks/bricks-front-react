@@ -64,6 +64,10 @@ const nativeBricks = {
     "join": (a) => a.join(''),
     "sort": (a) => a.slice(0).sort()
   },
+  parse: {
+    "toNumber": (a) => parseFloat(a),
+    "toString": (a) => a.toString(),
+  },
   string: {
     "concat": (a, b) => a.concat(b),
     "length": (a) => a.length,
