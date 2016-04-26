@@ -61,6 +61,7 @@ const nativeBricks = {
     "==": (a, b) => a === b,
   },
   hof: {
+    "join": (a) => a.join(''),
     "sort": (a) => a.slice(0).sort()
   },
   string: {
