@@ -81,7 +81,12 @@ const parsers = {
 
 const _evalBrick = (brick, args) => {
   const { moduleName, name } = brick
-  const brickOutput = nativeBricks[moduleName][name].apply(null, args)
+  let brickOutput
+
+  try {
+    brickOutput = nativeBricks[moduleName][name].apply(null, args)
+  } catch(error) {
+  }
 
   if(brickOutput === undefined) {
     return {
