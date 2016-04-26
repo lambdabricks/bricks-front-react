@@ -17,9 +17,9 @@ export const colors = {
   boolean: "#8A2BE2",
   [ERROR]: '#D80000',
   false: "#E44B37",
-  list: "#E9E759",
+  list: "#E96859",
   null: "#BFBFBF",
-  number: "#E96859",
+  number: "#E9E759",
   string: "#E9A559",
   true: "#358DE2",
   undefined: "#BFBFBF"
