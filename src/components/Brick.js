@@ -63,7 +63,7 @@ class Brick extends Component {
         { outputElementIds.length == 0 && environment.type &&
           <Text
             fill={ getFillColor(environment.type, environment.value) }
-            font={ getConstant(componentName, 'font') }
+            font={ getConstant(componentName, 'outputFont') }
             x={ ((size.width - slotWidth) / 2) + slotWidth }
             y={ size.height }
           >

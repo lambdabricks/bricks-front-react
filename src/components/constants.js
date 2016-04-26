@@ -54,6 +54,7 @@ const Constants = {
   [BRICK]: {
     fillColor: '#ADD8E6',
     font: font,
+    outputFont: 'bold ' + font,
     slotAndOffset: brickSlotOffset + slotWidth,
     slotHeight: slotHeight,
     slotOffset: brickSlotOffset,
