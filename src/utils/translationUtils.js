@@ -6,6 +6,7 @@ const translations = {
     deleteUnitTest: 'Delete unit test',
     empty: 'None',
     functions: 'Functions',
+    instructions: 'Instructions',
     library: 'Library',
     loading: 'Loading...',
     noValue: '<NONE>',

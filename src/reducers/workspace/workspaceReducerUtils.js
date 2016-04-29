@@ -49,7 +49,7 @@ const Defaults = {
     size: {
       [CLEAN]: {
         height: 450,
-        width: 900
+        width: 600
       },
       [UNIT_TEST]: {
         height: 400,
