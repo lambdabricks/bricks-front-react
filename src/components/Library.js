@@ -67,7 +67,7 @@ export default class Library extends Component {
                 )}
               </ul>
             </div>
-            <div>
+            <div id="functions">
               <Translate
                 HtmlElement="h3"
                 message="functions"

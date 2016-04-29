@@ -49,6 +49,7 @@ export default class Workspace extends Component {
 
     return (
       <div
+        id="workspace"
         onMouseMove={ handleMouseMove }
         onMouseUp={ handleMouseUp }
         style={ styles }

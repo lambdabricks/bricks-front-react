@@ -24,6 +24,12 @@ export default class Tutorial extends Component {
       showStepsProgress: true,
       steps: [
         {
+          title: 'Instructions',
+          text: 'Instructions description',
+          selector: '#instructions',
+          position: 'right'
+        },
+        {
           title: 'Library',
           text: 'Library description',
           selector: '#library',
@@ -34,6 +40,18 @@ export default class Tutorial extends Component {
           text: 'Constants description',
           selector: '#constants',
           position: 'right'
+        },
+        {
+          title: 'Functions',
+          text: 'Functions description',
+          selector: '#functions',
+          position: 'right'
+        },
+        {
+          title: 'Workspace',
+          text: 'Workspace description',
+          selector: '#workspace',
+          position: 'left'
         }
       ]
     }
@@ -56,7 +74,7 @@ export default class Tutorial extends Component {
 
     return (
       <div style={ styles }>
-        <div style={ instructionStyles } >
+        <div id="instructions" style={ instructionStyles }>
           <Translate
             HtmlElement="h2"
             message="instructions"
