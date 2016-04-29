@@ -32,7 +32,7 @@ export default class Library extends Component {
     } = this.props
 
     return (
-      <div style={ styles }>
+      <div style={ styles } id="library">
         <Translate
           HtmlElement="h2"
           message="library"
@@ -45,7 +45,7 @@ export default class Library extends Component {
         }
         { !isFetching && items.primitives &&
           <div>
-            <div>
+            <div id="constants">
               <Translate
                 HtmlElement="h3"
                 message="constants"
