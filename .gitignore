@@ -1,3 +1,4 @@
 node_modules/
 npm-debug.log
 dist/app.js
+dist/tutorial/app.js
