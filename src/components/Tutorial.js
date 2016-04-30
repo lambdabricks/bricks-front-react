@@ -21,35 +21,33 @@ export default class Tutorial extends Component {
       joyrideOverlay: true,
       joyrideType: 'continuous',
       ready: false,
-      showStepsProgress: true,
+      showStepsProgress: false,
       steps: [
         {
-          title: 'Instructions',
-          text: 'Instructions description',
+          text: 'Here are the instructions for following the tutorial',
           selector: '#instructions',
           position: 'right'
         },
         {
-          title: 'Library',
-          text: 'Library description',
+          text: 'The library has 2 sections: <ul><li>Constants</li><li>Functions</li>',
           selector: '#library',
           position: 'right'
         },
         {
-          title: 'Constants',
-          text: 'Constants description',
+          text: 'Clicking on "Number" will add a ballon to the workspace.\
+            This ballon can hold a number.',
           selector: '#constants',
           position: 'right'
         },
         {
-          title: 'Functions',
-          text: 'Functions description',
+          text: 'Clicking on a math operation will add a brick to the workspace.',
           selector: '#functions',
           position: 'right'
         },
         {
-          title: 'Workspace',
-          text: 'Workspace description',
+          text: '<p>The workspace is the playground where you can connect ballons and bricks.</p>\
+            <p>Clicking on an element will show a dialog where you can change its properties.</p>\
+            <p>Move the elements by drag & drop.</p>',
           selector: '#workspace',
           position: 'left'
         }
