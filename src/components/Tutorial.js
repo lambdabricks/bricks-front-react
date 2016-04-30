@@ -13,9 +13,24 @@ const instructionStyles = {
   width: 250
 }
 
+const steps = {
+  en: {
+    instructions: 'Here are the instructions for following the tutorial',
+    library: 'The library has 2 sections: <ul><li>Constants</li><li>Functions</li>',
+    constants:
+      '<p>Clicking on "Number" will add a ballon to the workspace.</p>\
+      <p>This ballon can hold a number.</p>',
+    functions: 'Clicking on a math operation will add a brick to the workspace.',
+    workspace:
+      '<p>The workspace is the playground where you can connect ballons and bricks.</p>\
+      <p>Clicking on an element will show a dialog where you can change its properties.</p>\
+      <p>Move the elements by drag & drop.</p>'
+  }
+}
+
 export default class Tutorial extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       joyrideOverlay: true,
@@ -24,30 +39,27 @@ export default class Tutorial extends Component {
       showStepsProgress: false,
       steps: [
         {
-          text: 'Here are the instructions for following the tutorial',
+          text: steps[props.locale]['instructions'],
           selector: '#instructions',
           position: 'right'
         },
         {
-          text: 'The library has 2 sections: <ul><li>Constants</li><li>Functions</li>',
+          text: steps[props.locale]['library'],
           selector: '#library',
           position: 'right'
         },
         {
-          text: 'Clicking on "Number" will add a ballon to the workspace.\
-            This ballon can hold a number.',
+          text: steps[props.locale]['constants'],
           selector: '#constants',
           position: 'right'
         },
         {
-          text: 'Clicking on a math operation will add a brick to the workspace.',
+          text: steps[props.locale]['functions'],
           selector: '#functions',
           position: 'right'
         },
         {
-          text: '<p>The workspace is the playground where you can connect ballons and bricks.</p>\
-            <p>Clicking on an element will show a dialog where you can change its properties.</p>\
-            <p>Move the elements by drag & drop.</p>',
+          text: steps[props.locale]['workspace'],
           selector: '#workspace',
           position: 'left'
         }
@@ -95,11 +107,15 @@ export default class Tutorial extends Component {
 
   getChildContext() {
     return {
-      locale: 'en'
+      locale: this.props.locale
     }
   }
 }
 
 Tutorial.childContextTypes = {
+  locale: PropTypes.string.isRequired
+}
+
+Tutorial.PropTypes = {
   locale: PropTypes.string.isRequired
 }

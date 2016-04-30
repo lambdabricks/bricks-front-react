@@ -8,7 +8,7 @@ const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    <Tutorial />
+    <Tutorial locale='en'/>
   </Provider>,
   document.getElementById('main')
 )
