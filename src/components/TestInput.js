@@ -5,13 +5,13 @@ import { getConstant } from './constants'
 import Ellipse from './Ellipse'
 import { getFillColor } from '../utils'
 import Pipe from './Pipe'
-import { EnvironmentPropTypes, PositionPropTypes } from '../propTypes'
+import { BindingPropTypes, PositionPropTypes } from '../propTypes'
 
 class TestInput extends Component {
   render() {
     const {
       componentName,
-      environment,
+      binding,
       handleClick,
       id,
       slotPosition,
@@ -21,7 +21,7 @@ class TestInput extends Component {
     const slotWidth = getConstant(componentName, 'slotWidth')
     const slotHeight = getConstant(componentName, 'slotHeight')
 
-    const fillColor = getFillColor(environment.type, environment.value)
+    const fillColor = getFillColor(binding.type, binding.value)
     const position = {
       x: slotPosition.x - ((size.width - slotWidth) / 2),
       y: slotPosition.y - getConstant(componentName, 'yOffset')
@@ -50,7 +50,7 @@ class TestInput extends Component {
           font={ getConstant(componentName, 'font') }
           y={ size.height / 2 }
         >
-          { environment.value === undefined ? "<NONE>" : environment.value }
+          { binding.value === undefined ? "<NONE>" : binding.value }
         </Text>
         <Pipe
           fillColor={ fillColor }
@@ -65,7 +65,7 @@ class TestInput extends Component {
 
 TestInput.propTypes = {
   componentName: PropTypes.string.isRequired,
-  environment: EnvironmentPropTypes,
+  binding: BindingPropTypes,
   handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   slotPosition: PositionPropTypes.isRequired,

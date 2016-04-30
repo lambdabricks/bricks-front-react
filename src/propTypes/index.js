@@ -1,6 +1,6 @@
 import { PropTypes } from 'react'
 
-export const EnvironmentPropTypes = PropTypes.shape({
+export const BindingPropTypes = PropTypes.shape({
   type: PropTypes.string,
   value: PropTypes.string
 })
