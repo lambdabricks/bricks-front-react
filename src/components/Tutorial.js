@@ -15,7 +15,7 @@ const instructionStyles = {
 
 const steps = {
   en: {
-    instructions: 'Here are the instructions for following the tutorial',
+    tutorial: 'Here are the instructions for following the tutorial',
     library: 'The library has 2 sections: <ul><li>Constants</li><li>Functions</li>',
     constants:
       '<p>Clicking on "Number" will add a ballon to the workspace.</p>\
@@ -39,8 +39,8 @@ export default class Tutorial extends Component {
       showStepsProgress: false,
       steps: [
         {
-          text: steps[props.locale]['instructions'],
-          selector: '#instructions',
+          text: steps[props.locale]['tutorial'],
+          selector: '#tutorial',
           position: 'right'
         },
         {
@@ -84,10 +84,10 @@ export default class Tutorial extends Component {
 
     return (
       <div style={ styles }>
-        <div id="instructions" style={ instructionStyles }>
+        <div id="tutorial" style={ instructionStyles }>
           <Translate
             HtmlElement="h2"
-            message="instructions"
+            message="tutorial"
           />
         </div>
         <Library />
