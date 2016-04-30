@@ -8,7 +8,7 @@ const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    <Tutorial locale='en'/>
+    <Tutorial locale='en' openSiteTourAtStart={ true }/>
   </Provider>,
   document.getElementById('main')
 )
