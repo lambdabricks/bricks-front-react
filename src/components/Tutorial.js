@@ -112,7 +112,7 @@ export default class Tutorial extends Component {
           type={ state.joyrideType }
           showSkipButton={ false }
           showStepsProgress={ state.showStepsProgress }
-          showOverlay={ state.showOverlay }
+          showOverlay={ state.joyrideOverlay }
         />
       </div>
     )
