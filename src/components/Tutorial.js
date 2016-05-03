@@ -11,7 +11,7 @@ const styles = {
 }
 
 const instructionStyles = {
-  width: 250
+  width: 300
 }
 
 export default class Tutorial extends Component {
@@ -71,6 +71,7 @@ export default class Tutorial extends Component {
   }
 
   render() {
+    const { locale, step } = this.props
     const state = this.state
 
     return (
@@ -79,6 +80,11 @@ export default class Tutorial extends Component {
           <Translate
             HtmlElement="h2"
             message="tutorial"
+          />
+          <div
+            dangerouslySetInnerHTML={
+              { __html: getMessage(locale, 'tutorialSteps.' + step) }
+            }
           />
         </div>
         <Library />
@@ -109,5 +115,6 @@ Tutorial.childContextTypes = {
 
 Tutorial.PropTypes = {
   locale: PropTypes.string.isRequired,
-  openSiteTourAtStart: PropTypes.bool.isRequired
+  openSiteTourAtStart: PropTypes.bool.isRequired,
+  step: PropTypes.string.isRequired
 }
