@@ -14,7 +14,6 @@ ReactDOM.render(
   <Provider store={store}>
     <Tutorial
       locale='en'
-      openSiteTourAtStart={ step === 1 }
       step={ step }
     />
   </Provider>,

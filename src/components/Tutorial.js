@@ -62,7 +62,7 @@ export default class Tutorial extends Component {
 
   componentDidMount() {
     this.setState({
-      ready: this.props.openSiteTourAtStart
+      ready: getTutorialConfig(this.props.step).openSiteTourAtStart
     })
   }
 
@@ -123,6 +123,5 @@ Tutorial.childContextTypes = {
 
 Tutorial.PropTypes = {
   locale: PropTypes.string.isRequired,
-  openSiteTourAtStart: PropTypes.bool.isRequired,
   step: PropTypes.number.isRequired
 }
