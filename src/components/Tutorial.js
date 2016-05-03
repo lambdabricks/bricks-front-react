@@ -13,7 +13,7 @@ const instructionStyles = {
   width: 250
 }
 
-const steps = {
+const joyrideSteps = {
   en: {
     window: 'The window has 3 sections.',
     tutorial:
@@ -45,34 +45,34 @@ export default class Tutorial extends Component {
       joyrideType: 'continuous',
       ready: false,
       showStepsProgress: false,
-      steps: [
+      joyrideSteps: [
         {
-          text: steps[props.locale]['window'],
+          text: joyrideSteps[props.locale]['window'],
           selector: '#window',
           position: 'top-left'
         },
         {
-          text: steps[props.locale]['tutorial'],
+          text: joyrideSteps[props.locale]['tutorial'],
           selector: '#tutorial',
           position: 'right'
         },
         {
-          text: steps[props.locale]['library'],
+          text: joyrideSteps[props.locale]['library'],
           selector: '#library',
           position: 'right'
         },
         {
-          text: steps[props.locale]['constants'],
+          text: joyrideSteps[props.locale]['constants'],
           selector: '#constants',
           position: 'right'
         },
         {
-          text: steps[props.locale]['functions'],
+          text: joyrideSteps[props.locale]['functions'],
           selector: '#functions',
           position: 'right'
         },
         {
-          text: steps[props.locale]['workspace'],
+          text: joyrideSteps[props.locale]['workspace'],
           selector: '#workspace',
           position: 'left'
         }
@@ -108,7 +108,7 @@ export default class Tutorial extends Component {
         <JoyRide
           ref="joyride"
           debug={ false }
-          steps={ state.steps }
+          steps={ state.joyrideSteps }
           type={ state.joyrideType }
           showSkipButton={ false }
           showStepsProgress={ state.showStepsProgress }
