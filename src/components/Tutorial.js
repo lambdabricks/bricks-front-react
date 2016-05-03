@@ -116,5 +116,5 @@ Tutorial.childContextTypes = {
 Tutorial.PropTypes = {
   locale: PropTypes.string.isRequired,
   openSiteTourAtStart: PropTypes.bool.isRequired,
-  step: PropTypes.string.isRequired
+  step: PropTypes.number.isRequired
 }

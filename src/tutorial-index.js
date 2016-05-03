@@ -8,13 +8,14 @@ import configureStore from './store/configureStore'
 
 const store = configureStore()
 const params = parse(location.search)
+const step = parseInt(params['step']) || 1
 
 ReactDOM.render(
   <Provider store={store}>
     <Tutorial
       locale='en'
-      openSiteTourAtStart={ true }
-      step={ params['step'] || '1' }
+      openSiteTourAtStart={ step === 1 }
+      step={ step }
     />
   </Provider>,
   document.getElementById('main')
