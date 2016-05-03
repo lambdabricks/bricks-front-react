@@ -48,7 +48,28 @@ const translations = {
  as inputs to the functions.</p>\
 <p>Try doing a couple of operations now.\
 (Here is a video of the steps to do this if you have any doubts)</p>\
-<p>When you finish doing some operations click the button 'Next' to continue.</p>"
+<p>When you finish doing some operations click the button 'Next' to continue.</p>",
+    'tutorialSteps.2':
+"<p>We can not only manipulate numbers, we can also manipulate letters.\
+ Letters are usually referred as 'String' in programming.\
+ And as well as the math operations, there are functions to transform them.</p>\
+<p>Try to guess what do the functions in the right do. Then do some operations\
+ on the workspace to see if the results of the functions are what you expected.</p>\
+<p>When you finish click the button 'Next' to continue.</p>",
+    'tutorialSteps.3':
+"<p>We have seen two types of constants so far: Numbers & Letters (Strings).\
+ Most programs are composed by more than one type of data. And we can mix them\
+ according to what we want to achieve. We can even convert from one to the\
+ other in case we need it.</p>\
+<p>Have you noticed that constants have different colors depending on their type?\
+ Numbers are yellow and strings are orange.\
+ The functions have definitions that tell us which type of data they need as input.\
+ Hover on the functions of the library and you will see this information.</p>\
+<p>As usual try doing a couple of operations now. See what happens when you connect\
+ an input of the wrong type to a function.</p>\
+<p>Try using the functions 'ToNumber' and 'toString' to convert a constant\
+ from one type to another.</p>\
+<p>When you finish click the button 'Next' to continue.</p>"
   }
 }
 
