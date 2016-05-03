@@ -1,5 +1,3 @@
-import { parse } from 'query-string'
-
 import {
   REQUEST_LIBRARY,
   RECEIVE_LIBRARY
