@@ -10,8 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchLibrary: () => {
-      dispatch(fetchLibraryIfNeeded())
+    fetchLibrary: (id) => {
+      dispatch(fetchLibraryIfNeeded(id))
     },
     onFunctionClick: (moduleName, brick) => {
       dispatch(addBrick({ arity: brick.arity, moduleName, name: brick.name }))

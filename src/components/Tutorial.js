@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import JoyRide from 'react-joyride'
 
 import { getMessage } from '../utils/translationUtils'
+import { getTutorialConfig } from './tutorialSteps'
+
 import Library from '../containers/Library'
 import Translate from './Translate'
 import Workspace from '../containers/Workspace'
@@ -72,6 +74,7 @@ export default class Tutorial extends Component {
 
   render() {
     const { locale, step } = this.props
+    const tutorialConfig = getTutorialConfig(step)
     const state = this.state
 
     return (
@@ -92,7 +95,7 @@ export default class Tutorial extends Component {
             message="next"
           />
         </div>
-        <Library />
+        <Library id={ tutorialConfig.libraryId } />
         <Workspace />
         <JoyRide
           ref="joyride"

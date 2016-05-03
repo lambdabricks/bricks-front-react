@@ -11,7 +11,7 @@ export default class LambdaBricksApp extends Component {
   render() {
     return (
       <div style={ styles }>
-        <Library />
+        <Library id={ this.props.libraryId }/>
         <Workspace />
       </div>
     )
@@ -26,4 +26,8 @@ export default class LambdaBricksApp extends Component {
 
 LambdaBricksApp.childContextTypes = {
   locale: PropTypes.string.isRequired
+}
+
+LambdaBricksApp.PropTypes = {
+  libraryId: PropTypes.string.isRequired
 }

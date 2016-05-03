@@ -19,8 +19,8 @@ const primitiveStyles = {
 
 export default class Library extends Component {
   componentDidMount() {
-    const { fetchLibrary } = this.props
-    fetchLibrary()
+    const { fetchLibrary, id } = this.props
+    fetchLibrary(id)
   }
 
   render() {

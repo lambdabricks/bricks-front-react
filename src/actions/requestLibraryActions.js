@@ -46,12 +46,12 @@ const shouldFetchLibrary = (state) => {
   return true
 }
 
-export const fetchLibraryIfNeeded = () => {
+export const fetchLibraryIfNeeded = (id) => {
   return (dispatch, getState) => {
     const { library } = getState()
 
     if (shouldFetchLibrary(library)) {
-      return dispatch(fetchLibrary(library.id))
+      return dispatch(fetchLibrary(id))
     }
   }
 }
