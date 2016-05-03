@@ -6,7 +6,7 @@ import composeBrick from './composeBrick'
 import { getConstant } from './constants'
 import { getFillColor } from '../utils'
 import {
-  EnvironmentPropTypes,
+  BindingPropTypes,
   PositionPropTypes,
   SizePropTypes,
   SlotPropTypes
@@ -30,7 +30,7 @@ class Brick extends Component {
   render() {
     const {
       componentName,
-      environment,
+      binding,
       name,
       outputSlots,
       size
@@ -60,14 +60,14 @@ class Brick extends Component {
         >
           { name }
         </Text>
-        { outputElementIds.length == 0 && environment.type &&
+        { outputElementIds.length == 0 && binding.type &&
           <Text
-            fill={ getFillColor(environment.type, environment.value) }
+            fill={ getFillColor(binding.type, binding.value) }
             font={ getConstant(componentName, 'outputFont') }
             x={ ((size.width - slotWidth) / 2) + slotWidth }
             y={ size.height }
           >
-            { environment.value }
+            { binding.value }
           </Text>
         }
       </Group>
@@ -77,7 +77,7 @@ class Brick extends Component {
 
 Brick.propTypes = {
   componentName: PropTypes.string.isRequired,
-  environment: EnvironmentPropTypes,
+  binding: BindingPropTypes,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   position: PositionPropTypes.isRequired,

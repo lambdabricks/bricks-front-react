@@ -3,7 +3,7 @@ import { Group, Text } from 'react-art'
 
 import { getConstant } from './constants'
 import { getFillColor, centeredSlotPosition } from '../utils'
-import { EnvironmentPropTypes, PositionPropTypes } from '../propTypes'
+import { BindingPropTypes, PositionPropTypes } from '../propTypes'
 
 import Ellipse from './Ellipse'
 import Slot from './Slot'
@@ -24,7 +24,7 @@ class Primitive extends Component {
   render() {
     const {
       componentName,
-      environment,
+      binding,
       id,
       handleMouseDown,
       position,
@@ -33,7 +33,7 @@ class Primitive extends Component {
       size,
     } = this.props
 
-    const fillColor = getFillColor(environment.type, environment.value)
+    const fillColor = getFillColor(binding.type, binding.value)
     const slotPosition = centeredSlotPosition(size, componentName)
 
     return (
@@ -50,7 +50,7 @@ class Primitive extends Component {
             font={ getConstant(componentName, 'font') }
             y={ size.height / 2 }
           >
-            { environment.value === undefined ? "<NONE>" : environment.value }
+            { binding.value === undefined ? "<NONE>" : binding.value }
           </Text>
         </Group>
         <Slot
@@ -71,7 +71,7 @@ class Primitive extends Component {
 
 Primitive.propTypes = {
   componentName: PropTypes.string.isRequired,
-  environment: EnvironmentPropTypes.isRequired,
+  binding: BindingPropTypes.isRequired,
   id: PropTypes.number.isRequired,
   handleMouseDown: PropTypes.func.isRequired,
   position: PositionPropTypes.isRequired,
