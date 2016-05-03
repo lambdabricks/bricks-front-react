@@ -83,8 +83,13 @@ export default class Tutorial extends Component {
           />
           <div
             dangerouslySetInnerHTML={
-              { __html: getMessage(locale, 'tutorialSteps.' + step) }
+              { __html: getMessage(locale, `tutorialSteps.${step}`) }
             }
+          />
+          <Translate
+            HtmlElement="a"
+            childProps={ { href: `/tutorial?step=${step + 1}` } }
+            message="next"
           />
         </div>
         <Library />

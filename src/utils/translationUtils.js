@@ -9,6 +9,7 @@ const translations = {
     tutorial: 'Tutorial',
     library: 'Library',
     loading: 'Loading...',
+    next: 'Next',
     noValue: '<NONE>',
     primitives: 'Primitives',
     type: 'Type: ',
