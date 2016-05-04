@@ -27,6 +27,7 @@ import {
   addPipeToWorkspace,
   addPrimitiveToWorkspace,
   addUnitTestToWorkspace,
+  initWorkspace,
   removeElementInWorkspace,
   removeUnitTest
 } from './workspace/addRemoveElementReducer'
@@ -57,11 +58,6 @@ import {
   unlinkSlots
 } from './workspace/updateElementReducer'
 
-import {
-  newWorkspace
-} from './workspace/workspaceReducerUtils'
-
-// const initialWorkspace = newWorkspace(parse(location.search))
 const initialWorkspace = {
   entities: {
     1: {
@@ -105,8 +101,7 @@ export const workspace = (state = initialWorkspace, action) => {
     case EVALUATE:
       return evaluateAllWorkspaces(state, payload)
     case INIT_WORKSPACE:
-      console.log('init')
-      return state
+      return initWorkspace(state, payload)
     case LINK_SLOTS:
       return linkSlots(state, payload)
     case MOVE_ELEMENT:

@@ -7,8 +7,12 @@ import {
   newPipe,
   newPrimitive,
   newUnitTest,
+  newWorkspace,
   pipeConnectedToElement
 } from './workspaceReducerUtils'
+
+export const initWorkspace = (workspace, type) =>
+  newWorkspace(type)
 
 export const addBrickToWorkspace = (workspace, attributes) =>
   addToWorkspace(workspace, newBrick(attributes, workspace.mainBrickId))

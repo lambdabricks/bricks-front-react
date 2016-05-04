@@ -239,9 +239,9 @@ const _newTestNodes = (mainBrick, componentName, slots, slotPosition) => {
   return testNodes
 }
 
-export const newWorkspace = (queryParams) => {
+export const newWorkspace = (type) => {
   const mainBrickId = nextId()
-  const mainBrick = newMainBrick(mainBrickId, queryParams['ws'])
+  const mainBrick = newMainBrick(mainBrickId, type)
   const testInputs = newTestInputs(mainBrick)
   const testOutputs = newTestOutputs(mainBrick)
 
