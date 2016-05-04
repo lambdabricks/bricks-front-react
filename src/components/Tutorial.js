@@ -96,7 +96,7 @@ export default class Tutorial extends Component {
           />
         </div>
         <Library id={ tutorialConfig.libraryId } />
-        <Workspace />
+        <Workspace type={ tutorialConfig.worspaceType } />
         <JoyRide
           ref="joyride"
           debug={ false }

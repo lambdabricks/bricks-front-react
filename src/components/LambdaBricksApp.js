@@ -9,10 +9,12 @@ const styles = {
 
 export default class LambdaBricksApp extends Component {
   render() {
+    const { libraryId, worspaceType } = this.props
+
     return (
       <div style={ styles }>
-        <Library id={ this.props.libraryId }/>
-        <Workspace />
+        <Library id={ libraryId }/>
+        <Workspace type={ workspaceType } />
       </div>
     )
   }
@@ -29,5 +31,6 @@ LambdaBricksApp.childContextTypes = {
 }
 
 LambdaBricksApp.PropTypes = {
-  libraryId: PropTypes.string.isRequired
+  libraryId: PropTypes.string.isRequired,
+  workspaceType: PropTypes.string.isRequired
 }

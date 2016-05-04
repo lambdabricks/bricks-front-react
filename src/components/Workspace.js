@@ -91,5 +91,6 @@ Workspace.propTypes = {
   selectedElement: PropTypes.object.isRequired,
   selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
   selectElementOrStopDrag: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
   unitTests: PropTypes.array.isRequired
 }
