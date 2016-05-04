@@ -47,14 +47,19 @@ const translations = {
 <p>In the workspace you can do this kind of operations by connecting the constants\
  as inputs to the functions.</p>\
 <p>Try doing a couple of operations now.\
-(Here is a video of the steps to do this if you have any doubts)</p>\
+ (Here is a video of the steps to do this if you have any doubts)</p>\
 <p>When you finish doing some operations click the button 'Next' to continue.</p>",
     'tutorialSteps.2':
-"<p>We can not only manipulate numbers, we can also manipulate letters.\
+"<p>We can manipulate not only numbers, we can also manipulate letters.\
  Letters are usually referred as 'String' in programming.\
  And as well as the math operations, there are functions to transform them.</p>\
 <p>Try to guess what do the functions in the right do. Then do some operations\
  on the workspace to see if the results of the functions are what you expected.</p>\
+<ul>Some things you can try:\
+<li>'concat' a 'String' with your name with a 'String' with your last name.</li>\
+<li>'reverse' your name.</li>\
+<li>Get the 'length' of your name.</li>\
+</ul>\
 <p>When you finish click the button 'Next' to continue.</p>",
     'tutorialSteps.3':
 "<p>We have seen two types of constants so far: Numbers & Letters (Strings).\
@@ -67,7 +72,7 @@ const translations = {
  Hover on the functions of the library and you will see this information.</p>\
 <p>As usual try doing a couple of operations now. See what happens when you connect\
  an input of the wrong type to a function.</p>\
-<p>Try using the functions 'ToNumber' and 'toString' to convert a constant\
+<p>Try using the functions 'toNumber' and 'toString' to convert a constant\
  from one type to another.</p>\
 <p>When you finish click the button 'Next' to continue.</p>"
   }
