@@ -1,5 +1,3 @@
-import { parse } from 'query-string'
-
 import {
   ADD_BRICK,
   ADD_PIPE,
@@ -62,7 +60,26 @@ import {
   newWorkspace
 } from './workspace/workspaceReducerUtils'
 
-const initialWorkspace = newWorkspace(parse(location.search))
+// const initialWorkspace = newWorkspace(parse(location.search))
+const initialWorkspace = {
+  entities: {
+    1: {
+      innerIds: [],
+      testInputIds: [],
+      testOutputIds: []
+    }
+  },
+  mainBrickId: 1,
+  selectionState: {
+    dragStarted: false,
+    element: { },
+    pipe: {
+      input: { },
+      output: { }
+    }
+  },
+  unitTests: []
+}
 
 export const workspace = (state = initialWorkspace, action) => {
   const { payload, type } = action
