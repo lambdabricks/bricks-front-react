@@ -8,6 +8,7 @@ import {
   CHANGE_TEST_NODE_VALUE,
   CLEAR_SLOT_SELECTION,
   EVALUATE,
+  INIT_WORKSPACE,
   LINK_SLOTS,
   MOVE_ELEMENT,
   REMOVE_ELEMENT,
@@ -103,6 +104,9 @@ export const workspace = (state = initialWorkspace, action) => {
       return removeSlotSelectionState(state)
     case EVALUATE:
       return evaluateAllWorkspaces(state, payload)
+    case INIT_WORKSPACE:
+      console.log('init')
+      return state
     case LINK_SLOTS:
       return linkSlots(state, payload)
     case MOVE_ELEMENT:

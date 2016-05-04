@@ -9,7 +9,7 @@ const styles = {
 
 export default class LambdaBricksApp extends Component {
   render() {
-    const { libraryId, worspaceType } = this.props
+    const { libraryId, workspaceType } = this.props
 
     return (
       <div style={ styles }>

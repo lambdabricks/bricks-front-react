@@ -23,6 +23,7 @@ export const CHANGE_TEST_NODE_TYPE = 'CHANGE_TEST_NODE_TYPE'
 export const CHANGE_TEST_NODE_VALUE = 'CHANGE_TEST_NODE_VALUE'
 export const CLEAR_SLOT_SELECTION = 'CLEAR_SLOT_SELECTION'
 export const EVALUATE = 'EVALUATE'
+export const INIT_WORKSPACE = 'INIT_WORKSPACE'
 export const LINK_SLOTS = 'LINK_SLOTS'
 export const MOVE_ELEMENT = 'MOVE_ELEMENT'
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT'
@@ -34,6 +35,13 @@ export const SELECT_ELEMENT = 'SELECT_ELEMENT'
 export const SELECT_SLOT = 'SELECT_SLOT'
 export const UNEVALUATE = 'UNEVALUATE'
 export const UNLINK_SLOTS = 'UNLINK_SLOTS'
+
+export const initWorkspace = (type) => {
+  return {
+    type: INIT_WORKSPACE,
+    payload: type
+  }
+}
 
 export const addBrick = (brick) => {
   return (dispatch, getState) => {

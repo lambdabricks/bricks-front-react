@@ -22,6 +22,15 @@ const workspacesStyles = {
 }
 
 export default class Workspace extends Component {
+  componentDidMount() {
+    const {
+      initWorkspace,
+      type
+    } = this.props
+
+    initWorkspace(type)
+  }
+
   render() {
     const {
       dragStarted,
@@ -86,6 +95,7 @@ export default class Workspace extends Component {
 
 Workspace.propTypes = {
   dragStarted: PropTypes.bool.isRequired,
+  initWorkspace: PropTypes.func.isRequired,
   mainBrick: PropTypes.object.isRequired,
   moveElement: PropTypes.func.isRequired,
   selectedElement: PropTypes.object.isRequired,

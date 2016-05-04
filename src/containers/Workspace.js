@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 
 import {
+  initWorkspace,
   moveElement,
   selectElementOrStopDrag
 } from '../actions'
@@ -69,6 +70,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    initWorkspace: (type) => {
+      dispatch(initWorkspace(type))
+    },
     moveElement: (position) => {
       dispatch(moveElement(position))
     },
