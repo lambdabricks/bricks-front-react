@@ -31225,7 +31225,8 @@ var translations = {
 <p>In the workspace you can do this kind of operations by connecting the constants\
  as inputs to the functions.</p>\
 <p>Try doing a couple of operations now.\
- (Here is a video of the steps to do this if you have any doubts)</p>\
+ (<a href='https://youtu.be/z4KVHi_zK60' target='_blank'>Here is a video of\
+ the steps to do this if you have any doubts</a>)</p>\
 <p>When you finish doing some operations click the button 'Next' to continue.</p>",
     'tutorialSteps.2': "<p>We can manipulate not only numbers, we can also manipulate letters.\
  Letters are usually referred as 'String' in programming.\
