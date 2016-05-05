@@ -28749,7 +28749,7 @@ var Tutorial = function (_Component) {
           }),
           _react2.default.createElement(_Translate2.default, {
             HtmlElement: 'a',
-            childProps: { href: '/tutorial?step=' + (step + 1) },
+            childProps: { href: './?step=' + (step + 1) },
             message: 'next'
           })
         ),
