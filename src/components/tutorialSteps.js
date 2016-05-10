@@ -15,6 +15,11 @@ const tutorialSteps = {
     libraryId: '4',
     openSiteTourAtStart: false,
     worspaceType: CLEAN
+  },
+  4: {
+    libraryId: '4',
+    openSiteTourAtStart: false,
+    worspaceType: CLEAN
   }
 }
 

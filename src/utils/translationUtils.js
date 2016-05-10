@@ -58,7 +58,7 @@ const translations = {
  on the workspace to see if the results of the functions are what you expected.</p>\
 <p>Some things you can try:</p>\
 <ul><li><span class='code'>concat</span> a <span class='code'>String</span>\
- with your name with a <span class='code'>String</span> with your last name.</li>\
+ with your first name and a <span class='code'>String</span> with your last name.</li>\
 <li><span class='code'>reverse</span> your name.</li>\
 <li>Get the <span class='code'>length</span> of your name.</li>\
 </ul>\
@@ -77,7 +77,21 @@ const translations = {
 <p>Try using the functions <span class='code'>toNumber</span> and\
  <span class='code'>toString</span> to convert a constant\
  from one type to another.</p>\
-<p>When you finish click the button <b>Next</b> to continue.</p>"
+<p>When you finish click the button <b>Next</b> to continue.</p>",
+    'tutorialSteps.4':
+"<p>What we have done so far don't seem really useful. But one thing we haven't\
+ done, is using the output of a function as input for another function.</p>\
+<p>All programs are composed by series of transformations with a specific order.\
+ For example, to calculate the average of 2 numbers, first we need to sum the\
+ numbers and then divide the result by 2.</p>\
+<p>Try using the output of functions as input to other ones. Some ideas of\
+ things you can try:</p>\
+<ul><li>Calculate the average of 2 numbers.</li>\
+<li>Concat 3 strings.</li>\
+<li>Can you figure out which functions you need to connect for calculating the\
+ number of digits in a number?</li></ul>\
+<p>We are near the end of the tutorial there is just one more step.</p>\
+<p>When you finish doing some of the exercises click the button <b>Next</b>.</p>"
   }
 }
 
