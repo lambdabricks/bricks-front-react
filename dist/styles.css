@@ -38,3 +38,7 @@ html, body, #main {
   color: #551A8B;
   text-decoration: none;
 }
+
+.code {
+  font-weight: bold;
+}

@@ -84,6 +84,7 @@ export default class Tutorial extends Component {
             HtmlElement="h2"
             message="tutorial"
           />
+          <h3>{ step }</h3>
           <div
             dangerouslySetInnerHTML={
               { __html: getMessage(locale, `tutorialSteps.${step}`) }
