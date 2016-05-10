@@ -69,8 +69,8 @@ elementary school.\
  according to what we want to achieve. We can even convert from one to the\
  other in case we need it.</p>\
 <p>Have you noticed that constants have different colors depending on their type?\
- Numbers are yellow and strings are orange.\
- The functions have definitions that tell us which type of data they need as input.\
+ Numbers are yellow and strings are orange.</p>\
+<p>The functions have definitions that tell us which type of data they need as input.\
  Hover on the functions of the library and you will see this information.</p>\
 <p>As usual try doing a couple of operations now. See what happens when you connect\
  an input of the wrong type to a function.</p>\
