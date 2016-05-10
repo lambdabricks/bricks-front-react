@@ -38,7 +38,8 @@ const translations = {
 <p>All programs are composed of two primary components.\
  It doesn't matter if its a smartphone app, a web site, a game, or anything else.\
  This two components are: constants and functions.</p>\
-<p>You already know this components from your math lessons in elementary school.\
+<p>You have already used this components in your math lessons of\
+elementary school.\
 <ul><li>The numbers are constants.</li>\
 <li>And the math operators are functions.</li></ul>\
 <p>In general functions process one or more inputs to give a result.\
