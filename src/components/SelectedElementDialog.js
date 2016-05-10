@@ -11,13 +11,15 @@ import {
 
 const baseStyles = {
   backgroundColor: 'rgba(0, 0, 255, 0.5)',
-  padding: 6,
+  borderRadius: 4,
+  padding: '20px 6px 6px',
   position: 'absolute'
 }
 
 export default class SelectedElementDialog extends Component {
   render() {
     const {
+      closeDialog,
       componentName,
       mousePosition
     } = this.props
@@ -31,6 +33,13 @@ export default class SelectedElementDialog extends Component {
 
     return (
       <div style={ styles }>
+        <a
+          className="closeBtn"
+          href="#"
+          onClick={ closeDialog }
+        >
+          Close
+        </a>
         <ReactComponent { ...this.props } />
       </div>
     )
@@ -42,6 +51,7 @@ SelectedElementDialog.propTypes = {
   changePrimitiveValue: PropTypes.func.isRequired,
   changeTestNodeType: PropTypes.func.isRequired,
   changeTestNodeValue: PropTypes.func.isRequired,
+  closeDialog: PropTypes.func.isRequired,
   componentName: PropTypes.string.isRequired,
   deleteElement: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,

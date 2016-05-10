@@ -6,6 +6,7 @@ import {
   changeTestNodeType,
   changeTestNodeValue,
   removeElement,
+  removeSelectedElement,
   removeUnitTest
 } from '../actions'
 import SelectedElementDialog from '../components/SelectedElementDialog'
@@ -48,6 +49,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(
         changeTestNodeValue(elementId, changeEvent.target.value, workspaceIndex)
       )
+    },
+    closeDialog: () => {
+      dispatch(removeSelectedElement())
     }
   }
 }
