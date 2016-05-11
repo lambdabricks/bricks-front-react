@@ -1,4 +1,4 @@
-import { isNotEmpty } from '../utils'
+import { bothSlotsSelected } from '../utils'
 
 import {
   BRICK,
@@ -137,7 +137,7 @@ const _addPipeIfBothSlotsSelected = () => {
     const { workspace } = getState()
     const { input, output } = workspace.selectionState.pipe
 
-    if(isNotEmpty(input) && isNotEmpty(output)) {
+    if(bothSlotsSelected(workspace.selectionState.pipe)) {
       dispatch(_addPipe(input, output))
       dispatch(_clearSlotSelection())
       dispatch(_linkSlots(input, output))
