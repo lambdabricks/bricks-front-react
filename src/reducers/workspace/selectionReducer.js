@@ -17,8 +17,10 @@ export const updateSlotSelectionStateInWorkspace = (state, payload) => {
   }
 
   // Only allow pipes inside mainBrick element
-  if(Utils.areSlotsInSameElement(pipeSelectionState) &&
-    Utils.isPipeNotAllowedInsideElement(state, elementId)
+  if((Utils.areSlotsInSameElement(pipeSelectionState) &&
+      Utils.isPipeNotAllowedInsideElement(state, elementId)) ||
+     (Utils.bothSlotsSelected(pipeSelectionState) &&
+      Utils.outputElementHasPipe(state, pipeSelectionState.output))
   ) {
     pipeSelectionState = {
       input: { },
