@@ -8,3 +8,9 @@ export const selectedSlots = (workspace) => {
 export const isSlotSelected = (selectedSlots, slotId) => {
   return selectedSlots.indexOf(slotId) !== -1
 }
+
+export const areSlotsInSameElement = (pipeSelectionState) => {
+  const { input, output } = pipeSelectionState
+
+  return input.elementId && input.elementId === output.elementId
+}
