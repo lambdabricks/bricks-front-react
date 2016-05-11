@@ -116,7 +116,7 @@ export const addPipeOrSelectSlot = (type, elementId, slotId) => {
   return (dispatch, getState) => {
     dispatch(removeSelectedElement())
     dispatch(selectSlot(type, elementId, slotId))
-    dispatch(addPipeIfBothSlotsSelected())
+    dispatch(_addPipeIfBothSlotsSelected())
   }
 }
 
@@ -132,7 +132,7 @@ export const selectSlot = (type, elementId, slotId) => {
   }
 }
 
-export const addPipeIfBothSlotsSelected = () => {
+const _addPipeIfBothSlotsSelected = () => {
   return (dispatch, getState) => {
     const { workspace } = getState()
     const { input, output } = workspace.selectionState.pipe
