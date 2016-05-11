@@ -14,3 +14,7 @@ export const areSlotsInSameElement = (pipeSelectionState) => {
 
   return input.elementId && input.elementId === output.elementId
 }
+
+export const isPipeNotAllowedInsideElement = (workspace, elementId) => {
+  return !workspace.entities[elementId].innerIds
+}

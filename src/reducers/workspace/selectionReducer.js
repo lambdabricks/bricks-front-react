@@ -2,10 +2,9 @@ import * as Utils from '../../utils'
 
 export const updateSlotSelectionStateInWorkspace = (state, payload) => {
   const { elementId, slotId, type } = payload
-  const { mainBrickId, selectionState } = state
 
   const selectedSlots = Utils.selectedSlots(state)
-  let pipeSelectionState = Object.assign({}, selectionState.pipe)
+  let pipeSelectionState = Object.assign({}, state.selectionState.pipe)
 
   // Toggle selection, deselect slot if it is already selected.
   if(!Utils.isSlotSelected(selectedSlots, slotId)) {
@@ -18,7 +17,9 @@ export const updateSlotSelectionStateInWorkspace = (state, payload) => {
   }
 
   // Only allow pipes inside mainBrick element
-  if(Utils.areSlotsInSameElement(pipeSelectionState) && elementId !== mainBrickId) {
+  if(Utils.areSlotsInSameElement(pipeSelectionState) &&
+    Utils.isPipeNotAllowedInsideElement(state, elementId)
+  ) {
     pipeSelectionState = {
       input: { },
       output: { }
