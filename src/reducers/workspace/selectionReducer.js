@@ -40,7 +40,6 @@ export const updateSlotSelectionStateInWorkspace = (state, payload) => {
 
 export const removeSlotSelectionState = (state) => {
   return Object.assign({}, state, {
-    ...state,
     selectionState: {
       ...state.selectionState,
       pipe: {
@@ -59,7 +58,6 @@ export const addSelectedElementToWorkspace = (state, payload) => {
   } = payload
 
   return Object.assign({}, state, {
-    ...state,
     selectionState: {
       ...state.selectionState,
       element: {
@@ -73,7 +71,6 @@ export const addSelectedElementToWorkspace = (state, payload) => {
 
 export const removeSelectedElementFromWorkspace = (state) => {
   return Object.assign({}, state, {
-    ...state,
     selectionState: {
       ...state.selectionState,
       element: { }
