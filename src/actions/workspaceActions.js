@@ -135,12 +135,12 @@ export const selectSlot = (type, elementId, slotId) => {
 const _addPipeIfBothSlotsSelected = () => {
   return (dispatch, getState) => {
     const { workspace } = getState()
-    const { input, output } = workspace.selectionState.pipe
+    const { pipe } = workspace.selectionState
 
-    if(bothSlotsSelected(workspace.selectionState.pipe)) {
-      dispatch(_addPipe(input, output))
+    if(bothSlotsSelected(pipe)) {
+      dispatch(_addPipe(pipe))
       dispatch(_clearSlotSelection())
-      dispatch(_linkSlots(input, output))
+      dispatch(_linkSlots(pipe))
       dispatch(_evalAllWorkspacesIfNeeded(output.elementId))
     }
   }
@@ -178,23 +178,17 @@ const _evalWorkspaces = (elementId) => {
   }
 }
 
-const _addPipe = (input, output) => {
+const _addPipe = (pipe) => {
   return {
     type: ADD_PIPE,
-    payload: {
-      input,
-      output
-    }
+    payload: pipe
   }
 }
 
-const _linkSlots = (input, output) => {
+const _linkSlots = (pipe) => {
   return {
     type: LINK_SLOTS,
-    payload: {
-      input,
-      output
-    }
+    payload: pipe
   }
 }
 
