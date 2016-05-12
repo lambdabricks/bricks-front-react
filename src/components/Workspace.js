@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import throttle from 'lodash.throttle'
 
+import { UNIT_TEST } from './constants'
 import { isNotEmpty } from '../utils'
 import { PositionPropTypes } from '../propTypes'
 
@@ -40,6 +41,7 @@ export default class Workspace extends Component {
       selectedElement,
       selectedSlots,
       selectElementOrStopDrag,
+      type,
       unitTests
     } = this.props
     let handleMouseMove, handleMouseUp
@@ -70,7 +72,7 @@ export default class Workspace extends Component {
             HtmlElement="h2"
             message="workspace"
           />
-          <TestSummary unitTests={ unitTests } />
+          { type == UNIT_TEST && <TestSummary unitTests={ unitTests } /> }
         </div>
         <div style={ workspacesStyles} >
           { unitTests.map((unitTest, index) => {
