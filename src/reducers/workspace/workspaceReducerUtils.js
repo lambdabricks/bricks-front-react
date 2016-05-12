@@ -1,5 +1,6 @@
 import {
   CLEAN,
+  FUNCTION,
   UNIT_TEST
 } from '../../components/constants'
 
@@ -24,6 +25,17 @@ const TestNodeDefaults = {
   }
 }
 
+const MainBrickDefaults = {
+  position: {
+    x: 50,
+    y: 80
+  },
+  size: {
+    height: 400,
+    width: 350
+  }
+}
+
 const Defaults = {
   [BRICK]: {
     position: {
@@ -41,20 +53,16 @@ const Defaults = {
         x: 50,
         y: 50
       },
-      [UNIT_TEST]: {
-        x: 50,
-        y: 80
-      }
+      [FUNCTION]: MainBrickDefaults.position,
+      [UNIT_TEST]: MainBrickDefaults.position
     },
     size: {
       [CLEAN]: {
         height: 450,
         width: 600
       },
-      [UNIT_TEST]: {
-        height: 400,
-        width: 350
-      }
+      [FUNCTION]: MainBrickDefaults.size,
+      [UNIT_TEST]: MainBrickDefaults.size
     }
   },
   [PRIMITIVE]: {
@@ -243,7 +251,7 @@ export const newWorkspace = (type) => {
   const mainBrickId = nextId()
   const mainBrick = newMainBrick(mainBrickId, type)
   const testInputs = newTestInputs(mainBrick)
-  const testOutputs = newTestOutputs(mainBrick)
+  const testOutputs = type == UNIT_TEST ? newTestOutputs(mainBrick) : []
 
   const testInputIds = Object.keys(testInputs).map((testInput) => {
     return testInputs[testInput].id

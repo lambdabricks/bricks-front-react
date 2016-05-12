@@ -1,6 +1,6 @@
 import {
   CLEAN,
-  UNIT_TEST
+  FUNCTION
 } from './constants'
 
 const tutorialSteps = {
@@ -27,7 +27,7 @@ const tutorialSteps = {
   5: {
     libraryId: '4',
     openSiteTourAtStart: false,
-    worspaceType: UNIT_TEST
+    worspaceType: FUNCTION
   }
 }
 
