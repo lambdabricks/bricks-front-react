@@ -37,7 +37,7 @@ const translations = {
 "<p>This is a small tutorial for learning the basics of programming.</p>\
 <p>All programs are composed of two primary components.\
  It doesn't matter if it's a smartphone app, a web site, a game, or anything else.\
- This two components are: constants and functions.</p>\
+ The two components are: constants and functions.</p>\
 <p>You have already used this components in your math lessons of elementary school.</p>\
 <ul><li>The numbers are constants.</li>\
 <li>And the math operators are functions.</li></ul>\
@@ -47,8 +47,8 @@ const translations = {
 <p>In the workspace you can do this kind of operations by connecting the constants\
  as inputs to the functions.</p>\
 <p>Try doing a couple of operations now.\
- (<a href='https://youtu.be/z4KVHi_zK60' target='_blank'>Here is a video of\
- the steps to do this if you have any doubts</a>)</p>\
+ (<a href='https://youtu.be/z4KVHi_zK60' target='_blank'>Here is a video showing\
+ how to do it if you have any doubts</a>)</p>\
 <p>When you finish doing some operations click the button <b>Next</b> to continue.</p>",
     'tutorialSteps.2':
 "<p>We can manipulate not only numbers, we can also manipulate letters.\
@@ -88,7 +88,7 @@ const translations = {
  things you can try:</p>\
 <ul><li>Calculate the average of 2 numbers.</li>\
 <li>Concat 3 strings.</li>\
-<li>Can you figure out which functions you need to connect for calculating the\
+<li>Can you figure out which functions you need to connect to calculate the\
  number of digits in a number?</li></ul>\
 <p>We are near the end of the tutorial there is just one more step.</p>\
 <p>When you finish doing some of the exercises click the button <b>Next</b>.</p>"
