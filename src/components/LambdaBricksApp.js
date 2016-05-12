@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
+import { UNIT_TEST } from './constants'
 import Library from '../containers/Library'
 import Workspace from '../containers/Workspace'
 
@@ -28,6 +29,11 @@ export default class LambdaBricksApp extends Component {
 
 LambdaBricksApp.childContextTypes = {
   locale: PropTypes.string.isRequired
+}
+
+LambdaBricksApp.defaultProps = {
+  libraryId: '1',
+  workspaceType: UNIT_TEST
 }
 
 LambdaBricksApp.PropTypes = {

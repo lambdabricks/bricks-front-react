@@ -3,7 +3,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-import { UNIT_TEST } from './components/constants'
 import LambdaBricksApp from './components/LambdaBricksApp'
 import configureStore from './store/configureStore'
 
@@ -13,8 +12,8 @@ const params = parse(location.search)
 ReactDOM.render(
   <Provider store={store}>
     <LambdaBricksApp
-      libraryId={ params['id'] || '1' }
-      workspaceType={ params['ws'] || UNIT_TEST }
+      libraryId={ params['id'] }
+      workspaceType={ params['ws'] }
     />
   </Provider>,
   document.getElementById('main')

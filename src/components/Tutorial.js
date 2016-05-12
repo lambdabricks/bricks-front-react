@@ -123,6 +123,10 @@ Tutorial.childContextTypes = {
   locale: PropTypes.string.isRequired
 }
 
+Tutorial.defaultProps = {
+  step: 1
+}
+
 Tutorial.PropTypes = {
   locale: PropTypes.string.isRequired,
   step: PropTypes.number.isRequired
