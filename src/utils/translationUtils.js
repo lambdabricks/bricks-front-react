@@ -99,7 +99,7 @@ const translations = {
 <p>The functions that we create are exactly the same as the functions we have used\
  in the previous steps. Our functions will have inputs and outputs.\
  We can receive data in the inputs, and we return a result as output.</p>\
-<p>There are to separate steps in creating a function:</p>\
+<p>There are two separate steps in creating a function:</p>\
 <ol><li>First we need to add other functions & constants inside the function\
  we are creating, and connect them with pipes. This is known in programming as\
  <b>defining the function</b>.</li>\
