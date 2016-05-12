@@ -66,8 +66,8 @@ class Brick extends Component {
           <Text
             fill={ getFillColor(binding.type, binding.value) }
             font={ getConstant(componentName, 'outputFont') }
-            x={ ((size.width - slotWidth) / 2) + slotWidth }
-            y={ size.height }
+            x={ ((size.width - slotWidth) / 2) + slotWidth + 3 }
+            y={ size.height + 2 }
           >
             { binding.value }
           </Text>
