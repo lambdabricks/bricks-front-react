@@ -23,3 +23,22 @@ html, body, #main {
 #customValueInput input[type=radio]:checked + label {
   border: 3px solid orange;
 }
+
+.closeBtn {
+  color: #551A8B;
+  font-size: 15px;
+  line-height: 10px;
+  position: absolute;
+  right: 6px;
+  text-decoration: none;
+  top: 6px
+}
+
+.closeBtn:hover, .closeBtn:focus, .closeBtn:active {
+  color: #551A8B;
+  text-decoration: none;
+}
+
+.code {
+  font-weight: bold;
+}
