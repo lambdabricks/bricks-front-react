@@ -44,6 +44,7 @@ const slotHeight = 15
 const slotWidth = slotHeight
 
 const TestNode = {
+  alignment: 'center',
   font,
   slotHeight: slotHeight,
   slotWidth: slotWidth,
@@ -79,8 +80,8 @@ const Constants = {
     slotWidth: slotWidth
   },
   [PRIMITIVE]: {
+    alignment: 'center',
     font: font,
-    fontAlignment: 'middle',
     slotWidth: slotWidth,
     textColor: 'black'
   },

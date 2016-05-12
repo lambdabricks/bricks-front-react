@@ -49,9 +49,11 @@ class TestOutput extends Component {
             size={ size }
           />
           <Text
+            alignment={ getConstant(componentName, 'alignment') }
             fill={ getConstant(componentName, 'textColor') }
             font={ getConstant(componentName, 'font') }
-            y={ size.height / 2 }
+            x={ size.width / 2 }
+            y={ size.height / 2 - 5 }
           >
             { binding.value === undefined ? "<NONE>" : binding.value }
           </Text>
