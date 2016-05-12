@@ -1,4 +1,7 @@
-import { CLEAN } from './constants'
+import {
+  CLEAN,
+  UNIT_TEST
+} from './constants'
 
 const tutorialSteps = {
   1: {
@@ -20,6 +23,11 @@ const tutorialSteps = {
     libraryId: '4',
     openSiteTourAtStart: false,
     worspaceType: CLEAN
+  },
+  5: {
+    libraryId: '4',
+    openSiteTourAtStart: false,
+    worspaceType: UNIT_TEST
   }
 }
 

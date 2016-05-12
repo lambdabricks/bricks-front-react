@@ -91,7 +91,27 @@ const translations = {
 <li>Can you figure out which functions you need to connect to calculate the\
  number of digits in a number?</li></ul>\
 <p>We are near the end of the tutorial there is just one more step.</p>\
-<p>When you finish doing some of the exercises click the button <b>Next</b>.</p>"
+<p>When you finish doing some of the exercises click the button <b>Next</b>.</p>",
+    'tutorialSteps.5':
+"<p>Imagine we have a program that needs to calculate a lot of averages.\
+ It will be really boring to do all the connections every time.\
+ Luckily there is a way to avoid this. We can create our own functions!</p>\
+<p>The functions that we create are exactly the same as the functions we have used\
+ in the previous steps. Our functions will have inputs and outputs.\
+ We can receive data in the inputs, and we return a result as output.</p>\
+<p>There are to separate steps in creating a function:</p>\
+<ol><li>First we need to add other functions & constants inside the function\
+ we are creating, and connect them with pipes. This is known in programming as\
+ <b>defining the function</b>.</li>\
+<li>After we have defined the function, someone else (or ourselves) can use it\
+ by giving values to every input. This is known in programming as <b>calling\
+ the function</b>.</li></ol>\
+<p>Try to create your own function now. You can create a function that calculates\
+ the average of 2 numbers that we saw in the previous step, or any other function\
+ you want. You can call your function by giving values to the constants that are\
+ outside of it.</p>\
+<p>This is the end of this really short tutorial on the basics of programming.\
+ Hope you find it useful as a first step in your path to learn to program.</p>"
   }
 }
 
