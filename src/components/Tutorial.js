@@ -74,6 +74,7 @@ export default class Tutorial extends Component {
 
   render() {
     const { locale, step } = this.props
+    const nextStep = step + 1
     const tutorialConfig = getTutorialConfig(step)
     const state = this.state
 
@@ -90,11 +91,11 @@ export default class Tutorial extends Component {
               { __html: getMessage(locale, `tutorialSteps.${step}`) }
             }
           />
-          <Translate
+          { getMessage(locale, `tutorialSteps.${nextStep}`) && <Translate
             HtmlElement="a"
-            childProps={ { href: `./?step=${step + 1}` } }
+            childProps={ { href: `./?step=${nextStep}` } }
             message="next"
-          />
+          /> }
         </div>
         <Library id={ tutorialConfig.libraryId } />
         <Workspace type={ tutorialConfig.worspaceType } />
