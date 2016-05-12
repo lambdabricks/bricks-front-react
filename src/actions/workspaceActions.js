@@ -141,7 +141,7 @@ const _addPipeIfBothSlotsSelected = () => {
       dispatch(_addPipe(pipe))
       dispatch(_clearSlotSelection())
       dispatch(_linkSlots(pipe))
-      dispatch(_evalAllWorkspacesIfNeeded(output.elementId))
+      dispatch(_evalAllWorkspacesIfNeeded(pipe.output.elementId))
     }
   }
 }
