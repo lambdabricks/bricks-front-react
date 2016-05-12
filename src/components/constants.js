@@ -86,6 +86,7 @@ const Constants = {
     textColor: 'black'
   },
   [SELECTABLE_PIPE]: {
+    alignment: 'center',
     font: font,
     strokeColor: 'black',
     textColor: 'black'

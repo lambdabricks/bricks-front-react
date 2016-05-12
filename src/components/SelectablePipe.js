@@ -31,9 +31,10 @@ class SelectablePipe extends Component {
         />
         { binding.value &&
           <Text
+            alignment={ getConstant(componentName, 'alignment') }
             fill={ getConstant(componentName, 'textColor') }
             font={ getConstant(componentName, 'font') }
-            x={ (inputPosition.x + outputPosition.x) / 2 }
+            x={ (inputPosition.x + outputPosition.x) / 2 + 7 }
             y={ (inputPosition.y + outputPosition.y) / 2 }
           >
             { binding.value }
