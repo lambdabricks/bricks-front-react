@@ -53,6 +53,7 @@ const TestNode = {
 
 const Constants = {
   [BRICK]: {
+    alignment: 'center',
     fillColor: '#ADD8E6',
     font: font,
     outputFont: 'bold ' + font,

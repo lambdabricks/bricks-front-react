@@ -36,7 +36,7 @@ class Brick extends Component {
       size
     } = this.props
 
-    const midHeight = size.height / 2
+    const midHeight = size.height / 2 - 7
     const outputSlotId = Object.keys(outputSlots)[0]
     const { outputElementIds } = outputSlots[outputSlotId]
     const slotHeight = getConstant(componentName, 'slotHeight')
@@ -54,8 +54,10 @@ class Brick extends Component {
           fill={ getConstant(componentName, 'fillColor') }
         />
         <Text
+          alignment={ getConstant(componentName, 'alignment') }
           fill={ getConstant(componentName, 'textColor') }
           font={ getConstant(componentName, 'font') }
+          x={ size.width / 2 }
           y={ midHeight }
         >
           { name }
