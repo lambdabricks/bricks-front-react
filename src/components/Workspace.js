@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react'
+import throttle from 'lodash.throttle'
 
 import { isNotEmpty } from '../utils'
 import { PositionPropTypes } from '../propTypes'
@@ -59,7 +60,7 @@ export default class Workspace extends Component {
     return (
       <div
         id="workspace"
-        onMouseMove={ handleMouseMove }
+        onMouseMove={ throttle(handleMouseMove, 20) }
         onMouseUp={ handleMouseUp }
         style={ styles }
       >
