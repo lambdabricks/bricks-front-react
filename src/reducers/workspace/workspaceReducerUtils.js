@@ -51,14 +51,14 @@ const Defaults = {
     position: {
       [CLEAN]: {
         x: 50,
-        y: 50
+        y: 35
       },
       [FUNCTION]: MainBrickDefaults.position,
       [UNIT_TEST]: MainBrickDefaults.position
     },
     size: {
       [CLEAN]: {
-        height: 450,
+        height: 500,
         width: 600
       },
       [FUNCTION]: MainBrickDefaults.size,
