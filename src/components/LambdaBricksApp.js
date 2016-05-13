@@ -4,16 +4,12 @@ import { UNIT_TEST } from './constants'
 import Library from '../containers/Library'
 import Workspace from '../containers/Workspace'
 
-const styles = {
-  display: 'flex'
-}
-
 export default class LambdaBricksApp extends Component {
   render() {
     const { libraryId, workspaceType } = this.props
 
     return (
-      <div style={ styles }>
+      <div className="app">
         <Library id={ libraryId }/>
         <Workspace type={ workspaceType } />
       </div>
