@@ -32,11 +32,6 @@ export default class Tutorial extends Component {
           position: 'top-left'
         },
         {
-          text: getMessage(props.locale, 'joyrideSteps.tutorial'),
-          selector: '#tutorial',
-          position: 'right'
-        },
-        {
           text: getMessage(props.locale, 'joyrideSteps.library'),
           selector: '#library',
           position: 'right'
@@ -55,6 +50,11 @@ export default class Tutorial extends Component {
           text: getMessage(props.locale, 'joyrideSteps.workspace'),
           selector: '#workspace',
           position: 'left'
+        },
+        {
+          text: getMessage(props.locale, 'joyrideSteps.tutorial'),
+          selector: '#tutorial',
+          position: 'right'
         }
       ]
     }
