@@ -9,12 +9,30 @@ html, body {
 }
 
 body {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5 {
   font-weight: normal;
+}
+
+h2, h3 {
+  font-size: 14px;
+}
+
+a {
+  color: #59c2e6;
+  text-decoration: none;
+  transition: color 0.13s;
+}
+
+a:hover {
+  color: #0b98ca;
+}
+
+ol, ul {
+  padding-left: 15px;
 }
 
 /*::-webkit-scrollbar {
@@ -68,7 +86,6 @@ h1, h2, h3, h4, h5 {
 }
 
 #library h2 {
-  font-size: 14px;
   padding-left: 20px;
 }
 
@@ -107,6 +124,31 @@ h1, h2, h3, h4, h5 {
   background-color: #2d363f;
 }
 
+#instructions {
+  background-color: #2d363f;
+  bottom: 0;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.6);
+  left: 0;
+  overflow-y: auto;
+  padding: 10px;
+  position: fixed;
+  top: 70px;
+  width: 250px;
+}
+
+.tutorial.app {
+  padding-left: 480px;
+}
+
+.tutorial #logo {
+  width: 480px;
+}
+
+.tutorial #library {
+  left: 250px;
+}
+
 #customValueInput input[type=radio] {
   display: none;
 }
@@ -140,5 +182,6 @@ h1, h2, h3, h4, h5 {
 }
 
 .code {
+  color: rgba(255, 255, 255, 0.9);
   font-weight: bold;
 }
