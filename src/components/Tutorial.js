@@ -5,6 +5,7 @@ import { getMessage } from '../utils/translationUtils'
 import { getTutorialConfig } from './tutorialSteps'
 
 import Library from '../containers/Library'
+import Logo from './Logo'
 import Translate from './Translate'
 import Workspace from '../containers/Workspace'
 
@@ -80,6 +81,7 @@ export default class Tutorial extends Component {
 
     return (
       <div style={ styles } id="window">
+        <Logo />
         <div id="tutorial" style={ instructionStyles }>
           <Translate
             HtmlElement="h2"

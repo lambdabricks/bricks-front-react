@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import { UNIT_TEST } from './constants'
 import Library from '../containers/Library'
+import Logo from './Logo'
 import Workspace from '../containers/Workspace'
 
 export default class LambdaBricksApp extends Component {
@@ -10,6 +11,7 @@ export default class LambdaBricksApp extends Component {
 
     return (
       <div className="app">
+        <Logo />
         <Library id={ libraryId }/>
         <Workspace type={ workspaceType } />
       </div>
