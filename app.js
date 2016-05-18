@@ -25345,7 +25345,7 @@ var _removeUnitTest = function _removeUnitTest(workspaceIndex) {
   };
 };
 
-},{"../utils":280,"../utils/componentNames":278,"../utils/evalUtils":279}],225:[function(require,module,exports){
+},{"../utils":281,"../utils/componentNames":279,"../utils/evalUtils":280}],225:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25477,7 +25477,7 @@ Brick.propTypes = {
 
 exports.default = (0, _composeBrick2.default)(Brick);
 
-},{"../propTypes":265,"../utils":280,"../utils/evalUtils":279,"./composeBrick":252,"./constants":253,"react":205,"react-art":7,"react-art/lib/Rectangle.art":8}],226:[function(require,module,exports){
+},{"../propTypes":266,"../utils":281,"../utils/evalUtils":280,"./composeBrick":253,"./constants":254,"react":205,"react-art":7,"react-art/lib/Rectangle.art":8}],226:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25602,7 +25602,7 @@ CustomValueInput.propTypes = {
   workspaceIndex: _react.PropTypes.number
 };
 
-},{"../../propTypes":265,"../Translate":249,"../constants":253,"react":205}],227:[function(require,module,exports){
+},{"../../propTypes":266,"../Translate":250,"../constants":254,"react":205}],227:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25725,7 +25725,7 @@ DialogButton.propTypes = {
   onClick: _react.PropTypes.func.isRequired
 };
 
-},{"../Translate":249,"react":205}],229:[function(require,module,exports){
+},{"../Translate":250,"react":205}],229:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25767,7 +25767,7 @@ var getDetailsComponent = exports.getDetailsComponent = function getDetailsCompo
   }
 };
 
-},{"../../utils/componentNames":278,"./DefaultDetails":227,"./MainBrickDetails":230,"./PrimitiveDetails":231,"./TestNodeDetails":232}],230:[function(require,module,exports){
+},{"../../utils/componentNames":279,"./DefaultDetails":227,"./MainBrickDetails":230,"./PrimitiveDetails":231,"./TestNodeDetails":232}],230:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25939,7 +25939,7 @@ PrimitiveDetails.propTypes = {
   workspaceIndex: _react.PropTypes.number
 };
 
-},{"../../propTypes":265,"./CustomValueInput":226,"./DialogButton":228,"react":205}],232:[function(require,module,exports){
+},{"../../propTypes":266,"./CustomValueInput":226,"./DialogButton":228,"react":205}],232:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26034,7 +26034,7 @@ TestNodeDetails.propTypes = {
   workspaceIndex: _react.PropTypes.number
 };
 
-},{"../../propTypes":265,"./CustomValueInput":226,"./TypesSelect":233,"react":205}],233:[function(require,module,exports){
+},{"../../propTypes":266,"./CustomValueInput":226,"./TypesSelect":233,"react":205}],233:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26132,7 +26132,7 @@ TypesSelect.propTypes = {
   workspaceIndex: _react.PropTypes.number
 };
 
-},{"../../propTypes":265,"../Translate":249,"react":205}],234:[function(require,module,exports){
+},{"../../propTypes":266,"../Translate":250,"react":205}],234:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26201,7 +26201,7 @@ Ellipse.propTypes = {
 
 exports.default = Ellipse;
 
-},{"../propTypes":265,"react":205,"react-art":7}],235:[function(require,module,exports){
+},{"../propTypes":266,"react":205,"react-art":7}],235:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26220,6 +26220,10 @@ var _Library = require('../containers/Library');
 
 var _Library2 = _interopRequireDefault(_Library);
 
+var _Logo = require('./Logo');
+
+var _Logo2 = _interopRequireDefault(_Logo);
+
 var _Workspace = require('../containers/Workspace');
 
 var _Workspace2 = _interopRequireDefault(_Workspace);
@@ -26231,10 +26235,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var styles = {
-  display: 'flex'
-};
 
 var LambdaBricksApp = function (_Component) {
   _inherits(LambdaBricksApp, _Component);
@@ -26255,7 +26255,8 @@ var LambdaBricksApp = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { style: styles },
+        { className: 'app' },
+        _react2.default.createElement(_Logo2.default, null),
         _react2.default.createElement(_Library2.default, { id: libraryId }),
         _react2.default.createElement(_Workspace2.default, { type: workspaceType })
       );
@@ -26289,7 +26290,7 @@ LambdaBricksApp.PropTypes = {
   workspaceType: _react.PropTypes.string.isRequired
 };
 
-},{"../containers/Library":256,"../containers/Workspace":263,"./constants":253,"react":205}],236:[function(require,module,exports){
+},{"../containers/Library":257,"../containers/Workspace":264,"./Logo":237,"./constants":254,"react":205}],236:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26322,19 +26323,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var styles = {
-  width: '250px'
-};
-
-var ulStyles = {
-  display: 'inline-block',
-  margin: 0
-};
-
-var primitiveStyles = {
-  cursor: 'pointer'
-};
-
 var Library = function (_Component) {
   _inherits(Library, _Component);
 
@@ -26364,8 +26352,8 @@ var Library = function (_Component) {
 
 
       return _react2.default.createElement(
-        'div',
-        { style: styles, id: 'library' },
+        'aside',
+        { id: 'library' },
         _react2.default.createElement(_Translate2.default, {
           HtmlElement: 'h2',
           message: 'library'
@@ -26376,7 +26364,7 @@ var Library = function (_Component) {
         }),
         !isFetching && items.primitives && _react2.default.createElement(
           'div',
-          null,
+          { className: 'nav' },
           _react2.default.createElement(
             'div',
             { id: 'constants' },
@@ -26386,7 +26374,7 @@ var Library = function (_Component) {
             }),
             _react2.default.createElement(
               'ul',
-              { style: ulStyles },
+              null,
               Object.keys(items.primitives).map(function (key) {
                 var primitive = items.primitives[key];
 
@@ -26396,8 +26384,7 @@ var Library = function (_Component) {
                     key: primitive.id,
                     onClick: function onClick() {
                       return onPrimitiveClick(primitive.type);
-                    },
-                    style: primitiveStyles
+                    }
                   },
                   primitive.label
                 );
@@ -26411,16 +26398,12 @@ var Library = function (_Component) {
               HtmlElement: 'h3',
               message: 'functions'
             }),
-            _react2.default.createElement(
-              'ul',
-              null,
-              items.modules.map(function (module) {
-                return _react2.default.createElement(_Module2.default, _extends({
-                  key: module.name,
-                  onFunctionClick: onFunctionClick
-                }, module));
-              })
-            )
+            items.modules.map(function (module) {
+              return _react2.default.createElement(_Module2.default, _extends({
+                key: module.name,
+                onFunctionClick: onFunctionClick
+              }, module));
+            })
           )
         )
       );
@@ -26445,7 +26428,65 @@ Library.propTypes = {
   onPrimitiveClick: _react.PropTypes.func.isRequired
 };
 
-},{"../propTypes":265,"./Module":238,"./Translate":249,"react":205}],237:[function(require,module,exports){
+},{"../propTypes":266,"./Module":239,"./Translate":250,"react":205}],237:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Logo = function (_Component) {
+  _inherits(Logo, _Component);
+
+  function Logo() {
+    _classCallCheck(this, Logo);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Logo).apply(this, arguments));
+  }
+
+  _createClass(Logo, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { id: "logo" },
+        _react2.default.createElement(
+          "svg",
+          { className: "brick" },
+          _react2.default.createElement(
+            "g",
+            { transform: "scale(0.6)" },
+            _react2.default.createElement("rect", { x: "0", y: "15", width: "75", height: "30" }),
+            _react2.default.createElement("rect", { x: "15", y: "0", width: "15", height: "15" }),
+            _react2.default.createElement("rect", { x: "45", y: "0", width: "15", height: "15" }),
+            _react2.default.createElement("rect", { x: "30", y: "45", width: "15", height: "15" })
+          )
+        ),
+        "Lambda Bricks"
+      );
+    }
+  }]);
+
+  return Logo;
+}(_react.Component);
+
+exports.default = Logo;
+
+},{"react":205}],238:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26581,7 +26622,7 @@ MainBrick.propTypes = {
 
 exports.default = (0, _composeBrick2.default)(MainBrick);
 
-},{"../containers/TestInput":261,"../containers/TestOutput":262,"../propTypes":265,"../utils/ComponentFactory":276,"./composeBrick":252,"./constants":253,"react":205,"react-art":7,"react-art/lib/Rectangle.art":8}],238:[function(require,module,exports){
+},{"../containers/TestInput":262,"../containers/TestOutput":263,"../propTypes":266,"../utils/ComponentFactory":277,"./composeBrick":253,"./constants":254,"react":205,"react-art":7,"react-art/lib/Rectangle.art":8}],239:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26601,15 +26642,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ulStyles = {
-  display: 'inline-block',
-  margin: 0
-};
-
-var libraryFunctionStyles = {
-  cursor: 'pointer'
-};
 
 var Module = function (_Component) {
   _inherits(Module, _Component);
@@ -26634,13 +26666,13 @@ var Module = function (_Component) {
         'div',
         null,
         _react2.default.createElement(
-          'li',
+          'h4',
           null,
           label
         ),
         _react2.default.createElement(
           'ul',
-          { style: ulStyles },
+          null,
           functions.map(function (libraryFunction) {
             return _react2.default.createElement(
               'li',
@@ -26649,7 +26681,6 @@ var Module = function (_Component) {
                 onClick: function onClick() {
                   return onFunctionClick(name, libraryFunction);
                 },
-                style: libraryFunctionStyles,
                 title: libraryFunction.title
               },
               libraryFunction.label
@@ -26678,7 +26709,7 @@ Module.propTypes = {
   onFunctionClick: _react.PropTypes.func.isRequired
 };
 
-},{"react":205}],239:[function(require,module,exports){
+},{"react":205}],240:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26762,7 +26793,7 @@ Pipe.propTypes = {
 
 exports.default = Pipe;
 
-},{"../propTypes":265,"../utils/componentNames":278,"./constants":253,"react":205,"react-art":7}],240:[function(require,module,exports){
+},{"../propTypes":266,"../utils/componentNames":279,"./constants":254,"react":205,"react-art":7}],241:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26895,7 +26926,7 @@ Primitive.displayName = Primitive.name;
 
 exports.default = Primitive;
 
-},{"../propTypes":265,"../utils":280,"./Ellipse":234,"./Slot":243,"./constants":253,"react":205,"react-art":7}],241:[function(require,module,exports){
+},{"../propTypes":266,"../utils":281,"./Ellipse":234,"./Slot":244,"./constants":254,"react":205,"react-art":7}],242:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26993,7 +27024,7 @@ SelectablePipe.propTypes = {
 
 exports.default = SelectablePipe;
 
-},{"../propTypes":265,"../utils":280,"./Pipe":239,"./constants":253,"react":205,"react-art":7}],242:[function(require,module,exports){
+},{"../propTypes":266,"../utils":281,"./Pipe":240,"./constants":254,"react":205,"react-art":7}],243:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27018,13 +27049,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var baseStyles = {
-  backgroundColor: 'rgba(0, 0, 255, 0.5)',
-  borderRadius: 4,
-  padding: '20px 6px 6px',
-  position: 'absolute'
-};
-
 var SelectedElementDialog = function (_Component) {
   _inherits(SelectedElementDialog, _Component);
 
@@ -27043,16 +27067,17 @@ var SelectedElementDialog = function (_Component) {
       var mousePosition = _props.mousePosition;
 
 
-      var styles = Object.assign({}, baseStyles, {
-        left: mousePosition.x,
-        top: mousePosition.y
-      });
-
       var ReactComponent = (0, _ElementDetailsFactory.getDetailsComponent)(componentName);
 
       return _react2.default.createElement(
         'div',
-        { style: styles },
+        {
+          className: 'SelectedElementDialog',
+          style: {
+            left: mousePosition.x,
+            top: mousePosition.y
+          }
+        },
         _react2.default.createElement(
           'a',
           {
@@ -27060,7 +27085,7 @@ var SelectedElementDialog = function (_Component) {
             href: '#',
             onClick: closeDialog
           },
-          'Close'
+          'x'
         ),
         _react2.default.createElement(ReactComponent, this.props)
       );
@@ -27090,7 +27115,7 @@ SelectedElementDialog.propTypes = {
   workspaceIndex: _react.PropTypes.number
 };
 
-},{"../propTypes":265,"./ElementDetails/ElementDetailsFactory":229,"react":205}],243:[function(require,module,exports){
+},{"../propTypes":266,"./ElementDetails/ElementDetailsFactory":229,"react":205}],244:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27179,7 +27204,7 @@ Slot.propTypes = {
 
 exports.default = Slot;
 
-},{"../utils":280,"../utils/componentNames":278,"./constants":253,"react":205,"react-art/lib/Rectangle.art":8}],244:[function(require,module,exports){
+},{"../utils":281,"../utils/componentNames":279,"./constants":254,"react":205,"react-art/lib/Rectangle.art":8}],245:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27287,7 +27312,7 @@ SlotGroup.propTypes = {
 
 exports.default = SlotGroup;
 
-},{"../propTypes":265,"./Slot":243,"./constants":253,"react":205,"react-art":7,"react-art/lib/Rectangle.art":8}],245:[function(require,module,exports){
+},{"../propTypes":266,"./Slot":244,"./constants":254,"react":205,"react-art":7,"react-art/lib/Rectangle.art":8}],246:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27410,7 +27435,7 @@ TestInput.propTypes = {
 
 exports.default = TestInput;
 
-},{"../propTypes":265,"../utils":280,"./Ellipse":234,"./Pipe":239,"./constants":253,"react":205,"react-art":7}],246:[function(require,module,exports){
+},{"../propTypes":266,"../utils":281,"./Ellipse":234,"./Pipe":240,"./constants":254,"react":205,"react-art":7}],247:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27538,7 +27563,7 @@ TestOutput.propTypes = {
 
 exports.default = TestOutput;
 
-},{"../propTypes":265,"../utils":280,"./Ellipse":234,"./Pipe":239,"./constants":253,"react":205,"react-art":7}],247:[function(require,module,exports){
+},{"../propTypes":266,"../utils":281,"./Ellipse":234,"./Pipe":240,"./constants":254,"react":205,"react-art":7}],248:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27617,7 +27642,7 @@ TestResult.propTypes = {
 
 exports.default = TestResult;
 
-},{"../propTypes":265,"../utils/componentNames":278,"../utils/unitTestUtils":284,"./constants":253,"react":205,"react-art/lib/Rectangle.art":8}],248:[function(require,module,exports){
+},{"../propTypes":266,"../utils/componentNames":279,"../utils/unitTestUtils":285,"./constants":254,"react":205,"react-art/lib/Rectangle.art":8}],249:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27700,7 +27725,7 @@ TestSummary.propTypes = {
   }).isRequired).isRequired
 };
 
-},{"../utils/unitTestUtils":284,"react":205}],249:[function(require,module,exports){
+},{"../utils/unitTestUtils":285,"react":205}],250:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27766,7 +27791,7 @@ Translate.propTypes = {
   message: _react.PropTypes.string.isRequired
 };
 
-},{"../utils/translationUtils":283,"react":205}],250:[function(require,module,exports){
+},{"../utils/translationUtils":284,"react":205}],251:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27927,7 +27952,7 @@ Workspace.propTypes = {
   unitTests: _react.PropTypes.array.isRequired
 };
 
-},{"../containers/SelectedElementDialog":260,"../propTypes":265,"../utils":280,"./TestSummary":248,"./Translate":249,"./WorkspaceSurface":251,"./constants":253,"lodash.throttle":3,"react":205}],251:[function(require,module,exports){
+},{"../containers/SelectedElementDialog":261,"../propTypes":266,"../utils":281,"./TestSummary":249,"./Translate":250,"./WorkspaceSurface":252,"./constants":254,"lodash.throttle":3,"react":205}],252:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27965,7 +27990,7 @@ var workspaceSurfaceStyles = {
 };
 
 var surfaceStyles = {
-  backgroundColor: '#D8D8D8'
+  backgroundColor: 'white'
 };
 
 var WorkspaceSurface = function (_Component) {
@@ -28025,7 +28050,7 @@ WorkspaceSurface.propTypes = {
 
 exports.default = WorkspaceSurface;
 
-},{"../components/TestResult":247,"../containers/MainBrick":257,"react":205,"react-art":7}],252:[function(require,module,exports){
+},{"../components/TestResult":248,"../containers/MainBrick":258,"react":205,"react-art":7}],253:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28133,7 +28158,7 @@ function composeBrick(InnerComponent) {
   return AbstractBrick;
 }
 
-},{"../propTypes":265,"./SlotGroup":244,"./constants":253,"react":205,"react-art":7,"react-art/lib/Rectangle.art":8}],253:[function(require,module,exports){
+},{"../propTypes":266,"./SlotGroup":245,"./constants":254,"react":205,"react-art":7,"react-art/lib/Rectangle.art":8}],254:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28151,12 +28176,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var colors = exports.colors = (_colors = {
   boolean: "#8A2BE2"
-}, _defineProperty(_colors, _evalUtils.ERROR, '#D80000'), _defineProperty(_colors, 'false', "#E44B37"), _defineProperty(_colors, 'list', "#E96859"), _defineProperty(_colors, 'null', "#BFBFBF"), _defineProperty(_colors, 'number', "#E9E759"), _defineProperty(_colors, 'string', "#E9A559"), _defineProperty(_colors, 'true', "#358DE2"), _defineProperty(_colors, 'undefined', "#BFBFBF"), _colors);
+}, _defineProperty(_colors, _evalUtils.ERROR, '#D80000'), _defineProperty(_colors, 'false', "#E44B37"), _defineProperty(_colors, 'list', "#E96859"), _defineProperty(_colors, 'null', "#BFBFBF"), _defineProperty(_colors, 'number', "#E9E759"), _defineProperty(_colors, 'string', "#E9A559"), _defineProperty(_colors, 'true', "#358DE2"), _defineProperty(_colors, 'undefined', "#d8d8d8"), _colors);
 
 var testColors = exports.testColors = {
   failing: '#d87777',
   passing: '#77d877',
-  pending: '#d8d8d8'
+  pending: 'white'
 };
 
 var LEFT = exports.LEFT = 0;
@@ -28226,7 +28251,7 @@ var getConstant = exports.getConstant = function getConstant(componentName, key)
   return Constants[componentName][key];
 };
 
-},{"../utils/componentNames":278,"../utils/evalUtils":279}],254:[function(require,module,exports){
+},{"../utils/componentNames":279,"../utils/evalUtils":280}],255:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28262,7 +28287,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)((0, _Draggable2.default)(_Brick2.default));
 
-},{"../actions":222,"../components/Brick":225,"./Draggable":255,"react-redux":43}],255:[function(require,module,exports){
+},{"../actions":222,"../components/Brick":225,"./Draggable":256,"react-redux":43}],256:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28287,7 +28312,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps);
 
-},{"../actions":222,"../components/constants":253,"react-redux":43}],256:[function(require,module,exports){
+},{"../actions":222,"../components/constants":254,"react-redux":43}],257:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28326,7 +28351,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Library2.default);
 
-},{"../actions":222,"../components/Library":236,"react-redux":43}],257:[function(require,module,exports){
+},{"../actions":222,"../components/Library":236,"react-redux":43}],258:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28352,7 +28377,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 
 
   return {
-    handleClick: workspaceType != _constants.CLEAN ? (0, _utils.handleSelectElement)(dispatch) : function () {},
+    handleClick: workspaceType == _constants.UNIT_TEST ? (0, _utils.handleSelectElement)(dispatch) : function () {},
     selectBrickInputSlot: function selectBrickInputSlot(elementId, slotId) {
       dispatch((0, _actions.addPipeOrSelectSlot)('input', elementId, slotId));
     },
@@ -28364,7 +28389,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(_MainBrick2.default);
 
-},{"../actions":222,"../components/MainBrick":237,"../components/constants":253,"../utils":280,"react-redux":43}],258:[function(require,module,exports){
+},{"../actions":222,"../components/MainBrick":238,"../components/constants":254,"../utils":281,"react-redux":43}],259:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28395,7 +28420,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)((0, _Draggable2.default)(_Primitive2.default));
 
-},{"../actions":222,"../components/Primitive":240,"./Draggable":255,"react-redux":43}],259:[function(require,module,exports){
+},{"../actions":222,"../components/Primitive":241,"./Draggable":256,"react-redux":43}],260:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28420,7 +28445,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(_SelectablePipe2.default);
 
-},{"../components/SelectablePipe":241,"../utils":280,"react-redux":43}],260:[function(require,module,exports){
+},{"../components/SelectablePipe":242,"../utils":281,"react-redux":43}],261:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28482,7 +28507,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SelectedElementDialog2.default);
 
-},{"../actions":222,"../components/SelectedElementDialog":242,"react-redux":43}],261:[function(require,module,exports){
+},{"../actions":222,"../components/SelectedElementDialog":243,"react-redux":43}],262:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28507,7 +28532,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(_TestInput2.default);
 
-},{"../components/TestInput":245,"../utils":280,"react-redux":43}],262:[function(require,module,exports){
+},{"../components/TestInput":246,"../utils":281,"react-redux":43}],263:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28532,7 +28557,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(_TestOutput2.default);
 
-},{"../components/TestOutput":246,"../utils":280,"react-redux":43}],263:[function(require,module,exports){
+},{"../components/TestOutput":247,"../utils":281,"react-redux":43}],264:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28616,7 +28641,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Workspace2.default);
 
-},{"../actions":222,"../components/Workspace":250,"../utils":280,"../utils/componentNames":278,"../utils/unitTestUtils":284,"react-redux":43}],264:[function(require,module,exports){
+},{"../actions":222,"../components/Workspace":251,"../utils":281,"../utils/componentNames":279,"../utils/unitTestUtils":285,"react-redux":43}],265:[function(require,module,exports){
 'use strict';
 
 var _queryString = require('query-string');
@@ -28653,7 +28678,7 @@ _reactDom2.default.render(_react2.default.createElement(
   })
 ), document.getElementById('main'));
 
-},{"./components/LambdaBricksApp":235,"./store/configureStore":275,"query-string":5,"react":205,"react-dom":39,"react-redux":43}],265:[function(require,module,exports){
+},{"./components/LambdaBricksApp":235,"./store/configureStore":276,"query-string":5,"react":205,"react-dom":39,"react-redux":43}],266:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28693,7 +28718,7 @@ var SlotPropTypes = exports.SlotPropTypes = _react.PropTypes.objectOf(_react.Pro
   index: _react.PropTypes.number.isRequired
 }).isRequired);
 
-},{"react":205}],266:[function(require,module,exports){
+},{"react":205}],267:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28711,7 +28736,7 @@ exports.default = (0, _redux.combineReducers)({
   workspace: _workspaceReducer.workspace
 });
 
-},{"./libraryReducer":267,"./workspaceReducer":274,"redux":213}],267:[function(require,module,exports){
+},{"./libraryReducer":268,"./workspaceReducer":275,"redux":213}],268:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28750,7 +28775,7 @@ var library = exports.library = function library() {
   }
 };
 
-},{"../actions":222}],268:[function(require,module,exports){
+},{"../actions":222}],269:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28876,7 +28901,7 @@ var removeUnitTest = exports.removeUnitTest = function removeUnitTest(workspace,
   });
 };
 
-},{"../../utils/componentNames":278,"./workspaceReducerUtils":273}],269:[function(require,module,exports){
+},{"../../utils/componentNames":279,"./workspaceReducerUtils":274}],270:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28948,7 +28973,7 @@ var setDragStateToWorkspace = exports.setDragStateToWorkspace = function setDrag
   }));
 };
 
-},{"../../components/constants":253,"../../utils":280}],270:[function(require,module,exports){
+},{"../../components/constants":254,"../../utils":281}],271:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28998,7 +29023,7 @@ var unevaluate = exports.unevaluate = function unevaluate(workspace, elementId) 
   });
 };
 
-},{"../../utils/componentNames":278,"../../utils/evalUtils":279}],271:[function(require,module,exports){
+},{"../../utils/componentNames":279,"../../utils/evalUtils":280}],272:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29089,7 +29114,7 @@ var removeSelectedElementFromWorkspace = exports.removeSelectedElementFromWorksp
   });
 };
 
-},{"../../utils":280}],272:[function(require,module,exports){
+},{"../../utils":281}],273:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29264,7 +29289,7 @@ var unlinkSlots = exports.unlinkSlots = function unlinkSlots(workspace, payload)
   });
 };
 
-},{"../../utils/componentNames":278}],273:[function(require,module,exports){
+},{"../../utils/componentNames":279}],274:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29314,10 +29339,10 @@ var Defaults = (_Defaults = {}, _defineProperty(_Defaults, _componentNames.BRICK
 }), _defineProperty(_Defaults, _componentNames.MAIN_BRICK, {
   position: (_position = {}, _defineProperty(_position, _constants.CLEAN, {
     x: 50,
-    y: 50
+    y: 35
   }), _defineProperty(_position, _constants.FUNCTION, MainBrickDefaults.position), _defineProperty(_position, _constants.UNIT_TEST, MainBrickDefaults.position), _position),
   size: (_size = {}, _defineProperty(_size, _constants.CLEAN, {
-    height: 450,
+    height: 500,
     width: 600
   }), _defineProperty(_size, _constants.FUNCTION, MainBrickDefaults.size), _defineProperty(_size, _constants.UNIT_TEST, MainBrickDefaults.size), _size)
 }), _defineProperty(_Defaults, _componentNames.PRIMITIVE, {
@@ -29527,7 +29552,7 @@ var pipeConnectedToElement = exports.pipeConnectedToElement = function pipeConne
   return element.componentName == _componentNames.SELECTABLE_PIPE && (element.input.elementId == elementId || element.output.elementId == elementId);
 };
 
-},{"../../components/constants":253,"../../utils":280,"../../utils/componentNames":278}],274:[function(require,module,exports){
+},{"../../components/constants":254,"../../utils":281,"../../utils/componentNames":279}],275:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29622,7 +29647,7 @@ var workspace = exports.workspace = function workspace() {
   }
 };
 
-},{"../actions":222,"./workspace/addRemoveElementReducer":268,"./workspace/dragReducer":269,"./workspace/evaluationReducer":270,"./workspace/selectionReducer":271,"./workspace/updateElementReducer":272}],275:[function(require,module,exports){
+},{"../actions":222,"./workspace/addRemoveElementReducer":269,"./workspace/dragReducer":270,"./workspace/evaluationReducer":271,"./workspace/selectionReducer":272,"./workspace/updateElementReducer":273}],276:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29654,7 +29679,7 @@ function configureStore(initialState) {
   return finalCreateStore(_reducers2.default, initialState);
 }
 
-},{"../reducers":266,"react-dom":39,"redux":213,"redux-batched-subscribe":206,"redux-thunk":207}],276:[function(require,module,exports){
+},{"../reducers":267,"react-dom":39,"redux":213,"redux-batched-subscribe":206,"redux-thunk":207}],277:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29695,7 +29720,7 @@ var getComponent = exports.getComponent = function getComponent(type) {
   }
 };
 
-},{"../containers/Brick":254,"../containers/MainBrick":257,"../containers/Primitive":258,"../containers/SelectablePipe":259,"./componentNames":278}],277:[function(require,module,exports){
+},{"../containers/Brick":255,"../containers/MainBrick":258,"../containers/Primitive":259,"../containers/SelectablePipe":260,"./componentNames":279}],278:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29717,7 +29742,7 @@ var getFillColor = exports.getFillColor = function getFillColor(type, value) {
   }
 };
 
-},{"../components/constants":253}],278:[function(require,module,exports){
+},{"../components/constants":254}],279:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29734,7 +29759,7 @@ var TEST_INPUT = exports.TEST_INPUT = 'TEST_INPUT';
 var TEST_OUTPUT = exports.TEST_OUTPUT = 'TEST_OUTPUT';
 var TEST_RESULT = exports.TEST_RESULT = 'TEST_RESULT';
 
-},{}],279:[function(require,module,exports){
+},{}],280:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29953,7 +29978,7 @@ var _getOutputType = function _getOutputType(output) {
   }
 };
 
-},{"./componentNames":278}],280:[function(require,module,exports){
+},{"./componentNames":279}],281:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30033,7 +30058,7 @@ var bound = exports.bound = function bound(value, lowerLimit, upperLimit) {
   return value;
 };
 
-},{"../actions":222,"../components/constants":253,"./colors":277,"./slotPosition":281,"./slotSelection":282}],281:[function(require,module,exports){
+},{"../actions":222,"../components/constants":254,"./colors":278,"./slotPosition":282,"./slotSelection":283}],282:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30126,7 +30151,7 @@ var centeredSlotPosition = exports.centeredSlotPosition = function centeredSlotP
   };
 };
 
-},{"../components/constants":253,"./componentNames":278}],282:[function(require,module,exports){
+},{"../components/constants":254,"./componentNames":279}],283:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30181,7 +30206,7 @@ var outputElementHasPipe = exports.outputElementHasPipe = function outputElement
   return !!slots[output.slotId].value;
 };
 
-},{"./componentNames":278,"./index":280}],283:[function(require,module,exports){
+},{"./componentNames":279,"./index":281}],284:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30205,19 +30230,19 @@ var translations = {
     value: 'Value: ',
     workspace: 'Workspace',
     'joyrideSteps.window': 'The window has 3 sections.',
-    'joyrideSteps.tutorial': '<b>1. Tutorial</b>\
-      <p>The instructions for following the tutorial</p>',
-    'joyrideSteps.library': '<b>2. Library</b>\
+    'joyrideSteps.library': '<b>1. Library</b>\
       <p>The library has 2 components: <ul><li>Constants</li><li>Functions</li><p>',
     'joyrideSteps.constants': '<p>Clicking on "Number" will add a ballon to the workspace.</p>\
       <p>This ballon can hold a number.</p>',
     'joyrideSteps.functions': 'Clicking on a math operation will add a brick to the workspace.',
-    'joyrideSteps.workspace': '<b>3. Workspace</b>\
+    'joyrideSteps.workspace': '<b>2. Workspace</b>\
       <p>The workspace is the playground where you can connect ballons and bricks.</p>\
       <p>Clicking on an element will show a dialog where you can change its properties.</p>\
       <p>Move the elements by drag & drop.</p>\
       <p>The elements are connected through pipes. To create a pipe click on an\
       input and an output slot.',
+    'joyrideSteps.tutorial': '<b>3. Tutorial</b>\
+      <p>The instructions for following the tutorial</p>',
     'tutorialSteps.1': "<p>This is a small tutorial for learning the basics of programming.</p>\
 <p>All programs are composed of two primary components.\
  It doesn't matter if it's a smartphone app, a web site, a game, or anything else.\
@@ -30230,9 +30255,9 @@ var translations = {
  3 and 4. And it gives the result of 7.</p>\
 <p>In the workspace you can do this kind of operations by connecting the constants\
  as inputs to the functions.</p>\
-<p>Try doing a couple of operations now.\
+<p>Try doing a couple of operations now\
  (<a href='https://youtu.be/z4KVHi_zK60' target='_blank'>Here is a video showing\
- how to do it if you have any doubts</a>)</p>\
+ how to do it if you have any doubts</a>).</p>\
 <p>When you finish doing some operations click the button <b>Next</b> to continue.</p>",
     'tutorialSteps.2': "<p>We can manipulate not only numbers, we can also manipulate letters.\
  Letters are usually referred as <span class='code'>String</span> in programming.\
@@ -30299,7 +30324,7 @@ var getMessage = exports.getMessage = function getMessage(locale, key) {
   return translations[locale][key];
 };
 
-},{}],284:[function(require,module,exports){
+},{}],285:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30339,4 +30364,4 @@ var getTestResultColor = exports.getTestResultColor = function getTestResultColo
   return _constants.testColors[unitTest.result];
 };
 
-},{"../components/constants":253}]},{},[264]);
+},{"../components/constants":254}]},{},[265]);

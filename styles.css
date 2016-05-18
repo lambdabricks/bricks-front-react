@@ -1,10 +1,184 @@
 html, body {
+  color: #4f5f6f;
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
   margin: 0;
+  min-height: 100%;
+  overflow-x: hidden;
   padding: 0;
 }
 
-html, body, #main {
+body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+
+h2, h3 {
+  font-size: 14px;
+}
+
+a {
+  color: #59c2e6;
+  text-decoration: none;
+  transition: color 0.13s;
+}
+
+a:hover {
+  color: #0b98ca;
+}
+
+ol, ul {
+  padding-left: 15px;
+}
+
+::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #767D86;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2d363f;
+  border-radius: 0;
+}
+
+#main {
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+}
+
+.app {
+  background-color: #f0f3f6;
+  box-sizing: border-box;
+  /*box-shadow: 0 0 3px #ccc;*/
+  left: 0;
+  /*margin: 0 auto;*/
+  min-height: 100vh;
+  padding: 10px 10px 10px 240px;
+  position: relative;
+  transition: left 0.3s ease, padding-left 0.3s ease;
+  width: 100%;
+}
+
+#logo {
+  background-color: #3a4651;
+  box-sizing: border-box;
+  color: white;
+  font-size: 16px;
+  left: 0;
+  line-height: 70px;
+  padding-left: 15px;
+  position: fixed;
+  top: 0;
+  width: 230px;
+}
+
+.brick {
+  float: left;
+  height: 40px;
+  padding-top: 18px;
+  width: 50px;
+}
+
+.brick rect {
+  fill: #79D1EF;
+}
+
+#library {
+  background-color: #3a4651;
+  bottom: 0;
+  color: white;
+  font-size: 14px;
+  left: 0;
+  overflow-y: auto;
+  position: fixed;
+  top: 70px;
+  transition: left 0.3s ease;
+  width: 230px;
+}
+
+#library h2 {
+  padding-left: 20px;
+}
+
+.nav h3, .nav h4 {
+  color: white;
+  font-size: 14px;
+  margin: 0;
+}
+
+.nav h3 {
+  background-color: #0b98ca;
+  padding: 15px 10px 15px 20px;
+}
+
+.nav h4 {
+  background-color: #2d363f;
+  padding: 15px 10px 15px 40px;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.nav li {
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  margin: 0;
+  padding: 10px 0 10px 40px;
+  transition: color 0.13s;
+}
+
+.nav li:hover {
+  color: white;
+  background-color: #2d363f;
+}
+
+#instructions {
+  background-color: #2d363f;
+  bottom: 0;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.6);
+  left: 0;
+  overflow-y: auto;
+  padding: 10px;
+  position: fixed;
+  top: 70px;
+  width: 250px;
+}
+
+.tutorial.app {
+  padding-left: 490px;
+}
+
+.tutorial #logo {
+  width: 480px;
+}
+
+.tutorial #library {
+  left: 250px;
+}
+
+.selectedElementDialog {
+  background-color: rgba(58, 70, 81, 0.9);
+  border: 2px solid black;
+  border-radius: 4px;
+  color: white;
+  padding: 20px 6px 6px;
+  position: absolute;
 }
 
 #customValueInput input[type=radio] {
@@ -25,7 +199,7 @@ html, body, #main {
 }
 
 .closeBtn {
-  color: #551A8B;
+  color: white;
   font-size: 15px;
   line-height: 10px;
   position: absolute;
@@ -35,10 +209,11 @@ html, body, #main {
 }
 
 .closeBtn:hover, .closeBtn:focus, .closeBtn:active {
-  color: #551A8B;
+  color: white;
   text-decoration: none;
 }
 
 .code {
+  color: rgba(255, 255, 255, 0.9);
   font-weight: bold;
 }
