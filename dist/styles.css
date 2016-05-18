@@ -171,6 +171,15 @@ ol, ul {
   left: 250px;
 }
 
+.selectedElementDialog {
+  background-color: rgba(58, 70, 81, 0.9);
+  border: 2px solid black;
+  border-radius: 4px;
+  color: white;
+  padding: 20px 6px 6px;
+  position: absolute;
+}
+
 #customValueInput input[type=radio] {
   display: none;
 }
@@ -189,7 +198,7 @@ ol, ul {
 }
 
 .closeBtn {
-  color: #551A8B;
+  color: white;
   font-size: 15px;
   line-height: 10px;
   position: absolute;
@@ -199,7 +208,7 @@ ol, ul {
 }
 
 .closeBtn:hover, .closeBtn:focus, .closeBtn:active {
-  color: #551A8B;
+  color: white;
   text-decoration: none;
 }
 
