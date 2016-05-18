@@ -59,11 +59,12 @@ ol, ul {
 
 .app {
   background-color: #f0f3f6;
+  box-sizing: border-box;
   /*box-shadow: 0 0 3px #ccc;*/
   left: 0;
   /*margin: 0 auto;*/
   min-height: 100vh;
-  padding-left: 230px;
+  padding: 10px 10px 10px 240px;
   position: relative;
   transition: left 0.3s ease, padding-left 0.3s ease;
   width: 100%;
@@ -76,10 +77,21 @@ ol, ul {
   font-size: 16px;
   left: 0;
   line-height: 70px;
-  padding-left: 25px;
+  padding-left: 15px;
   position: fixed;
   top: 0;
   width: 230px;
+}
+
+.brick {
+  float: left;
+  height: 40px;
+  padding-top: 18px;
+  width: 50px;
+}
+
+.brick rect {
+  fill: #79D1EF;
 }
 
 #library {
@@ -148,7 +160,7 @@ ol, ul {
 }
 
 .tutorial.app {
-  padding-left: 480px;
+  padding-left: 490px;
 }
 
 .tutorial #logo {
