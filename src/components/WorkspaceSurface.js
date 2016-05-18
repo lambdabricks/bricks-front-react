@@ -9,7 +9,7 @@ const workspaceSurfaceStyles = {
 }
 
 const surfaceStyles = {
-  backgroundColor: '#D8D8D8'
+  backgroundColor: 'white'
 }
 
 class WorkspaceSurface extends Component {
