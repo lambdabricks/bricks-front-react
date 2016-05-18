@@ -35,9 +35,19 @@ ol, ul {
   padding-left: 15px;
 }
 
-/*::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 7px;
-} */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #767D86;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2d363f;
+  border-radius: 0;
+}
 
 #main {
   height: 100%;
