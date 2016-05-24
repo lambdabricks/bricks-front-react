@@ -20,7 +20,7 @@ export default class MainBrickDetails extends Component {
           />
         </div>
         { totalUnitTests > 1 &&
-          <div>
+          <div className="topMargin">
             <DialogButton
               onClick={ () => deleteUnitTest(workspaceIndex) }
               message="deleteUnitTest"
