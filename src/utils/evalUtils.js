@@ -47,10 +47,26 @@ const unitTestValues = (valueIds, unitTest) => {
 
 const nativeBricks = {
   arithmetic: {
-    "+": (a, b) => a + b,
-    "-": (a, b) => a - b,
-    "*": (a, b) => a * b,
-    "/": (a, b) => a / b
+    "+": (a, b) => {
+      if(assert([a, b], ["number", "number"]))
+        return a + b
+      throw "Invalid parameters"
+    },
+    "-": (a, b) => {
+      if(assert([a, b], ["number", "number"]))
+        return a - b
+      throw "Invalid parameters"
+    },
+    "*": (a, b) => {
+      if(assert([a, b], ["number", "number"]))
+        return a * b
+      throw "Invalid parameters"
+    },
+    "/": (a, b) => {
+      if(assert([a, b], ["number", "number"]))
+        return a / b
+      throw "Invalid parameters"
+    }
   },
   boolean: {
     "&&": (a, b) => a && b,
@@ -65,15 +81,48 @@ const nativeBricks = {
     "sort": (a) => a.slice(0).sort()
   },
   parse: {
-    "toNumber": (a) => parseFloat(a),
-    "toString": (a) => a.toString(),
+    "toNumber": (a) => {
+      if(assert([a], ["string"]))
+        return parseFloat(a)
+      throw "Invalid parameters"
+    },
+    "toString": (a) => {
+      if(assert([a], ["number"]))
+        return a.toString()
+      throw "Invalid parameters"
+    },
   },
   string: {
-    "concat": (a, b) => a.concat(b),
-    "length": (a) => a.length,
-    "reverse": (a) => a.split('').reverse().join(''),
-    "split": (a) => a.split(''),
+    "concat": (a, b) => {
+      if(assert([a, b], ["string", "string"]))
+        return a.concat(b)
+      throw "Invalid parameters"
+    },
+    "length": (a) => {
+      if(assert([a], ["string"]))
+        return a.length
+      throw "Invalid parameters"
+    },
+    "reverse": (a) => {
+      if(assert([a], ["string"]))
+        return a.split('').reverse().join('')
+      throw "Invalid parameters"
+    },
+    "split": (a) => {
+      if(assert([a], ["string"]))
+        return a.split('')
+      throw "Invalid parameters"
+    },
   }
+}
+
+const assert = (parameters, types) => {
+  for(var i = 0; i < parameters.length; i++) {
+    if(typeof parameters[i] !== types[i])
+      return false
+  }
+
+  return true
 }
 
 const parsers = {
