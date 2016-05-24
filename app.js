@@ -25824,7 +25824,7 @@ var MainBrickDetails = function (_Component) {
         ),
         totalUnitTests > 1 && _react2.default.createElement(
           'div',
-          null,
+          { className: 'topMargin' },
           _react2.default.createElement(_DialogButton2.default, {
             onClick: function onClick() {
               return deleteUnitTest(workspaceIndex);
@@ -25913,6 +25913,7 @@ var PrimitiveDetails = function (_Component) {
           value: value,
           workspaceIndex: workspaceIndex
         }),
+        _react2.default.createElement('hr', null),
         _react2.default.createElement(_DialogButton2.default, {
           onClick: function onClick() {
             return deleteElement(id);
@@ -25970,10 +25971,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var styles = {
-  width: 300
-};
-
 var TestNodeDetails = function (_Component) {
   _inherits(TestNodeDetails, _Component);
 
@@ -25998,7 +25995,7 @@ var TestNodeDetails = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { style: styles },
+        null,
         _react2.default.createElement(_TypesSelect2.default, {
           handleChange: changeTestNodeType,
           id: id,
@@ -26006,14 +26003,18 @@ var TestNodeDetails = function (_Component) {
           type: type,
           workspaceIndex: workspaceIndex
         }),
-        type != "null" && _react2.default.createElement(_CustomValueInput2.default, {
-          handleChange: changeTestNodeValue,
-          id: id,
-          primitives: primitives,
-          type: type,
-          value: value,
-          workspaceIndex: workspaceIndex
-        })
+        type != "null" && _react2.default.createElement(
+          'div',
+          { className: 'topMargin' },
+          _react2.default.createElement(_CustomValueInput2.default, {
+            handleChange: changeTestNodeValue,
+            id: id,
+            primitives: primitives,
+            type: type,
+            value: value,
+            workspaceIndex: workspaceIndex
+          })
+        )
       );
     }
   }]);
@@ -29815,16 +29816,20 @@ var unitTestValues = function unitTestValues(valueIds, unitTest) {
 var nativeBricks = {
   arithmetic: {
     "+": function _(a, b) {
-      return a + b;
+      if (assert([a, b], ["number", "number"])) return a + b;
+      throw "Invalid parameters";
     },
     "-": function _(a, b) {
-      return a - b;
+      if (assert([a, b], ["number", "number"])) return a - b;
+      throw "Invalid parameters";
     },
     "*": function _(a, b) {
-      return a * b;
+      if (assert([a, b], ["number", "number"])) return a * b;
+      throw "Invalid parameters";
     },
     "/": function _(a, b) {
-      return a / b;
+      if (assert([a, b], ["number", "number"])) return a / b;
+      throw "Invalid parameters";
     }
   },
   boolean: {
@@ -29853,26 +29858,40 @@ var nativeBricks = {
   },
   parse: {
     "toNumber": function toNumber(a) {
-      return parseFloat(a);
+      if (assert([a], ["string"])) return parseFloat(a);
+      throw "Invalid parameters";
     },
     "toString": function toString(a) {
-      return a.toString();
+      if (assert([a], ["number"])) return a.toString();
+      throw "Invalid parameters";
     }
   },
   string: {
     "concat": function concat(a, b) {
-      return a.concat(b);
+      if (assert([a, b], ["string", "string"])) return a.concat(b);
+      throw "Invalid parameters";
     },
     "length": function length(a) {
-      return a.length;
+      if (assert([a], ["string"])) return a.length;
+      throw "Invalid parameters";
     },
     "reverse": function reverse(a) {
-      return a.split('').reverse().join('');
+      if (assert([a], ["string"])) return a.split('').reverse().join('');
+      throw "Invalid parameters";
     },
     "split": function split(a) {
-      return a.split('');
+      if (assert([a], ["string"])) return a.split('');
+      throw "Invalid parameters";
     }
   }
+};
+
+var assert = function assert(parameters, types) {
+  for (var i = 0; i < parameters.length; i++) {
+    if (_typeof(parameters[i]) !== types[i]) return false;
+  }
+
+  return true;
 };
 
 var parsers = {

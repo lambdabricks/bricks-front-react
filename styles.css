@@ -35,6 +35,37 @@ ol, ul {
   padding-left: 15px;
 }
 
+button {
+  background-color: #0b98ca;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  padding: 6px 12px;
+  transition: background-color 0.13s;
+}
+
+button:hover {
+  background-color: #219FCA;
+}
+
+label {
+  display: inline-block;
+  width: 45px;
+}
+
+select, input {
+  background-color: white;
+  border: 0;
+  font-size: 14px;
+  height: 26px;
+  padding: 3px 3px;
+  width: 200px;
+}
+
+hr {
+  border-style: groove;
+}
+
 ::-webkit-scrollbar {
   height: 7px;
   width: 7px;
@@ -174,10 +205,9 @@ ol, ul {
 
 .selectedElementDialog {
   background-color: rgba(58, 70, 81, 0.9);
-  border: 2px solid black;
   border-radius: 4px;
   color: white;
-  padding: 20px 6px 6px;
+  padding: 20px 14px 10px;
   position: absolute;
 }
 
@@ -186,12 +216,13 @@ ol, ul {
 }
 
 #customValueInput input[type=radio] + label {
-  padding: 2px;
   border: 3px solid rgba(0, 0, 0, 0);
   color: white;
   display: inline-block;
   font-weight: bold;
-  margin: 3px 3px 0 0;
+  height: 20px;
+  margin-right: 3px;
+  padding-left: 3px;
 }
 
 #customValueInput input[type=radio]:checked + label {
@@ -205,12 +236,16 @@ ol, ul {
   position: absolute;
   right: 6px;
   text-decoration: none;
-  top: 6px
+  top: 6px;
 }
 
 .closeBtn:hover, .closeBtn:focus, .closeBtn:active {
   color: white;
   text-decoration: none;
+}
+
+.topMargin {
+  margin-top: 5px;
 }
 
 .code {
