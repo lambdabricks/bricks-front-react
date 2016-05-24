@@ -9,13 +9,6 @@ import {
   PrimitivePropTypes
 } from '../propTypes'
 
-const baseStyles = {
-  backgroundColor: 'rgba(0, 0, 255, 0.5)',
-  borderRadius: 4,
-  padding: '20px 6px 6px',
-  position: 'absolute'
-}
-
 export default class SelectedElementDialog extends Component {
   render() {
     const {
@@ -24,21 +17,24 @@ export default class SelectedElementDialog extends Component {
       mousePosition
     } = this.props
 
-    const styles = Object.assign({}, baseStyles, {
-      left: mousePosition.x,
-      top: mousePosition.y
-    })
-
     const ReactComponent = getDetailsComponent(componentName)
 
     return (
-      <div style={ styles }>
+      <div
+        className="SelectedElementDialog"
+        style={
+          {
+            left: mousePosition.x,
+            top: mousePosition.y
+          }
+        }
+      >
         <a
           className="closeBtn"
           href="#"
           onClick={ closeDialog }
         >
-          Close
+          x
         </a>
         <ReactComponent { ...this.props } />
       </div>

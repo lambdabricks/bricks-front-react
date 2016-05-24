@@ -5,16 +5,9 @@ import { getMessage } from '../utils/translationUtils'
 import { getTutorialConfig } from './tutorialSteps'
 
 import Library from '../containers/Library'
+import Logo from './Logo'
 import Translate from './Translate'
 import Workspace from '../containers/Workspace'
-
-const styles = {
-  display: 'flex'
-}
-
-const instructionStyles = {
-  width: 300
-}
 
 export default class Tutorial extends Component {
   constructor(props) {
@@ -29,7 +22,7 @@ export default class Tutorial extends Component {
         {
           text: getMessage(props.locale, 'joyrideSteps.window'),
           selector: '#window',
-          position: 'top-left'
+          position: 'top'
         },
         {
           text: getMessage(props.locale, 'joyrideSteps.library'),
@@ -53,7 +46,7 @@ export default class Tutorial extends Component {
         },
         {
           text: getMessage(props.locale, 'joyrideSteps.tutorial'),
-          selector: '#tutorial',
+          selector: '#instructions',
           position: 'right'
         }
       ]
@@ -79,8 +72,9 @@ export default class Tutorial extends Component {
     const state = this.state
 
     return (
-      <div style={ styles } id="window">
-        <div id="tutorial" style={ instructionStyles }>
+      <div className="tutorial app" id="window">
+        <Logo />
+        <div id="instructions">
           <Translate
             HtmlElement="h2"
             message="tutorial"

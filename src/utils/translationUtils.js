@@ -46,9 +46,9 @@ const translations = {
  3 and 4. And it gives the result of 7.</p>\
 <p>In the workspace you can do this kind of operations by connecting the constants\
  as inputs to the functions.</p>\
-<p>Try doing a couple of operations now.\
+<p>Try doing a couple of operations now\
  (<a href='https://youtu.be/z4KVHi_zK60' target='_blank'>Here is a video showing\
- how to do it if you have any doubts</a>)</p>\
+ how to do it if you have any doubts</a>).</p>\
 <p>When you finish doing some operations click the button <b>Next</b> to continue.</p>",
     'tutorialSteps.2':
 "<p>We can manipulate not only numbers, we can also manipulate letters.\

@@ -29,6 +29,7 @@ export default class PrimitiveDetails extends Component {
           value={ value }
           workspaceIndex={ workspaceIndex }
         />
+        <hr/>
         <DialogButton
           onClick={ () => deleteElement(id) }
           message="delete"

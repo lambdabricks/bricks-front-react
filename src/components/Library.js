@@ -4,19 +4,6 @@ import Module from './Module'
 import { PrimitivePropTypes } from '../propTypes'
 import Translate from './Translate'
 
-const styles = {
-  width: '250px'
-}
-
-const ulStyles = {
-  display: 'inline-block',
-  margin: 0
-}
-
-const primitiveStyles = {
-  cursor: 'pointer'
-}
-
 export default class Library extends Component {
   componentDidMount() {
     const { fetchLibrary, id } = this.props
@@ -32,7 +19,7 @@ export default class Library extends Component {
     } = this.props
 
     return (
-      <div style={ styles } id="library">
+      <aside id="library">
         <Translate
           HtmlElement="h2"
           message="library"
@@ -44,13 +31,13 @@ export default class Library extends Component {
           />
         }
         { !isFetching && items.primitives &&
-          <div>
+          <div className="nav">
             <div id="constants">
               <Translate
                 HtmlElement="h3"
                 message="constants"
               />
-              <ul style={ ulStyles }>
+              <ul>
                 { Object.keys(items.primitives).map((key) => {
                     const primitive = items.primitives[key]
 
@@ -58,7 +45,6 @@ export default class Library extends Component {
                       <li
                         key={ primitive.id }
                         onClick={ () => onPrimitiveClick(primitive.type) }
-                        style={ primitiveStyles }
                       >
                         {primitive.label}
                       </li>
@@ -72,19 +58,17 @@ export default class Library extends Component {
                 HtmlElement="h3"
                 message="functions"
               />
-              <ul>
-                { items.modules.map((module) =>
-                  <Module
-                    key={ module.name }
-                    onFunctionClick={ onFunctionClick }
-                    { ...module }
-                  />
-                )}
-              </ul>
+              { items.modules.map((module) =>
+                <Module
+                  key={ module.name }
+                  onFunctionClick={ onFunctionClick }
+                  { ...module }
+                />
+              )}
             </div>
           </div>
         }
-      </div>
+      </aside>
     )
   }
 }

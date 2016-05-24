@@ -22,13 +22,13 @@ export const colors = {
   number: "#E9E759",
   string: "#E9A559",
   true: "#358DE2",
-  undefined: "#BFBFBF"
+  undefined: "#d8d8d8"
 }
 
 export const testColors = {
   failing: '#d87777',
   passing: '#77d877',
-  pending: '#d8d8d8'
+  pending: 'white'
 }
 
 export const LEFT = 0

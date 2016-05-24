@@ -1,14 +1,5 @@
 import React, { PropTypes, Component } from 'react'
 
-const ulStyles = {
-  display: 'inline-block',
-  margin: 0
-}
-
-const libraryFunctionStyles = {
-  cursor: 'pointer'
-}
-
 export default class Module extends Component {
   render() {
     const {
@@ -20,16 +11,15 @@ export default class Module extends Component {
 
     return (
       <div>
-        <li>
+        <h4>
           { label }
-        </li>
-        <ul style={ ulStyles }>
+        </h4>
+        <ul>
           { functions.map((libraryFunction) => {
               return (
                 <li
                   key={ libraryFunction.id }
                   onClick={ () => onFunctionClick(name, libraryFunction) }
-                  style={ libraryFunctionStyles }
                   title={ libraryFunction.title }
                 >
                   { libraryFunction.label }
