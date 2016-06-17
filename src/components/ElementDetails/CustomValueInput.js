@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react'
+import ReactDOM from 'react-dom'
 
 import {
   PrimitivePropTypes
@@ -12,6 +13,12 @@ export default class CustomValueInput extends Component {
     super(props)
 
     this.customInput = this.customInput.bind(this)
+  }
+
+  componentDidMount() {
+    if(this.refs.valueInput) {
+      ReactDOM.findDOMNode(this.refs.valueInput).focus()
+    }
   }
 
   customInput() {
@@ -54,6 +61,7 @@ export default class CustomValueInput extends Component {
       return (
         <input
           onChange={ (e) => handleChange(id, e, workspaceIndex) }
+          ref="valueInput"
           type={ inputType }
           value={ value }
         />
