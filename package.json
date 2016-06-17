@@ -6,7 +6,7 @@
     "name": "Daniel Garcia Carmona",
     "email": "daniel.garcia.carmona@gmail.com"
   },
-  "license": "GPL-3.0",
+  "license": "AGPL-3.0",
   "repository": {
     "type": "git",
     "url": "github.com/lambdabricks/bricks-front-react"
