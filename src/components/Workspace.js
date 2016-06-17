@@ -73,6 +73,12 @@ export default class Workspace extends Component {
             message="workspace"
           />
           { type == UNIT_TEST && <TestSummary unitTests={ unitTests } /> }
+          <a href="https://github.com/lambdabricks/bricks-front-react">
+            <img
+              className="github-logo"
+              src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+            />
+          </a>
         </div>
         <div style={ workspacesStyles} >
           { unitTests.map((unitTest, index) => {
