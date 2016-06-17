@@ -252,3 +252,16 @@ hr {
   color: rgba(255, 255, 255, 0.9);
   font-weight: bold;
 }
+
+.github-logo {
+  width: 32px;
+  float: right;
+  filter: opacity(80%);
+  -webkit-filter: opacity(80%);
+  transition: filter 0.13s, -webkit-filter 0.13s;
+}
+
+.github-logo:hover {
+  filter: opacity(90%);
+  -webkit-filter: opacity(90%);
+}

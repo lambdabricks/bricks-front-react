@@ -25490,6 +25490,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _propTypes = require('../../propTypes');
 
 var _constants = require('../constants');
@@ -25514,11 +25518,26 @@ var CustomValueInput = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CustomValueInput).call(this, props));
 
+    _this.closeOnEnterKeyDown = _this.closeOnEnterKeyDown.bind(_this);
     _this.customInput = _this.customInput.bind(_this);
     return _this;
   }
 
   _createClass(CustomValueInput, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.refs.valueInput) {
+        _reactDom2.default.findDOMNode(this.refs.valueInput).focus();
+      }
+    }
+  }, {
+    key: 'closeOnEnterKeyDown',
+    value: function closeOnEnterKeyDown(e) {
+      if (e.key == 'Enter') {
+        this.props.closeDialog();
+      }
+    }
+  }, {
     key: 'customInput',
     value: function customInput() {
       var _props = this.props;
@@ -25567,6 +25586,8 @@ var CustomValueInput = function (_Component) {
           onChange: function onChange(e) {
             return handleChange(id, e, workspaceIndex);
           },
+          onKeyDown: this.closeOnEnterKeyDown,
+          ref: 'valueInput',
           type: inputType,
           value: value
         });
@@ -25594,6 +25615,7 @@ exports.default = CustomValueInput;
 
 
 CustomValueInput.propTypes = {
+  closeDialog: _react.PropTypes.func.isRequired,
   handleChange: _react.PropTypes.func.isRequired,
   id: _react.PropTypes.number.isRequired,
   primitives: _react.PropTypes.objectOf(_propTypes.PrimitivePropTypes).isRequired,
@@ -25602,7 +25624,7 @@ CustomValueInput.propTypes = {
   workspaceIndex: _react.PropTypes.number
 };
 
-},{"../../propTypes":266,"../Translate":250,"../constants":254,"react":205}],227:[function(require,module,exports){
+},{"../../propTypes":266,"../Translate":250,"../constants":254,"react":205,"react-dom":39}],227:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25894,6 +25916,7 @@ var PrimitiveDetails = function (_Component) {
     value: function render() {
       var _props = this.props;
       var changePrimitiveValue = _props.changePrimitiveValue;
+      var closeDialog = _props.closeDialog;
       var deleteElement = _props.deleteElement;
       var id = _props.id;
       var primitives = _props.primitives;
@@ -25906,6 +25929,7 @@ var PrimitiveDetails = function (_Component) {
         'div',
         null,
         _react2.default.createElement(_CustomValueInput2.default, {
+          closeDialog: closeDialog,
           handleChange: changePrimitiveValue,
           id: id,
           primitives: primitives,
@@ -25933,6 +25957,7 @@ exports.default = PrimitiveDetails;
 PrimitiveDetails.propTypes = {
   deleteElement: _react.PropTypes.func.isRequired,
   changePrimitiveValue: _react.PropTypes.func.isRequired,
+  closeDialog: _react.PropTypes.func.isRequired,
   id: _react.PropTypes.number.isRequired,
   primitives: _react.PropTypes.objectOf(_propTypes.PrimitivePropTypes).isRequired,
   type: _react.PropTypes.string.isRequired,
@@ -25986,6 +26011,7 @@ var TestNodeDetails = function (_Component) {
       var _props = this.props;
       var changeTestNodeType = _props.changeTestNodeType;
       var changeTestNodeValue = _props.changeTestNodeValue;
+      var closeDialog = _props.closeDialog;
       var id = _props.id;
       var primitives = _props.primitives;
       var value = _props.value;
@@ -26007,6 +26033,7 @@ var TestNodeDetails = function (_Component) {
           'div',
           { className: 'topMargin' },
           _react2.default.createElement(_CustomValueInput2.default, {
+            closeDialog: closeDialog,
             handleChange: changeTestNodeValue,
             id: id,
             primitives: primitives,
@@ -26028,6 +26055,7 @@ exports.default = TestNodeDetails;
 TestNodeDetails.propTypes = {
   changeTestNodeType: _react.PropTypes.func.isRequired,
   changeTestNodeValue: _react.PropTypes.func.isRequired,
+  closeDialog: _react.PropTypes.func.isRequired,
   id: _react.PropTypes.number.isRequired,
   primitives: _react.PropTypes.objectOf(_propTypes.PrimitivePropTypes).isRequired,
   value: _react.PropTypes.string,
@@ -27915,7 +27943,15 @@ var Workspace = function (_Component) {
             HtmlElement: 'h2',
             message: 'workspace'
           }),
-          type == _constants.UNIT_TEST && _react2.default.createElement(_TestSummary2.default, { unitTests: unitTests })
+          type == _constants.UNIT_TEST && _react2.default.createElement(_TestSummary2.default, { unitTests: unitTests }),
+          _react2.default.createElement(
+            'a',
+            { href: 'https://github.com/lambdabricks/bricks-front-react' },
+            _react2.default.createElement('img', {
+              className: 'github-logo',
+              src: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg'
+            })
+          )
         ),
         _react2.default.createElement(
           'div',
@@ -29329,10 +29365,6 @@ var MainBrickDefaults = {
 };
 
 var Defaults = (_Defaults = {}, _defineProperty(_Defaults, _componentNames.BRICK, {
-  position: {
-    x: 50,
-    y: 50
-  },
   size: {
     height: 40,
     width: 100
@@ -29347,10 +29379,6 @@ var Defaults = (_Defaults = {}, _defineProperty(_Defaults, _componentNames.BRICK
     width: 600
   }), _defineProperty(_size, _constants.FUNCTION, MainBrickDefaults.size), _defineProperty(_size, _constants.UNIT_TEST, MainBrickDefaults.size), _size)
 }), _defineProperty(_Defaults, _componentNames.PRIMITIVE, {
-  position: {
-    x: 50,
-    y: 50
-  },
   size: {
     height: 30,
     width: 60
@@ -29373,6 +29401,7 @@ var newBrick = exports.newBrick = function newBrick(brick, parentId) {
   var name = brick.name;
 
   var inputSlots = {};
+  var elementId = nextId();
   var outputSlotId = nextId();
 
   for (var i = 0; i < arity; i++) {
@@ -29386,7 +29415,7 @@ var newBrick = exports.newBrick = function newBrick(brick, parentId) {
 
   return {
     componentName: _componentNames.BRICK,
-    id: nextId(),
+    id: elementId,
     inputSlots: inputSlots,
     moduleName: moduleName,
     name: name,
@@ -29399,7 +29428,7 @@ var newBrick = exports.newBrick = function newBrick(brick, parentId) {
       }
     }),
     parentId: parentId,
-    position: Defaults[_componentNames.BRICK].position,
+    position: _shiftPosition(elementId),
     size: Defaults[_componentNames.BRICK].size,
     valueId: outputSlotId
   };
@@ -29455,9 +29484,19 @@ var newPrimitive = exports.newPrimitive = function newPrimitive(type, parentId) 
       valueId: elementId
     }),
     parentId: parentId,
-    position: Defaults[_componentNames.PRIMITIVE].position,
+    position: _shiftPosition(elementId),
     size: Defaults[_componentNames.PRIMITIVE].size,
     valueId: elementId
+  };
+};
+
+var _shiftPosition = function _shiftPosition(id) {
+  var xMultiplier = id % 5 + 1;
+  var yMultiplier = Math.floor(id / 5) + 1;
+
+  return {
+    x: 50 * xMultiplier,
+    y: 30 * yMultiplier
   };
 };
 
