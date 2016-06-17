@@ -38,10 +38,6 @@ const MainBrickDefaults = {
 
 const Defaults = {
   [BRICK]: {
-    position: {
-      x: 50,
-      y: 50
-    },
     size: {
       height: 40,
       width: 100
@@ -66,10 +62,6 @@ const Defaults = {
     }
   },
   [PRIMITIVE]: {
-    position: {
-      x: 50,
-      y: 50
-    },
     size: {
       height: 30,
       width: 60
@@ -90,6 +82,7 @@ const nextId = () => id++
 export const newBrick = (brick, parentId) => {
   const { arity, moduleName, name } = brick
   let inputSlots = {}
+  const elementId = nextId()
   const outputSlotId = nextId()
 
   for(var i=0; i < arity; i++) {
@@ -103,7 +96,7 @@ export const newBrick = (brick, parentId) => {
 
   return {
     componentName: BRICK,
-    id: nextId(),
+    id: elementId,
     inputSlots,
     moduleName,
     name,
@@ -118,7 +111,7 @@ export const newBrick = (brick, parentId) => {
       }
     },
     parentId,
-    position: Defaults[BRICK].position,
+    position: _shiftPosition(elementId),
     size: Defaults[BRICK].size,
     valueId: outputSlotId
   }
@@ -177,9 +170,19 @@ export const newPrimitive = (type, parentId) => {
       }
     },
     parentId,
-    position: Defaults[PRIMITIVE].position,
+    position: _shiftPosition(elementId),
     size: Defaults[PRIMITIVE].size,
     valueId: elementId
+  }
+}
+
+const _shiftPosition = (id) => {
+  const xMultiplier = (id % 5) + 1
+  const yMultiplier = Math.floor(id / 5) + 1
+
+  return {
+    x: 50 * xMultiplier,
+    y: 30 * yMultiplier
   }
 }
 
