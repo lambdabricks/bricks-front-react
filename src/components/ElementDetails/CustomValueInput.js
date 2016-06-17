@@ -12,12 +12,19 @@ export default class CustomValueInput extends Component {
   constructor(props) {
     super(props)
 
+    this.closeOnEnterKeyDown = this.closeOnEnterKeyDown.bind(this)
     this.customInput = this.customInput.bind(this)
   }
 
   componentDidMount() {
     if(this.refs.valueInput) {
       ReactDOM.findDOMNode(this.refs.valueInput).focus()
+    }
+  }
+
+  closeOnEnterKeyDown(e) {
+    if(e.key == 'Enter') {
+      this.props.closeDialog()
     }
   }
 
@@ -61,6 +68,7 @@ export default class CustomValueInput extends Component {
       return (
         <input
           onChange={ (e) => handleChange(id, e, workspaceIndex) }
+          onKeyDown={ this.closeOnEnterKeyDown }
           ref="valueInput"
           type={ inputType }
           value={ value }
@@ -83,6 +91,7 @@ export default class CustomValueInput extends Component {
 }
 
 CustomValueInput.propTypes = {
+  closeDialog: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,

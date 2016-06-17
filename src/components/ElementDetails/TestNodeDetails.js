@@ -12,6 +12,7 @@ export default class TestNodeDetails extends Component {
     const {
       changeTestNodeType,
       changeTestNodeValue,
+      closeDialog,
       id,
       primitives,
       value,
@@ -31,6 +32,7 @@ export default class TestNodeDetails extends Component {
         { type != "null" &&
           <div className="topMargin">
             <CustomValueInput
+              closeDialog={ closeDialog }
               handleChange={ changeTestNodeValue }
               id={ id }
               primitives={ primitives }
@@ -48,6 +50,7 @@ export default class TestNodeDetails extends Component {
 TestNodeDetails.propTypes = {
   changeTestNodeType: PropTypes.func.isRequired,
   changeTestNodeValue: PropTypes.func.isRequired,
+  closeDialog: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
   value: PropTypes.string,

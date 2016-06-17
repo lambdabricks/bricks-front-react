@@ -11,6 +11,7 @@ export default class PrimitiveDetails extends Component {
   render() {
     const {
       changePrimitiveValue,
+      closeDialog,
       deleteElement,
       id,
       primitives,
@@ -22,6 +23,7 @@ export default class PrimitiveDetails extends Component {
     return (
       <div>
         <CustomValueInput
+          closeDialog={ closeDialog }
           handleChange={ changePrimitiveValue }
           id={ id }
           primitives={ primitives }
@@ -42,6 +44,7 @@ export default class PrimitiveDetails extends Component {
 PrimitiveDetails.propTypes = {
   deleteElement: PropTypes.func.isRequired,
   changePrimitiveValue: PropTypes.func.isRequired,
+  closeDialog: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
   type: PropTypes.string.isRequired,
