@@ -181,7 +181,7 @@ export const unlinkSlots = (workspace, payload) => {
   const index = outputSlot.outputElementIds.indexOf(output.elementId)
 
   const outputElement = workspace.entities[output.elementId]
-  const newOutputElement = _removeSlotValue(outputElement, output.slotId)
+  const newOutputElement = _removeSlotValue(outputElement, output)
 
   return Object.assign({}, workspace, {
     entities: {
@@ -204,19 +204,41 @@ export const unlinkSlots = (workspace, payload) => {
   })
 }
 
-const _removeSlotValue = (element, slotId) => {
+const _removeSlotValue = (element, output) => {
   var slots = {}
 
-  if(element.componentName == MAIN_BRICK) {
-    Object.assign(slots, {
-      outputSlots: element.outputSlots
-    })
-    delete slots.outputSlots[slotId]['value']
-  } else {
-    Object.assign(slots, {
-      inputSlots: element.inputSlots
-    })
-    delete slots.inputSlots[slotId]['value']
+  if(output.slotId) {
+    if(element.componentName == MAIN_BRICK) {
+      Object.assign(slots, { outputSlots: element.outputSlots })
+
+      delete slots.outputSlots[output.slotId]['value']
+    } else {
+      Object.assign(slots, { inputSlots: element.inputSlots })
+
+      delete slots.inputSlots[output.slotId]['value']
+    }
+  } else if(output.sourceElementId) {
+    if(element.componentName == MAIN_BRICK) {
+      Object.assign(slots, { outputSlots: element.outputSlots })
+
+      Object.keys(element.outputSlots).forEach((slotId) => {
+        const slot = element.outputSlots[slotId]
+
+        if(slot.value && slot.value.elementId == output.sourceElementId) {
+          delete slots.outputSlots[slotId]['value']
+        }
+      })
+    } else {
+      Object.assign(slots, { inputSlots: element.inputSlots })
+
+      Object.keys(element.inputSlots).forEach((slotId) => {
+        const slot = element.inputSlots[slotId]
+
+        if(slot.value && slot.value.elementId == output.sourceElementId) {
+          delete slots.inputSlots[slotId]['value']
+        }
+      })
+    }
   }
 
   return Object.assign(element, { ...slots })

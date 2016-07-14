@@ -2,6 +2,7 @@ import { bothSlotsSelected } from '../utils'
 
 import {
   BRICK,
+  PRIMITIVE,
   SELECTABLE_PIPE
 } from '../utils/componentNames'
 
@@ -216,6 +217,26 @@ export const removeElement = (elementId) => {
 
     if(element.componentName == SELECTABLE_PIPE) {
       dispatch(_unlinkSlots(element))
+    }
+
+    if(element.componentName == PRIMITIVE) {
+      const slotId = Object.keys(element.outputSlots)[0]
+      const slot = element.outputSlots[slotId]
+
+      slot.outputElementIds.forEach((outputElementId) => {
+        dispatch(
+          _unlinkSlots({
+            input: {
+              elementId: element.id,
+              slotId
+            },
+            output: {
+              elementId: outputElementId,
+              sourceElementId: element.id
+            }
+          })
+        )
+      })
     }
 
     if(element.componentName == BRICK) {
