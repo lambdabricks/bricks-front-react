@@ -219,7 +219,7 @@ export const removeElement = (elementId) => {
       dispatch(_unlinkSlots(element))
     }
 
-    if(element.componentName == PRIMITIVE) {
+    if(element.componentName == PRIMITIVE || element.componentName == BRICK) {
       const slotId = Object.keys(element.outputSlots)[0]
       const slot = element.outputSlots[slotId]
 
