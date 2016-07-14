@@ -25179,6 +25179,26 @@ var removeElement = exports.removeElement = function removeElement(elementId) {
       dispatch(_unlinkSlots(element));
     }
 
+    if (element.componentName == _componentNames.PRIMITIVE || element.componentName == _componentNames.BRICK) {
+      (function () {
+        var slotId = Object.keys(element.outputSlots)[0];
+        var slot = element.outputSlots[slotId];
+
+        slot.outputElementIds.forEach(function (outputElementId) {
+          dispatch(_unlinkSlots({
+            input: {
+              elementId: element.id,
+              slotId: slotId
+            },
+            output: {
+              elementId: outputElementId,
+              sourceElementId: element.id
+            }
+          }));
+        });
+      })();
+    }
+
     if (element.componentName == _componentNames.BRICK) {
       Object.keys(element.inputSlots).forEach(function (slotId) {
         var slot = element.inputSlots[slotId];
@@ -29303,27 +29323,55 @@ var unlinkSlots = exports.unlinkSlots = function unlinkSlots(workspace, payload)
   var index = outputSlot.outputElementIds.indexOf(output.elementId);
 
   var outputElement = workspace.entities[output.elementId];
-  var slots = {};
-
-  if (outputElement.componentName == _componentNames.MAIN_BRICK) {
-    Object.assign(slots, {
-      outputSlots: outputElement.outputSlots
-    });
-    delete slots.outputSlots[output.slotId]['value'];
-  } else {
-    Object.assign(slots, {
-      inputSlots: outputElement.inputSlots
-    });
-    delete slots.inputSlots[output.slotId]['value'];
-  }
+  var newOutputElement = _removeSlotValue(outputElement, output);
 
   return Object.assign({}, workspace, {
-    entities: _extends({}, workspace.entities, (_extends5 = {}, _defineProperty(_extends5, outputElement.id, _extends({}, outputElement, slots)), _defineProperty(_extends5, inputElement.id, _extends({}, inputElement, {
+    entities: _extends({}, workspace.entities, (_extends5 = {}, _defineProperty(_extends5, outputElement.id, newOutputElement), _defineProperty(_extends5, inputElement.id, _extends({}, inputElement, {
       outputSlots: _extends({}, inputElement.outputSlots, _defineProperty({}, input.slotId, _extends({}, outputSlot, {
         outputElementIds: [].concat(_toConsumableArray(outputSlot.outputElementIds.slice(0, index)), _toConsumableArray(outputSlot.outputElementIds.slice(index + 1)))
       })))
     })), _extends5))
   });
+};
+
+var _removeSlotValue = function _removeSlotValue(element, output) {
+  var slots = {};
+
+  if (output.slotId) {
+    if (element.componentName == _componentNames.MAIN_BRICK) {
+      Object.assign(slots, { outputSlots: element.outputSlots });
+
+      delete slots.outputSlots[output.slotId]['value'];
+    } else {
+      Object.assign(slots, { inputSlots: element.inputSlots });
+
+      delete slots.inputSlots[output.slotId]['value'];
+    }
+  } else if (output.sourceElementId) {
+    if (element.componentName == _componentNames.MAIN_BRICK) {
+      Object.assign(slots, { outputSlots: element.outputSlots });
+
+      Object.keys(element.outputSlots).forEach(function (slotId) {
+        var slot = element.outputSlots[slotId];
+
+        if (slot.value && slot.value.elementId == output.sourceElementId) {
+          delete slots.outputSlots[slotId]['value'];
+        }
+      });
+    } else {
+      Object.assign(slots, { inputSlots: element.inputSlots });
+
+      Object.keys(element.inputSlots).forEach(function (slotId) {
+        var slot = element.inputSlots[slotId];
+
+        if (slot.value && slot.value.elementId == output.sourceElementId) {
+          delete slots.inputSlots[slotId]['value'];
+        }
+      });
+    }
+  }
+
+  return Object.assign(element, _extends({}, slots));
 };
 
 },{"../../utils/componentNames":279}],274:[function(require,module,exports){
