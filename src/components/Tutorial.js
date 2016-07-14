@@ -2,7 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import JoyRide from 'react-joyride'
 
 import { getMessage } from '../utils/translationUtils'
-import { getTutorialConfig } from './tutorialSteps'
+import {
+  getTutorialConfig,
+  totalSteps
+} from './tutorialSteps'
 
 import Library from '../containers/Library'
 import Logo from './Logo'
@@ -79,7 +82,7 @@ export default class Tutorial extends Component {
             HtmlElement="h2"
             message="tutorial"
           />
-          <h3>{ step }</h3>
+          <h3>{ step } / { totalSteps() }</h3>
           <div
             dangerouslySetInnerHTML={
               { __html: getMessage(locale, `tutorialSteps.${step}`) }

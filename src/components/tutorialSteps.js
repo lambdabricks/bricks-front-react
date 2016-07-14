@@ -32,3 +32,5 @@ const tutorialSteps = {
 }
 
 export const getTutorialConfig = (step) => tutorialSteps[step]
+
+export const totalSteps = () => Object.keys(tutorialSteps).length
