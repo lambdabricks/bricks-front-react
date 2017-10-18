@@ -28,7 +28,7 @@ const receiveLibrary = (items) => {
 const fetchLibrary = (id) => {
   return dispatch => {
     dispatch(requestLibrary())
-    return fetch(`http://demo5895613.mockable.io/library/js/${id}`)
+    return fetch(`https://demo5895613.mockable.io/library/js/${id}`)
       .then(response => response.json())
       .then(items => dispatch(receiveLibrary(items)))
   }
