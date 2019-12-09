@@ -25481,7 +25481,7 @@ var receiveLibrary = function receiveLibrary(items) {
 var fetchLibrary = function fetchLibrary(id) {
   return function (dispatch) {
     dispatch(requestLibrary());
-    return (0, _isomorphicFetch2.default)('/library/js/' + id).then(function (response) {
+    return (0, _isomorphicFetch2.default)('/library/js/' + id + '.json').then(function (response) {
       return response.json();
     }).then(function (items) {
       return dispatch(receiveLibrary(items));

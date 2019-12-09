@@ -1,0 +1,25 @@
+{
+  "modules":
+  [
+    {
+      "label": "Arithmetic",
+      "name": "arithmetic",
+      "functions":
+      [
+        { "id" : 41, "label": "+", "name" : "+", "arity" : 2 },
+        { "id" : 42, "label": "-", "name" : "-", "arity" : 2 },
+        { "id" : 43, "label": "*", "name" : "*", "arity" : 2 },
+        { "id" : 44, "label": "/", "name" : "/", "arity" : 2 }
+      ]
+    }
+  ],
+  "primitives":
+  {
+    "number":
+    {
+      "id": 102,
+      "label": "Number",
+      "type": "number"
+    }
+  }
+}

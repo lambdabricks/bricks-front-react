@@ -1,0 +1,50 @@
+{
+  "modules":
+  [
+    {
+      "label": "Arithmetic",
+      "name": "arithmetic",
+      "functions":
+      [
+        { "id" : 41, "label": "+", "name" : "+", "arity" : 2, "title" : "Inputs:\n  • number\n  • number\nOutput: number" },
+        { "id" : 42, "label": "-", "name" : "-", "arity" : 2, "title" : "Inputs:\n  • number\n  • number\nOutput: number" },
+        { "id" : 43, "label": "*", "name" : "*", "arity" : 2, "title" : "Inputs:\n  • number\n  • number\nOutput: number" },
+        { "id" : 44, "label": "/", "name" : "/", "arity" : 2, "title" : "Inputs:\n  • number\n  • number\nOutput: number" }
+      ]
+    },
+    {
+      "label": "Convertion",
+      "name": "parse",
+      "functions":
+      [
+        { "id" : 51, "label": "toNumber", "name" : "toNumber", "arity" : 1, "title" : "Input: string\nOutput: number" },
+        { "id" : 52, "label": "toString", "name" : "toString", "arity" : 1, "title" : "Input: number\nOutput: string" }
+      ]
+    },
+    {
+      "label": "String",
+      "name": "string",
+      "functions":
+      [
+        { "id" : 21, "label": "concat", "name" : "concat", "arity" : 2, "title" : "Inputs:\n  • string\n  • string\nOutput: string" },
+        { "id" : 22, "label": "length", "name" : "length", "arity" : 1, "title" : "Input: string\nOutput: number" },
+        { "id" : 23, "label": "reverse", "name" : "reverse", "arity" : 1, "title" : "Input: string\nOutput: string" }
+      ]
+    }
+  ],
+  "primitives":
+  {
+    "number":
+    {
+      "id": 102,
+      "label": "Number",
+      "type": "number"
+    },
+    "string":
+    {
+      "id": 103,
+      "label": "String",
+      "type": "string"
+    }
+  }
+}

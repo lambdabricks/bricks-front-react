@@ -1,0 +1,24 @@
+{
+  "modules":
+  [
+    {
+      "label": "String",
+      "name": "string",
+      "functions":
+      [
+        { "id" : 21, "label": "concat", "name" : "concat", "arity" : 2 },
+        { "id" : 22, "label": "length", "name" : "length", "arity" : 1 },
+        { "id" : 23, "label": "reverse", "name" : "reverse", "arity" : 1 }
+      ]
+    }
+  ],
+  "primitives":
+  {
+    "string":
+    {
+      "id": 103,
+      "label": "String",
+      "type": "string"
+    }
+  }
+}
