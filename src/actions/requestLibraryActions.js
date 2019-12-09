@@ -28,7 +28,7 @@ const receiveLibrary = (items) => {
 const fetchLibrary = (id) => {
   return dispatch => {
     dispatch(requestLibrary())
-    return fetch(`/library/js/${id}.json`)
+    return fetch(`library/js/${id}.json`)
       .then(response => response.json())
       .then(items => dispatch(receiveLibrary(items)))
   }

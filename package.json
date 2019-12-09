@@ -51,6 +51,6 @@
     "watchify": "^3.3.1"
   },
   "scripts": {
-    "start": "watchify --extension=js -o docs/app.js src/index.js & watchify --extension=js -o docs/tutorial/app.js src/tutorial-index.js & http-server docs"
+    "start": "watchify --extension=js -o docs/app.js src/index.js & watchify --extension=js -o docs/tutorial.js src/tutorial-index.js & http-server docs"
   }
 }
