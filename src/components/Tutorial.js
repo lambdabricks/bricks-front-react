@@ -90,7 +90,7 @@ export default class Tutorial extends Component {
           />
           { getMessage(locale, `tutorialSteps.${nextStep}`) && <Translate
             HtmlElement="a"
-            childProps={ { href: `./?step=${nextStep}` } }
+            childProps={ { href: `tutorial?step=${nextStep}` } }
             message="next"
           /> }
         </div>

@@ -34454,7 +34454,7 @@ var Tutorial = function (_Component) {
           }),
           (0, _translationUtils.getMessage)(locale, 'tutorialSteps.' + nextStep) && _react2.default.createElement(_Translate2.default, {
             HtmlElement: 'a',
-            childProps: { href: './?step=' + nextStep },
+            childProps: { href: 'tutorial?step=' + nextStep },
             message: 'next'
           })
         ),
